@@ -1,5 +1,4 @@
-# Review of discrete-time signals and systems
-## Discrete-time signals
+# Discrete-time signals
 * **Discrete-time signal** $x : \mathbb{Z} \longrightarrow \mathbb{R}$
   or $\mathbb{C}$.
   ```{admonition} Notation
