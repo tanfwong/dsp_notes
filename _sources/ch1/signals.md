@@ -18,14 +18,14 @@
 * Simple, but important, discrete-time signals:
   - **Unit impulse signal** $\delta[n] = \begin{cases} 1 & n=0 \\ 0 & n
     \neq 0 \end{cases}$
-  - **Unitstep signal** $u[n] = \begin{cases} 1 & n \geq 0 \\ 0 & n
+  - **Unit step signal** $u[n] = \begin{cases} 1 & n \geq 0 \\ 0 & n
     < 0 \end{cases}$
   - **(Complex-valued) sinusoid** $Ae^{j\phi} e^{j\hat\omega n}$
     ```{note}
     Euler's identity implies $A\cos(\hat\omega n + \phi) =
     \frac{A}{2}e^{j\phi} e^{j\hat\omega n} + \frac{A}{2}e^{-j\phi} e^{-j\hat\omega n}$.
     ```
-  - **Step sinusoid** $Ae^{j\phi} e^{j\hat\omega n} u[n]$
+  - **Stepped sinusoid** $Ae^{j\phi} e^{j\hat\omega n} u[n]$
 
 * Some important signal properties:
   - **Periodicity**:
