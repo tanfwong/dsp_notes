@@ -361,10 +361,10 @@ document.write(`
 <h1><span class="section-number">1.2. </span>Discrete-time systems<a class="headerlink" href="#discrete-time-systems" title="Permalink to this headline">#</a></h1>
 <ul>
 <li><p>A discrete-time system maps an input signal <span class="math notranslate nohighlight">\(x[n]\)</span> to an output
-signal $y[n].</p>
+signal <span class="math notranslate nohighlight">\(y[n]\)</span>.</p>
 <div class="admonition-notation admonition">
 <p class="admonition-title">Notation</p>
-<p>Denote the system as an operator <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> that acts on <span class="math notranslate nohighlight">\(x[n]\)</span>:</p>
+<p>Denote the system <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> as an operator that acts on <span class="math notranslate nohighlight">\(x[n]\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 y[n] = \mathcal{T}(x[n])
@@ -372,9 +372,14 @@ y[n] = \mathcal{T}(x[n])
 <p>or with a <em>block diagram</em>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-x[n] \xrightarrow{\hspace{20pt}}
-\boxed{\begin{array}{ccc} &amp; {\Large \mathcal{T}} &amp; \end{array}}
-\xrightarrow{\hspace{20pt}}  y[n]
+x[n] \xrightarrow{\hspace{30pt}}
+\boxed{ 
+\begin{array}{ccc} 
+&amp; &amp; \\[-10pt] 
+&amp; \mathcal{\Large T} &amp; \\[-10pt] 
+&amp; &amp;
+\end{array}}
+\xrightarrow{\hspace{30pt}}  y[n]
 \end{equation*}\]</div>
 </div>
 </li>
