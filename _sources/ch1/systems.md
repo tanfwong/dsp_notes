@@ -31,14 +31,14 @@
 ## LTI and stability
 * **<u>Linearity</u>**:
   
-  A system $\mathcal{T}$ is *linear* if
+  A system $\mathcal{T}$ is *linear (L)* if
   $\mathcal{T} ( \alpha x_1[n] + \beta x_2[n]) =
   \alpha \mathcal{T} (x_1[n]) + \beta \mathcal{T}(x_2[n])$
   for all $\alpha$, $\beta$, $x_1[n]$, and $x_2[n]$.
 
 * **<u>Time invariance</u>**:
 
-  A system $\mathcal{T}$ is *time-invariant* if $\mathcal{T} (
+  A system $\mathcal{T}$ is *time-invariant (TI)* if $\mathcal{T} (
   x[n]) = y[n]$ implies $\mathcal{T} ( x[n-n_0]) = y[n-n_0]$ for all
   $n_0$ and $x[n]$.
 
@@ -75,7 +75,7 @@
     &= \sum_{k=-\infty}^{\infty} x[k] h[n-k] & (\mathcal{T}  \text{ is time-invariant})
     \end{align*}
     ```{note}
-    In above and also hereafter, implictly convergence (in some sense)
+    In above and also hereafter, implict convergence (in some sense)
     is assumed when we write an infinite series like
     $\sum_{k=-\infty}^{\infty} x[k] h[n-k]$.
     We may sometimes discuss more about the assumed convergence.
