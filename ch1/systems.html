@@ -357,6 +357,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-and-stability">1.2.1. LTI and stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-and-convolution">1.2.2. Impulse response and convolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-system-fir-and-iir-filters">1.2.3. LTI system, FIR and IIR filters</a></li>
 </ul>
             </nav>
         </div>
@@ -469,11 +470,92 @@ We may sometimes discuss more about the assumed convergence.</p>
 <p>Write the convolution sum using the following notation:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\sum_{k=-\infty}^{\infty} x[k] h[n-k] = x[n]*h[n] = (x*h)[n].
+\sum_{k=-\infty}^{\infty} x[k] h[n-k] = x[n]*h[n] = (x*h)[n]
+\end{equation*}\]</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><span class="math notranslate nohighlight">\(y[n] = x[n]*h[n]\)</span> can also be viewed as a matrix multiplication:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\left[
+\begin{array}{c}
+\vdots \\
+y[-1] \\
+y[0] \\
+y[1] \\
+\vdots
+\end{array}
+\right] 
+= 
+\left[
+\begin{array}{ccccc}
+&amp; \vdots &amp; \vdots &amp; \vdots \\
+\cdots &amp; h[0] &amp; h[-1] &amp; h[-2] &amp; \cdots \\
+\cdots &amp; h[1] &amp; h[0] &amp; h[-1] &amp; \cdots \\
+\cdots &amp; h[2] &amp; h[1] &amp; h[0] &amp; \cdots \\
+&amp; \vdots &amp; \vdots &amp; \vdots \\
+\end{array}
+\right] 
+\left[
+\begin{array}{c}
+\vdots \\
+x[-1] \\
+x[0] \\
+x[1] \\
+\vdots
+\end{array}
+\right] 
 \end{equation*}\]</div>
 </div>
 </li>
 </ul>
+</li>
+<li><p><strong><u>Algebraic properties of convolution</u></strong></p>
+<ul class="simple">
+<li><p><strong>Commutativity</strong>: <span class="math notranslate nohighlight">\(x_1[n]*x_2[n] = x_2[n]*x_1[n]\)</span></p></li>
+<li><p><strong>Associativity</strong>:  <span class="math notranslate nohighlight">\(x_1[n]*(x_2[n]*x_3[n]) =
+(x_1[n]*x_2[n])*x_3[n]\)</span></p></li>
+<li><p><strong>Distributivity</strong>: <span class="math notranslate nohighlight">\((\alpha x_1[n]+ \beta x_2[n])*h[n] = \alpha
+x_1[n]*h[n] + \beta x_2[n]*h[n]\)</span></p></li>
+<li><p><strong>Identity</strong>: <span class="math notranslate nohighlight">\(x[n] * \delta[n-n_0] = x[n-n_0]\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="lti-system-fir-and-iir-filters">
+<h2><span class="section-number">1.2.3. </span>LTI system, FIR and IIR filters<a class="headerlink" href="#lti-system-fir-and-iir-filters" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>An LTI system with impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> is causal if and only if
+<span class="math notranslate nohighlight">\(h[n] = 0\)</span> for all <span class="math notranslate nohighlight">\(n&lt;0\)</span>.</p></li>
+<li><p>An LTI system  with impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> is (BIBO) stable if and only if
+<span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |h[n]| &lt; \infty\)</span>.</p></li>
+<li><p>The cascade of two LTI systems with impulse responses <span class="math notranslate nohighlight">\(h_1[n]\)</span> and
+<span class="math notranslate nohighlight">\(h_2[n]\)</span> is LTI with impulse response <span class="math notranslate nohighlight">\(h_1[n]*h_2[n]\)</span>.</p></li>
+<li><p><strong>FIR filter</strong>:
+A causal <em>finite-impulse-response (FIR) filter</em> is an LTI system
+that is specified by the difference equation</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  y[n] = \sum_{k=0}^M b_k x[n-k]
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(b_0, b_1, \ldots, b_M\)</span> are the <em>filter taps</em>,  <span class="math notranslate nohighlight">\(M\)</span> is the
+<em>filter order</em>, and <span class="math notranslate nohighlight">\(L=M+1\)</span> is the <em>filter length</em>. Clearly, the filter’s
+impulse response is <span class="math notranslate nohighlight">\(h[n] = \sum_{k=0}^M b_k \delta[n-k]\)</span>.</p>
+</li>
+<li><p><strong>IIR filter</strong>:
+A causal <em>infinite-impulse-response (IIR) filter</em> is an LTI system
+that is specified by the difference equation</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \sum_{k=0}^N a_k y[n-k] = \sum_{k=0}^M b_k x[n-k]
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_0=1\)</span>, <span class="math notranslate nohighlight">\(a_1,a_2, \ldots, a_N\)</span> are the <em>feedback</em> taps, and
+<span class="math notranslate nohighlight">\(b_0, b_1, \ldots, b_M\)</span> are the <em>feedforward</em> taps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\(N\)</span> (not <span class="math notranslate nohighlight">\(M\)</span>) is usually referred to as the order of the IIR filter.</p>
+</div>
 </li>
 </ul>
 </section>
@@ -539,6 +621,7 @@ We may sometimes discuss more about the assumed convergence.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-and-stability">1.2.1. LTI and stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-and-convolution">1.2.2. Impulse response and convolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lti-system-fir-and-iir-filters">1.2.3. LTI system, FIR and IIR filters</a></li>
 </ul>
   </nav></div>
 
