@@ -74,7 +74,8 @@
     (\mathcal{T} \text{ is linear})\\
     &= \sum_{k=-\infty}^{\infty} x[k] h[n-k] & (\mathcal{T}  \text{ is time-invariant})
     \end{align*}
-    ```{note}
+    ```{admonition} Assumption
+    :class: important
     In above and also hereafter, implict convergence (in some sense)
     is assumed when we write an infinite series like
     $\sum_{k=-\infty}^{\infty} x[k] h[n-k]$.
@@ -132,6 +133,11 @@
 ## LTI system, FIR and IIR filters 
 * An LTI system with impulse response $h[n]$ is causal if and only if
   $h[n] = 0$ for all $n<0$.
+  ```{admonition} Notation
+  It is common to slightly abuse the terminology to call a signal
+  $x[n]$, which may not be associated with the impulse response of 
+  any LTI system, *causal* if $x[n]=0$ for all $n<0$.
+  ```
 * An LTI system  with impulse response $h[n]$ is (BIBO) stable if and only if
   $\sum_{n=-\infty}^{\infty} |h[n]| < \infty$.
 * The cascade of two LTI systems with impulse responses $h_1[n]$ and
@@ -153,6 +159,6 @@
   \end{equation*}
   where $a_0=1$, $a_1,a_2, \ldots, a_N$ are the *feedback* taps, and
   $b_0, b_1, \ldots, b_M$ are the *feedforward* taps.
-  ```{note}
+  ```{caution}
   $N$ (not $M$) is usually referred to as the order of the IIR filter.
   ```

@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch1/systems';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.3. \(z\)-Transform" href="ztransform.html" />
     <link rel="prev" title="1.1. Discrete-time signals" href="signals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -160,6 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="review.html">1. Review of discrete-time signals and systems</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="signals.html">1.1. Discrete-time signals</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. Discrete-time systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ztransform.html">1.3. <span class="math notranslate nohighlight">\(z\)</span>-Transform</a></li>
 </ul>
 </li>
 </ul>
@@ -458,8 +460,8 @@ and any input <span class="math notranslate nohighlight">\(x[n]\)</span>, the ou
     (\mathcal{T} \text{ is linear})\\
     &amp;= \sum_{k=-\infty}^{\infty} x[k] h[n-k] &amp; (\mathcal{T}  \text{ is time-invariant})
     \end{align*}\]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="important admonition">
+<p class="admonition-title">Assumption</p>
 <p>In above and also hereafter, implict convergence (in some sense)
 is assumed when we write an infinite series like
 <span class="math notranslate nohighlight">\(\sum_{k=-\infty}^{\infty} x[k] h[n-k]\)</span>.
@@ -527,7 +529,14 @@ x_1[n]*h[n] + \beta x_2[n]*h[n]\)</span></p></li>
 <h2><span class="section-number">1.2.3. </span>LTI system, FIR and IIR filters<a class="headerlink" href="#lti-system-fir-and-iir-filters" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>An LTI system with impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> is causal if and only if
-<span class="math notranslate nohighlight">\(h[n] = 0\)</span> for all <span class="math notranslate nohighlight">\(n&lt;0\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(h[n] = 0\)</span> for all <span class="math notranslate nohighlight">\(n&lt;0\)</span>.</p>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>It is common to slightly abuse the terminology to call a signal
+<span class="math notranslate nohighlight">\(x[n]\)</span>, which may not be associated with the impulse response of
+any LTI system, <em>causal</em> if <span class="math notranslate nohighlight">\(x[n]=0\)</span> for all <span class="math notranslate nohighlight">\(n&lt;0\)</span>.</p>
+</div>
+</li>
 <li><p>An LTI system  with impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> is (BIBO) stable if and only if
 <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |h[n]| &lt; \infty\)</span>.</p></li>
 <li><p>The cascade of two LTI systems with impulse responses <span class="math notranslate nohighlight">\(h_1[n]\)</span> and
@@ -552,8 +561,8 @@ that is specified by the difference equation</p>
   \end{equation*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a_0=1\)</span>, <span class="math notranslate nohighlight">\(a_1,a_2, \ldots, a_N\)</span> are the <em>feedback</em> taps, and
 <span class="math notranslate nohighlight">\(b_0, b_1, \ldots, b_M\)</span> are the <em>feedforward</em> taps.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
 <p><span class="math notranslate nohighlight">\(N\)</span> (not <span class="math notranslate nohighlight">\(M\)</span>) is usually referred to as the order of the IIR filter.</p>
 </div>
 </li>
@@ -600,6 +609,15 @@ that is specified by the difference equation</p>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="section-number">1.1. </span>Discrete-time signals</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="ztransform.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.3. </span><span class="math notranslate nohighlight">\(z\)</span>-Transform</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

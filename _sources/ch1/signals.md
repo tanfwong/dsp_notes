@@ -21,7 +21,7 @@
   - **Unit step signal** $u[n] = \begin{cases} 1 & n \geq 0 \\ 0 & n
     < 0 \end{cases}$
   - **(Complex-valued) sinusoid** $Ae^{j\phi} e^{j\hat\omega n}$
-    ```{note}
+    ```{tip}
     Euler's identity implies $A\cos(\hat\omega n + \phi) =
     \frac{A}{2}e^{j\phi} e^{j\hat\omega n} + \frac{A}{2}e^{-j\phi} e^{-j\hat\omega n}$.
     ```
@@ -32,14 +32,14 @@
      - $x[n]$ is <em>periodic</em> with period $N$ $(N\geq 0)$ if $x[n] = x[n+N]$
        for all $n \in \mathbb{Z}$.
      - The smallest such $N$ is called the <em>fundamental period</em>.
-       ```{note}
+       ```{admonition} Notation
        Often, we simply call the fundamental period of $x[n]$ the
        **<em>period</em>** of the signal when there is no ambiguity.
        ```
      - If no such $N$ exists, $x[n]$ is <em>aperiodic</em>.
    - **Signal energy**: $E_x = \sum_{n=-\infty}^{\infty}  |x[n]|^2$.
    - **Signal power**: $P_x = \lim_{M \rightarrow \infty} \frac{1}{2M+1} \sum_{n=-M}^{M}  |x[n]|^2$.
-       ```{note}
+       ```{tip}
        If $x[n]$ is periodic with period $N$, $P_x = \frac{1}{N} \sum_{n=0}^N |x[n]|^2$.
        ```
    
