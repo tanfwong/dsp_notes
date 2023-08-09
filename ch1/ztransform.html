@@ -372,12 +372,14 @@ polynomial) with the values of <span class="math notranslate nohighlight">\(x[n]
 numbers at which the power series converges.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>From the thoery of power series, there must be non-negative
-<span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span> (both could be <span class="math notranslate nohighlight">\(\infty\)</span>), specifying an open “ring”
-region <span class="math notranslate nohighlight">\(\mathcal{R}=\{z \in \mathbb{C}: r_1 &lt; |z| &lt; r_2 \}\)</span> such that
+<p>From the theory of power series, there must be non-negative
+<span class="math notranslate nohighlight">\(r_+\)</span> and <span class="math notranslate nohighlight">\(r_-\)</span> (both could be <span class="math notranslate nohighlight">\(\infty\)</span>), specifying the regions
+<span class="math notranslate nohighlight">\(\mathcal{R}_+ =\{z \in \mathbb{C}: |z| &gt; r_+ \}\)</span> and
+<span class="math notranslate nohighlight">\(\mathcal{R}_- =\{z \in \mathbb{C}: |z| &lt; r_- \}\)</span> such that
 <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} x[n] z^{-n}\)</span> converges for
-<span class="math notranslate nohighlight">\(z \in \mathcal{R}\)</span> and diverges for <span class="math notranslate nohighlight">\(z \notin \mathcal{\bar R}\)</span>
-(the closure of <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>).</p>
+<span class="math notranslate nohighlight">\(z \in \mathcal{R}_+ \cap \mathcal{R}_-\)</span> and diverges for <span class="math notranslate nohighlight">\(z \notin
+\mathcal{\bar R}_+ \cap \mathcal{\bar R}_-\)</span>,
+where the bar notation the closure of a subset in <span class="math notranslate nohighlight">\(\mathbb{C}\)</span>.</p>
 </div>
 </li>
 </ul>

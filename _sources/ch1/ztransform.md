@@ -7,10 +7,12 @@
 * The *region of convergence (ROC)* of $X(z)$ is the set of complex
   numbers at which the power series converges.
   ```{tip}
-  From the thoery of power series, there must be non-negative
-  $r_1$ and $r_2$ (both could be $\infty$), specifying an open "ring"
-  region $\mathcal{R}=\{z \in \mathbb{C}: r_1 < |z| < r_2 \}$ such that 
+  From the theory of power series, there must be non-negative
+  $r_+$ and $r_-$ (both could be $\infty$), specifying the regions
+  $\mathcal{R}_+ =\{z \in \mathbb{C}: |z| > r_+ \}$ and 
+  $\mathcal{R}_- =\{z \in \mathbb{C}: |z| < r_- \}$ such that 
   $\sum_{n=-\infty}^{\infty} x[n] z^{-n}$ converges for 
-  $z \in \mathcal{R}$ and diverges for $z \notin \mathcal{\bar R}$
-  (the closure of $\mathcal{R}$).
+  $z \in \mathcal{R}_+ \cap \mathcal{R}_-$ and diverges for $z \notin
+  \mathcal{\bar R}_+ \cap \mathcal{\bar R}_-$, 
+  where the bar notation the closure of a subset in $\mathbb{C}$.
   ```
