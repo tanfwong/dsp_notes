@@ -15,4 +15,14 @@
   $z \in \mathcal{R}_+ \cap \mathcal{R}_-$ and diverges for $z \notin
   \mathcal{\bar R}_+ \cap \mathcal{\bar R}_-$, 
   where the bar denotes the closure of a subset in $\mathbb{C}$.
+  - If $r_- < r_+$, then the power series does not converge at any $z
+  \in \mathbb{C}$ and $x[n]$ does not have a $z$-transform.
+  - If $x[n]$ is causal (i.e., $x[n]=0$ for all $n<0$), then $r_- =
+  \infty$ and hence the ROC includes $\mathcal{R}_+$. 
+  - If  $x[n]$ is *anti-causal* (i.e., $x[n]=0$ for all $n \geq 0$), 
+  then $r_+ = 0$ (and the power series also trivially converges at $z=0$)
+  and hence the ROC includes $\mathcal{R}_-$.
+  - Convergence on the boundaries of $\mathcal{R}_+$ and
+  $\mathcal{R}_-$ needs to be worked out for each specific $x[n]$.
+  
   ```
