@@ -421,7 +421,53 @@ From <a class="reference internal" href="#equation-e-z">(1.1)</a>, we have</p>
      \end{cases}
    \end{align*}\]</div>
 <p>Thus, the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x_1[n]\)</span> is <span class="math notranslate nohighlight">\(X_1(z) = \frac{1}{1-az^{-1}}\)</span>
-with ROC <span class="math notranslate nohighlight">\(= \{ z \in \mathbb{C}:  |z|&gt;|a|\}\)</span>.</p>
+with ROC <span class="math notranslate nohighlight">\(= \{|z|&gt;|a|\}\)</span>.</p>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>Instead of writing <span class="math notranslate nohighlight">\(\{ z \in \mathbb{C}:  |z|&gt;|a|\}\)</span> all the time,
+we will henceforth use the shorthand notation <span class="math notranslate nohighlight">\(\{|z|&gt;|a|\}\)</span>.</p>
+</div>
+</li>
+<li><p>Consider the anti-causal signal <span class="math notranslate nohighlight">\(x_2[n] = -a^n u[-n-1]\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is a complex number.
+From <a class="reference internal" href="#equation-e-z">(1.1)</a>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+   X_2(z) 
+   &amp;= \sum_{n=-\infty}^{\infty} x_2[n] z^{-n} \\
+   &amp;= -\sum_{n=-\infty}^{\infty} a^n u[-n-1] z^{-n} \\
+   &amp;= -\sum_{m=1}^{\infty} \left( a^{-1} z \right)^m \\
+   &amp;= 1 - \sum_{m=0}^{\infty} \left( a^{-1} z \right)^m \\
+   &amp;= \begin{cases}
+     1-\frac{1}{1-a^{-1}z}, &amp; |z|&lt;|a| \\
+     \text{diverges}, &amp; |z| \geq |a|.
+     \end{cases}
+   \end{align*}\]</div>
+<p>Thus, the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x_2[n]\)</span> is <span class="math notranslate nohighlight">\(X_2(z) = \frac{1}{1-az^{-1}}\)</span>
+with ROC <span class="math notranslate nohighlight">\(= \{|z|&lt;|a|\}\)</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>Note that <span class="math notranslate nohighlight">\(X_1(z)\)</span> and <span class="math notranslate nohighlight">\(X_2(z)\)</span> have the same expression but
+different ROCs.</p></li>
+<li><p>In general, the expression <strong>AND</strong> the ROC of <span class="math notranslate nohighlight">\(X(z)\)</span> together uniquely
+determine <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+</ul>
+</div>
+</li>
+<li><p>Consider the signals <span class="math notranslate nohighlight">\(u[n]\)</span>, <span class="math notranslate nohighlight">\(x_3[n] = \frac{1}{n} u[n-1] \)</span> and
+<span class="math notranslate nohighlight">\(x_4[n] = \frac{1}{n^2}u[n-1] \)</span>.</p>
+<ul class="simple">
+<li><p>From Example 1. above, the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(u[n]\)</span> is <span class="math notranslate nohighlight">\(U(z) =
+\frac{1}{1-z^{-n}}\)</span> with ROC <span class="math notranslate nohighlight">\(= \{ |z|&gt;1\}\)</span>.</p></li>
+<li><p>Clearly, <span class="math notranslate nohighlight">\(X_3(z) = \sum_{n=1}^{\infty} \frac{z^{-1}}{n}\)</span>
+converges for <span class="math notranslate nohighlight">\(|z|&gt;1\)</span> and diverges for <span class="math notranslate nohighlight">\(|z|&lt;1\)</span>. It turns out that
+<span class="math notranslate nohighlight">\(X_3(z)\)</span> also converges for every <span class="math notranslate nohighlight">\(z\)</span> on the unit circle (i.e.,
+<span class="math notranslate nohighlight">\(|z|=1\)</span>) except at <span class="math notranslate nohighlight">\(z=1\)</span> where the power series diverges. Hence,
+the ROC of <span class="math notranslate nohighlight">\(X_3(z)\)</span> is <span class="math notranslate nohighlight">\(\{ |z| \geq 1\} \setminus \{z=1\}\)</span>.</p></li>
+<li><p>It can also be shown that <span class="math notranslate nohighlight">\(X_4(z) = \sum_{n=1}^{\infty}
+\frac{z^{-n}}{n^2}\)</span> converges for <span class="math notranslate nohighlight">\(|z| \geq 1\)</span> and diverges for
+<span class="math notranslate nohighlight">\(|z| &lt; 1\)</span>. Hence, the ROC of <span class="math notranslate nohighlight">\(X_4(z)\)</span> is <span class="math notranslate nohighlight">\(\{ |z| \geq 1\}\)</span>.</p></li>
+</ul>
 </li>
 </ol>
 </section>

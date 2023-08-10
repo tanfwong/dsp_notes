@@ -43,4 +43,42 @@
      \end{cases}
    \end{align*}
    Thus, the $z$-transform of $x_1[n]$ is $X_1(z) = \frac{1}{1-az^{-1}}$
-   with ROC $= \{ z \in \mathbb{C}:  |z|>|a|\}$.
+   with ROC $= \{|z|>|a|\}$.
+   ```{admonition} Notation
+   Instead of writing $\{ z \in \mathbb{C}:  |z|>|a|\}$ all the time,
+   we will henceforth use the shorthand notation $\{|z|>|a|\}$.
+   ```
+
+2. Consider the anti-causal signal $x_2[n] = -a^n u[-n-1]$, where $a$ is a complex number.
+   From {eq}`e:z`, we have
+   \begin{align*}
+   X_2(z) 
+   &= \sum_{n=-\infty}^{\infty} x_2[n] z^{-n} \\
+   &= -\sum_{n=-\infty}^{\infty} a^n u[-n-1] z^{-n} \\
+   &= -\sum_{m=1}^{\infty} \left( a^{-1} z \right)^m \\
+   &= 1 - \sum_{m=0}^{\infty} \left( a^{-1} z \right)^m \\
+   &= \begin{cases}
+     1-\frac{1}{1-a^{-1}z}, & |z|<|a| \\
+     \text{diverges}, & |z| \geq |a|.
+     \end{cases}
+   \end{align*}
+   Thus, the $z$-transform of $x_2[n]$ is $X_2(z) = \frac{1}{1-az^{-1}}$
+   with ROC $= \{|z|<|a|\}$.
+   ```{caution}
+   - Note that $X_1(z)$ and $X_2(z)$ have the same expression but
+     different ROCs.
+   - In general, the expression **AND** the ROC of $X(z)$ together uniquely
+   determine $x[n]$.
+   ```
+3. Consider the signals $u[n]$, $x_3[n] = \frac{1}{n} u[n-1] $ and
+   $x_4[n] = \frac{1}{n^2}u[n-1] $.
+   - From Example 1. above, the $z$-transform of $u[n]$ is $U(z) =
+     \frac{1}{1-z^{-n}}$ with ROC $= \{ |z|>1\}$.
+   - Clearly, $X_3(z) = \sum_{n=1}^{\infty} \frac{z^{-1}}{n}$
+     converges for $|z|>1$ and diverges for $|z|<1$. It turns out that
+     $X_3(z)$ also converges for every $z$ on the unit circle (i.e.,
+     $|z|=1$) except at $z=1$ where the power series diverges. Hence,
+     the ROC of $X_3(z)$ is $\{ |z| \geq 1\} \setminus \{z=1\}$.
+   - It can also be shown that $X_4(z) = \sum_{n=1}^{\infty}
+     \frac{z^{-n}}{n^2}$ converges for $|z| \geq 1$ and diverges for
+     $|z| < 1$. Hence, the ROC of $X_4(z)$ is $\{ |z| \geq 1\}$.
