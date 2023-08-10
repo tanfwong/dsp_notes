@@ -14,5 +14,5 @@
   $\sum_{n=-\infty}^{\infty} x[n] z^{-n}$ converges for 
   $z \in \mathcal{R}_+ \cap \mathcal{R}_-$ and diverges for $z \notin
   \mathcal{\bar R}_+ \cap \mathcal{\bar R}_-$, 
-  where the bar notation the closure of a subset in $\mathbb{C}$.
+  where the bar denotes the closure of a subset in $\mathbb{C}$.
   ```
