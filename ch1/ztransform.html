@@ -333,7 +333,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -349,6 +351,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">1.3.1. Examples</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -363,10 +373,10 @@ document.write(`
 <ul>
 <li><p>The <span class="math notranslate nohighlight">\(z\)</span>-transform <span class="math notranslate nohighlight">\(X(z)\)</span> of a signal <span class="math notranslate nohighlight">\(x[n]\)</span> is the <em>power series</em> (or infinite-degree
 polynomial) with the values of <span class="math notranslate nohighlight">\(x[n]\)</span> as coefficients:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}.
-  \end{equation*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-z">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-e-z" title="Permalink to this equation">#</a></span>\[\begin{equation}
+X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}.
+\end{equation}\]</div>
 </li>
 <li><p>The <em>region of convergence (ROC)</em> of <span class="math notranslate nohighlight">\(X(z)\)</span> is the set of complex
 numbers at which the power series converges.</p>
@@ -394,6 +404,27 @@ and hence the ROC includes <span class="math notranslate nohighlight">\(\mathcal
 </div>
 </li>
 </ul>
+<section id="examples">
+<h2><span class="section-number">1.3.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<ol class="arabic">
+<li><p>Consider the causal signal <span class="math notranslate nohighlight">\(x_1[n] = a^n u[n]\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> is a complex number.
+From <a class="reference internal" href="#equation-e-z">(1.1)</a>, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+   X_1(z) 
+   &amp;= \sum_{n=-\infty}^{\infty} x_1[n] z^{-n} \\
+   &amp;= \sum_{n=-\infty}^{\infty} a^n u[n] z^{-n} \\
+   &amp;= \sum_{n=0}^{\infty} \left( a z^{-1} \right)^n \\
+   &amp;= \begin{cases}
+     \frac{1}{1-az^{-1}}, &amp; |z|&gt;|a| \\
+     \text{diverges}, &amp; |z| \leq |a|.
+     \end{cases}
+   \end{align*}\]</div>
+<p>Thus, the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x_1[n]\)</span> is <span class="math notranslate nohighlight">\(X_1(z) = \frac{1}{1-az^{-1}}\)</span>
+with ROC <span class="math notranslate nohighlight">\(= \{ z \in \mathbb{C}:  |z|&gt;|a|\}\)</span>.</p>
+</li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -445,6 +476,20 @@ and hence the ROC includes <span class="math notranslate nohighlight">\(\mathcal
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">1.3.1. Examples</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
