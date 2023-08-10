@@ -6,6 +6,11 @@
   \begin{equation}
   X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}.
   \end{equation}
+  ```
+  ```{admonition} Notation
+  We use the notation $x[n] \stackrel{z}{\longleftrightarrow} X(z)$ or
+  $\mathcal{Z}(x[n])$ to say that $X(z)$ is the $z$-transform of $x[n]$.
+  ```
 * The *region of convergence (ROC)* of $X(z)$ is the set of complex
   numbers at which the power series converges.
   ```{tip}
@@ -70,6 +75,8 @@
    - In general, the expression **AND** the ROC of $X(z)$ together uniquely
    determine $x[n]$.
    ```
+
+   
 3. Consider the signals $u[n]$, $x_3[n] = \frac{1}{n} u[n-1] $ and
    $x_4[n] = \frac{1}{n^2}u[n-1] $.
    - From Example 1. above, the $z$-transform of $u[n]$ is $U(z) =
@@ -82,3 +89,31 @@
    - It can also be shown that $X_4(z) = \sum_{n=1}^{\infty}
      \frac{z^{-n}}{n^2}$ converges for $|z| \geq 1$ and diverges for
      $|z| < 1$. Hence, the ROC of $X_4(z)$ is $\{ |z| \geq 1\}$.
+
+## Properties and tables
+Typically, it is more convenient to find the $z$-transform of a signal
+by consulting a pair of tables listing common $z$-transform
+properties and $z$-transform pair. For example, see the [tables from
+  Wikipedia](https://en.wikipedia.org/wiki/Z-transform).
+
+**Use of table example**:
+
+4. Consider 
+    \begin{equation*}
+     x_5[n] = n \cos(\hat\omega_0 n) u[n] 
+     = \frac{1}{2} e^{j \hat\omega_0 n} u[n] 
+     + \frac{1}{2} e^{-j \hat\omega_0 n} u[n].
+    \end{equation*}
+    Hence, the $z$-transform of $x_5[n]$ is
+    \begin{align*}
+     X_5(z) 
+     &= \frac{1}{2}  \mathcal{Z}\left( ne^{j \hat\omega_0 n} u[n] \right) 
+     + \frac{1}{2}  \mathcal{Z}\left( ne^{-j \hat\omega_0 n} u[n] \right) 
+     & \text{(linearity)} \\
+     & = \frac{e^{j \hat\omega_0} z^{-1}}{2(1 - e^{j \hat\omega_0} z^{-1})^2}
+     + \frac{e^{-j \hat\omega_0} z^{-1}}{2(1 - e^{-j \hat\omega_0} z^{-1})^2}
+     & \text{(directly from $z$-transfrom pair table)} \\
+     & = \frac{(\cos\hat\omega_0) z^{-1} -2 z^{-2} + (\cos\hat\omega_0)
+     z^{-3}}{\left( 1 - (2 \cos\hat\omega_0) z^{-1} + z^{-2} \right)^2}
+    \end{align*}
+    with ROC $=\{ |z|>1\}$.

@@ -357,6 +357,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">1.3.1. Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-and-tables">1.3.2. Properties and tables</a></li>
 </ul>
             </nav>
         </div>
@@ -377,6 +378,11 @@ polynomial) with the values of <span class="math notranslate nohighlight">\(x[n]
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-e-z" title="Permalink to this equation">#</a></span>\[\begin{equation}
 X(z) = \sum_{n=-\infty}^{\infty} x[n] z^{-n}.
 \end{equation}\]</div>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>We use the notation <span class="math notranslate nohighlight">\(x[n] \stackrel{z}{\longleftrightarrow} X(z)\)</span> or
+<span class="math notranslate nohighlight">\(\mathcal{Z}(x[n])\)</span> to say that <span class="math notranslate nohighlight">\(X(z)\)</span> is the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
+</div>
 </li>
 <li><p>The <em>region of convergence (ROC)</em> of <span class="math notranslate nohighlight">\(X(z)\)</span> is the set of complex
 numbers at which the power series converges.</p>
@@ -471,6 +477,38 @@ the ROC of <span class="math notranslate nohighlight">\(X_3(z)\)</span> is <span
 </li>
 </ol>
 </section>
+<section id="properties-and-tables">
+<h2><span class="section-number">1.3.2. </span>Properties and tables<a class="headerlink" href="#properties-and-tables" title="Permalink to this headline">#</a></h2>
+<p>Typically, it is more convenient to find the <span class="math notranslate nohighlight">\(z\)</span>-transform of a signal
+by consulting a pair of tables listing common <span class="math notranslate nohighlight">\(z\)</span>-transform
+properties and <span class="math notranslate nohighlight">\(z\)</span>-transform pair. For example, see the <a class="reference external" href="https://en.wikipedia.org/wiki/Z-transform">tables from
+Wikipedia</a>.</p>
+<p><strong>Use of table example</strong>:</p>
+<ol class="arabic" start="4">
+<li><p>Consider</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     x_5[n] = n \cos(\hat\omega_0 n) u[n] 
+     = \frac{1}{2} e^{j \hat\omega_0 n} u[n] 
+     + \frac{1}{2} e^{-j \hat\omega_0 n} u[n].
+    \end{equation*}\]</div>
+<p>Hence, the <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x_5[n]\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+     X_5(z) 
+     &amp;= \frac{1}{2}  \mathcal{Z}\left( ne^{j \hat\omega_0 n} u[n] \right) 
+     + \frac{1}{2}  \mathcal{Z}\left( ne^{-j \hat\omega_0 n} u[n] \right) 
+     &amp; \text{(linearity)} \\
+     &amp; = \frac{e^{j \hat\omega_0} z^{-1}}{2(1 - e^{j \hat\omega_0} z^{-1})^2}
+     + \frac{e^{-j \hat\omega_0} z^{-1}}{2(1 - e^{-j \hat\omega_0} z^{-1})^2}
+     &amp; \text{(directly from $z$-transfrom pair table)} \\
+     &amp; = \frac{(\cos\hat\omega_0) z^{-1} -2 z^{-2} + (\cos\hat\omega_0)
+     z^{-3}}{\left( 1 - (2 \cos\hat\omega_0) z^{-1} + z^{-2} \right)^2}
+    \end{align*}\]</div>
+<p>with ROC <span class="math notranslate nohighlight">\(=\{ |z|&gt;1\}\)</span>.</p>
+</li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -532,6 +570,7 @@ the ROC of <span class="math notranslate nohighlight">\(X_3(z)\)</span> is <span
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">1.3.1. Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-and-tables">1.3.2. Properties and tables</a></li>
 </ul>
   </nav></div>
 
