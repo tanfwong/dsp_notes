@@ -9,7 +9,7 @@
   ```
   ```{admonition} Notation
   We use the notation $x[n] \stackrel{z}{\longleftrightarrow} X(z)$ or
-  $\mathcal{Z}(x[n])$ to say that $X(z)$ is the $z$-transform of $x[n]$.
+  $X(z)=\mathcal{Z}(x[n])$ to say that $X(z)$ is the $z$-transform of $x[n]$.
   ```
 * The *region of convergence (ROC)* of $X(z)$ is the set of complex
   numbers at which the power series converges.
