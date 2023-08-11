@@ -143,3 +143,39 @@ enclosing the origin.
 by Prof. Oppenhiem from MIT Open Courseware for more discussions and
 examples.
 ```
+
+## Transfer function
+- The *transfer function* $H(z)$ of an LTI system is the $z$-transform
+of its impulse response $h[n]$, i.e., $h[n]
+\stackrel{z}{\longleftrightarrow} H(z)$.
+
+- From the fact that an LTI system is stable if and only if
+$\sum_{n=-\infty}^{\infty} |h[n]| < \infty$, the LTI system is stable
+if and only if the ROC of its transfer function $H(z)$ contains the
+unit circle.
+
+- For a causal FIR filter, $H(z) = \sum_{k=0}^M b_k z^{-k}$.
+   
+   For a causal IIR filter, $H(z) = \frac{\sum_{k=0}^M b_k z^{-k}}{\sum_{k=0}^N a_k z^{-k}}$
+   
+   In both cases, $H(z) = \frac{B(z)}{A(z)}$ is *rational*, where
+   $B(z)$ and $A(z)$ are a numerator polynomial and a denominator
+   polynomial in $z^{-1}$. 
+
+## Poles and zeros
+- **<u>Pole</u>**: 
+  $z_p \in \mathbb{C}$ is a *pole* of $H(z)$ if $\lim_{z \rightarrow
+  z_p} |H(z)| = \infty$.
+- **<u>Zero</u>**:
+  $z_0 \in \mathbb{C}$ is a *zero* of $H(z)$ if $H(z_0)=0$.
+```{tip}
+For a rational $H(z) = \frac{B(z)}{A(z)}$: 
+- The roots of $B(z)$ gives the zeros of $H(z)$.
+- The roots of $A(z)$ gives the poles of $H(z)$. 
+- If $z_0$ is a root for both $B(z)$ and $A(z)$, then it does not
+give a pole or zero because of cancellation of the same factor in
+$B(z)$ and $A(z)$. 
+```
+- For a causal LTI system with a rational transfer function $H(z)$,
+   the system is stable if and only if **all** its poles are strictly
+   inside the unit circle.
