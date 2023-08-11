@@ -93,7 +93,7 @@
 ## Properties and tables
 Typically, it is more convenient to find the $z$-transform of a signal
 by consulting a pair of tables listing common $z$-transform
-properties and $z$-transform pair. For example, see the [tables from
+properties and $z$-transform pairs. For example, see the [tables from
   Wikipedia](https://en.wikipedia.org/wiki/Z-transform).
 
 **Use of table example**:
@@ -117,3 +117,29 @@ properties and $z$-transform pair. For example, see the [tables from
      z^{-3}}{\left( 1 - (2 \cos\hat\omega_0) z^{-1} + z^{-2} \right)^2}
     \end{align*}
     with ROC $=\{ |z|>1\}$.
+
+## Inverse $z$-transform
+Let $x[n] \stackrel{z}{\longleftrightarrow} X(z)$. The inverse
+$z$-transform formula is 
+\begin{equation*} 
+x[n] = \frac{1}{2\pi j} \oint_C X(z) z^{n-1} dz 
+\end{equation*} 
+where $C$ is any closed counterclockwise contour in the ROC of $X(z)$
+enclosing the origin.
+```{tip}
+- Since $X(z)$ is analytic (a power series), the contour integral may be
+  calculated with the help of the Cauchy integral formula and/or the
+  residue theorem.
+- If $X(z)$ is rational, inverse $z$-transform of $X(z)$ may be
+  performed by long division, or more commonly by the method of partial
+  fraction expansion:
+  1. Obtain the partial fraction expansion of $X(z)$.
+  2. Perform table lookup to obtain the inverse $z$-transform of
+     each partial fraction.
+  3. Use linearity to combine the inverse $z$-transforms of all
+     component partial fractions.
+- Watch this
+[video](https://ocw.mit.edu/courses/res-6-008-digital-signal-processing-spring-2011/resources/lecture-6-the-inverse-z-transform/)
+by Prof. Oppenhiem from MIT Open Courseware for more discussions and
+examples.
+```
