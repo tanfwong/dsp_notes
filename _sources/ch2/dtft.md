@@ -148,7 +148,13 @@
   expression on the LHS of {eq}`e:energy` or in the frequency domain
   using the expression on the RHS of  {eq}`e:energy`.
 
-* **In conclusion, the Riesz-Fisher theorem establishes a nice
-  isomorphism between any finite-energy signal and its unique
-  counterpart in the frequency domain (DTFT) based on the forward and
+* **In conclusion, the Riesz-Fisher theorem establishes a one-to-one
+  mapping between any finite-energy signal $x[n]$ and its unique "same-energy"
+  counterpart in the frequency domain $X(e^{j\hat\omega})$ based on the forward and
   inverse DTFT formulas.**
+  ```{image} ../figs/dtft.jpg
+  :alt: DTFT mapping
+  :width: 700px
+  :align: center
+  ```
+
