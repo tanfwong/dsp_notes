@@ -404,7 +404,20 @@ forward and inverse DTFT formulas above.</p></li>
 <li><p>A DTFT function <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is <em>absolutely integrable</em> over <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>,
 denoted by <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^1[-\pi,\pi]\)</span>, if
 <span class="math notranslate nohighlight">\(\frac{1}{2\pi} \int_{-\pi}^{\pi} |X(e^{j\hat\omega})| d\hat\omega &lt; \infty\)</span>.</p></li>
+<li><p>A signal <span class="math notranslate nohighlight">\(x[n]\)</span> has <em>finite energy</em>, denoted by <span class="math notranslate nohighlight">\(x[n] \in
+\ell^2\)</span>, if <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |x[n]|^2 &lt; \infty\)</span>.</p></li>
+<li><p>A DTFT function <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is <em>square-integrable</em> over <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>,
+denoted by <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span>, if
+<span class="math notranslate nohighlight">\(\frac{1}{2\pi} \int_{-\pi}^{\pi} |X(e^{j\hat\omega})|^2 d\hat\omega &lt; \infty\)</span>.</p></li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> implies <span class="math notranslate nohighlight">\(x[n] \in \ell^2\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span> implies <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})
+\in L^1[-\pi,\pi]\)</span></p></li>
+</ul>
+</div>
 </div>
 <section id="about-convergence">
 <h2><span class="section-number">2.1.1. </span>About convergence …<a class="headerlink" href="#about-convergence" title="Permalink to this headline">#</a></h2>
@@ -449,7 +462,7 @@ by the inverse DTFT formula <a class="reference internal" href="#equation-e-idtf
 L^1[-\pi,\pi]\)</span>. Can you give one such counterexample?</p>
 </div>
 </li>
-<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell_1\)</span> (or equivalently the ROC of its <span class="math notranslate nohighlight">\(z\)</span>-transform
+<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> (or equivalently the ROC of its <span class="math notranslate nohighlight">\(z\)</span>-transform
 <span class="math notranslate nohighlight">\(X(z)\)</span> contains the unit circle), <span class="math notranslate nohighlight">\(\left. X(z)
 \right|_{z = e^{j\hat\omega}} = \sum_{n=-\infty}^{\infty} x[n]
 e^{-j\hat\omega n}\)</span> converges (uniformly) on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>.
@@ -461,6 +474,19 @@ This means that <span class="math notranslate nohighlight">\(x[n] \stackrel{\tex
 </section>
 <section id="more-about-convergence">
 <h2><span class="section-number">2.1.2. </span>More about convergence …<a class="headerlink" href="#more-about-convergence" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Requiring <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> and <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in
+L^1[-\pi,\pi]\)</span> is restrictive and is not exactly “nice”:</p>
+<ul>
+<li><p>Practical signals have finite energy. However, there are <span class="math notranslate nohighlight">\(x[n] \in
+\ell^2\)</span> with <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |x[n]| = \infty\)</span> (i.e.,
+<span class="math notranslate nohighlight">\(x[n] \notin \ell^1\)</span>).</p></li>
+<li><p>As mentioned above, there are <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in
+L^1[-\pi,\pi]\)</span> can construct <span class="math notranslate nohighlight">\(x[n] \notin \ell^1\)</span> using the inverse DTFT
+formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a>.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 

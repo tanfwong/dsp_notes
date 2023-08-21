@@ -25,6 +25,16 @@
 3. A DTFT function $X(e^{j\hat\omega})$ is *absolutely integrable* over $[-\pi,\pi]$,
    denoted by $X(e^{j\hat\omega}) \in L^1[-\pi,\pi]$, if 
    $\frac{1}{2\pi} \int_{-\pi}^{\pi} |X(e^{j\hat\omega})| d\hat\omega < \infty$.
+4. A signal $x[n]$ has *finite energy*, denoted by $x[n] \in
+   \ell^2$, if $\sum_{n=-\infty}^{\infty} |x[n]|^2 < \infty$.
+5. A DTFT function $X(e^{j\hat\omega})$ is *square-integrable* over $[-\pi,\pi]$,
+   denoted by $X(e^{j\hat\omega}) \in L^2[-\pi,\pi]$, if 
+   $\frac{1}{2\pi} \int_{-\pi}^{\pi} |X(e^{j\hat\omega})|^2 d\hat\omega < \infty$.
+~~~{tip}
+* $x[n] \in \ell^1$ implies $x[n] \in \ell^2$.
+* $X(e^{j\hat\omega}) \in L^2[-\pi,\pi]$ implies $X(e^{j\hat\omega})
+\in L^1[-\pi,\pi]$
+~~~
 ```
 
 ## About convergence ...
@@ -70,7 +80,7 @@
   L^1[-\pi,\pi]$. Can you give one such counterexample?
   ```
 
-* For any $x[n] \in \ell_1$ (or equivalently the ROC of its $z$-transform
+* For any $x[n] \in \ell^1$ (or equivalently the ROC of its $z$-transform
   $X(z)$ contains the unit circle), $\left. X(z)
   \right|_{z = e^{j\hat\omega}} = \sum_{n=-\infty}^{\infty} x[n]
   e^{-j\hat\omega n}$ converges (uniformly) on $[-\pi,\pi]$. 
@@ -80,3 +90,12 @@
   $X(e^{j\hat\omega})$ of $x[n]$*.
 
 ## More about convergence ...
+* Requiring $x[n] \in \ell^1$ and $X(e^{j\hat\omega}) \in
+  L^1[-\pi,\pi]$ is restrictive and is not exactly "nice":
+  - Practical signals have finite energy. However, there are $x[n] \in
+    \ell^2$ with $\sum_{n=-\infty}^{\infty} |x[n]| = \infty$ (i.e.,
+    $x[n] \notin \ell^1$).
+  - As mentioned above, there are $X(e^{j\hat\omega}) \in
+    L^1[-\pi,\pi]$ can construct $x[n] \notin \ell^1$ using the inverse DTFT
+    formula {eq}`e:idtft`.
+    
