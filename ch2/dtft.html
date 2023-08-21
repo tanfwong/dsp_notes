@@ -416,6 +416,14 @@ denoted by <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L
 <li><p><span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> implies <span class="math notranslate nohighlight">\(x[n] \in \ell^2\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span> implies <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})
 \in L^1[-\pi,\pi]\)</span></p></li>
+<li><p>When considering a DTFT <span class="math notranslate nohighlight">\(\tilde{X}(e^{j\hat\omega})\)</span> in
+<span class="math notranslate nohighlight">\(L^p[-\pi,\pi]\)</span> (<span class="math notranslate nohighlight">\(p=1,2\)</span>), we often do not make any distinction between
+<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> and another DTFT <span class="math notranslate nohighlight">\(\tilde{X}(e^{j\hat\omega})\)</span>
+such that <span class="math notranslate nohighlight">\(\frac{1}{2\pi} \int_{-\pi}^{\pi} 
+\left|\tilde{X}(e^{j\hat\omega}) - X(e^{j\hat\omega}) \right|^p
+d\hat\omega = 0\)</span>. In fact, we will group all such DTFTs in an equivalence
+class and consider the equivalence class as a unique member of
+<span class="math notranslate nohighlight">\(L^p[-\pi,\pi]\)</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -444,10 +452,8 @@ e^{j\hat\omega n} d\hat\omega\)</span> exists for each
 by the inverse DTFT formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a>. If <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span>, then we
 have <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> equals <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} x[n] e^{-j\hat\omega
 n}\)</span> <em>almost everywhere</em> on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> (w.r.t. the Lebesgue
-measure) <span id="id1">[<a class="reference internal" href="../refs.html#id4" title="Walter Rudin. Real and complex analysis. McGraw-Hill, 3rd edition, 1987.">Rud87</a>]</span>.</p></li>
-<li><p>Indeed, by grouping all aboslutely integrable DTFTs that
-differ only in a subset of length <span class="math notranslate nohighlight">\(0\)</span> into the same equivalence
-class, the conclusion in the two bullet points above gives a concrete notion
+measure).</p></li>
+<li><p>Indeed, the conclusions in the two bullet points above give a concrete notion
 to the <em>mapping</em> <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
 X(e^{j\hat\omega})\)</span> defined by the forward and inverse DTFT
 formulas for the pair <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> and <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in
@@ -462,22 +468,22 @@ by the inverse DTFT formula <a class="reference internal" href="#equation-e-idtf
 L^1[-\pi,\pi]\)</span>. Can you give one such counterexample?</p>
 </div>
 </li>
-<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> (or equivalently the ROC of its <span class="math notranslate nohighlight">\(z\)</span>-transform
-<span class="math notranslate nohighlight">\(X(z)\)</span> contains the unit circle), <span class="math notranslate nohighlight">\(\left. X(z)
+<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> (or equivalently the ROC of its
+<span class="math notranslate nohighlight">\(z\)</span>-transform <span class="math notranslate nohighlight">\(X(z)\)</span> contains the unit circle), <span class="math notranslate nohighlight">\(\left. X(z)
 \right|_{z = e^{j\hat\omega}} = \sum_{n=-\infty}^{\infty} x[n]
-e^{-j\hat\omega n}\)</span> converges (uniformly) on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>.
-This means that <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow} \left. X(z)
-\right|_{z = e^{j\hat\omega}}\)</span>, i.e., <em>evaluating the <span class="math notranslate nohighlight">\(z\)</span>-transform
-<span class="math notranslate nohighlight">\(X(z)\)</span> of <span class="math notranslate nohighlight">\(x[n]\)</span> on the unit circle gives the DTFT
+e^{-j\hat\omega n}\)</span> converges (uniformly) on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>.  This
+means that <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+\left. X(z) \right|_{z = e^{j\hat\omega}}\)</span>, i.e., <em>evaluating the
+<span class="math notranslate nohighlight">\(z\)</span>-transform <span class="math notranslate nohighlight">\(X(z)\)</span> of <span class="math notranslate nohighlight">\(x[n]\)</span> on the unit circle gives the DTFT
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> of <span class="math notranslate nohighlight">\(x[n]\)</span></em>.</p></li>
 </ul>
 </section>
 <section id="more-about-convergence">
 <h2><span class="section-number">2.1.2. </span>More about convergence …<a class="headerlink" href="#more-about-convergence" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>Requiring <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> and <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in
 L^1[-\pi,\pi]\)</span> is restrictive and is not exactly “nice”:</p>
-<ul>
+<ul class="simple">
 <li><p>Practical signals have finite energy. However, there are <span class="math notranslate nohighlight">\(x[n] \in
 \ell^2\)</span> with <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |x[n]| = \infty\)</span> (i.e.,
 <span class="math notranslate nohighlight">\(x[n] \notin \ell^1\)</span>).</p></li>
@@ -486,6 +492,50 @@ L^1[-\pi,\pi]\)</span> can construct <span class="math notranslate nohighlight">
 formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a>.</p></li>
 </ul>
 </li>
+<li><p>A much nicer notion for the DTFT mapping <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+ X(e^{j\hat\omega})\)</span> can be obtained using the <em>Riesz-Fisher
+theorem</em>  <span id="id1">[<a class="reference internal" href="../refs.html#id4" title="Walter Rudin. Real and complex analysis. McGraw-Hill, 3rd edition, 1987.">Rud87</a>]</span>:</p>
+<div class="tip admonition">
+<p class="admonition-title">Riesz-Fisher Theorem</p>
+<p>For every finite-energy signal <span class="math notranslate nohighlight">\(x[n] \in \ell^2\)</span>, there is a
+<em>unique</em> DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span> such that the
+inverse DTFT formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a> holds. The forward DTFT formula
+<a class="reference internal" href="#equation-e-idtft">(2.2)</a> also holds with the convergence of the infintie
+series on the RHS interpreted in the sense that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\lim_{N \rightarrow \infty} \frac{1}{2\pi} \int_{-\pi}^{\pi}
+\left| X(e^{j\hat\omega}) - \sum_{n=-N}^{N} x[n] e^{-j\hat\omega n}
+\right|^2 d\hat\omega = 0.
+\end{equation*}\]</div>
+<p>In additition, this mapping between <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>
+is an <em>isomorphism</em> between the (Hilbert) space <span class="math notranslate nohighlight">\(\ell^2\)</span> of finite-energy
+signals and the (Hilbert) space <span class="math notranslate nohighlight">\(L^2[-\pi,\pi]\)</span> of
+square-integrable DTFTs satisfying the <em>Parseval theorem</em>:</p>
+<div class="math notranslate nohighlight" id="equation-e-parseval">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-e-parseval" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\sum_{n=-\infty}^{N} x[n] y^*[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega
+\end{equation}\]</div>
+<p>for any <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+Y(e^{j\hat\omega})\)</span>.</p>
+</div>
+</li>
+<li><p>Note that a special case of the Parseval theorem <a class="reference internal" href="#equation-e-parseval">(2.3)</a> is</p>
+<div class="math notranslate nohighlight" id="equation-e-energy">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-e-energy" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\sum_{n=-\infty}^{N} |x[n] |^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+\left| X(e^{j\hat\omega}) \right|^2  d\hat\omega.
+\end{equation}\]</div>
+<p>That is, we may calculate the energy of the signal <span class="math notranslate nohighlight">\(x[n]\)</span> in the time domain using the
+expression on the LHS of <a class="reference internal" href="#equation-e-energy">(2.4)</a> or in the frequency domain
+using the expression on the RHS of  <a class="reference internal" href="#equation-e-energy">(2.4)</a>.</p>
+</li>
+<li><p><strong>In conclusion, the Riesz-Fisher theorem establishes a nice
+isomorphism between any finite-energy signal and its unique
+counterpart in the frequency domain (DTFT) based on the forward and
+inverse DTFT formulas.</strong></p></li>
 </ul>
 </section>
 </section>
