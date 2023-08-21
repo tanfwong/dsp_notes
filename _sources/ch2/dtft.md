@@ -36,7 +36,8 @@
   X(e^{j\hat\omega})$ actually means.
 
 * A simple sufficient condition that guarantees uniform convergence and 
-  continuity of the infinite series on the RHS of {eq}`e:dtft` on $[-\pi,\pi]$ is 
+  continuity of the infinite series $\sum_{n=-\infty}^{\infty} x[n]
+  e^{-j\hat\omega n}$ on $[-\pi,\pi]$ is 
   $x[n] \in \ell^1$. Under this condition, the DTFT as defined by {eq}`e:dtft`
   $X(e^{j\hat\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\hat\omega n}
   \in L^1[-\pi,\pi]$. Thus, the integral on RHS of the inverse formula 
@@ -45,7 +46,8 @@
   $[-\pi,\pi]$).
 
 * On the other hand, given any DTFT $X(e^{j\hat\omega}) \in L^1[-\pi,\pi]$,
-  the integral on The RHS of the inverse DTFT formula {eq}`e:idtft` exists for each 
+  the integral $ \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat\omega})
+  e^{j\hat\omega n} d\hat\omega$ exists for each 
   $n \in \mathbb{Z}$. Let $x[n]$ be the signal given
   by the inverse DTFT formula {eq}`e:idtft`. If $x[n] \in \ell^1$, then we
   have $X(e^{j\hat\omega})$ equals $\sum_{n=-\infty}^{\infty} x[n] e^{-j\hat\omega

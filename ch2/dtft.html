@@ -416,7 +416,8 @@ we also want a more careful specification for what the DTFT mapping
 <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
 X(e^{j\hat\omega})\)</span> actually means.</p></li>
 <li><p>A simple sufficient condition that guarantees uniform convergence and
-continuity of the infinite series on the RHS of <a class="reference internal" href="#equation-e-dtft">(2.1)</a> on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> is
+continuity of the infinite series <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} x[n]
+e^{-j\hat\omega n}\)</span> on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> is
 <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span>. Under this condition, the DTFT as defined by <a class="reference internal" href="#equation-e-dtft">(2.1)</a>
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\hat\omega n}
 \in L^1[-\pi,\pi]\)</span>. Thus, the integral on RHS of the inverse formula
@@ -424,7 +425,8 @@ continuity of the infinite series on the RHS of <a class="reference internal" hr
 (recall the orthonormality of <span class="math notranslate nohighlight">\(\{e^{j\hat\omega n}\}_{n \in \mathbb{Z}}\)</span> on
 <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span>).</p></li>
 <li><p>On the other hand, given any DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^1[-\pi,\pi]\)</span>,
-the integral on The RHS of the inverse DTFT formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a> exists for each
+the integral <span class="math notranslate nohighlight">\( \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat\omega})
+e^{j\hat\omega n} d\hat\omega\)</span> exists for each
 <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>. Let <span class="math notranslate nohighlight">\(x[n]\)</span> be the signal given
 by the inverse DTFT formula <a class="reference internal" href="#equation-e-idtft">(2.2)</a>. If <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span>, then we
 have <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> equals <span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} x[n] e^{-j\hat\omega
