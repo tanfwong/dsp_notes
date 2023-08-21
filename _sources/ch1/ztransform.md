@@ -14,7 +14,7 @@
 * The *region of convergence (ROC)* of $X(z)$ is the set of complex
   numbers at which the power series converges.
   ```{tip}
-  From the theory of power series, there must be non-negative
+  From the standard power series results {cite}`rudin_baby`, there must be non-negative
   $r_+$ and $r_-$ (both could be $\infty$), specifying the regions
   $\mathcal{R}_+ =\{z \in \mathbb{C}: |z| > r_+ \}$ and 
   $\mathcal{R}_- =\{z \in \mathbb{C}: |z| < r_- \}$ such that 
@@ -129,7 +129,7 @@ enclosing the origin.
 ```{tip}
 - Since $X(z)$ is analytic (a power series), the contour integral may be
   calculated with the help of the Cauchy integral formula and/or the
-  residue theorem.
+  residue theorem {cite}`brown2009complex`.
 - If $X(z)$ is rational, inverse $z$-transform of $X(z)$ may be
   performed by long division, or more commonly by the method of partial
   fraction expansion:
@@ -179,3 +179,4 @@ $B(z)$ and $A(z)$.
 - For a causal LTI system with a rational transfer function $H(z)$,
    the system is stable if and only if **all** its poles are strictly
    inside the unit circle.
+
