@@ -102,7 +102,7 @@
     \ell^2$ with $\sum_{n=-\infty}^{\infty} |x[n]| = \infty$ (i.e.,
     $x[n] \notin \ell^1$).
   - As mentioned above, there are $X(e^{j\hat\omega}) \in
-    L^1[-\pi,\pi]$ can construct $x[n] \notin \ell^1$ using the inverse DTFT
+    L^1[-\pi,\pi]$ that can construct $x[n] \notin \ell^1$ using the inverse DTFT
     formula {eq}`e:idtft`.
 
 * A much nicer notion for the DTFT mapping $x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
