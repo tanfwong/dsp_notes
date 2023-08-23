@@ -96,7 +96,7 @@ by consulting a pair of tables listing common $z$-transform
 properties and $z$-transform pairs. For example, see the [tables from
   Wikipedia](https://en.wikipedia.org/wiki/Z-transform).
 
-**Use of tables example**:
+**Use-of-tables example**:
 
 4. Consider 
     \begin{equation*}

@@ -129,3 +129,38 @@ Y(e^{j\hat\omega})$:
   - $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
     X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega$
 ```
+
+## Use-of-tables example
+
+Consider the *window* signal $w_{\lambda}[n] = \lambda^{|n|}$, where
+$\lambda \in (0,1)$. Clearly, $w[n] \in \ell^1$ and hence its DTFT
+$W_{\lambda}(e^{j\hat\omega})$ exists.
+
+To use the tables above to find $W_{\lambda}(e^{j\hat\omega})$, let
+$\tilde{w}[n] = \lambda^n u[n]$ and notice that
+\begin{align*}
+w_{\lambda}[n] 
+&= \begin{cases}
+    \lambda^n, & n \geq 0 \\
+    \lambda^{-n}, & n < 0
+ \end{cases}
+\\
+&= \tilde{w}[n] + \lambda \tilde{w}[-n-1] .
+\end{align*}
+Looking up the DTFT-pair table, $\tilde{w}[n]
+\stackrel{\text{DTFT}}{\longleftrightarrow} 
+\tilde{W}_{\lambda}(e^{j\hat\omega}) =  \frac{1}{1 - \lambda e^{-j
+\hat{\omega}}}$.
+
+Then using the linearity, time shifting, and time reversal properties,
+we get
+\begin{align*}
+W_{\lambda}(e^{j\hat\omega})
+& = \tilde{W}_{\lambda}(e^{j\hat\omega})  + 
+  \lambda e^{j\hat\omega} \tilde{W}_{\lambda}(e^{-j\hat\omega}) 
+\\
+& = \frac{1}{1 - \lambda e^{-j \hat{\omega}}} + 
+  \frac{\lambda e^{j\hat\omega}}{1 - \lambda e^{j \hat{\omega}}} 
+\\
+& = \frac{1 - \lambda^2}{1 - 2\lambda \cos \hat{\omega} + \lambda^2}.
+\end{align*}
