@@ -40,7 +40,8 @@
    - **Signal energy**: $E_x = \sum_{n=-\infty}^{\infty}  |x[n]|^2$.
    - **Signal power**: $P_x = \lim_{M \rightarrow \infty} \frac{1}{2M+1} \sum_{n=-M}^{M}  |x[n]|^2$.
        ```{tip}
-       If $x[n]$ is periodic with period $N$, $P_x = \frac{1}{N} \sum_{n=0}^N |x[n]|^2$.
+       If $x[n]$ is periodic with period $N$, $P_x = \frac{1}{N}
+       \sum_{n=0}^{N-1} |x[n]|^2$.
        ```
    
    
