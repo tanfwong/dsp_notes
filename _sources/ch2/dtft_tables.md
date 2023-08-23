@@ -116,8 +116,8 @@ Y(e^{j\hat\omega})$:
   - $(1-e^{-j\hat{\omega}})X(e^{j\hat{\omega}})$
 
 * - Accumulation
-  - $\sum_{k=-\infty}^{n} x[k]$
-  - $\frac{X(e^{j\hat{\omega}})}{1 - e^{-j\hat{\omega}}} + 
+  - $\displaystyle \sum_{k=-\infty}^{n} x[k]$
+  - $\displaystyle \frac{X(e^{j\hat{\omega}})}{1 - e^{-j\hat{\omega}}} + 
     \pi X(e^{j0}) \delta(e^{j\hat{\omega}})$
 
 * - Frequency Differentiation
@@ -125,7 +125,7 @@ Y(e^{j\hat\omega})$:
   - $\displaystyle j\frac{d X(e^{j\hat{\omega}})}{d\hat{\omega}}$
 
 * - Parseval Theorem
-  - $\sum_{n=-\infty}^{N} x[n] y^*[n]$
-  - $ \frac{1}{2\pi} \int_{-\pi}^{\pi}
+  - $\displaystyle \sum_{n=-\infty}^{N} x[n] y^*[n]$
+  - $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
     X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega$
 ```
