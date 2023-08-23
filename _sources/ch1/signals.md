@@ -29,7 +29,7 @@
 
 * Some important signal properties:
   - **Periodicity**:
-     - $x[n]$ is <em>periodic</em> with period $N$ $(N\geq 0)$ if $x[n] = x[n+N]$
+     - $x[n]$ is <em>periodic</em> with period $N$ $(N > 0)$ if $x[n] = x[n+N]$
        for all $n \in \mathbb{Z}$.
      - The smallest such $N$ is called the <em>fundamental period</em>.
        ```{admonition} Notation
