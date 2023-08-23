@@ -1,13 +1,12 @@
 # DTFT properties and tables
 
-## Table of DTFT Pairs
+## Table of DTFT pairs
 ```{list-table}
-:widths: 30 40 10
 :header-rows: 1
 
 * - $\boldsymbol{x[n]}$ 
   - $\boldsymbol{X(e^{j{\hat{\omega}}})}$ 
-  - condition 
+  - Condition 
 
 * - $\displaystyle a^n u[n]$ 
   - $\displaystyle \frac{1}{1 - a e^{-j \hat{\omega}}}$
@@ -69,4 +68,64 @@
     \delta\left(e^{j\left(\hat{\omega} - \frac{2 \pi k}{N} \right)}
     \right)$
   - 
+```
+
+## Table of DTFT properties
+For each property listed below, assume 
+$x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+X(e^{j\hat\omega})$ and $y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+Y(e^{j\hat\omega})$:
+```{list-table}
+:header-rows: 1
+
+* - Property
+  - Time domain
+  - Frequency domain
+
+* - Linearity
+  - $\alpha x[n] + \beta y[n]$
+  - $\alpha X(e^{j{\hat{\omega}}}) + \beta Y(e^{j{\hat{\omega}}})$
+
+* - Time Shifting
+  - $x[n-n_0]$
+  - $X(e^{j{\hat{\omega}}}) e^{-j \widehat{\omega} n_0}$
+
+* - Frequency Shifting
+  - $x[n] e^{j \hat{\omega}_0 n}$
+  - $X(e^{j(\hat{\omega}-\hat{\omega}_0)})$
+
+* - Conjugation 
+  - $x^*[n]$
+  - $X^*(e^{-j\hat{\omega}})$
+
+* - Time Reversal
+  - $x[-n]$ 
+  - $X(e^{-j\hat{\omega}})$
+
+* - Convolution
+  - $x[n]*y[n]$
+  - $X(e^{j\hat{\omega}}) Y(e^{j\hat{\omega}})$
+
+* - Multiplication
+  - $x[n] y[n]$
+  - $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
+    X(e^{j\theta}) Y(e^{j(\hat{\omega}-\theta)}) d\theta$
+    
+* - Time Differencing
+  - $x[n]-x[n-1]$
+  - $(1-e^{-j\hat{\omega}})X(e^{j\hat{\omega}})$
+
+* - Accumulation
+  - $\sum_{k=-\infty}^{n} x[k]$
+  - $\frac{X(e^{j\hat{\omega}})}{1 - e^{-j\hat{\omega}}} + 
+    \pi X(e^{j0}) \delta(e^{j\hat{\omega}})$
+
+* - Frequency Differentiation
+  - $n x[n]$
+  - $\displaystyle j\frac{d X(e^{j\hat{\omega}})}{d\hat{\omega}}$
+
+* - Parseval Theorem
+  - $\sum_{n=-\infty}^{N} x[n] y^*[n]$
+  - $ \frac{1}{2\pi} \int_{-\pi}^{\pi}
+    X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega$
 ```

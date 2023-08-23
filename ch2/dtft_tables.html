@@ -363,7 +363,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-properties">2.2.2. Table of DTFT properties</a></li>
 </ul>
             </nav>
         </div>
@@ -378,17 +379,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="dtft-properties-and-tables">
 <h1><span class="section-number">2.2. </span>DTFT properties and tables<a class="headerlink" href="#dtft-properties-and-tables" title="Permalink to this headline">#</a></h1>
 <section id="table-of-dtft-pairs">
-<h2><span class="section-number">2.2.1. </span>Table of DTFT Pairs<a class="headerlink" href="#table-of-dtft-pairs" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-given table">
+<h2><span class="section-number">2.2.1. </span>Table of DTFT pairs<a class="headerlink" href="#table-of-dtft-pairs" title="Permalink to this headline">#</a></h2>
+<table class="table">
 <colgroup>
-<col style="width: 38%" />
-<col style="width: 50%" />
-<col style="width: 13%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{x[n]}\)</span></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{X(e^{j{\hat{\omega}}})}\)</span></p></th>
-<th class="head"><p>condition</p></th>
+<th class="head"><p>Condition</p></th>
 </tr>
 </thead>
 <tbody>
@@ -452,6 +453,75 @@ document.write(`
 \delta\left(e^{j\left(\hat{\omega} - \frac{2 \pi k}{N} \right)}
 \right)\)</span></p></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="table-of-dtft-properties">
+<h2><span class="section-number">2.2.2. </span>Table of DTFT properties<a class="headerlink" href="#table-of-dtft-properties" title="Permalink to this headline">#</a></h2>
+<p>For each property listed below, assume
+<span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+Y(e^{j\hat\omega})\)</span>:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Time domain</p></th>
+<th class="head"><p>Frequency domain</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Linearity</p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha x[n] + \beta y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha X(e^{j{\hat{\omega}}}) + \beta Y(e^{j{\hat{\omega}}})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Time Shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n-n_0]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X(e^{j{\hat{\omega}}}) e^{-j \widehat{\omega} n_0}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Frequency Shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n] e^{j \hat{\omega}_0 n}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X(e^{j(\hat{\omega}-\hat{\omega}_0)})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Conjugation</p></td>
+<td><p><span class="math notranslate nohighlight">\(x^*[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X^*(e^{-j\hat{\omega}})\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Time Reversal</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[-n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X(e^{-j\hat{\omega}})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Convolution</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n]*y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}}) Y(e^{j\hat{\omega}})\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Multiplication</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n] y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
+X(e^{j\theta}) Y(e^{j(\hat{\omega}-\theta)}) d\theta\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Time Differencing</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n]-x[n-1]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1-e^{-j\hat{\omega}})X(e^{j\hat{\omega}})\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Accumulation</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_{k=-\infty}^{n} x[k]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{X(e^{j\hat{\omega}})}{1 - e^{-j\hat{\omega}}} + 
+\pi X(e^{j0}) \delta(e^{j\hat{\omega}})\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Frequency Differentiation</p></td>
+<td><p><span class="math notranslate nohighlight">\(n x[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle j\frac{d X(e^{j\hat{\omega}})}{d\hat{\omega}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Parseval Theorem</p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{N} x[n] y^*[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{1}{2\pi} \int_{-\pi}^{\pi}
+X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -525,7 +595,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-properties">2.2.2. Table of DTFT properties</a></li>
 </ul>
   </nav></div>
 
