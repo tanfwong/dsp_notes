@@ -101,8 +101,8 @@ properties and $z$-transform pairs. For example, see the [tables from
 4. Consider 
     \begin{equation*}
      x_5[n] = n \cos(\hat\omega_0 n) u[n] 
-     = \frac{1}{2} e^{j \hat\omega_0 n} u[n] 
-     + \frac{1}{2} e^{-j \hat\omega_0 n} u[n].
+     = \frac{1}{2} n e^{j \hat\omega_0 n} u[n] 
+     + \frac{1}{2} n e^{-j \hat\omega_0 n} u[n].
     \end{equation*}
     Hence, the $z$-transform of $x_5[n]$ is
     \begin{align*}

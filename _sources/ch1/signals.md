@@ -16,9 +16,9 @@
   ```
 
 * Simple, but important, discrete-time signals:
-  - **Unit impulse signal** $\delta[n] = \begin{cases} 1 & n=0 \\ 0 & n
+  - **Unit impulse signal** $\delta[n] = \begin{cases} 1, & n=0 \\ 0, & n
     \neq 0 \end{cases}$
-  - **Unit step signal** $u[n] = \begin{cases} 1 & n \geq 0 \\ 0 & n
+  - **Unit step signal** $u[n] = \begin{cases} 1, & n \geq 0 \\ 0, & n
     < 0 \end{cases}$
   - **(Complex-valued) sinusoid** $Ae^{j\phi} e^{j\hat\omega n}$
     ```{tip}
