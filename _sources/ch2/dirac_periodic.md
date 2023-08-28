@@ -36,4 +36,4 @@ section<sec:wlambda>`:
   1. $W_{\lambda}(e^{j\hat\omega}) > 0$ and is an even function.
   2. $\displaystyle \lim_{\lambda \rightarrow 1} $
   3. $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
-  d\hat\omega} =  w_{\lambda} [0] = 1$. 
+  d\hat\omega =  w_{\lambda} [0] = 1$. 
