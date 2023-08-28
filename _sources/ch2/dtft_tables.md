@@ -130,6 +130,7 @@ Y(e^{j\hat\omega})$:
     X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega$
 ```
 
+(sec:wlambda)=
 ## Use-of-tables example
 
 Consider the *window* signal $w_{\lambda}[n] = \lambda^{|n|}$, where
