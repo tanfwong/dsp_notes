@@ -33,7 +33,14 @@ section<sec:wlambda>`:
   $\lambda$ approaches $1$.
 
 * Similarly, the DTFT $W_{\lambda}(e^{j\hat\omega})$ satisfies
-  1. $W_{\lambda}(e^{j\hat\omega}) > 0$ and is an even function.
-  2. $\displaystyle \lim_{\lambda \rightarrow 1} $
-  3. $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
-  d\hat\omega =  w_{\lambda} [0] = 1$. 
+  1. $W_{\lambda}(e^{j\hat\omega}) > 0$ and is an even (periodic)
+     function in $\hat\omega$.
+  2. $\displaystyle \lim_{\lambda \rightarrow 1}
+  W_{\lambda}(e^{j\hat\omega}) = \begin{cases}
+  \infty, & \hat\omega = 0, -\pi \leq \hat\omega < \pi \\
+  0, & \hat\omega \neq 0, -\pi \leq \hat\omega < \pi.
+  \end{cases}$
+  3. Since $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
+     \, d\hat\omega =  w_{\lambda} [0] = 1$ for all $\lambda \in (0,1)$, 
+     $\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
+     \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1$.
