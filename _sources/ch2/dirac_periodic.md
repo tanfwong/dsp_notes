@@ -44,6 +44,7 @@ also satisfies the following properties:
     (0,1)$, we may set
     $\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
     \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1.$
+    
     3. For any bounded $X(e^{j\hat{\omega}})$, the *circular
     convolution* integral $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
     W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \,d\theta$
@@ -55,24 +56,78 @@ also satisfies the following properties:
     X(e^{j\hat{\omega}_0}).
     \end{equation*} 
 
-*   For any $x[n] \in \ell^1$, the DTFT $X(e^{j\hat{\omega}})$ of
-    $x[n]$ is bounded and continuous on $[-\pi,\pi]$ as discussed in
-    {numref}`sec:dtft_convergence`. In addition, the multiplication
-    property of DTFT gives
-    ```{math}
-    :label: e:wx-intWX
-    \begin{equation}
-    w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
-    \frac{1}{2\pi} \int_{-\pi}^{\pi}
-    W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
-    \end{equation}
-    ```
-    Taking limit on the LHS of {eq}`e:wx-intWX`, $\lim_{\lambda \rightarrow 1}
-    w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 2.
-    above. On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
-    \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
-    \, d\theta = X(e^{j\hat{\omega}})$ for each $\hat{\omega}$ from 3. above. Thus,
-    in this sense, we can say that the DTFT mapping in
-    {eq}`e:wx-intWX` is *preserved* through the limiting process of
-    $\lambda \rightarrow 1$.
+* For any $x[n] \in \ell^1$, the DTFT $X(e^{j\hat{\omega}})$ of
+  $x[n]$ is bounded and continuous on $[-\pi,\pi]$ as discussed in
+  {numref}`sec:dtft_convergence`. In addition, the multiplication
+  property of DTFT gives
+  ```{math}
+  :label: e:wx-intWX
+  \begin{equation}
+  w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
+  \frac{1}{2\pi} \int_{-\pi}^{\pi}
+  W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
+  \end{equation}
+  ```
+  Taking limit on the LHS of {eq}`e:wx-intWX`, $\lim_{\lambda \rightarrow 1}
+  w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 2.
+  above. On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
+  \, d\theta = X(e^{j\hat{\omega}})$ for each $\hat{\omega}$ from 3.
+  above. Thus in this sense, we can say that the DTFT mapping in
+  {eq}`e:wx-intWX` is *preserved* through the limiting process of
+  $\lambda \rightarrow 1$.
   
+* Consider now $x[n]$ is an infinite-energy sinusoid (or the unit
+  step). For every $\lambda \in (0,1)$, the "windowed" signal 
+  $w_{\lambda}[n] x[n] \in \ell^1$, and hence its DTFT
+  $X_{w_{\lambda}}(e^{j\hat{\omega}})$ exists. 
+  ```{caution}
+  However, {eq}`e:wx-intWX` fails to hold, i.e.,
+  $X_{w_{\lambda}}(e^{j\hat{\omega}})$ is not given by the RHS of
+  {eq}`e:wx-intWX`, because the DTFT $X(e^{j\hat{\omega}})$ of $x[n]$
+  simply does not exist!
+  ```
+  Nonetheless, we still have $\lim_{\lambda \rightarrow 1} w_{\lambda}[n] x[n] =
+  x[n]$ for each $n \in \mathbb{Z}$. Thus, it makes intuitive sense to
+  follow the above limiting process in the case of absolutely summable signals to
+  define a "DTFT" for the infinite-energy sinusoid $x[n]$. That is, we want to
+  call $\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})$ the DTFT of $x[n]$, 
+  even if such a "limit" may not be exactly a mathematically
+  meaningful function in $\hat{\omega}$.
+  ```{tip}
+  In order to avoid using more math machinery, we will interpret this
+  limiting process as our extension of the DTFT toolset to
+  infinite-energy signals. Note that as long as the
+  windowed signal $w_{\lambda}[n] x[n] \in \ell^1$, $w_{\lambda}[n]
+  x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+  X_{w_{\lambda}}(e^{j\hat{\omega}})$ and all the DTFT
+  properties in {numref}`sec:dtft_table` apply to this proper DTFT
+  mapping. As a result, all the DTFT properties also apply to the extended
+  DTFT of $x[n]$ defined through the limiting process.
+  ```
+
+## Periodic Dirac delta "function"
+* It is annoying however to keep referring to the above limiting
+process and writing down $\lim_{\lambda \rightarrow 1}$ every time we
+apply DTFT tools to an infinite-energy signal. For convenience, we
+define the *periodic Dirac delta "function"*
+$\delta(e^{j\hat{\omega}})$ as a mnemonic for the limiting
+process. Specifically, properties 1.-3. above are re-expressed in
+terms of $\delta(e^{j\hat{\omega}})$:
+  1. $\displaystyle \delta(e^{j\hat{\omega}}) = 
+      \begin{cases}
+      \infty, & \hat\omega = 0 \bmod 2\pi \\
+      0, & \hat\omega \neq 0 \bmod 2\pi
+      \end{cases}
+       ~~\left[ = \lim_{\lambda \rightarrow 1}
+      \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \right]$.
+  2. $\displaystyle \int_{-\pi}^{\pi} \delta(e^{j\hat{\omega}}) \,
+      d\hat{\omega} = 1$.
+  3. For any bounded $X(e^{j\hat{\omega}})$ that is continuous at
+     $\hat{\omega} = \hat{\omega}_0$,
+     \begin{equation*}
+     \int_{-\pi}^{\pi}
+     \delta(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta =
+     X(e^{j\hat{\omega}_0}).
+     \end{equation*}
+      This is often referred to as the *sifting property* of the Dirac delta.

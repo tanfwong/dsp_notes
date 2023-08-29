@@ -70,6 +70,7 @@
   - 
 ```
 
+(sec:dtft_table)=
 ## Table of DTFT properties
 For each property listed below, assume 
 $x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
