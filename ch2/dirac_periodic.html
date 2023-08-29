@@ -526,6 +526,24 @@ terms of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\
 </ol>
 </li>
 </ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>Note that <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> is not a well-defined function
+in <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> by property 1. because its value is infinite when
+<span class="math notranslate nohighlight">\(\hat\omega = 0 \bmod 2\pi\)</span>. This infinite value implies
+that <span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})\)</span> for
+any <span class="math notranslate nohighlight">\(a\neq 0\)</span>, which in turn implies <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})
+\equiv 0\)</span> contradicting 1. above.</p></li>
+<li><p>In fact, it is more appropiate to associate the scaled Dirac delta
+<span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}})\)</span> with property 2. such that
+<span class="math notranslate nohighlight">\(\displaystyle \int_{-\pi}^{\pi} a \delta(e^{j\hat{\omega}}) \,
+d\hat{\omega} = a\)</span>, i.e., the area underneath the Dirac delta
+over a period, rather than the “function” value, is scaled by the
+factor <span class="math notranslate nohighlight">\(a\)</span>. Property 2., not 1., provides the basis to perform
+linear algebraic operations with <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>.</p></li>
+</ul>
+</div>
 </section>
 </section>
 

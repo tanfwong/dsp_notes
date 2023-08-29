@@ -131,3 +131,18 @@ terms of $\delta(e^{j\hat{\omega}})$:
      X(e^{j\hat{\omega}_0}).
      \end{equation*}
       This is often referred to as the *sifting property* of the Dirac delta.
+ ```{caution}
+ * Note that $\delta(e^{j\hat{\omega}})$ is not a well-defined function
+   in $\hat{\omega}$ by property 1. because its value is infinite when
+   $\hat\omega = 0 \bmod 2\pi$. This infinite value implies
+   that $a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})$ for
+   any $a\neq 0$, which in turn implies $\delta(e^{j\hat{\omega}})
+   \equiv 0$ contradicting 1. above. 
+ * In fact, it is more appropiate to associate the scaled Dirac delta
+   $a\delta(e^{j\hat{\omega}})$ with property 2. such that 
+   $\displaystyle \int_{-\pi}^{\pi} a \delta(e^{j\hat{\omega}}) \,
+   d\hat{\omega} = a$, i.e., the area underneath the Dirac delta
+   over a period, rather than the "function" value, is scaled by the
+   factor $a$. Property 2., not 1., provides the basis to perform
+   linear algebraic operations with $\delta(e^{j\hat{\omega}})$.
+ ```
