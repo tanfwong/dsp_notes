@@ -44,7 +44,7 @@
   $L^p[-\pi,\pi]$.
 ~~~
 ```
-
+(sec:dtft_convergence)=
 ## About convergence ...
 * The RHS of the forward DTFT formula {eq}`e:dtft` is an infinite
   series, and thus we need to be a bit more careful about the condition for 

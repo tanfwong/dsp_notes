@@ -398,7 +398,7 @@ function.</p></li>
 <section id="limit-of-window-signal">
 <h2><span class="section-number">2.3.1. </span>“Limit” of window signal<a class="headerlink" href="#limit-of-window-signal" title="Permalink to this headline">#</a></h2>
 <ul>
-<li><p>Recall the window signal in <a class="reference internal" href="dtft_tables.html#sec-wlambda"><span class="std std-ref">the previous section</span></a>:</p>
+<li><p>Recall the window signal in <a class="reference internal" href="dtft_tables.html#sec-wlambda"><span class="std std-numref">Section 2.2.3</span></a>:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
   w_{\lambda} [n] = \lambda^{|n|} 
@@ -413,20 +413,51 @@ function.</p></li>
 Intuitively, <span class="math notranslate nohighlight">\(w_{\lambda} [n]\)</span> becomes closer
 and closer to the constant signal <span class="math notranslate nohighlight">\(1\)</span> (not in <span class="math notranslate nohighlight">\(\ell^1\)</span>) as
 <span class="math notranslate nohighlight">\(\lambda\)</span> approaches <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
-<li><p>Similarly, the DTFT <span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span> satisfies</p>
+<li><p>Clearly, the DTFT <span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span> is a positive,
+even, and periodic (with period <span class="math notranslate nohighlight">\(2\pi\)</span>) function in <span class="math notranslate nohighlight">\(\hat\omega\)</span>. It
+also satisfies the following properties:</p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega}) &gt; 0\)</span> and is an even (periodic)
-function in <span class="math notranslate nohighlight">\(\hat\omega\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1}
-W_{\lambda}(e^{j\hat\omega}) = \begin{cases}
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} W_{\lambda}(e^{j\hat\omega}) = 
+\begin{cases}
 \infty, &amp; \hat\omega = 0, -\pi \leq \hat\omega &lt; \pi \\
 0, &amp; \hat\omega \neq 0, -\pi \leq \hat\omega &lt; \pi.
 \end{cases}\)</span></p></li>
 <li><p>Since <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
-\, d\hat\omega =  w_{\lambda} [0] = 1\)</span> for all <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>,
+\, d\hat\omega =  w_{\lambda} [0] = 1\)</span> for all <span class="math notranslate nohighlight">\(\lambda \in
+(0,1)\)</span>, we may set
 <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
-\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1\)</span>.</p></li>
+\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1.\)</span></p></li>
+<li><p>For any bounded <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span>, the <em>circular
+convolution</em> integral <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
+W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \,d\theta\)</span>
+exists. In addition, if the bounded <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> is
+continuous at <span class="math notranslate nohighlight">\(\hat{\omega} = \hat{\omega}_0\)</span>, then it can be shown that</p></li>
 </ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
+    \frac{W_{\lambda}(e^{j\theta})}{2\pi} X(e^{j(\hat{\omega}_0-\theta)}) \, d\theta =
+    X(e^{j\hat{\omega}_0}).
+    \end{equation*}\]</div>
+</li>
+<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span>, the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> of
+<span class="math notranslate nohighlight">\(x[n]\)</span> is bounded and continuous on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> as discussed in
+<a class="reference internal" href="dtft.html#sec-dtft-convergence"><span class="std std-numref">Section 2.1.1</span></a>. In addition, the multiplication
+property of DTFT gives</p>
+<div class="math notranslate nohighlight" id="equation-e-wx-intwx">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-e-wx-intwx" title="Permalink to this equation">#</a></span>\[\begin{equation}
+w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
+\frac{1}{2\pi} \int_{-\pi}^{\pi}
+W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
+\end{equation}\]</div>
+<p>Taking limit on the LHS of <a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a>, <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
+w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> from 2.
+above. On the RHS, we have <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
+\frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
+\, d\theta = X(e^{j\hat{\omega}})\)</span> for each <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> from 3. above. Thus,
+in this sense, we can say that the DTFT mapping in
+<a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a> is <em>preserved</em> through the limiting process of
+<span class="math notranslate nohighlight">\(\lambda \rightarrow 1\)</span>.</p>
 </li>
 </ul>
 </section>

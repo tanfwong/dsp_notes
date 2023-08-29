@@ -16,8 +16,7 @@
   function.
 
 ## "Limit" of window signal
-* Recall the window signal in {ref}`the previous
-section<sec:wlambda>`:
+* Recall the window signal in {numref}`sec:wlambda`:
   \begin{equation*}
   w_{\lambda} [n] = \lambda^{|n|} 
   ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
@@ -32,15 +31,48 @@ section<sec:wlambda>`:
   and closer to the constant signal $1$ (not in $\ell^1$) as 
   $\lambda$ approaches $1$.
 
-* Similarly, the DTFT $W_{\lambda}(e^{j\hat\omega})$ satisfies
-  1. $W_{\lambda}(e^{j\hat\omega}) > 0$ and is an even (periodic)
-     function in $\hat\omega$.
-  2. $\displaystyle \lim_{\lambda \rightarrow 1}
-  W_{\lambda}(e^{j\hat\omega}) = \begin{cases}
-  \infty, & \hat\omega = 0, -\pi \leq \hat\omega < \pi \\
-  0, & \hat\omega \neq 0, -\pi \leq \hat\omega < \pi.
-  \end{cases}$
-  3. Since $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
-     \, d\hat\omega =  w_{\lambda} [0] = 1$ for all $\lambda \in (0,1)$, 
-     $\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
-     \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1$.
+* Clearly, the DTFT $W_{\lambda}(e^{j\hat\omega})$ is a positive,
+even, and periodic (with period $2\pi$) function in $\hat\omega$. It
+also satisfies the following properties:
+    1. $\displaystyle \lim_{\lambda \rightarrow 1} W_{\lambda}(e^{j\hat\omega}) = 
+    \begin{cases}
+    \infty, & \hat\omega = 0, -\pi \leq \hat\omega < \pi \\
+    0, & \hat\omega \neq 0, -\pi \leq \hat\omega < \pi.
+    \end{cases}$
+    2. Since $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
+    \, d\hat\omega =  w_{\lambda} [0] = 1$ for all $\lambda \in
+    (0,1)$, we may set
+    $\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
+    \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1.$
+    3. For any bounded $X(e^{j\hat{\omega}})$, the *circular
+    convolution* integral $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
+    W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \,d\theta$
+    exists. In addition, if the bounded $X(e^{j\hat{\omega}})$ is
+    continuous at $\hat{\omega} = \hat{\omega}_0$, then it can be shown that
+    \begin{equation*}
+     \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
+    \frac{W_{\lambda}(e^{j\theta})}{2\pi} X(e^{j(\hat{\omega}_0-\theta)}) \, d\theta =
+    X(e^{j\hat{\omega}_0}).
+    \end{equation*} 
+
+*   For any $x[n] \in \ell^1$, the DTFT $X(e^{j\hat{\omega}})$ of
+    $x[n]$ is bounded and continuous on $[-\pi,\pi]$ as discussed in
+    {numref}`sec:dtft_convergence`. In addition, the multiplication
+    property of DTFT gives
+    ```{math}
+    :label: e:wx-intWX
+    \begin{equation}
+    w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
+    \frac{1}{2\pi} \int_{-\pi}^{\pi}
+    W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
+    \end{equation}
+    ```
+    Taking limit on the LHS of {eq}`e:wx-intWX`, $\lim_{\lambda \rightarrow 1}
+    w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 2.
+    above. On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
+    \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
+    \, d\theta = X(e^{j\hat{\omega}})$ for each $\hat{\omega}$ from 3. above. Thus,
+    in this sense, we can say that the DTFT mapping in
+    {eq}`e:wx-intWX` is *preserved* through the limiting process of
+    $\lambda \rightarrow 1$.
+  
