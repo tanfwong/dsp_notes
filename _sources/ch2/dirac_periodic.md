@@ -36,8 +36,8 @@ even, and periodic (with period $2\pi$) function in $\hat\omega$. It
 also satisfies the following properties:
     1. $\displaystyle \lim_{\lambda \rightarrow 1} W_{\lambda}(e^{j\hat\omega}) = 
     \begin{cases}
-    \infty, & \hat\omega = 0, -\pi \leq \hat\omega < \pi \\
-    0, & \hat\omega \neq 0, -\pi \leq \hat\omega < \pi.
+    \infty, & \hat\omega = 0 \bmod 2\pi \\
+    0, & \hat\omega \neq 0 \bmod 2\pi.
     \end{cases}$
     2. Since $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
     \, d\hat\omega =  w_{\lambda} [0] = 1$ for all $\lambda \in
