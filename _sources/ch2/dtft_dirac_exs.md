@@ -17,7 +17,7 @@
   $\delta(e^{j\hat{\omega}})$ as shown below.
 
 ## Sinusoid $x[n] = e^{j\hat{\omega}_0 n}$
-First, note that 
+Because
 \begin{align*} 
 X_{w_{\lambda}}(e^{j\hat{\omega}}) 
 &=
@@ -27,9 +27,9 @@ X_{w_{\lambda}}(e^{j\hat{\omega}})
 e^{-j\hat{\omega} n} \\ & = \frac{1 - \lambda^2}{1-2\lambda
 \cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} \\ 
 &=
-W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}).  
+W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}),
 \end{align*} 
-Hence, $\displaystyle X(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow
+$\displaystyle X(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow
 1} X_{w_{\lambda}}(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow 1}
 W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}) = 2\pi \delta
 (e^{j(\hat{\omega}-\hat{\omega}_0)})$. In other words, we have
@@ -37,6 +37,6 @@ established the DTFT pair
 \begin{equation*}
 e^{j\hat{\omega}_0 n} ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow} 
-~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}).
+~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)})
 \end{equation*}
 

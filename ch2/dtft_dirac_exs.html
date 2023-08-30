@@ -399,7 +399,7 @@ X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> in terms of
 </ul>
 <section id="sinusoid-x-n-e-j-hat-omega-0-n">
 <h2><span class="section-number">2.4.1. </span>Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span><a class="headerlink" href="#sinusoid-x-n-e-j-hat-omega-0-n" title="Permalink to this headline">#</a></h2>
-<p>First, note that</p>
+<p>Because</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*} 
 X_{w_{\lambda}}(e^{j\hat{\omega}}) 
@@ -410,9 +410,9 @@ X_{w_{\lambda}}(e^{j\hat{\omega}})
 e^{-j\hat{\omega} n} \\ &amp; = \frac{1 - \lambda^2}{1-2\lambda
 \cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} \\ 
 &amp;=
-W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}).  
+W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}),
 \end{align*}\]</div>
-<p>Hence, <span class="math notranslate nohighlight">\(\displaystyle X(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow
+<p><span class="math notranslate nohighlight">\(\displaystyle X(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow
 1} X_{w_{\lambda}}(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow 1}
 W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}) = 2\pi \delta
 (e^{j(\hat{\omega}-\hat{\omega}_0)})\)</span>. In other words, we have
@@ -421,7 +421,7 @@ established the DTFT pair</p>
 \[\begin{equation*}
 e^{j\hat{\omega}_0 n} ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow} 
-~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}).
+~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)})
 \end{equation*}\]</div>
 </section>
 </section>
