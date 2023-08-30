@@ -367,6 +367,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -404,11 +405,15 @@ X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> in terms of
 \[\begin{align*} 
 X_{w_{\lambda}}(e^{j\hat{\omega}}) 
 &amp;=
-\sum_{n=-\infty}^{\infty} w_{\lambda}[n] x[n] e^{-j\hat{\omega} n} \\
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] x[n] e^{-j\hat{\omega} n} 
+\\
 &amp;= 
 \sum_{n=-\infty}^{\infty} \lambda^{|n|} e^{j\hat{\omega}_0 n}
-e^{-j\hat{\omega} n} \\ &amp; = \frac{1 - \lambda^2}{1-2\lambda
-\cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} \\ 
+e^{-j\hat{\omega} n} 
+\\ 
+&amp; = \frac{1 - \lambda^2}{1-2\lambda
+\cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} 
+\\ 
 &amp;=
 W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}),
 \end{align*}\]</div>
@@ -443,6 +448,97 @@ e^{j\hat{\omega}_0 n} ~~
 ~~ -j\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) + j \pi \delta
 (e^{j(\hat{\omega}+\hat{\omega}_0)})
 \end{align*}\]</div>
+</section>
+<section id="unit-step-u-n">
+<h2><span class="section-number">2.4.2. </span>Unit step <span class="math notranslate nohighlight">\(u[n]\)</span><a class="headerlink" href="#unit-step-u-n" title="Permalink to this headline">#</a></h2>
+<p>The DTFT <span class="math notranslate nohighlight">\(U_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> of <span class="math notranslate nohighlight">\(w_{\lambda}[n] u[n]\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) 
+=
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] u[n] e^{-j\hat{\omega} n} 
+= 
+\sum_{n=0}^{\infty} \lambda^{n} e^{-j\hat{\omega} n} 
+= \frac{1}{1-\lambda e^{-j \hat{\omega}}}. 
+\end{equation*}\]</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>Note that we can’t directly take limit of
+<span class="math notranslate nohighlight">\(U_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> as <span class="math notranslate nohighlight">\(\lambda \rightarrow 1\)</span> to
+obtain the DTFT <span class="math notranslate nohighlight">\(U(e^{j\hat{\omega}})\)</span> of the unit step <span class="math notranslate nohighlight">\(u[n]\)</span>
+because the limit doesn’t exist (see Example 3. in <a class="reference internal" href="../ch1/ztransform.html#sec-z-exs"><span class="std std-numref">Section 1.3.1</span></a>)!</p></li>
+<li><p>To overcome this difficulty, we will express
+<span class="math notranslate nohighlight">\(U_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> in terms of
+<span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat{\omega}})\)</span> before taking
+limit to let the Dirac delta function
+<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> absorb all problems
+associated with the limiting process.</p></li>
+</ul>
+</div>
+<p>By the time reversal property, <span class="math notranslate nohighlight">\(\displaystyle w_{\lambda}[-n] u[-n]
+  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}^*(e^{j\hat{\omega}}) =
+  \frac{1}{1-\lambda e^{j \hat{\omega}}}\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
+  \delta[n]\)</span>, taking DTFT on both sides of this equation gives</p>
+<div class="math notranslate nohighlight" id="equation-e-uaddu">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-e-uaddu" title="Permalink to this equation">#</a></span>\[\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+= 
+W_{\lambda}(e^{j\hat{\omega}}) + 1.
+\end{equation}\]</div>
+<p>On the other hand,</p>
+<div class="math notranslate nohighlight" id="equation-e-uminusu">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-e-uminusu" title="Permalink to this equation">#</a></span>\[\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+= 
+\frac{1}{1-\lambda e^{-j\hat{\omega}}} - \frac{1}{1-\lambda
+  e^{j\hat{\omega}}}
+=
+\frac{-2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2}.
+\end{equation}\]</div>
+<p>Adding <a class="reference internal" href="#equation-e-uaddu">(2.6)</a> and  <a class="reference internal" href="#equation-e-uminusu">(2.7)</a>gives</p>
+<div class="math notranslate nohighlight" id="equation-e-uasw">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-e-uasw" title="Permalink to this equation">#</a></span>\[\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) 
+= 
+\frac{1}{2} W_{\lambda}(e^{j\hat{\omega}}) + \frac{1}{2}  \left(
+  1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2} \right).
+\end{equation}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2}  \left(
+  1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2} \right) = \begin{cases}
+  \frac{1}{2}, &amp; \hat{\omega} = 0 \bmod 2\pi \\
+  \frac{1}{1-e^{-j\hat{\omega}}}, &amp;  \hat{\omega} \neq 0 \bmod 2\pi
+  \end{cases}\)</span>, taking limit as <span class="math notranslate nohighlight">\(\lambda\rightarrow 1\)</span> on both sides
+of <a class="reference internal" href="#equation-e-uasw">(2.8)</a> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+U (e^{j\hat{\omega}}) = \pi \delta(e^{j\hat{\omega}}) + 
+  \frac{1}{1-e^{-j\hat{\omega}}}.
+\end{equation*}\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note the second term on the RHS above should be
+<span class="math notranslate nohighlight">\(\begin{cases}
+  \frac{1}{2}, &amp; \hat{\omega} = 0 \bmod 2\pi \\
+  \frac{1}{1-e^{-j\hat{\omega}}}, &amp;  \hat{\omega} \neq 0 \bmod 2\pi.
+  \end{cases}\)</span>
+However, the exact value of the term at <span class="math notranslate nohighlight">\(\hat{\omega} = 0 \bmod 2\pi\)</span>
+is immaterial (as long as it is finite) because any such value can
+be abosrbed into the infinite value of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>
+at the same <span class="math notranslate nohighlight">\(\hat{\omega}\)</span>. Hence, for convenience, we may simply write
+<span class="math notranslate nohighlight">\(\frac{1}{1-e^{-j\hat{\omega}}}\)</span> as in above.</p>
+</div>
+<p>In summary, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+u[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ \pi \delta(e^{j\hat{\omega}}) + \frac{1}{1-e^{-j\hat{\omega}}}
+\end{equation*}\]</div>
 </section>
 </section>
 
@@ -514,6 +610,7 @@ e^{j\hat{\omega}_0 n} ~~
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
 </ul>
   </nav></div>
 

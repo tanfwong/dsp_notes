@@ -34,6 +34,7 @@
   
   ```
 
+(sec:z_exs)=
 ## Examples
 1. Consider the causal signal $x_1[n] = a^n u[n]$, where $a$ is a complex number.
    From {eq}`e:z`, we have
@@ -76,7 +77,6 @@
    determine $x[n]$.
    ```
 
-   
 3. Consider the signals $u[n]$, $x_3[n] = \frac{1}{n} u[n-1] $ and
    $x_4[n] = \frac{1}{n^2}u[n-1] $.
    - From Example 1. above, the $z$-transform of $u[n]$ is $U(z) =

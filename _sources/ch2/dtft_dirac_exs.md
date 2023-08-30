@@ -21,11 +21,15 @@ Because
 \begin{align*} 
 X_{w_{\lambda}}(e^{j\hat{\omega}}) 
 &=
-\sum_{n=-\infty}^{\infty} w_{\lambda}[n] x[n] e^{-j\hat{\omega} n} \\
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] x[n] e^{-j\hat{\omega} n} 
+\\
 &= 
 \sum_{n=-\infty}^{\infty} \lambda^{|n|} e^{j\hat{\omega}_0 n}
-e^{-j\hat{\omega} n} \\ & = \frac{1 - \lambda^2}{1-2\lambda
-\cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} \\ 
+e^{-j\hat{\omega} n} 
+\\ 
+& = \frac{1 - \lambda^2}{1-2\lambda
+\cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} 
+\\ 
 &=
 W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}),
 \end{align*} 
@@ -57,3 +61,94 @@ By the Euler identity and linearity of DTFT, we get
 ~~ -j\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) + j \pi \delta
 (e^{j(\hat{\omega}+\hat{\omega}_0)})
 \end{align*}
+
+
+## Unit step $u[n]$
+The DTFT $U_{w_{\lambda}}(e^{j\hat{\omega}})$ of $w_{\lambda}[n] u[n]$ is given by
+\begin{equation*}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) 
+=
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] u[n] e^{-j\hat{\omega} n} 
+= 
+\sum_{n=0}^{\infty} \lambda^{n} e^{-j\hat{\omega} n} 
+= \frac{1}{1-\lambda e^{-j \hat{\omega}}}. 
+\end{equation*}
+```{caution}
+* Note that we can't directly take limit of
+  $U_{w_{\lambda}}(e^{j\hat{\omega}})$ as $\lambda \rightarrow 1$ to
+  obtain the DTFT $U(e^{j\hat{\omega}})$ of the unit step $u[n]$
+  because the limit doesn't exist (see Example 3. in {numref}`sec:z_exs`)!
+* To overcome this difficulty, we will express
+  $U_{w_{\lambda}}(e^{j\hat{\omega}})$ in terms of
+  $W_{\lambda}(e^{j\hat{\omega}})$ before taking
+  limit to let the Dirac delta function
+  $\delta(e^{j\hat{\omega}})$ absorb all problems
+  associated with the limiting process.
+```
+By the time reversal property, $\displaystyle w_{\lambda}[-n] u[-n]
+  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}^*(e^{j\hat{\omega}}) =
+  \frac{1}{1-\lambda e^{j \hat{\omega}}}$. 
+
+Since $w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
+  \delta[n]$, taking DTFT on both sides of this equation gives
+```{math}
+:label: e:UaddU*
+\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+= 
+W_{\lambda}(e^{j\hat{\omega}}) + 1.
+\end{equation}
+```
+On the other hand, 
+```{math}
+:label: e:UminusU*
+\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+= 
+\frac{1}{1-\lambda e^{-j\hat{\omega}}} - \frac{1}{1-\lambda
+  e^{j\hat{\omega}}}
+=
+\frac{-2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2}.
+\end{equation}
+```
+Adding {eq}`e:UaddU*` and  {eq}`e:UminusU*`gives
+```{math}
+:label: e:UasW
+\begin{equation}
+U_{w_{\lambda}}(e^{j\hat{\omega}}) 
+= 
+\frac{1}{2} W_{\lambda}(e^{j\hat{\omega}}) + \frac{1}{2}  \left(
+  1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2} \right).
+\end{equation}
+```
+Since $\displaystyle \frac{1}{2}  \left(
+  1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
+  \lambda^2} \right) = \begin{cases}
+  \frac{1}{2}, & \hat{\omega} = 0 \bmod 2\pi \\
+  \frac{1}{1-e^{-j\hat{\omega}}}, &  \hat{\omega} \neq 0 \bmod 2\pi
+  \end{cases}$, taking limit as $\lambda\rightarrow 1$ on both sides
+  of {eq}`e:UasW` gives
+\begin{equation*}
+U (e^{j\hat{\omega}}) = \pi \delta(e^{j\hat{\omega}}) + 
+  \frac{1}{1-e^{-j\hat{\omega}}}.
+\end{equation*}
+```{tip}
+Note the second term on the RHS above should be 
+$\begin{cases}
+  \frac{1}{2}, & \hat{\omega} = 0 \bmod 2\pi \\
+  \frac{1}{1-e^{-j\hat{\omega}}}, &  \hat{\omega} \neq 0 \bmod 2\pi.
+  \end{cases}$ 
+However, the exact value of the term at $\hat{\omega} = 0 \bmod 2\pi$
+  is immaterial (as long as it is finite) because any such value can
+  be abosrbed into the infinite value of $\delta(e^{j\hat{\omega}})$
+  at the same $\hat{\omega}$. Hence, for convenience, we may simply write
+  $\frac{1}{1-e^{-j\hat{\omega}}}$ as in above.
+```
+In summary, we have
+\begin{equation*}
+u[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ \pi \delta(e^{j\hat{\omega}}) + \frac{1}{1-e^{-j\hat{\omega}}}
+\end{equation*}
