@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.3. Periodic Dirac delta &#8212; Foundations of DSP Notes</title>
+    <title>2.4. DTFTs of infinite-energy signals &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2/dirac_periodic';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2/dtft_dirac_exs';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. References" href="../refs.html" />
-    <link rel="prev" title="2.2. DTFT properties and tables" href="dtft_tables.html" />
+    <link rel="prev" title="2.3. Periodic Dirac delta" href="dirac_periodic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -168,7 +168,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="fourier.html">2. Fourier (Frequency Domain) Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dtft.html">2.1. Discrete-Time Fourier Transform (DTFT)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dtft_tables.html">2.2. DTFT properties and tables</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3. Periodic Dirac delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dirac_periodic.html">2.3. Periodic Dirac delta</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. DTFTs of infinite-energy signals</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">3. References</a></li>
@@ -243,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch2/dirac_periodic.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch2/dtft_dirac_exs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -273,7 +274,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch2/dirac_periodic.md" target="_blank"
+      <li><a href="../_sources/ch2/dtft_dirac_exs.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Periodic Dirac delta</h1>
+    <h1>DTFTs of infinite-energy signals</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,8 +366,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-window-signal">2.3.1. “Limit” of window signal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-dirac-delta-function">2.3.2. Periodic Dirac delta “function”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -378,181 +378,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="periodic-dirac-delta">
-<h1><span class="section-number">2.3. </span>Periodic Dirac delta<a class="headerlink" href="#periodic-dirac-delta" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="dtfts-of-infinite-energy-signals">
+<h1><span class="section-number">2.4. </span>DTFTs of infinite-energy signals<a class="headerlink" href="#dtfts-of-infinite-energy-signals" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>Common ideal signals, such as sinusoids and the unit step, do not
-have finite energy. The forward DTFT series on the RHS of
-<a class="reference internal" href="dtft.html#equation-e-dtft">(2.1)</a> do not converge for these signals, and hence they do not
-have DTFTs strictly speaking.</p></li>
-<li><p>These signals are mathematical idealizations that are much nicer to
-deal with than their practical counterparts. We may use the
-<span class="math notranslate nohighlight">\(z\)</span>-transform toolset described before to analyze these
-infinite-energy signals. However, doing so we lose the
-frequency-domain interpretation/intuition provided by DTFT because
-the ROCs of the <span class="math notranslate nohighlight">\(z\)</span>-transforms of these signals do not contain the
-unit circle.</p></li>
-<li><p>A standard way to “extend” the DTFT toolset to cover these common
-infinite-energy signals is by way of the <em>periodic Dirac delta</em>
-function.</p></li>
+<li><p>For any infinite-energy signal <span class="math notranslate nohighlight">\(x[n]\)</span> whose signal magnitude
+increases at most polynomially with <span class="math notranslate nohighlight">\(|n|\)</span> (i.e., <span class="math notranslate nohighlight">\(|x[n]| =
+\mathcal{O}(|n|^{\alpha})\)</span> for some <span class="math notranslate nohighlight">\(\alpha&gt;0\)</span>), its windowed
+version <span class="math notranslate nohighlight">\(w_{\lambda} [n] x[n] \in \ell^1\)</span> and hence the DTFT mapping
+<span class="math notranslate nohighlight">\(w_{\lambda}[n] x[n] \stackrel{\text{DTFT}}{\longleftrightarrow} 
+X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> exists for all <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>.
+As discussed in <a class="reference internal" href="dirac_periodic.html#sec-wlimit"><span class="std std-numref">Section 2.3.1</span></a>, we may define
+<span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span>
+(if the limit exists) as the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> )<span class="math notranslate nohighlight">\( of \)</span>x[n]$.</p></li>
+<li><p>Note that the limit of <span class="math notranslate nohighlight">\(X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> may not
+exist for any general <span class="math notranslate nohighlight">\(x[n]\)</span>. Even if it exists, calculating it may
+be difficult. Luckily, for some of the most common infinite-energy
+signals, we can express <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
+X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> in terms of
+<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> as shown below.</p></li>
 </ul>
-<section id="limit-of-window-signal">
-<span id="sec-wlimit"></span><h2><span class="section-number">2.3.1. </span>“Limit” of window signal<a class="headerlink" href="#limit-of-window-signal" title="Permalink to this headline">#</a></h2>
-<ul>
-<li><p>Recall the window signal in <a class="reference internal" href="dtft_tables.html#sec-wlambda"><span class="std std-numref">Section 2.2.3</span></a>:</p>
+<section id="sinusoid-x-n-e-j-hat-omega-0-n">
+<h2><span class="section-number">2.4.1. </span>Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span><a class="headerlink" href="#sinusoid-x-n-e-j-hat-omega-0-n" title="Permalink to this headline">#</a></h2>
+<p>First, note that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+X_{w_{\lambda}}(e^{j\hat{\omega}}) 
+&amp;=
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] x[n] e^{-j\hat{\omega} n} \\
+&amp;= 
+\sum_{n=-\infty}^{\infty} \lambda^{|n|} e^{j\hat{\omega}_0 n}
+e^{-j\hat{\omega} n} \\ &amp; = \frac{1 - \lambda^2}{1-2\lambda
+\cos(\hat{\omega}-\hat{\omega}_0) + \lambda^2} \\ 
+&amp;=
+W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}).  
+\end{align*}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(\displaystyle X(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow
+1} X_{w_{\lambda}}(e^{j\hat{\omega}}) = \lim_{\lambda \rightarrow 1}
+W_{\lambda}(e^{j(\hat{\omega}-\hat{\omega}_0)}) = 2\pi \delta
+(e^{j(\hat{\omega}-\hat{\omega}_0)})\)</span>. In other words, we have
+established the DTFT pair</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-  w_{\lambda} [n] = \lambda^{|n|} 
-  ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
-  W_{\lambda}(e^{j\hat\omega})
-  = \frac{1 - \lambda^2}{1 - 2\lambda \cos \hat{\omega} + \lambda^2}
-  \end{equation*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>.</p>
-</li>
-<li><p>Recall <span class="math notranslate nohighlight">\(w_{\lambda} [n] \in \ell^1\)</span>. For each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>,
-<span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1} w_{\lambda} [n] = 1\)</span>.
-Intuitively, <span class="math notranslate nohighlight">\(w_{\lambda} [n]\)</span> becomes closer
-and closer to the constant signal <span class="math notranslate nohighlight">\(1\)</span> (not in <span class="math notranslate nohighlight">\(\ell^1\)</span>) as
-<span class="math notranslate nohighlight">\(\lambda\)</span> approaches <span class="math notranslate nohighlight">\(1\)</span>.</p></li>
-<li><p>Clearly, the DTFT <span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span> is a positive,
-even, and periodic (with period <span class="math notranslate nohighlight">\(2\pi\)</span>) function in <span class="math notranslate nohighlight">\(\hat\omega\)</span>. It
-also satisfies the following properties:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} W_{\lambda}(e^{j\hat\omega}) = 
-\begin{cases}
-\infty, &amp; \hat\omega = 0 \bmod 2\pi \\
-0, &amp; \hat\omega \neq 0 \bmod 2\pi.
-\end{cases}\)</span></p></li>
-<li><p>Since <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\hat\omega})
-\, d\hat\omega =  w_{\lambda} [0] = 1\)</span> for all <span class="math notranslate nohighlight">\(\lambda \in
-(0,1)\)</span>, we may set
-<span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
-\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \, d\hat\omega =1.\)</span></p></li>
-<li><p>For any bounded <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span>, the <em>circular
-convolution</em> integral <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
-W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \,d\theta\)</span>
-exists. In addition, if the bounded <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> is
-continuous at <span class="math notranslate nohighlight">\(\hat{\omega} = \hat{\omega}_0\)</span>, then it can be shown that</p></li>
-</ol>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-     \lim_{\lambda \rightarrow 1} \int_{-\pi}^{\pi} 
-    \frac{W_{\lambda}(e^{j\theta})}{2\pi} X(e^{j(\hat{\omega}_0-\theta)}) \, d\theta =
-    X(e^{j\hat{\omega}_0}).
-    \end{equation*}\]</div>
-</li>
-<li><p>For any <span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span>, the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> of
-<span class="math notranslate nohighlight">\(x[n]\)</span> is bounded and continuous on <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> as discussed in
-<a class="reference internal" href="dtft.html#sec-dtft-convergence"><span class="std std-numref">Section 2.1.1</span></a>. In addition, the multiplication
-property of DTFT gives</p>
-<div class="math notranslate nohighlight" id="equation-e-wx-intwx">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-e-wx-intwx" title="Permalink to this equation">#</a></span>\[\begin{equation}
-w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
-\frac{1}{2\pi} \int_{-\pi}^{\pi}
-W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
-\end{equation}\]</div>
-<p>Taking limit on the LHS of <a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a>, <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
-w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> from 1.
-above. On the RHS, we have <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
-\frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
-\, d\theta = X(e^{j\hat{\omega}})\)</span> for each <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> from 3.
-above. Thus in this sense, we can say that the DTFT mapping in
-<a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a> is <em>preserved</em> through the limiting process as
-<span class="math notranslate nohighlight">\(\lambda \rightarrow 1\)</span>.</p>
-</li>
-<li><p>Consider now <span class="math notranslate nohighlight">\(x[n]\)</span> is an infinite-energy sinusoid (or the unit
-step). For every <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>, the “windowed” signal
-<span class="math notranslate nohighlight">\(w_{\lambda}[n] x[n] \in \ell^1\)</span>, and hence its DTFT
-<span class="math notranslate nohighlight">\(X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> exists.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>However, <a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a> fails to hold, i.e.,
-<span class="math notranslate nohighlight">\(X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> is not given by the RHS of
-<a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a>, because the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> of <span class="math notranslate nohighlight">\(x[n]\)</span>
-simply does not exist!</p>
-</div>
-<p>Nonetheless, we still have <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1} w_{\lambda}[n] x[n] =
-x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>. Thus, it makes intuitive sense to
-mimic the above limiting process in the case of absolutely summable signals to
-define a “DTFT” for the infinite-energy sinusoid <span class="math notranslate nohighlight">\(x[n]\)</span>. That is, we want to
-call <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
-X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> (if the limit exists) the DTFT of <span class="math notranslate nohighlight">\(x[n]\)</span>,
-even if such a “limit” may not be exactly a mathematically
-meaningful function in <span class="math notranslate nohighlight">\(\hat{\omega}\)</span>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>In order to avoid using more math machinery, we will interpret this
-limiting process as our way to extend the DTFT toolset to
-infinite-energy signals. Note that as long as the
-windowed signal <span class="math notranslate nohighlight">\(w_{\lambda}[n] x[n] \in \ell^1\)</span>, <span class="math notranslate nohighlight">\(w_{\lambda}[n]
-x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> and all the DTFT
-properties in <a class="reference internal" href="dtft_tables.html#sec-dtft-table"><span class="std std-numref">Section 2.2.2</span></a> apply to this proper DTFT
-mapping. As a result, all the DTFT properties also apply to the extended
-DTFT of <span class="math notranslate nohighlight">\(x[n]\)</span> defined through the limiting process.</p>
-</div>
-</li>
-</ul>
-</section>
-<section id="periodic-dirac-delta-function">
-<h2><span class="section-number">2.3.2. </span>Periodic Dirac delta “function”<a class="headerlink" href="#periodic-dirac-delta-function" title="Permalink to this headline">#</a></h2>
-<ul>
-<li><p>It is annoying however to keep referring to the above limiting
-process and writing down <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}\)</span> every time we
-apply DTFT tools to an infinite-energy signal. For convenience, we
-define the <em>periodic Dirac delta “function”</em>
-<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> as a mnemonic for the limiting
-process. Specifically, properties 1.-3. above are re-expressed in
-terms of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>:</p>
-<ol class="arabic">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \delta(e^{j\hat{\omega}}) = 
- \begin{cases}
- \infty, &amp; \hat\omega = 0 \bmod 2\pi \\
- 0, &amp; \hat\omega \neq 0 \bmod 2\pi
- \end{cases}
-  ~~\left[ = \lim_{\lambda \rightarrow 1}
- \frac{W_{\lambda}(e^{j\hat\omega})}{2\pi} \right]\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \int_{-\pi}^{\pi} \delta(e^{j\hat{\omega}}) \,
- d\hat{\omega} = 1\)</span>.</p></li>
-<li><p>For any bounded <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span> that is continuous at
-<span class="math notranslate nohighlight">\(\hat{\omega} = \hat{\omega}_0\)</span>,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-     \int_{-\pi}^{\pi}
-     \delta(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta =
-     X(e^{j\hat{\omega}_0}).
-     \end{equation*}\]</div>
-<p>This is often referred to as the <em>sifting property</em> of the Dirac delta.</p>
-</li>
-</ol>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<ul class="simple">
-<li><p>Note that <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> is not a well-defined function
-in <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> by property 1. because its value is infinite when
-<span class="math notranslate nohighlight">\(\hat\omega = 0 \bmod 2\pi\)</span>. This infinite value implies
-that <span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})\)</span> for
-any <span class="math notranslate nohighlight">\(a\neq 0\)</span>, which in turn implies <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})
-\equiv 0\)</span> contradicting 1. above.</p></li>
-<li><p>In fact, it is more appropiate to associate the scaled Dirac delta
-<span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}})\)</span> with property 2. such that
-<span class="math notranslate nohighlight">\(\displaystyle \int_{-\pi}^{\pi} a \delta(e^{j\hat{\omega}}) \,
-d\hat{\omega} = a\)</span>, i.e., the area underneath the Dirac delta
-over a period, rather than the “function” value, is scaled by the
-factor <span class="math notranslate nohighlight">\(a\)</span>. Property 2., not 1., provides the basis to perform
-linear algebraic operations with <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>.</p></li>
-<li><p>The somewhat hand-waving limiting process associated with
-<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> can be made more rigorous by considering
-a sequuence of math objects called <em>distributions</em> in place of
-<span class="math notranslate nohighlight">\(\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}\)</span>. It turns out that
-there is a valid distribution, playing the role of
-<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>, that is the limit (in some sense)
-of the sequence of distributiions corresponding to
-<span class="math notranslate nohighlight">\(\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}\)</span>.</p></li>
-</ul>
-</div>
-</li>
-</ul>
+e^{j\hat{\omega}_0 n} ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}).
+\end{equation*}\]</div>
 </section>
 </section>
 
@@ -588,12 +458,12 @@ of the sequence of distributiions corresponding to
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="dtft_tables.html"
+       href="dirac_periodic.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>DTFT properties and tables</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Periodic Dirac delta</p>
       </div>
     </a>
     <a class="right-next"
@@ -623,8 +493,7 @@ of the sequence of distributiions corresponding to
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-of-window-signal">2.3.1. “Limit” of window signal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-dirac-delta-function">2.3.2. Periodic Dirac delta “function”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 </ul>
   </nav></div>
 

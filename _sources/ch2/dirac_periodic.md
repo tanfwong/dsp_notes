@@ -15,6 +15,7 @@
   infinite-energy signals is by way of the *periodic Dirac delta*
   function.
 
+(sec:wlimit)=
 ## "Limit" of window signal
 * Recall the window signal in {numref}`sec:wlambda`:
   \begin{equation*}
@@ -91,7 +92,8 @@ also satisfies the following properties:
   x[n]$ for each $n \in \mathbb{Z}$. Thus, it makes intuitive sense to
   mimic the above limiting process in the case of absolutely summable signals to
   define a "DTFT" for the infinite-energy sinusoid $x[n]$. That is, we want to
-  call $\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})$ the DTFT of $x[n]$, 
+  call $\lim_{\lambda \rightarrow 1}
+  X_{w_{\lambda}}(e^{j\hat{\omega}})$ (if the limit exists) the DTFT of $x[n]$,
   even if such a "limit" may not be exactly a mathematically
   meaningful function in $\hat{\omega}$.
   ```{tip}
