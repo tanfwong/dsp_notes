@@ -69,12 +69,12 @@ also satisfies the following properties:
   \end{equation}
   ```
   Taking limit on the LHS of {eq}`e:wx-intWX`, $\lim_{\lambda \rightarrow 1}
-  w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 2.
+  w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 1.
   above. On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
   \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
   \, d\theta = X(e^{j\hat{\omega}})$ for each $\hat{\omega}$ from 3.
   above. Thus in this sense, we can say that the DTFT mapping in
-  {eq}`e:wx-intWX` is *preserved* through the limiting process of
+  {eq}`e:wx-intWX` is *preserved* through the limiting process as
   $\lambda \rightarrow 1$.
   
 * Consider now $x[n]$ is an infinite-energy sinusoid (or the unit
@@ -89,14 +89,14 @@ also satisfies the following properties:
   ```
   Nonetheless, we still have $\lim_{\lambda \rightarrow 1} w_{\lambda}[n] x[n] =
   x[n]$ for each $n \in \mathbb{Z}$. Thus, it makes intuitive sense to
-  follow the above limiting process in the case of absolutely summable signals to
+  mimic the above limiting process in the case of absolutely summable signals to
   define a "DTFT" for the infinite-energy sinusoid $x[n]$. That is, we want to
   call $\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})$ the DTFT of $x[n]$, 
   even if such a "limit" may not be exactly a mathematically
   meaningful function in $\hat{\omega}$.
   ```{tip}
   In order to avoid using more math machinery, we will interpret this
-  limiting process as our extension of the DTFT toolset to
+  limiting process as our way to extend the DTFT toolset to
   infinite-energy signals. Note that as long as the
   windowed signal $w_{\lambda}[n] x[n] \in \ell^1$, $w_{\lambda}[n]
   x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
@@ -131,18 +131,26 @@ terms of $\delta(e^{j\hat{\omega}})$:
      X(e^{j\hat{\omega}_0}).
      \end{equation*}
       This is often referred to as the *sifting property* of the Dirac delta.
- ```{caution}
- * Note that $\delta(e^{j\hat{\omega}})$ is not a well-defined function
-   in $\hat{\omega}$ by property 1. because its value is infinite when
-   $\hat\omega = 0 \bmod 2\pi$. This infinite value implies
-   that $a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})$ for
-   any $a\neq 0$, which in turn implies $\delta(e^{j\hat{\omega}})
-   \equiv 0$ contradicting 1. above. 
- * In fact, it is more appropiate to associate the scaled Dirac delta
-   $a\delta(e^{j\hat{\omega}})$ with property 2. such that 
-   $\displaystyle \int_{-\pi}^{\pi} a \delta(e^{j\hat{\omega}}) \,
-   d\hat{\omega} = a$, i.e., the area underneath the Dirac delta
-   over a period, rather than the "function" value, is scaled by the
-   factor $a$. Property 2., not 1., provides the basis to perform
-   linear algebraic operations with $\delta(e^{j\hat{\omega}})$.
- ```
+  ```{caution}
+  * Note that $\delta(e^{j\hat{\omega}})$ is not a well-defined function
+    in $\hat{\omega}$ by property 1. because its value is infinite when
+    $\hat\omega = 0 \bmod 2\pi$. This infinite value implies
+    that $a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})$ for
+    any $a\neq 0$, which in turn implies $\delta(e^{j\hat{\omega}})
+    \equiv 0$ contradicting 1. above. 
+  * In fact, it is more appropiate to associate the scaled Dirac delta
+    $a\delta(e^{j\hat{\omega}})$ with property 2. such that 
+    $\displaystyle \int_{-\pi}^{\pi} a \delta(e^{j\hat{\omega}}) \,
+    d\hat{\omega} = a$, i.e., the area underneath the Dirac delta
+    over a period, rather than the "function" value, is scaled by the
+    factor $a$. Property 2., not 1., provides the basis to perform
+    linear algebraic operations with $\delta(e^{j\hat{\omega}})$.
+  * The somewhat hand-waving limiting process associated with 
+    $\delta(e^{j\hat{\omega}})$ can be made more rigorous by considering
+    a sequuence of math objects called *distributions* in place of
+    $\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}$. It turns out that
+    there is a valid distribution, playing the role of
+    $\delta(e^{j\hat{\omega}})$, that is the limit (in some sense)
+    of the sequence of distributiions corresponding to 
+    $\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}$.
+  ```

@@ -452,12 +452,12 @@ w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
 W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
 \end{equation}\]</div>
 <p>Taking limit on the LHS of <a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a>, <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
-w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> from 2.
+w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> from 1.
 above. On the RHS, we have <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
 \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
 \, d\theta = X(e^{j\hat{\omega}})\)</span> for each <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> from 3.
 above. Thus in this sense, we can say that the DTFT mapping in
-<a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a> is <em>preserved</em> through the limiting process of
+<a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a> is <em>preserved</em> through the limiting process as
 <span class="math notranslate nohighlight">\(\lambda \rightarrow 1\)</span>.</p>
 </li>
 <li><p>Consider now <span class="math notranslate nohighlight">\(x[n]\)</span> is an infinite-energy sinusoid (or the unit
@@ -473,7 +473,7 @@ simply does not exist!</p>
 </div>
 <p>Nonetheless, we still have <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1} w_{\lambda}[n] x[n] =
 x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>. Thus, it makes intuitive sense to
-follow the above limiting process in the case of absolutely summable signals to
+mimic the above limiting process in the case of absolutely summable signals to
 define a “DTFT” for the infinite-energy sinusoid <span class="math notranslate nohighlight">\(x[n]\)</span>. That is, we want to
 call <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})\)</span> the DTFT of <span class="math notranslate nohighlight">\(x[n]\)</span>,
 even if such a “limit” may not be exactly a mathematically
@@ -481,7 +481,7 @@ meaningful function in <span class="math notranslate nohighlight">\(\hat{\omega}
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>In order to avoid using more math machinery, we will interpret this
-limiting process as our extension of the DTFT toolset to
+limiting process as our way to extend the DTFT toolset to
 infinite-energy signals. Note that as long as the
 windowed signal <span class="math notranslate nohighlight">\(w_{\lambda}[n] x[n] \in \ell^1\)</span>, <span class="math notranslate nohighlight">\(w_{\lambda}[n]
 x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
@@ -524,8 +524,6 @@ terms of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\
 <p>This is often referred to as the <em>sifting property</em> of the Dirac delta.</p>
 </li>
 </ol>
-</li>
-</ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <ul class="simple">
@@ -542,8 +540,18 @@ d\hat{\omega} = a\)</span>, i.e., the area underneath the Dirac delta
 over a period, rather than the “function” value, is scaled by the
 factor <span class="math notranslate nohighlight">\(a\)</span>. Property 2., not 1., provides the basis to perform
 linear algebraic operations with <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>.</p></li>
+<li><p>The somewhat hand-waving limiting process associated with
+<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span> can be made more rigorous by considering
+a sequuence of math objects called <em>distributions</em> in place of
+<span class="math notranslate nohighlight">\(\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}\)</span>. It turns out that
+there is a valid distribution, playing the role of
+<span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>, that is the limit (in some sense)
+of the sequence of distributiions corresponding to
+<span class="math notranslate nohighlight">\(\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}\)</span>.</p></li>
 </ul>
 </div>
+</li>
+</ul>
 </section>
 </section>
 
