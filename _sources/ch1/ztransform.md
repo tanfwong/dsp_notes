@@ -80,7 +80,7 @@
 3. Consider the signals $u[n]$, $x_3[n] = \frac{1}{n} u[n-1] $ and
    $x_4[n] = \frac{1}{n^2}u[n-1] $.
    - From Example 1. above, the $z$-transform of $u[n]$ is $U(z) =
-     \frac{1}{1-z^{-n}}$ with ROC $= \{ |z|>1\}$.
+     \frac{1}{1-z^{-1}}$ with ROC $= \{ |z|>1\}$.
    - Clearly, $X_3(z) = \sum_{n=1}^{\infty} \frac{z^{-1}}{n}$
      converges for $|z|>1$ and diverges for $|z|<1$. It turns out that
      $X_3(z)$ also converges for every $z$ on the unit circle (i.e.,
