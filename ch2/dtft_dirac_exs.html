@@ -368,6 +368,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">2.4.3. Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -507,12 +508,12 @@ U_{w_{\lambda}}(e^{j\hat{\omega}})
   1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
   \lambda^2} \right).
 \end{equation}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2}  \left(
+<p>Since <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} \frac{1}{2}  \left(
   1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
   \lambda^2} \right) = \begin{cases}
   \frac{1}{2}, &amp; \hat{\omega} = 0 \bmod 2\pi \\
-  \frac{1}{1-e^{-j\hat{\omega}}}, &amp;  \hat{\omega} \neq 0 \bmod 2\pi
-  \end{cases}\)</span>, taking limit as <span class="math notranslate nohighlight">\(\lambda\rightarrow 1\)</span> on both sides
+  \frac{1}{1-e^{-j\hat{\omega}}}, &amp;  \hat{\omega} \neq 0 \bmod 2\pi,
+  \end{cases}\)</span> taking limit as <span class="math notranslate nohighlight">\(\lambda\rightarrow 1\)</span> on both sides
 of <a class="reference internal" href="#equation-e-uasw">(2.8)</a> gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -538,6 +539,69 @@ at the same <span class="math notranslate nohighlight">\(\hat{\omega}\)</span>. 
 u[n] ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow} 
 ~~ \pi \delta(e^{j\hat{\omega}}) + \frac{1}{1-e^{-j\hat{\omega}}}
+\end{equation*}\]</div>
+</section>
+<section id="impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">
+<h2><span class="section-number">2.4.3. </span>Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span><a class="headerlink" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn" title="Permalink to this headline">#</a></h2>
+<p>Note that <span class="math notranslate nohighlight">\(\delta_N[n]\)</span> is periodic with period <span class="math notranslate nohighlight">\(N\)</span>. Let <span class="math notranslate nohighlight">\(\Delta_{N,
+w_{\lambda}}(e^{j\hat{\omega}})\)</span> be the DTFT of <span class="math notranslate nohighlight">\(w_{\lambda}[n] \delta_N[n]\)</span>.
+Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\Delta_{N, w_{\lambda}}(e^{j\hat{\omega}})
+&amp;= 
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] \delta_N[n] e^{-j\hat{\omega} n} 
+\\
+&amp;=
+\sum_{k=-\infty}^{\infty} \lambda^{|Nk|} e^{-j\hat{\omega} Nk} 
+\\
+&amp;=
+\frac{1 - \lambda^{2N}}{1-2\lambda^N \cos(N\hat{\omega}) + \lambda^{2N}}
+\\
+&amp; = W_{\lambda^{N}}(e^{jN\hat{\omega}}).
+\end{align*}\]</div>
+<p>It is easy to see that <span class="math notranslate nohighlight">\(W_{\lambda^{N}}(e^{jN\hat{\omega}})\)</span> behaves
+similar to <span class="math notranslate nohighlight">\(W_{\lambda}(e^{\hat{\omega}})\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(W_{\lambda^{N}}(e^{jN\hat{\omega}})\)</span> is periodic in <span class="math notranslate nohighlight">\(\hat\omega\)</span> with
+period <span class="math notranslate nohighlight">\(\frac{2\pi}{N}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
+W_{\lambda^{N}}(e^{jN\hat{\omega}}) = \begin{cases}
+\infty, &amp; \hat\omega = 0 \bmod \frac{2\pi}{N} \\
+0 &amp; \hat\omega \neq 0 \bmod \frac{2\pi}{N},
+\end{cases}\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} \frac{1}{2\pi}
+\int_{-\pi}^{\pi} W_{\lambda^{N}}(e^{jN\hat{\omega}}) \,
+d\hat{\omega} = 1\)</span>.</p></li>
+</ul>
+<p>As a matter of fact, we may express <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
+W_{\lambda^{N}}(e^{jN\hat{\omega}})\)</span> in terms of the Dirac delta
+function <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} 
+\lim_{\lambda \rightarrow 1} W_{\lambda^{N}}(e^{jN\hat{\omega}}) 
+= 
+\frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})}
+\right).  
+\end{equation*}\]</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>This however only holds at the limit. That is,
+<span class="math notranslate nohighlight">\(W_{\lambda^{N}}(e^{jN\hat{\omega}}) 
+\neq \frac{2\pi}{N} \sum_{k = 0}^{N-1} 
+W_{\lambda}\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})} \right)\)</span>
+for any <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>.</p>
+</div>
+<p>As a result, the DTFT $\displaystyle \Delta_N (e^{j\hat{\omega}}) =
+\lim_{\lambda \rightarrow 1} W_{\lambda^{N}}(e^{jN\hat{\omega}}) =
+\frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} -
+\frac{2\pi k}{N})} \right). In other words, we have the DTFT mapping</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\delta_N[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow}
+~~ \frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})}
+\right)
 \end{equation*}\]</div>
 </section>
 </section>
@@ -611,6 +675,7 @@ u[n] ~~
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">2.4.3. Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span></a></li>
 </ul>
   </nav></div>
 

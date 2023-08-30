@@ -123,12 +123,12 @@ U_{w_{\lambda}}(e^{j\hat{\omega}})
   \lambda^2} \right).
 \end{equation}
 ```
-Since $\displaystyle \frac{1}{2}  \left(
+Since $\displaystyle \lim_{\lambda \rightarrow 1} \frac{1}{2}  \left(
   1 - \frac{2j\lambda \sin\hat{\omega}}{1-2\lambda \cos\hat{\omega} +
   \lambda^2} \right) = \begin{cases}
   \frac{1}{2}, & \hat{\omega} = 0 \bmod 2\pi \\
-  \frac{1}{1-e^{-j\hat{\omega}}}, &  \hat{\omega} \neq 0 \bmod 2\pi
-  \end{cases}$, taking limit as $\lambda\rightarrow 1$ on both sides
+  \frac{1}{1-e^{-j\hat{\omega}}}, &  \hat{\omega} \neq 0 \bmod 2\pi,
+  \end{cases}$ taking limit as $\lambda\rightarrow 1$ on both sides
   of {eq}`e:UasW` gives
 \begin{equation*}
 U (e^{j\hat{\omega}}) = \pi \delta(e^{j\hat{\omega}}) + 
@@ -151,4 +151,61 @@ In summary, we have
 u[n] ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow} 
 ~~ \pi \delta(e^{j\hat{\omega}}) + \frac{1}{1-e^{-j\hat{\omega}}}
+\end{equation*}
+
+## Impulse train $\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]$
+Note that $\delta_N[n]$ is periodic with period $N$. Let $\Delta_{N,
+w_{\lambda}}(e^{j\hat{\omega}})$ be the DTFT of $w_{\lambda}[n] \delta_N[n]$. 
+Then
+\begin{align*}
+\Delta_{N, w_{\lambda}}(e^{j\hat{\omega}})
+&= 
+\sum_{n=-\infty}^{\infty} w_{\lambda}[n] \delta_N[n] e^{-j\hat{\omega} n} 
+\\
+&=
+\sum_{k=-\infty}^{\infty} \lambda^{|Nk|} e^{-j\hat{\omega} Nk} 
+\\
+&=
+\frac{1 - \lambda^{2N}}{1-2\lambda^N \cos(N\hat{\omega}) + \lambda^{2N}}
+\\
+& = W_{\lambda^{N}}(e^{jN\hat{\omega}}).
+\end{align*}
+It is easy to see that $W_{\lambda^{N}}(e^{jN\hat{\omega}})$ behaves
+similar to $W_{\lambda}(e^{\hat{\omega}})$:
+* $W_{\lambda^{N}}(e^{jN\hat{\omega}})$ is periodic in $\hat\omega$ with
+  period $\frac{2\pi}{N}$,
+* $\displaystyle \lim_{\lambda \rightarrow 1} 
+  W_{\lambda^{N}}(e^{jN\hat{\omega}}) = \begin{cases}
+  \infty, & \hat\omega = 0 \bmod \frac{2\pi}{N} \\
+  0 & \hat\omega \neq 0 \bmod \frac{2\pi}{N},
+  \end{cases}$ and
+* $\displaystyle \lim_{\lambda \rightarrow 1} \frac{1}{2\pi}
+  \int_{-\pi}^{\pi} W_{\lambda^{N}}(e^{jN\hat{\omega}}) \,
+  d\hat{\omega} = 1$.
+
+As a matter of fact, we may express $\lim_{\lambda \rightarrow 1}
+W_{\lambda^{N}}(e^{jN\hat{\omega}})$ in terms of the Dirac delta
+function $\delta(e^{j\hat{\omega}})$: 
+\begin{equation*} 
+\lim_{\lambda \rightarrow 1} W_{\lambda^{N}}(e^{jN\hat{\omega}}) 
+= 
+\frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})}
+\right).  
+\end{equation*} 
+```{caution} 
+This however only holds at the limit. That is, 
+$W_{\lambda^{N}}(e^{jN\hat{\omega}}) 
+\neq \frac{2\pi}{N} \sum_{k = 0}^{N-1} 
+W_{\lambda}\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})} \right)$
+for any $\lambda \in (0,1)$.
+``` 
+As a result, the DTFT $\displaystyle \Delta_N (e^{j\hat{\omega}}) =
+\lim_{\lambda \rightarrow 1} W_{\lambda^{N}}(e^{jN\hat{\omega}}) =
+\frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} -
+\frac{2\pi k}{N})} \right). In other words, we have the DTFT mapping
+\begin{equation*}
+\delta_N[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow}
+~~ \frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})}
+\right)
 \end{equation*}
