@@ -59,7 +59,7 @@
   -
 
 * - $\displaystyle \sin(\hat{\omega}_0 n)$
-  - $\displaystyle \frac{\pi}{j} \left[ \delta(e^{j(\hat{\omega}-\hat{\omega}_0)}) + 
+  - $\displaystyle \frac{\pi}{j} \left[ \delta(e^{j(\hat{\omega}-\hat{\omega}_0)}) - 
     \delta(e^{j(\hat{\omega}+\hat{\omega}_0)}) \right]$
   -
   

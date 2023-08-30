@@ -58,7 +58,8 @@ By the Euler identity and linearity of DTFT, we get
 \\
 \sin(\hat{\omega}_0 n) ~~
 &\stackrel{\text{DTFT}}{\longleftrightarrow} 
-~~ -j\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) + j \pi \delta
+~~ \frac{\pi}{j} \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) -
+\frac{\pi}{j} \delta
 (e^{j(\hat{\omega}+\hat{\omega}_0)})
 \end{align*}
 
