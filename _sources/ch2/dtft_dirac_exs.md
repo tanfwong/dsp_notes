@@ -39,4 +39,21 @@ e^{j\hat{\omega}_0 n} ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow} 
 ~~ 2\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)})
 \end{equation*}
-
+For the case of $\hat{\omega}_0 = 0$, we have
+\begin{equation*}
+1 ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ 2\pi \delta (e^{j\hat{\omega}})
+\end{equation*}
+By the Euler identity and linearity of DTFT, we get
+\begin{align*}
+\cos(\hat{\omega}_0 n) ~~
+&\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ \pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) + \pi \delta
+(e^{j(\hat{\omega}+\hat{\omega}_0)})
+\\
+\sin(\hat{\omega}_0 n) ~~
+&\stackrel{\text{DTFT}}{\longleftrightarrow} 
+~~ -j\pi \delta (e^{j(\hat{\omega}-\hat{\omega}_0)}) + j \pi \delta
+(e^{j(\hat{\omega}+\hat{\omega}_0)})
+\end{align*}
