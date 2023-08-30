@@ -369,6 +369,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">2.4.3. Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-periodic-x-n-with-period-n">2.4.4. General periodic <span class="math notranslate nohighlight">\(x[n]\)</span> with period <span class="math notranslate nohighlight">\(N\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -604,6 +605,75 @@ for any <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>.
 \right)
 \end{equation*}\]</div>
 </section>
+<section id="general-periodic-x-n-with-period-n">
+<h2><span class="section-number">2.4.4. </span>General periodic <span class="math notranslate nohighlight">\(x[n]\)</span> with period <span class="math notranslate nohighlight">\(N\)</span><a class="headerlink" href="#general-periodic-x-n-with-period-n" title="Permalink to this headline">#</a></h2>
+<p>Note that we can write <span class="math notranslate nohighlight">\(\displaystyle x[n] = \sum_{k=0}^{N-1} x[k] \delta_N[n-k]\)</span>.
+Hence, by the linearity and time shifting properties, the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span>
+of <span class="math notranslate nohighlight">\(x[n]\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+X(e^{j\hat{\omega}})
+&amp;=
+\sum_{k=0}^{N-1} x[k] e^{-j \hat{\omega} k} \cdot
+\sum_{l = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
+\\
+&amp;=
+2\pi \sum_{l = 0}^{N-1} \underbrace{\left( \frac{1}{N} \sum_{k=0}^{N-1} x[k]
+e^{-j\frac{2\pi l k}{N}} \right)}_{a_l}
+\delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right).
+\end{align*}\]</div>
+<p>In summary, we have just established the following DTFT mapping for
+any periodic <span class="math notranslate nohighlight">\(x[n]\)</span> of period <span class="math notranslate nohighlight">\(N\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+x[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow}
+~~ 2\pi \sum_{l = 0}^{N-1} a_l \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}
+\right)
+\end{equation*}\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul>
+<li><p>The coefficients <span class="math notranslate nohighlight">\(a_0, a_1, \ldots, a_{N-1}\)</span> are referred to as the
+<em>discrete Fourier series (DFS)</em> coefficients of the periodic <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>The inverse DTFT formula <a class="reference internal" href="dtft.html#equation-e-idtft">(2.2)</a> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x[n]
+  &amp;=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat{\omega}})
+  e^{j\hat{\omega}n} \, d\hat{\omega}
+  \\
+  &amp;=
+  \sum_{l=0}^{N-1} a_l \int_{-\pi}^{\pi} e^{j\hat{\omega}n}
+  \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
+  \, d\hat{\omega}
+  \\
+  &amp;=
+  \sum_{l=0}^{N-1} a_l e^{j \frac{2\pi ln}{N}}
+  &amp; (\text{sifting property of periodic Dirac delta}).
+  \end{align*}\]</div>
+</li>
+<li><p>The formulas</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  a_l 
+  &amp;=
+  \frac{1}{N} \sum_{k=0}^{N-1} x[k] e^{-j\frac{2\pi l k}{N}}, 
+  &amp; l=0,1,\ldots, N-1
+  \\
+  x[n]
+  &amp;= 
+  \sum_{l=0}^{N-1} a_l e^{j \frac{2\pi ln}{N}},
+  &amp; n=0,1,\ldots, N-1
+  \end{align*}\]</div>
+<p>are the DFS <em>analysis</em> and <em>synthesis</em> formula, respectively. They
+provide a shortcut to go directly between the periodic signal <span class="math notranslate nohighlight">\(x[n]\)</span>
+and its DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}})\)</span></p>
+</li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -676,6 +746,7 @@ for any <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sinusoid-x-n-e-j-hat-omega-0-n">2.4.1. Sinusoid <span class="math notranslate nohighlight">\(x[n] = e^{j\hat{\omega}_0 n}\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-u-n">2.4.2. Unit step <span class="math notranslate nohighlight">\(u[n]\)</span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">2.4.3. Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-periodic-x-n-with-period-n">2.4.4. General periodic <span class="math notranslate nohighlight">\(x[n]\)</span> with period <span class="math notranslate nohighlight">\(N\)</span></a></li>
 </ul>
   </nav></div>
 

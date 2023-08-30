@@ -209,3 +209,62 @@ As a result, the DTFT $\displaystyle \Delta_N (e^{j\hat{\omega}}) =
 ~~ \frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi k}{N})}
 \right)
 \end{equation*}
+
+## General periodic $x[n]$ with period $N$
+Note that we can write $\displaystyle x[n] = \sum_{k=0}^{N-1} x[k] \delta_N[n-k]$.
+Hence, by the linearity and time shifting properties, the DTFT $X(e^{j\hat{\omega}})$
+of $x[n]$ is given by
+\begin{align*}
+X(e^{j\hat{\omega}})
+&=
+\sum_{k=0}^{N-1} x[k] e^{-j \hat{\omega} k} \cdot
+\sum_{l = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
+\\
+&=
+2\pi \sum_{l = 0}^{N-1} \underbrace{\left( \frac{1}{N} \sum_{k=0}^{N-1} x[k]
+e^{-j\frac{2\pi l k}{N}} \right)}_{a_l}
+\delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right).
+\end{align*}
+In summary, we have just established the following DTFT mapping for
+any periodic $x[n]$ of period $N$:
+\begin{equation*}
+x[n] ~~
+\stackrel{\text{DTFT}}{\longleftrightarrow}
+~~ 2\pi \sum_{l = 0}^{N-1} a_l \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}
+\right)
+\end{equation*}
+```{tip}
+* The coefficients $a_0, a_1, \ldots, a_{N-1}$ are referred to as the
+  *discrete Fourier series (DFS)* coefficients of the periodic $x[n]$.
+* The inverse DTFT formula {eq}`e:idtft` gives
+  \begin{align*}
+  x[n]
+  &=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat{\omega}})
+  e^{j\hat{\omega}n} \, d\hat{\omega}
+  \\
+  &=
+  \sum_{l=0}^{N-1} a_l \int_{-\pi}^{\pi} e^{j\hat{\omega}n}
+  \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
+  \, d\hat{\omega}
+  \\
+  &=
+  \sum_{l=0}^{N-1} a_l e^{j \frac{2\pi ln}{N}}
+  & (\text{sifting property of periodic Dirac delta}).
+  \end{align*}
+* The formulas
+  \begin{align*}
+  a_l 
+  &=
+  \frac{1}{N} \sum_{k=0}^{N-1} x[k] e^{-j\frac{2\pi l k}{N}}, 
+  & l=0,1,\ldots, N-1
+  \\
+  x[n]
+  &= 
+  \sum_{l=0}^{N-1} a_l e^{j \frac{2\pi ln}{N}},
+  & n=0,1,\ldots, N-1
+  \end{align*}
+  are the DFS *analysis* and *synthesis* formula, respectively. They
+  provide a shortcut to go directly between the periodic signal $x[n]$
+  and its DTFT $X(e^{j\hat{\omega}})$
+```
