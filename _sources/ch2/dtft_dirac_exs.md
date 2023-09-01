@@ -225,7 +225,7 @@ X(e^{j\hat{\omega}})
 \\
 &=
 2\pi \sum_{l = 0}^{N-1} \bigg( \underbrace{\frac{1}{N} \sum_{k=0}^{N-1} x[k]
-e^{-j\frac{2\pi l k}{N}} }_{a_l} \bigg)
+e^{-j\frac{2\pi l k}{N}} }_{\displaystyle a_l} \bigg)
 \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right).
 \end{align*}
 In summary, we have just established the following DTFT mapping for
