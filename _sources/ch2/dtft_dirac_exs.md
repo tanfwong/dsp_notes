@@ -8,7 +8,7 @@
   X_{w_{\lambda}}(e^{j\hat{\omega}})$ exists for all $\lambda \in (0,1)$.
   As discussed in {numref}`sec:wlimit`, we may define
   $\lim_{\lambda \rightarrow 1} X_{w_{\lambda}}(e^{j\hat{\omega}})$
-  (if the limit exists) as the DTFT $X(e^{j\hat{\omega}})$ )$ of $x[n]$. 
+  (if the limit exists) as the DTFT $X(e^{j\hat{\omega}})$ of $x[n]$. 
 * Note that the limit of $X_{w_{\lambda}}(e^{j\hat{\omega}})$ may not
   exist for any general $x[n]$. Even if it exists, calculating it may
   be difficult. Luckily, for some of the most common infinite-energy
