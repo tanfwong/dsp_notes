@@ -108,12 +108,12 @@
 * A much nicer notion for the DTFT mapping $x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
    X(e^{j\hat\omega})$ can be obtained using the *Riesz-Fisher
    theorem*  {cite}`rudin1987real`:
-   ```{admonition} Riesz-Fisher Theorem
+   ```{admonition} Riesz-Fisher 
    :class: tip
    For every finite-energy signal $x[n] \in \ell^2$, there is a
    *unique* DTFT $X(e^{j\hat\omega}) \in L^2[-\pi,\pi]$ such that the
    inverse DTFT formula {eq}`e:idtft` holds. The forward DTFT formula
-   {eq}`e:idtft` also holds with the convergence of the infintie
+   {eq}`e:dtft` also holds with the convergence of the infintie
    series on the RHS interpreted in the sense that
    \begin{equation*}
    \lim_{N \rightarrow \infty} \frac{1}{2\pi} \int_{-\pi}^{\pi}
