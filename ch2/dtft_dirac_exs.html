@@ -533,7 +533,9 @@ However, the exact value of the term at <span class="math notranslate nohighligh
 is immaterial (as long as it is finite) because any such value can
 be abosrbed into the infinite value of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\)</span>
 at the same <span class="math notranslate nohighlight">\(\hat{\omega}\)</span>. Hence, for convenience, we may simply write
-<span class="math notranslate nohighlight">\(\frac{1}{1-e^{-j\hat{\omega}}}\)</span> as in above.</p>
+<span class="math notranslate nohighlight">\(\frac{1}{1-e^{-j\hat{\omega}}}\)</span> as in above with the implicit
+understanding that the term’s value at <span class="math notranslate nohighlight">\(\hat{\omega} = 0 \bmod 2\pi\)</span> is,
+say, <span class="math notranslate nohighlight">\(0\)</span>.</p>
 </div>
 <p>In summary, we have</p>
 <div class="amsmath math notranslate nohighlight">
@@ -619,8 +621,8 @@ X(e^{j\hat{\omega}})
 \sum_{l = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
 \\
 &amp;=
-2\pi \sum_{l = 0}^{N-1} \underbrace{\left( \frac{1}{N} \sum_{k=0}^{N-1} x[k]
-e^{-j\frac{2\pi l k}{N}} \right)}_{a_l}
+2\pi \sum_{l = 0}^{N-1} \bigg( \underbrace{\frac{1}{N} \sum_{k=0}^{N-1} x[k]
+e^{-j\frac{2\pi l k}{N}} }_{a_l} \bigg)
 \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right).
 \end{align*}\]</div>
 <p>In summary, we have just established the following DTFT mapping for

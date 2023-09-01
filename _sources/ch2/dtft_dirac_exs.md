@@ -145,7 +145,9 @@ However, the exact value of the term at $\hat{\omega} = 0 \bmod 2\pi$
   is immaterial (as long as it is finite) because any such value can
   be abosrbed into the infinite value of $\delta(e^{j\hat{\omega}})$
   at the same $\hat{\omega}$. Hence, for convenience, we may simply write
-  $\frac{1}{1-e^{-j\hat{\omega}}}$ as in above.
+  $\frac{1}{1-e^{-j\hat{\omega}}}$ as in above with the implicit
+  understanding that the term's value at $\hat{\omega} = 0 \bmod 2\pi$ is,
+  say, $0$.
 ```
 In summary, we have
 \begin{equation*}
@@ -222,8 +224,8 @@ X(e^{j\hat{\omega}})
 \sum_{l = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
 \\
 &=
-2\pi \sum_{l = 0}^{N-1} \underbrace{\left( \frac{1}{N} \sum_{k=0}^{N-1} x[k]
-e^{-j\frac{2\pi l k}{N}} \right)}_{a_l}
+2\pi \sum_{l = 0}^{N-1} \bigg( \underbrace{\frac{1}{N} \sum_{k=0}^{N-1} x[k]
+e^{-j\frac{2\pi l k}{N}} }_{a_l} \bigg)
 \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right).
 \end{align*}
 In summary, we have just established the following DTFT mapping for
