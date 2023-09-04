@@ -400,17 +400,51 @@ become the forward and inverse DTFT formulas, <a class="reference internal" href
 <a class="reference internal" href="dtft.html#equation-e-idtft">(2.2)</a>, respectively. As a result, all the convergence
 results for DTFT apply to FS under this translation.</p></li>
 <li><p>In particular, the Riesz-Fisher theorem tells us that for each (up
-to an equivalence class)
-periodic <span class="math notranslate nohighlight">\(s(t) \in L^2\left[-\frac{T}{2}, \frac{T}{2}\right]\)</span>, there is a
+to an equivalence class) periodic <span class="math notranslate nohighlight">\(s(t) \in L^2\left[-\frac{T}{2},
+\frac{T}{2}\right]\)</span> (i.e., <span class="math notranslate nohighlight">\(s(t)\)</span> has finite <em>power</em>), there is a
 unique FS coefficient sequence <span class="math notranslate nohighlight">\(\{a_n\}_{n \in \mathbb{Z}} \in
 \ell^2\)</span> such that both FS synthesis and analysis formulas,
 <a class="reference internal" href="#equation-e-fs-syn">(2.9)</a> and <a class="reference internal" href="#equation-e-fs-ana">(2.10)</a>, hold with the convergence in the
 infinite series on the RHS of the synthesis formula interpreted as</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  \lim_{N \rightarrow \infty} \frac{1}{T} \int_{-T/2}^{T/2} \left|
-  s(t) - \sum_{n=-N}^{N} a_n e^{j\frac{2\pi n t}{T}} \right|^2 dt = 0.
+\[\begin{equation*} 
+  \lim_{N \rightarrow \infty} \frac{1}{T}
+  \int_{-T/2}^{T/2} \left| s(t) - \sum_{n=-N}^{N} a_n e^{j\frac{2\pi n
+  t}{T}} \right|^2 dt = 0.  
   \end{equation*}\]</div>
+<p>The power of <span class="math notranslate nohighlight">\(s(t)\)</span> is given by <span class="math notranslate nohighlight">\(\displaystyle \frac{1}{T} 
+\int_{-T/2}^{T/2} |s(t)|^2 dt = \sum_{n=-\infty}^{\infty} |a_n|^2\)</span>.</p>
+</li>
+<li><p>The extension of DTFT for infinite-energy signals also translates to
+a similar extension of FS for FS coefficient sequences <span class="math notranslate nohighlight">\(\{a_n\}_{n
+\in \mathbb{Z}} \notin \ell^2\)</span> by the change of variable <span class="math notranslate nohighlight">\(\hat\omega
+= -\frac{2\pi t}{T}\)</span> and the substitutions <span class="math notranslate nohighlight">\(a_n \leftarrow x[n]\)</span>
+and <span class="math notranslate nohighlight">\(x\left( -\frac{2\pi t}{T} \right) \leftarrow X(e^{j\hat\omega})\)</span>.</p>
+<p><strong>Example</strong>:
+From the example in <a class="reference internal" href="dtft_dirac_exs.html#sec-dtft-ex1"><span class="std std-numref">Section 2.4.1</span></a> and
+linearity, we have <span class="math notranslate nohighlight">\(\frac{1}{T} \stackrel{\text{DTFT}}{\longleftrightarrow} 
+\frac{2\pi}{T} \delta (e^{j\hat{\omega}})\)</span>. By the above change of
+variable, the FS coefficients of the periodic (period <span class="math notranslate nohighlight">\(=T\)</span>) signal <span class="math notranslate nohighlight">\(\frac{2\pi}{T} 
+\delta \left(e^{-j \frac{2\pi t}{T}}\right) = \frac{2\pi}{T} \delta \left(e^{j
+\frac{2\pi t}{T}} \right)\)</span> (recall <span class="math notranslate nohighlight">\(\delta (e^{j\hat{\omega}})\)</span> is an even
+function) are <span class="math notranslate nohighlight">\(a_n = \frac{1}{T}\)</span> for all <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span>. Hence,
+the FS synthesis formula  <a class="reference internal" href="#equation-e-fs-syn">(2.9)</a> becomes</p>
+<div class="math notranslate nohighlight" id="equation-e-poisson">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-e-poisson" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{2\pi}{T} \delta \left(e^{j \frac{2\pi t}{T}} \right)
+= \frac{1}{T} \sum_{n=-\infty}^{\infty} e^{j\frac{2\pi n t}{T}}
+\end{equation}\]</div>
+<p>which is often referred to as the <strong><em>Poisson sum formula</em></strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that the Poisson sum formula <a class="reference internal" href="#equation-e-poisson">(2.11)</a> above
+is simply a mnemonic for the limiting process of the mapping between
+the window signal <span class="math notranslate nohighlight">\(w_{\lambda}[n]\)</span> and its DTFT
+<span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span>, i.e., <span class="math notranslate nohighlight">\(\displaystyle
+W_{\lambda}\left(e^{-j \frac{2\pi t}{T}} \right) = 
+\sum_{n=-\infty}^{\infty} \lambda^{|n|} e^{j\frac{2\pi n
+t}{T}}\)</span>, as <span class="math notranslate nohighlight">\(\lambda \rightarrow 1\)</span>.</p>
+</div>
 </li>
 </ul>
 </section>

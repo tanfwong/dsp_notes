@@ -16,6 +16,7 @@
   X_{w_{\lambda}}(e^{j\hat{\omega}})$ in terms of
   $\delta(e^{j\hat{\omega}})$ as shown below.
 
+(sec:dtft_ex1)=
 ## Sinusoid $x[n] = e^{j\hat{\omega}_0 n}$
 Because
 \begin{align*} 
