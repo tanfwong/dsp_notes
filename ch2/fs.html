@@ -417,10 +417,16 @@ infinite series on the RHS of the synthesis formula interpreted as</p>
 </li>
 <li><p>The extension of DTFT for infinite-energy signals also translates to
 a similar extension of FS for FS coefficient sequences <span class="math notranslate nohighlight">\(\{a_n\}_{n
-\in \mathbb{Z}} \notin \ell^2\)</span> by the change of variable <span class="math notranslate nohighlight">\(\hat\omega
-= -\frac{2\pi t}{T}\)</span> and the substitutions <span class="math notranslate nohighlight">\(a_n \leftarrow x[n]\)</span>
+\in \mathbb{Z}} \notin \ell^2\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In fact, we may use the DTFT tables to determine the FS coefficients of
+some common periodic signals by the change of variable <span class="math notranslate nohighlight">\(\hat\omega
+= -\frac{2\pi t}{T}\)</span> and the association <span class="math notranslate nohighlight">\(a_n \leftarrow x[n]\)</span>
 and <span class="math notranslate nohighlight">\(x\left( -\frac{2\pi t}{T} \right) \leftarrow X(e^{j\hat\omega})\)</span>.</p>
-<p><strong>Example</strong>:
+</div>
+</li>
+<li><p><strong>Example</strong>:
 From the example in <a class="reference internal" href="dtft_dirac_exs.html#sec-dtft-ex1"><span class="std std-numref">Section 2.4.1</span></a> and
 linearity, we have <span class="math notranslate nohighlight">\(\frac{1}{T} \stackrel{\text{DTFT}}{\longleftrightarrow} 
 \frac{2\pi}{T} \delta (e^{j\hat{\omega}})\)</span>. By the above change of

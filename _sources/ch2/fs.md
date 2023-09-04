@@ -47,11 +47,16 @@ The complex numbers $\{a_n\}_{n \in \mathbb{Z}}$ are called the
 
 * The extension of DTFT for infinite-energy signals also translates to
   a similar extension of FS for FS coefficient sequences $\{a_n\}_{n
-  \in \mathbb{Z}} \notin \ell^2$ by the change of variable $\hat\omega
-  = -\frac{2\pi t}{T}$ and the substitutions $a_n \leftarrow x[n]$
-  and $x\left( -\frac{2\pi t}{T} \right) \leftarrow X(e^{j\hat\omega})$.
+  \in \mathbb{Z}} \notin \ell^2$. 
 
-  **Example**: 
+  ```{tip}
+  In fact, we may use the DTFT tables to determine the FS coefficients of 
+  some common periodic signals by the change of variable $\hat\omega
+  = -\frac{2\pi t}{T}$ and the association $a_n \leftarrow x[n]$
+  and $x\left( -\frac{2\pi t}{T} \right) \leftarrow X(e^{j\hat\omega})$.
+  ```
+
+* **Example**: 
   From the example in {numref}`sec:dtft_ex1` and
   linearity, we have $\frac{1}{T} \stackrel{\text{DTFT}}{\longleftrightarrow} 
   \frac{2\pi}{T} \delta (e^{j\hat{\omega}})$. By the above change of
