@@ -127,7 +127,7 @@
    ~~~{math}
    :label: e:parseval
    \begin{equation}
-   \sum_{n=-\infty}^{N} x[n] y^*[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+   \sum_{n=-\infty}^{\infty} x[n] y^*[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}
    X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega
    \end{equation}
    ~~~
@@ -140,7 +140,7 @@
   ```{math}
   :label: e:energy
   \begin{equation}
-  \sum_{n=-\infty}^{N} |x[n] |^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+  \sum_{n=-\infty}^{\infty} |x[n] |^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi}
   \left| X(e^{j\hat\omega}) \right|^2  d\hat\omega.
   \end{equation}
   ```

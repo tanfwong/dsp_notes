@@ -519,7 +519,7 @@ signals and the (Hilbert) space <span class="math notranslate nohighlight">\(L^2
 square-integrable DTFTs satisfying the <em>Parseval theorem</em>:</p>
 <div class="math notranslate nohighlight" id="equation-e-parseval">
 <span class="eqno">(2.3)<a class="headerlink" href="#equation-e-parseval" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\sum_{n=-\infty}^{N} x[n] y^*[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+\sum_{n=-\infty}^{\infty} x[n] y^*[n] = \frac{1}{2\pi} \int_{-\pi}^{\pi}
 X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega
 \end{equation}\]</div>
 <p>for any <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
@@ -530,7 +530,7 @@ Y(e^{j\hat\omega})\)</span>.</p>
 <li><p>Note that a special case of the Parseval theorem <a class="reference internal" href="#equation-e-parseval">(2.3)</a> is</p>
 <div class="math notranslate nohighlight" id="equation-e-energy">
 <span class="eqno">(2.4)<a class="headerlink" href="#equation-e-energy" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\sum_{n=-\infty}^{N} |x[n] |^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi}
+\sum_{n=-\infty}^{\infty} |x[n] |^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi}
 \left| X(e^{j\hat\omega}) \right|^2  d\hat\omega.
 \end{equation}\]</div>
 <p>That is, we may calculate the energy of the signal <span class="math notranslate nohighlight">\(x[n]\)</span> in the time domain using the
