@@ -129,7 +129,7 @@ terms of $\delta(e^{j\hat{\omega}})$:
      $\hat{\omega} = \hat{\omega}_0$,
      \begin{equation*}
      \int_{-\pi}^{\pi}
-     \delta(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta =
+     \delta(e^{j\theta}) X(e^{j(\hat{\omega}_0-\theta)}) \, d\theta =
      X(e^{j\hat{\omega}_0}).
      \end{equation*}
       This is often referred to as the *sifting property* of the Dirac delta.
@@ -153,6 +153,7 @@ terms of $\delta(e^{j\hat{\omega}})$:
     $\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}$. It turns out that
     there is a valid distribution, playing the role of
     $\delta(e^{j\hat{\omega}})$, that is the limit (in some sense)
-    of the sequence of distributiions corresponding to 
-    $\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}$.
+    of the sequence of distributions corresponding to 
+    $\frac{W_{\lambda}(e^{j\hat\omega})}{2\pi}$ as $\lambda
+    \rightarrow 1$.
   ```

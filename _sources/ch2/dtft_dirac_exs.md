@@ -206,7 +206,7 @@ for any $\lambda \in (0,1)$.
 As a result, the DTFT $\displaystyle \Delta_N (e^{j\hat{\omega}}) =
 \lim_{\lambda \rightarrow 1} W_{\lambda^{N}}(e^{jN\hat{\omega}}) =
 \frac{2\pi}{N} \sum_{k = 0}^{N-1} \delta\left(e^{j(\hat{\omega} -
-\frac{2\pi k}{N})} \right). In other words, we have the DTFT mapping
+\frac{2\pi k}{N})} \right)$. In other words, we have the DTFT mapping
 \begin{equation*}
 \delta_N[n] ~~
 \stackrel{\text{DTFT}}{\longleftrightarrow}
@@ -268,7 +268,7 @@ x[n] ~~
   \sum_{l=0}^{N-1} a_l e^{j \frac{2\pi ln}{N}},
   & n=0,1,\ldots, N-1
   \end{align*}
-  are the DFS *analysis* and *synthesis* formula, respectively. They
+  are the DFS *analysis* and *synthesis* formulas, respectively. They
   provide a shortcut to go directly between the periodic signal $x[n]$
   and its DTFT $X(e^{j\hat{\omega}})$
 ```
