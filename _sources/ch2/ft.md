@@ -58,3 +58,46 @@ For a continuous-time signal $x(t)$:
   
   These results indeed provide a meaning to the mapping 
   $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$.
+
+* Again, as in the case of DTFT, restricting $x(t) \in L^1$ and its FT
+  $X(\omega) \in L^1$ is rather limiting. Extension of FT to cover all
+  finite-energy signals is trickier than in the case of DTFT because
+  $L^2 \not\subset L^1$. That is, there may be finite-energy FT
+  $X(\omega)$ such that the integral $\frac{1}{2\pi}
+  \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega$ does not
+  exist (hence the inverse FT formula cannot hold)$! Nevertheless,
+  this difficulty can be resolved by an approach similar to the
+  windowing idea used in DTFT. The resulting extension is often called
+  the *Plancherel theorem* {cite}`rudin1987real`:
+  ```{admonition} Plancherel
+   :class: tip
+   For every finite-energy signal $x(t) \in L^2$, there is a unique
+   square-integrable FT $X(\omega) \in L^2$ such that both the forward
+   and inverse FT formulas, {eq}`e:ft` and {eq}`e:ift` hold with
+   equality interpreted respectively as
+   \begin{align*}
+   \lim_{T \rightarrow \infty} \frac{1}{2\pi} \int_{-\infty}^{\infty}
+   \left| X(\omega) - \int_{-T}^{T} x(t) e^{-j\omega t} \, dt \right|^2
+   \, d\omega &= 0 
+   \\
+   \lim_{\Omega \rightarrow \infty} \int_{-\infty}^{\infty}
+   \left| x(t) - \int_{-\Omega}^{\Omega} X(\omega) e^{j\omega t} \, d\omega \right|^2
+   \, dt &= 0. 
+   \end{align*}
+   In addition, the mapping $x(t)
+   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$ is an
+   *isomorphism* between the (Hilbert) space of finite-energy signals
+   and the (Hilbert) space of finite-energy FTs, satisfying the
+   Parseval theorem:
+   \begin{equation*}
+   \int_{-\infty}^{\infty} x(t) y^*(t)\, dt = \frac{1}{2\pi}
+   \int_{-\infty}^{\infty} X(\omega) Y^*(\omega) \, d\omega
+   \end{equation*}
+   for every $x(t)
+   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$ and $y(t)
+   \stackrel{\text{FT}}{\longleftrightarrow} Y(\omega)$. 
+   ```
+ * As a special case of the Parseval theorem, we have
+   $\int_{-\infty}^{\infty} |x(t)|^2\, dt = \frac{1}{2\pi} \int_{-\infty}^{\infty}
+   |X(\omega)|^2 \, d\omega$, i.e., the energy of a signal can be
+   calculated in the time or frequency domain.
