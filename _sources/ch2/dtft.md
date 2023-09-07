@@ -1,5 +1,5 @@
 # Discrete-Time Fourier Transform (DTFT)
-
+For a discrete-time signal $x{n]$:
 * **<u>Forward DTFT</u>**:
   ```{math}
   :label: e:dtft
@@ -34,7 +34,7 @@
 * $x[n] \in \ell^1$ implies $x[n] \in \ell^2$.
 * $X(e^{j\hat\omega}) \in L^2[-\pi,\pi]$ implies $X(e^{j\hat\omega})
 \in L^1[-\pi,\pi]$
-* When considering a DTFT $\tilde{X}(e^{j\hat\omega})$ in
+* When considering a DTFT $X(e^{j\hat\omega})$ in
   $L^p[-\pi,\pi]$ ($p=1,2$), we often do not make any distinction between 
   $X(e^{j\hat\omega})$ and another DTFT $\tilde{X}(e^{j\hat\omega})$
   such that $\frac{1}{2\pi} \int_{-\pi}^{\pi} 

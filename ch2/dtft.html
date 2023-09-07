@@ -171,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="dirac_periodic.html">2.3. Periodic Dirac delta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dtft_dirac_exs.html">2.4. DTFTs of infinite-energy signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fs.html">2.5. Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ft.html">2.6. Continuous-Time Fourieer Transform (FT)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">3. References</a></li>
@@ -382,6 +383,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="discrete-time-fourier-transform-dtft">
 <h1><span class="section-number">2.1. </span>Discrete-Time Fourier Transform (DTFT)<a class="headerlink" href="#discrete-time-fourier-transform-dtft" title="Permalink to this headline">#</a></h1>
+<p>For a discrete-time signal <span class="math notranslate nohighlight">\(x{n]\)</span>:</p>
 <ul>
 <li><p><strong><u>Forward DTFT</u></strong>:</p>
 <div class="math notranslate nohighlight" id="equation-e-dtft">
@@ -421,7 +423,7 @@ denoted by <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L
 <li><p><span class="math notranslate nohighlight">\(x[n] \in \ell^1\)</span> implies <span class="math notranslate nohighlight">\(x[n] \in \ell^2\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span> implies <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})
 \in L^1[-\pi,\pi]\)</span></p></li>
-<li><p>When considering a DTFT <span class="math notranslate nohighlight">\(\tilde{X}(e^{j\hat\omega})\)</span> in
+<li><p>When considering a DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> in
 <span class="math notranslate nohighlight">\(L^p[-\pi,\pi]\)</span> (<span class="math notranslate nohighlight">\(p=1,2\)</span>), we often do not make any distinction between
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> and another DTFT <span class="math notranslate nohighlight">\(\tilde{X}(e^{j\hat\omega})\)</span>
 such that <span class="math notranslate nohighlight">\(\frac{1}{2\pi} \int_{-\pi}^{\pi} 
