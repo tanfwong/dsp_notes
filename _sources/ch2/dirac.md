@@ -32,3 +32,13 @@
   w_{\mu} (t) x(t) = x(t)$ for each fixed $t \in \mathbb{R}$, we may
   define the limit of $X_{w_{\mu}}(\omega)$ as $\mu \rightarrow 0$
   (note again that such a limit may not exist) to be the FT of $x(t)$.
+
+* **Examples**: Calculation of the FTs of the following signals in
+  terms of $\delta(\omega)$ is similar to the DTFT examples given in
+  {numref}`sec:dtft_dirac_exs`. 
+  1. $\displaystyle ~~e^{j\omega_0 t} \stackrel{\text{FT}}{\longleftrightarrow} 2\pi
+     \delta(\omega - \omega_0)$
+  2. $\displaystyle ~~\cos(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
+     \pi \delta(\omega - \omega_0) + \pi \delta(\omega + \omega_0)$
+  3. $\displaystyle ~~\sin(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
+     \frac{\pi}{j} \delta(\omega - \omega_0) - \frac{\pi}{j} \delta(\omega + \omega_0)$

@@ -1,3 +1,4 @@
+(sec:dtft_dirac_exs)=
 # DTFTs of infinite-energy signals
 
 * For any infinite-energy signal $x[n]$ whose signal magnitude
