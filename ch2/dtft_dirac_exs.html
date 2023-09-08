@@ -172,6 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. DTFTs of infinite-energy signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fs.html">2.5. Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ft.html">2.6. Continuous-Time Fourieer Transform (FT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dirac.html">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">3. References</a></li>
@@ -482,8 +483,8 @@ associated with the limiting process.</p></li>
 </ul>
 </div>
 <p>By the time reversal property, <span class="math notranslate nohighlight">\(\displaystyle w_{\lambda}[-n] u[-n]
-  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}^*(e^{j\hat{\omega}}) =
-  \frac{1}{1-\lambda e^{j \hat{\omega}}}\)</span>.</p>
+  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}(e^{-j\hat{\omega}}) =
+  \frac{1}{1-\lambda e^{j \hat{\omega}}} =U_{w_{\lambda}}^*(e^{j\hat{\omega}}) \)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
   \delta[n]\)</span>, taking DTFT on both sides of this equation gives</p>
 <div class="math notranslate nohighlight" id="equation-e-uaddu">

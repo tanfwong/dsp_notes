@@ -88,8 +88,8 @@ U_{w_{\lambda}}(e^{j\hat{\omega}})
   associated with the limiting process.
 ```
 By the time reversal property, $\displaystyle w_{\lambda}[-n] u[-n]
-  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}^*(e^{j\hat{\omega}}) =
-  \frac{1}{1-\lambda e^{j \hat{\omega}}}$. 
+  \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}(e^{-j\hat{\omega}}) =
+  \frac{1}{1-\lambda e^{j \hat{\omega}}} =U_{w_{\lambda}}^*(e^{j\hat{\omega}}) $. 
 
 Since $w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
   \delta[n]$, taking DTFT on both sides of this equation gives
