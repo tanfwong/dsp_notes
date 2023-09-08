@@ -484,19 +484,19 @@ associated with the limiting process.</p></li>
 </div>
 <p>By the time reversal property, <span class="math notranslate nohighlight">\(\displaystyle w_{\lambda}[-n] u[-n]
   \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}(e^{-j\hat{\omega}}) =
-  \frac{1}{1-\lambda e^{j \hat{\omega}}} =U_{w_{\lambda}}^*(e^{j\hat{\omega}}) \)</span>.</p>
+  \frac{1}{1-\lambda e^{j \hat{\omega}}}\)</span>.</p>
 <p>Since <span class="math notranslate nohighlight">\(w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
   \delta[n]\)</span>, taking DTFT on both sides of this equation gives</p>
 <div class="math notranslate nohighlight" id="equation-e-uaddu">
 <span class="eqno">(2.6)<a class="headerlink" href="#equation-e-uaddu" title="Permalink to this equation">#</a></span>\[\begin{equation}
-U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}(e^{-j\hat{\omega}})
 = 
 W_{\lambda}(e^{j\hat{\omega}}) + 1.
 \end{equation}\]</div>
 <p>On the other hand,</p>
 <div class="math notranslate nohighlight" id="equation-e-uminusu">
 <span class="eqno">(2.7)<a class="headerlink" href="#equation-e-uminusu" title="Permalink to this equation">#</a></span>\[\begin{equation}
-U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}(e^{-j\hat{\omega}})
 = 
 \frac{1}{1-\lambda e^{-j\hat{\omega}}} - \frac{1}{1-\lambda
   e^{j\hat{\omega}}}

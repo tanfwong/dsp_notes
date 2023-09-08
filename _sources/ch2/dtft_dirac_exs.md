@@ -89,14 +89,14 @@ U_{w_{\lambda}}(e^{j\hat{\omega}})
 ```
 By the time reversal property, $\displaystyle w_{\lambda}[-n] u[-n]
   \stackrel{\text{DTFT}}{\longleftrightarrow} U_{w_{\lambda}}(e^{-j\hat{\omega}}) =
-  \frac{1}{1-\lambda e^{j \hat{\omega}}} =U_{w_{\lambda}}^*(e^{j\hat{\omega}}) $. 
+  \frac{1}{1-\lambda e^{j \hat{\omega}}}$. 
 
 Since $w_{\lambda}[n] u[n] + w_{\lambda}[-n] u[-n] = w_{\lambda}[n] +
   \delta[n]$, taking DTFT on both sides of this equation gives
 ```{math}
 :label: e:UaddU*
 \begin{equation}
-U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+U_{w_{\lambda}}(e^{j\hat{\omega}}) + U_{w_{\lambda}}(e^{-j\hat{\omega}})
 = 
 W_{\lambda}(e^{j\hat{\omega}}) + 1.
 \end{equation}
@@ -105,7 +105,7 @@ On the other hand,
 ```{math}
 :label: e:UminusU*
 \begin{equation}
-U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}^*(e^{j\hat{\omega}})
+U_{w_{\lambda}}(e^{j\hat{\omega}}) - U_{w_{\lambda}}(e^{-j\hat{\omega}})
 = 
 \frac{1}{1-\lambda e^{-j\hat{\omega}}} - \frac{1}{1-\lambda
   e^{j\hat{\omega}}}
