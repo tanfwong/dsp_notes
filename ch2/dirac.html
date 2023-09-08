@@ -384,6 +384,30 @@ the following counterpart of the window signal in continuous time:</p>
   \end{equation*}\]</div>
 <p>for any <span class="math notranslate nohighlight">\(\mu &gt;0\)</span>.</p>
 </li>
+<li><p>Similar to before, we can define the following (aperiodic) <em>Dirac delta</em>
+“function”:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \delta(\omega) = \lim_{\mu \rightarrow 0}
+\frac{W_{\mu}(\omega)}{2\pi} = \begin{cases}
+ \infty, &amp; \omega = 0  \\
+ 0, &amp; \omega \neq 0 ,
+ \end{cases}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty} \delta(\omega) \, d\omega
+= 1\)</span>, and</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(X(\omega)\)</span> is bounded and continuous at <span class="math notranslate nohighlight">\(\omega = \omega_0\)</span>, then
+<span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty} \delta(\theta)
+X(\omega_0 - \theta) \, d\theta = X(\omega_0)\)</span>,</p></li>
+</ol>
+<p>as a mnemonic to shorthand the limiting processing of considering
+<span class="math notranslate nohighlight">\(w_{\mu} (t) \stackrel{\text{FT}}{\longleftrightarrow}
+W_{\mu}(\omega)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>.</p>
+</li>
+<li><p>For an infinite-energy signal <span class="math notranslate nohighlight">\(x(t)\)</span> that grows only polynomially in
+<span class="math notranslate nohighlight">\(|t|\)</span>, the windowed signal <span class="math notranslate nohighlight">\(w_{\mu} (t) x(t) \in L^1 \cap L^2\)</span> and hence
+has FT <span class="math notranslate nohighlight">\(X_{w_{\mu}}(\omega)\)</span>. Since <span class="math notranslate nohighlight">\(\lim_{\mu \rightarrow 0}
+w_{\mu} (t) x(t) = x(t)\)</span> for each fixed <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>, we may
+define the limit of <span class="math notranslate nohighlight">\(X_{w_{\mu}}(\omega)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>
+(note again that such a limit may not exist) to be the FT of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p></li>
 </ul>
 </section>
 
