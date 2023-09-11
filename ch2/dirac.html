@@ -411,13 +411,62 @@ define the limit of <span class="math notranslate nohighlight">\(X_{w_{\mu}}(\om
 <li><p><strong>Examples</strong>: Calculation of the FTs of the following signals in
 terms of <span class="math notranslate nohighlight">\(\delta(\omega)\)</span> is similar to the DTFT examples given in
 <a class="reference internal" href="dtft_dirac_exs.html#sec-dtft-dirac-exs"><span class="std std-numref">Section 2.4</span></a>.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><span class="math notranslate nohighlight">\(\displaystyle ~~e^{j\omega_0 t} \stackrel{\text{FT}}{\longleftrightarrow} 2\pi
 \delta(\omega - \omega_0)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\cos(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
 \pi \delta(\omega - \omega_0) + \pi \delta(\omega + \omega_0)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\sin(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
 \frac{\pi}{j} \delta(\omega - \omega_0) - \frac{\pi}{j} \delta(\omega + \omega_0)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~u(t) = \begin{cases}
+ 1, &amp; t \geq 0  \\
+ 0, &amp; t &lt; 0 
+ \end{cases} \stackrel{\text{FT}}{\longleftrightarrow} 
+ \pi \delta(\omega) + \frac{1}{j\omega}\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(x(t)\)</span> be a finite-power periodic signal with period
+<span class="math notranslate nohighlight">\(T\)</span>. Hence, <span class="math notranslate nohighlight">\(x(t)\)</span> has the FS expansion
+<span class="math notranslate nohighlight">\(x(t) = \sum_{k=-\infty}^{\infty} a_k e^{j\frac{2\pi k t}{T}}\)</span>,
+where <span class="math notranslate nohighlight">\(a_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>th FS coefficient of <span class="math notranslate nohighlight">\(x(t)\)</span>. By the
+linearity property of FS and Example 1. above, we may
+extend the FT mapping to <span class="math notranslate nohighlight">\(x(t)\)</span> as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+      x(t) \stackrel{\text{FT}}{\longleftrightarrow}  2\pi
+      \sum_{k=-\infty}^{\infty} a_k \delta\left(\omega - \frac{2\pi k
+      t}{T} \right)
+      \end{equation*}\]</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>We have assumed the linearity property of FT extends to the infinite series of the
+FS synthesis formula above. This assumption can be justified in
+this case by first considering the partial sum <span class="math notranslate nohighlight">\(\sum_{k=-N}^{N}
+a_k e^{j\frac{2\pi k t}{T}}\)</span> and then the
+<span class="math notranslate nohighlight">\(L^2[-T/2,T/2]\)</span>-convergence of the partial sum to <span class="math notranslate nohighlight">\(x(t)\)</span> as <span class="math notranslate nohighlight">\(N
+\rightarrow \infty\)</span>.</p>
+</div>
+</li>
+</ol>
+</li>
+<li><p>Similarly, we may extend the FT toolset to handle some
+infinite-energy FTs by considering the following frequency-domain window:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2 + t^2)}~~\stackrel{\text{FT}}{\longleftrightarrow} 
+  ~~ \tilde{W}_{\mu}(\omega) = e^{\mu |\omega|} 
+  \end{equation*}\]</div>
+<p>for any <span class="math notranslate nohighlight">\(\mu &gt;0\)</span>. The same Dirac delta mnemonics 1.-3. can be used</p>
+</li>
+<li><p>For an infinite-energy FT <span class="math notranslate nohighlight">\(X(\omega)\)</span> that grows only polynomially in
+<span class="math notranslate nohighlight">\(|\omega|\)</span>, the windowed FT <span class="math notranslate nohighlight">\(\tilde{W}_{\mu} (\omega) X(\omega) \in L^1 \cap
+L^2\)</span> and hence has an inverse FT <span class="math notranslate nohighlight">\(x_{\tilde{w}_{\mu}} (t)\)</span>.  Since
+<span class="math notranslate nohighlight">\(\lim_{\mu \rightarrow 0} \tilde{W}_{\mu} (\omega) X(\omega) =
+X(\omega)\)</span> for every <span class="math notranslate nohighlight">\(\omega \in \mathbb{R}\)</span>, we may define the
+limit of <span class="math notranslate nohighlight">\(x_{\tilde{w}_{\mu}} (t)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span> as the
+inverse FT of <span class="math notranslate nohighlight">\(X(\omega)\)</span>.</p></li>
+<li><p><strong>Example</strong>:</p>
+<ol class="arabic simple" start="6">
+<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\delta(t-t_0) \stackrel{\text{FT}}{\longleftrightarrow}
+e^{-j\omega t_0}\)</span></p></li>
 </ol>
 </li>
 </ul>

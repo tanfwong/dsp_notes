@@ -42,3 +42,48 @@
      \pi \delta(\omega - \omega_0) + \pi \delta(\omega + \omega_0)$
   3. $\displaystyle ~~\sin(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
      \frac{\pi}{j} \delta(\omega - \omega_0) - \frac{\pi}{j} \delta(\omega + \omega_0)$
+  4. $\displaystyle ~~u(t) = \begin{cases}
+      1, & t \geq 0  \\
+      0, & t < 0 
+      \end{cases} \stackrel{\text{FT}}{\longleftrightarrow} 
+      \pi \delta(\omega) + \frac{1}{j\omega}$.
+  5. Let $x(t)$ be a finite-power periodic signal with period
+      $T$. Hence, $x(t)$ has the FS expansion
+      $x(t) = \sum_{k=-\infty}^{\infty} a_k e^{j\frac{2\pi k t}{T}}$, 
+      where $a_k$ is the $k$th FS coefficient of $x(t)$. By the
+      linearity property of FS and Example 1. above, we may 
+      extend the FT mapping to $x(t)$ as:
+      \begin{equation*}
+      x(t) \stackrel{\text{FT}}{\longleftrightarrow}  2\pi
+      \sum_{k=-\infty}^{\infty} a_k \delta\left(\omega - \frac{2\pi k
+      t}{T} \right)
+      \end{equation*}
+      ```{caution}
+      We have assumed the linearity property of FT extends to the infinite series of the
+      FS synthesis formula above. This assumption can be justified in
+      this case by first considering the partial sum $\sum_{k=-N}^{N}
+      a_k e^{j\frac{2\pi k t}{T}}$ and then the
+      $L^2[-T/2,T/2]$-convergence of the partial sum to $x(t)$ as $N
+      \rightarrow \infty$.
+      ```
+
+* Similarly, we may extend the FT toolset to handle some
+  infinite-energy FTs by considering the following frequency-domain window:
+   \begin{equation*}
+  \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2 + t^2)}~~\stackrel{\text{FT}}{\longleftrightarrow} 
+  ~~ \tilde{W}_{\mu}(\omega) = e^{\mu |\omega|} 
+  \end{equation*}
+  for any $\mu >0$. The same Dirac delta mnemonics 1.-3. can be used 
+  
+* For an infinite-energy FT $X(\omega)$ that grows only polynomially in
+  $|\omega|$, the windowed FT $\tilde{W}_{\mu} (\omega) X(\omega) \in L^1 \cap
+  L^2$ and hence has an inverse FT $x_{\tilde{w}_{\mu}} (t)$.  Since
+  $\lim_{\mu \rightarrow 0} \tilde{W}_{\mu} (\omega) X(\omega) =
+  X(\omega)$ for every $\omega \in \mathbb{R}$, we may define the
+  limit of $x_{\tilde{w}_{\mu}} (t)$ as $\mu \rightarrow 0$ as the
+  inverse FT of $X(\omega)$. 
+
+* **Example**:
+
+  6. $\displaystyle ~~\delta(t-t_0) \stackrel{\text{FT}}{\longleftrightarrow}
+     e^{-j\omega t_0}$
