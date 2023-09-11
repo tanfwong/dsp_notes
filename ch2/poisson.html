@@ -371,6 +371,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-vs-aperiodic-dirac-delta">2.8.1. Periodic vs aperiodic Dirac delta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ft-of-a-dirac-delta-train">2.8.2. FT of a Dirac delta train</a></li>
 </ul>
             </nav>
         </div>
@@ -453,9 +454,9 @@ e^{j\frac{2\pi k t}{T}}
 Dirac delta function:</p>
 <ul class="simple">
 <li><p><strong>Periodic</strong>:
-<span class="math notranslate nohighlight">\(\frac{2\pi}{T} \delta (e^{-j\frac{2\pi t}{T}})
+<span class="math notranslate nohighlight">\(\frac{2\pi}{T} \delta (e^{j\frac{2\pi t}{T}})
 = \lim_{\lambda \rightarrow 1} \frac{W_{\lambda} 
-(e^{-j\frac{2\pi t}{T}})}{T}\)</span></p></li>
+(e^{j\frac{2\pi t}{T}})}{T}\)</span></p></li>
 <li><p><strong>Aperiodic</strong>:
 <span class="math notranslate nohighlight">\(\delta(t) = \lim_{\mu \rightarrow 0} \tilde{w}_{\mu}(t)\)</span></p></li>
 </ul>
@@ -466,17 +467,76 @@ relationship can be established using the Poisson sum formula in
 <li><p>Let <span class="math notranslate nohighlight">\(x[n] = \tilde{w}_{\mu}(t)
 \stackrel{\text{FT}}{\longleftrightarrow} X(\omega) =
 \tilde{W}_{\mu}(\omega)\)</span> in <a class="reference internal" href="#equation-e-poisson-x">(2.14)</a>. We get</p>
+<div class="math notranslate nohighlight" id="equation-e-dirac-rel">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-e-dirac-rel" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+\sum_{n=-\infty}^{\infty}  \tilde{w}_{\mu}(t+nT)
+&amp;=
+\frac{1}{T} \sum_{k=-\infty}^{\infty} \tilde{W}_{\mu} \left(
+\frac{2\pi k}{T}\right)  e^{j\frac{2\pi k t}{T}}
+\notag \\
+&amp;=
+\frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k|}{T}} 
+\cdot  e^{j\frac{2\pi k t}{T}}
+\notag \\
+&amp;=
+\frac{1}{T} \cdot \frac{1 - e^{-\frac{4\pi\mu}{T}}}{1 - 
+2e^{-\frac{2\pi\mu}{T}} \cos\left(\frac{2\pi t}{T}\right) 
++e^{-\frac{4\pi \mu}{T}}} 
+\notag \\
+&amp;=
+\frac{1}{T} \cdot W_{e^{-\frac{2\pi\mu}{T}}} \left(e^{j\frac{2\pi
+t}{T}} \right). 
+\end{align}\end{split}\]</div>
+</li>
+<li><p>Taking “limit” as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span> on both sides of <a class="reference internal" href="#equation-e-dirac-rel">(2.15)</a>,
+we obtain</p>
+<div class="math notranslate nohighlight" id="equation-e-delta-pva">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-e-delta-pva" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\sum_{n=-\infty}^{\infty} \delta(t+nT) = \frac{2\pi}{T} \delta
+\left(e^{j\frac{2\pi t}{T}} \right)
+\end{equation}\]</div>
+<p>which confirms the pictorial intuition that the periodic Dirac delta
+<span class="math notranslate nohighlight">\(\frac{2\pi}{T} \delta (e^{j\frac{2\pi t}{T}})\)</span> is simply a train of
+aperiodic Dirac deltas separated by <span class="math notranslate nohighlight">\(T\)</span>.</p>
+</li>
+<li><p>Using <a class="reference internal" href="#equation-e-delta-pva">(2.16)</a>, the earlier version of the Poisson sum
+formula given in <a class="reference internal" href="fs.html#equation-e-poisson">(2.11)</a> can now be re-written as</p>
+<div class="math notranslate nohighlight" id="equation-e-poisson1">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-e-poisson1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\sum_{n=-\infty}^{\infty} \delta(t+nT) 
+=
+\frac{1}{T} \sum_{n=-\infty}^{\infty} e^{j\frac{2\pi n t}{T}}
+\end{equation}\]</div>
+<p>which can be thought of as the extension of <a class="reference internal" href="#equation-e-poisson-x">(2.14)</a> to the
+Dirac delta signal <span class="math notranslate nohighlight">\(\delta(t)\)</span> because <span class="math notranslate nohighlight">\(\delta(t) \stackrel{\text{FT}}{\longleftrightarrow} 1\)</span>
+from Example 6. in <a class="reference internal" href="dirac.html#sec-dirac"><span class="std std-numref">Section 2.7</span></a>. Of course, one should
+interpret <a class="reference internal" href="#equation-e-poisson1">(2.17)</a> as a mnemonic for the limiting process of
+<a class="reference internal" href="#equation-e-poisson-x">(2.14)</a> with <span class="math notranslate nohighlight">\(x(t) = \tilde{w}_{\mu}(t)\)</span> and <span class="math notranslate nohighlight">\(X(\omega) =
+\tilde{W}_{\mu}(\omega)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>.</p>
+</li>
+</ul>
+</section>
+<section id="ft-of-a-dirac-delta-train">
+<h2><span class="section-number">2.8.2. </span>FT of a Dirac delta train<a class="headerlink" href="#ft-of-a-dirac-delta-train" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p><strong>Example</strong>:</p>
+<ol class="arabic" start="7">
+<li><p>Taking FT on both sides of the Poisson sum formula <a class="reference internal" href="#equation-e-poisson1">(2.17)</a>
+and using the linearity property of FT and Example 1. in
+<a class="reference internal" href="dirac.html#sec-dirac"><span class="std std-numref">Section 2.7</span></a>, we get</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  \sum_{n=-\infty}^{\infty}  \tilde{w}_{\mu}(t+nT)
-  &amp;=
-  \frac{1}{T} \sum_{k=-\infty}^{\infty} \tilde{W}_{\mu} \left(
-  \frac{2\pi k}{T}\right)  e^{j\frac{2\pi k t}{T}}
-  \\
-  &amp;=
-  \frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k}{T}} 
-  \cdot  e^{j\frac{2\pi k t}{T}}
-  \end{align*}\]</div>
+\[\begin{equation*}
+       \sum_{n=-\infty}^{\infty} \delta(t+nT) 
+       =
+       \frac{1}{T} \sum_{n=-\infty}^{\infty} e^{j\frac{2\pi n t}{T}}
+       ~~ 
+       \stackrel{\text{FT}}{\longleftrightarrow} 
+       ~~
+       \frac{2\pi}{T} \sum_{n=-\infty}^{\infty} \delta \left(\omega +
+       \frac{2\pi n}{T} \right)
+       \end{equation*}\]</div>
+</li>
+</ol>
 </li>
 </ul>
 </section>
@@ -550,6 +610,7 @@ relationship can be established using the Poisson sum formula in
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-vs-aperiodic-dirac-delta">2.8.1. Periodic vs aperiodic Dirac delta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ft-of-a-dirac-delta-train">2.8.2. FT of a Dirac delta train</a></li>
 </ul>
   </nav></div>
 

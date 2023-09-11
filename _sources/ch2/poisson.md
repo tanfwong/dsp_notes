@@ -62,9 +62,9 @@ formula:
 * Consider the time-domain versions of the periodic and aperiodic
   Dirac delta function:
   - **Periodic**: 
-    $\frac{2\pi}{T} \delta (e^{-j\frac{2\pi t}{T}})
+    $\frac{2\pi}{T} \delta (e^{j\frac{2\pi t}{T}})
     = \lim_{\lambda \rightarrow 1} \frac{W_{\lambda} 
-    (e^{-j\frac{2\pi t}{T}})}{T}$
+    (e^{j\frac{2\pi t}{T}})}{T}$
   - **Aperiodic**:
     $\delta(t) = \lim_{\mu \rightarrow 0} \tilde{w}_{\mu}(t)$
   
@@ -75,13 +75,72 @@ formula:
 * Let $x[n] = \tilde{w}_{\mu}(t)
   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega) =
   \tilde{W}_{\mu}(\omega)$ in {eq}`e:poisson_x`. We get
-  \begin{align*}
+  ```{math} 
+  :label: e:dirac_rel
+  \begin{align}
   \sum_{n=-\infty}^{\infty}  \tilde{w}_{\mu}(t+nT)
   &=
   \frac{1}{T} \sum_{k=-\infty}^{\infty} \tilde{W}_{\mu} \left(
   \frac{2\pi k}{T}\right)  e^{j\frac{2\pi k t}{T}}
-  \\
+  \notag \\
   &=
-  \frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k}{T}} 
+  \frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k|}{T}} 
   \cdot  e^{j\frac{2\pi k t}{T}}
-  \end{align*}
+  \notag \\
+  &=
+  \frac{1}{T} \cdot \frac{1 - e^{-\frac{4\pi\mu}{T}}}{1 - 
+  2e^{-\frac{2\pi\mu}{T}} \cos\left(\frac{2\pi t}{T}\right) 
+  +e^{-\frac{4\pi \mu}{T}}} 
+  \notag \\
+  &=
+  \frac{1}{T} \cdot W_{e^{-\frac{2\pi\mu}{T}}} \left(e^{j\frac{2\pi
+  t}{T}} \right). 
+  \end{align}
+  ```
+* Taking "limit" as $\mu \rightarrow 0$ on both sides of {eq}`e:dirac_rel`, 
+  we obtain
+  ```{math}
+  :label: e:delta_pva
+  \begin{equation}
+  \sum_{n=-\infty}^{\infty} \delta(t+nT) = \frac{2\pi}{T} \delta
+  \left(e^{j\frac{2\pi t}{T}} \right)
+  \end{equation}
+  ```
+  which confirms the pictorial intuition that the periodic Dirac delta
+  $\frac{2\pi}{T} \delta (e^{j\frac{2\pi t}{T}})$ is simply a train of
+  aperiodic Dirac deltas separated by $T$.
+
+* Using {eq}`e:delta_pva`, the earlier version of the Poisson sum
+  formula given in {eq}`e:poisson` can now be re-written as
+  ```{math}
+  :label: e:poisson1
+  \begin{equation}
+  \sum_{n=-\infty}^{\infty} \delta(t+nT) 
+  =
+  \frac{1}{T} \sum_{n=-\infty}^{\infty} e^{j\frac{2\pi n t}{T}}
+  \end{equation}
+  ```
+  which can be thought of as the extension of {eq}`e:poisson_x` to the
+  Dirac delta signal $\delta(t)$ because $\delta(t) \stackrel{\text{FT}}{\longleftrightarrow} 1$
+  from Example 6. in {numref}`sec:dirac`. Of course, one should
+  interpret {eq}`e:poisson1` as a mnemonic for the limiting process of
+  {eq}`e:poisson_x` with $x(t) = \tilde{w}_{\mu}(t)$ and $X(\omega) =
+  \tilde{W}_{\mu}(\omega)$ as $\mu \rightarrow 0$.
+
+## FT of a Dirac delta train
+* **Example**:
+
+    7. Taking FT on both sides of the Poisson sum formula {eq}`e:poisson1`
+       and using the linearity property of FT and Example 1. in
+       {numref}`sec:dirac`, we get
+       \begin{equation*}
+       \sum_{n=-\infty}^{\infty} \delta(t+nT) 
+       =
+       \frac{1}{T} \sum_{n=-\infty}^{\infty} e^{j\frac{2\pi n t}{T}}
+       ~~ 
+       \stackrel{\text{FT}}{\longleftrightarrow} 
+       ~~
+       \frac{2\pi}{T} \sum_{n=-\infty}^{\infty} \delta \left(\omega +
+       \frac{2\pi n}{T} \right)
+       \end{equation*}
+

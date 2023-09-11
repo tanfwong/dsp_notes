@@ -1,3 +1,4 @@
+(sec:dirac)=
 # Dirac delta and FTs of infinite-energy signals
 
 * Similar to DTFT, we can use windowing to extend the FT toolset to
