@@ -43,7 +43,10 @@ formula:
   $\left\{X\left(\frac{2\pi k}{T}\right) \right\}_{k \in \mathbb{Z}} \in l^2$. 
   The FS synthesis formula {eq}`e:fs_syn` then gives the following version
   of the *Poisson sum formula*:
-  ```{math}
+  ```{admonition} Poisson Sum Formula
+  :class: tip
+  For any $x(t) \in L^1 \cap L^2$,
+  ~~~{math}
   :label: e:poisson_x
   \begin{equation}
   \sum_{n=-\infty}^{\infty} x(t+nT)
@@ -51,6 +54,7 @@ formula:
   \frac{1}{T} \sum_{k=-\infty}^{\infty} X\left(\frac{2\pi k}{T}\right) 
   e^{j\frac{2\pi k t}{T}} 
   \end{equation}
-  ```
+  ~~~
   where $x(t) \stackrel{\text{FT}}{\longleftrightarrow}  X(\omega)$.
+  ```
 
