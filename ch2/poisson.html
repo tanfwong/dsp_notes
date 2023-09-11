@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.2. DTFT properties and tables &#8212; Foundations of DSP Notes</title>
+    <title>2.8. Poisson Sum Formula &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2/dtft_tables';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2/poisson';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.3. Periodic Dirac delta" href="dirac_periodic.html" />
-    <link rel="prev" title="2.1. Discrete-Time Fourier Transform (DTFT)" href="dtft.html" />
+    <link rel="next" title="3. References" href="../refs.html" />
+    <link rel="prev" title="2.7. Dirac delta and FTs of infinite-energy signals" href="dirac.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -167,13 +167,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="fourier.html">2. Fourier (Frequency Domain) Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dtft.html">2.1. Discrete-Time Fourier Transform (DTFT)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. DTFT properties and tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dtft_tables.html">2.2. DTFT properties and tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dirac_periodic.html">2.3. Periodic Dirac delta</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dtft_dirac_exs.html">2.4. DTFTs of infinite-energy signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fs.html">2.5. Fourier Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ft.html">2.6. Continuous-Time Fourieer Transform (FT)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dirac.html">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="poisson.html">2.8. Poisson Sum Formula</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.8. Poisson Sum Formula</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">3. References</a></li>
@@ -248,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch2/dtft_tables.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch2/poisson.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch2/dtft_tables.md" target="_blank"
+      <li><a href="../_sources/ch2/poisson.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,9 +347,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -360,21 +358,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DTFT properties and tables</h1>
+    <h1>Poisson Sum Formula</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT pairs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-properties">2.2.2. Table of DTFT properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-tables-example">2.2.3. Use-of-tables example</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -384,191 +372,66 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dtft-properties-and-tables">
-<h1><span class="section-number">2.2. </span>DTFT properties and tables<a class="headerlink" href="#dtft-properties-and-tables" title="Permalink to this headline">#</a></h1>
-<section id="table-of-dtft-pairs">
-<h2><span class="section-number">2.2.1. </span>Table of DTFT pairs<a class="headerlink" href="#table-of-dtft-pairs" title="Permalink to this headline">#</a></h2>
-<table class="table">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{x[n]}\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{X(e^{j{\hat{\omega}}})}\)</span></p></th>
-<th class="head"><p>Condition</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle a^n u[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{1 - a e^{-j \hat{\omega}}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(|a| &lt; 1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle (n+1) a^n u[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{(1-a e^{-j \hat{\omega}})^2}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(|a| &lt; 1\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{(n+r-1)!}{n! (r-1)!} a^n u[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{(1-a e^{-j \hat{\omega}})^r}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(|a| &lt; 1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle \delta[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 1\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle \delta[n - n_0]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle e^{-j \hat{\omega} n_0}\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle u[n]-u[n-N]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{\sin(N\hat{\omega}/2)}{\sin(\hat{\omega} /
-2)} e^{-j(\frac{N-1}{2})\hat\omega}\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{\sin(\hat\omega_0 n)}{\pi n}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\( X(e^{j{\hat{\omega}}}) = 
-  \begin{cases}
-  1, &amp; 0 \leq |\hat{\omega}| \leq \hat\omega_0 \\
-  0. &amp; \hat\omega_0 &lt; |\hat{\omega}| \leq  \pi
-  \end{cases}\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle 1\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 2 \pi \delta(e^{j\hat{\omega}})\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle u[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{1-e^{-j \hat{\omega}}} + \pi \delta(e^{j\hat{\omega}})\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle e^{j \hat{\omega}_0 n}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 2 \pi \delta(e^{\hat{\omega}  - \hat{\omega}_0})\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle \cos(\hat{\omega}_0 n)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \pi \left[ \delta(e^{j(\hat{\omega}-\hat{\omega}_0)}) + 
-\delta(e^{j(\hat{\omega}+\hat{\omega}_0)}) \right]\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\displaystyle \sin(\hat{\omega}_0 n)\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{\pi}{j} \left[ \delta(e^{j(\hat{\omega}-\hat{\omega}_0)}) - 
-\delta(e^{j(\hat{\omega}+\hat{\omega}_0)}) \right]\)</span></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{k=-\infty}^{\infty} \delta[n - kN]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{2 \pi}{N} \sum_{k=0}^{N-1}
-\delta\left(e^{j\left(\hat{\omega} - \frac{2 \pi k}{N} \right)}
-\right)\)</span></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="table-of-dtft-properties">
-<span id="sec-dtft-table"></span><h2><span class="section-number">2.2.2. </span>Table of DTFT properties<a class="headerlink" href="#table-of-dtft-properties" title="Permalink to this headline">#</a></h2>
-<p>For each property listed below, assume
-<span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-Y(e^{j\hat\omega})\)</span>:</p>
-<table class="table">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Property</p></th>
-<th class="head"><p>Time domain</p></th>
-<th class="head"><p>Frequency domain</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Linearity</p></td>
-<td><p><span class="math notranslate nohighlight">\(\alpha x[n] + \beta y[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\alpha X(e^{j{\hat{\omega}}}) + \beta Y(e^{j{\hat{\omega}}})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Time Shifting</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[n-n_0]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X(e^{j{\hat{\omega}}}) e^{-j \widehat{\omega} n_0}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Frequency Shifting</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[n] e^{j \hat{\omega}_0 n}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X(e^{j(\hat{\omega}-\hat{\omega}_0)})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Conjugation</p></td>
-<td><p><span class="math notranslate nohighlight">\(x^*[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X^*(e^{-j\hat{\omega}})\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Time Reversal</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[-n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X(e^{-j\hat{\omega}})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Convolution</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[n]*y[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X(e^{j\hat{\omega}}) Y(e^{j\hat{\omega}})\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Multiplication</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[n] y[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
-X(e^{j\theta}) Y(e^{j(\hat{\omega}-\theta)}) d\theta\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Time Differencing</p></td>
-<td><p><span class="math notranslate nohighlight">\(x[n]-x[n-1]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\((1-e^{-j\hat{\omega}})X(e^{j\hat{\omega}})\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Accumulation</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{k=-\infty}^{n} x[k]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{X(e^{j\hat{\omega}})}{1 - e^{-j\hat{\omega}}} + 
-\pi X(e^{j0}) \delta(e^{j\hat{\omega}})\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Frequency Differentiation</p></td>
-<td><p><span class="math notranslate nohighlight">\(n x[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle j\frac{d X(e^{j\hat{\omega}})}{d\hat{\omega}}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Parseval Theorem</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{n=-\infty}^{N} x[n] y^*[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
-X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="use-of-tables-example">
-<span id="sec-wlambda"></span><h2><span class="section-number">2.2.3. </span>Use-of-tables example<a class="headerlink" href="#use-of-tables-example" title="Permalink to this headline">#</a></h2>
-<p>Consider the <em>window</em> signal <span class="math notranslate nohighlight">\(w_{\lambda}[n] = \lambda^{|n|}\)</span>, where
-<span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span>. Clearly, <span class="math notranslate nohighlight">\(w[n] \in \ell^1\)</span> and hence its DTFT
-<span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span> exists.</p>
-<p>To use the tables above to find <span class="math notranslate nohighlight">\(W_{\lambda}(e^{j\hat\omega})\)</span>, let
-<span class="math notranslate nohighlight">\(\tilde{w}[n] = \lambda^n u[n]\)</span> and notice that</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="poisson-sum-formula">
+<h1><span class="section-number">2.8. </span>Poisson Sum Formula<a class="headerlink" href="#poisson-sum-formula" title="Permalink to this headline">#</a></h1>
+<p>Let us re-develop a slightly more general version of the Poisson sum
+formula:</p>
+<ul>
+<li><p>Coonsider <span class="math notranslate nohighlight">\(x(t) \in L^1 \cap L^2\)</span>. Fix <span class="math notranslate nohighlight">\(T&gt;0\)</span>. Then</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |x(t+nT)| &lt; \infty\)</span> for almost
+everywhere on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span> has its FT <span class="math notranslate nohighlight">\(X(\omega) \in L^2\)</span>, and</p></li>
+</ul>
+<p>Thus, <span class="math notranslate nohighlight">\(x_T (t) = T \sum_{n=-\infty}^{\infty} x(t+nT)\)</span> is
+well-defined and finite. Clearly, <span class="math notranslate nohighlight">\(x_T(t)\)</span> is a periodic signal with
+period <span class="math notranslate nohighlight">\(T\)</span> and it is of finite power, i.e., <span class="math notranslate nohighlight">\(x_T(t) \in
+L^2 \left[-\frac{T}{2}, \frac{T}{2}\right]\)</span>. As a consequence, <span class="math notranslate nohighlight">\(x_T
+(t)\)</span> has a FS expansion.</p>
+</li>
+<li><p>Now, according to the forward FT formula <a class="reference internal" href="ft.html#equation-e-ft">(2.12)</a></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-w_{\lambda}[n] 
-&amp;= \begin{cases}
-    \lambda^n, &amp; n \geq 0 \\
-    \lambda^{-n}, &amp; n &lt; 0
- \end{cases}
-\\
-&amp;= \tilde{w}[n] + \lambda \tilde{w}[-n-1] .
-\end{align*}\]</div>
-<p>Looking up the DTFT-pair table, <span class="math notranslate nohighlight">\(\tilde{w}[n]
-\stackrel{\text{DTFT}}{\longleftrightarrow} 
-\tilde{W}_{\lambda}(e^{j\hat\omega}) =  \frac{1}{1 - \lambda e^{-j
-\hat{\omega}}}\)</span>.</p>
-<p>Then using the linearity, time shifting, and time reversal properties,
+  X(\omega)
+  &amp;=
+  \int_{-\infty}^{\infty} x(t) e^{-j\omega t} \, dt
+  \notag \\
+  &amp;= 
+  \sum_{n=-\infty}^{\infty} \int_{nT-\frac{T}{2}}^{nT+\frac{T}{2}}
+  x(t) e^{-j\omega t} \, dt
+  \notag \\
+  &amp;=
+  \sum_{n=-\infty}^{\infty} \int_{-\frac{T}{2}}^{\frac{T}{2}}
+  x(t) e^{-j\omega (t+nT)} \, dt
+  \notag \\
+  &amp;=
+  \int_{-\frac{T}{2}}^{\frac{T}{2}} \left( \sum_{n=-\infty}^{\infty} 
+  x(t) e^{-j\omega (t+nT)} \right) \, dt
+  &amp; \text{(dominated convergence)}
+  \end{align*}\]</div>
+<p>In particular, at <span class="math notranslate nohighlight">\(\omega = \frac{2\pi k}{T}\)</span>, for <span class="math notranslate nohighlight">\(k \in \mathbb{Z}\)</span>,
 we get</p>
 <div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-W_{\lambda}(e^{j\hat\omega})
-&amp; = \tilde{W}_{\lambda}(e^{j\hat\omega})  + 
-  \lambda e^{j\hat\omega} \tilde{W}_{\lambda}(e^{-j\hat\omega}) 
-\\
-&amp; = \frac{1}{1 - \lambda e^{-j \hat{\omega}}} + 
-  \frac{\lambda e^{j\hat\omega}}{1 - \lambda e^{j \hat{\omega}}} 
-\\
-&amp; = \frac{1 - \lambda^2}{1 - 2\lambda \cos \hat{\omega} + \lambda^2}.
-\end{align*}\]</div>
-</section>
+\[\begin{equation*}
+  X\left(\frac{2\pi k}{T}\right)
+  = \frac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} x_T(t) 
+  e^{-j\frac{2\pi k t}{T}} \, dt.
+  \end{equation*}\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(X\left(\frac{2\pi k}{T}\right)\)</span> is simply the <span class="math notranslate nohighlight">\(k\)</span>th FS coefficient
+of <span class="math notranslate nohighlight">\(x_T(t)\)</span>.  Hence,
+<span class="math notranslate nohighlight">\(\left\{X\left(\frac{2\pi k}{T}\right) \right\}_{k \in \mathbb{Z}} \in l^2\)</span>.
+The synthesis FS formula <a class="reference internal" href="fs.html#equation-e-fs-syn">(2.9)</a> then gives the following version
+of the <em>Poisson sum formula</em>:</p>
+<div class="math notranslate nohighlight" id="equation-e-poisson-x">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-e-poisson-x" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\sum_{n=-\infty}^{\infty} x(t+nT)
+= 
+\frac{1}{T} \sum_{k=-\infty}^{\infty} X\left(\frac{2\pi k}{T}\right) 
+e^{j\frac{2\pi k t}{T}} 
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow}  X(\omega)\)</span>.</p>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -603,20 +466,20 @@ W_{\lambda}(e^{j\hat\omega})
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="dtft.html"
+       href="dirac.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Discrete-Time Fourier Transform (DTFT)</p>
+        <p class="prev-next-title"><span class="section-number">2.7. </span>Dirac delta and FTs of infinite-energy signals</p>
       </div>
     </a>
     <a class="right-next"
-       href="dirac_periodic.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.3. </span>Periodic Dirac delta</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -629,22 +492,6 @@ W_{\lambda}(e^{j\hat\omega})
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-pairs">2.2.1. Table of DTFT pairs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-dtft-properties">2.2.2. Table of DTFT properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-tables-example">2.2.3. Use-of-tables example</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
