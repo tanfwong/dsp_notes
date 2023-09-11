@@ -58,3 +58,30 @@ formula:
   where $x(t) \stackrel{\text{FT}}{\longleftrightarrow}  X(\omega)$.
   ```
 
+## Periodic vs aperiodic Dirac delta
+* Consider the time-domain versions of the periodic and aperiodic
+  Dirac delta function:
+  - **Periodic**: 
+    $\frac{2\pi}{T} \delta (e^{-j\frac{2\pi t}{T}})
+    = \lim_{\lambda \rightarrow 1} \frac{W_{\lambda} 
+    (e^{-j\frac{2\pi t}{T}})}{T}$
+  - **Aperiodic**:
+    $\delta(t) = \lim_{\mu \rightarrow 0} \tilde{w}_{\mu}(t)$
+  
+  These two Dirac deltas are related to one another and the
+  relationship can be established using the Poisson sum formula in
+  {eq}`e:poisson_x`.
+
+* Let $x[n] = \tilde{w}_{\mu}(t)
+  \stackrel{\text{FT}}{\longleftrightarrow} X(\omega) =
+  \tilde{W}_{\mu}(\omega)$ in {eq}`e:poisson_x`. We get
+  \begin{align*}
+  \sum_{n=-\infty}^{\infty}  \tilde{w}_{\mu}(t+nT)
+  &=
+  \frac{1}{T} \sum_{k=-\infty}^{\infty} \tilde{W}_{\mu} \left(
+  \frac{2\pi k}{T}\right)  e^{j\frac{2\pi k t}{T}}
+  \\
+  &=
+  \frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k}{T}} 
+  \cdot  e^{j\frac{2\pi k t}{T}}
+  \end{align*}

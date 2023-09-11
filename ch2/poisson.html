@@ -347,7 +347,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -363,6 +365,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-vs-aperiodic-dirac-delta">2.8.1. Periodic vs aperiodic Dirac delta</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -436,6 +446,40 @@ e^{j\frac{2\pi k t}{T}}
 </div>
 </li>
 </ul>
+<section id="periodic-vs-aperiodic-dirac-delta">
+<h2><span class="section-number">2.8.1. </span>Periodic vs aperiodic Dirac delta<a class="headerlink" href="#periodic-vs-aperiodic-dirac-delta" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Consider the time-domain versions of the periodic and aperiodic
+Dirac delta function:</p>
+<ul class="simple">
+<li><p><strong>Periodic</strong>:
+<span class="math notranslate nohighlight">\(\frac{2\pi}{T} \delta (e^{-j\frac{2\pi t}{T}})
+= \lim_{\lambda \rightarrow 1} \frac{W_{\lambda} 
+(e^{-j\frac{2\pi t}{T}})}{T}\)</span></p></li>
+<li><p><strong>Aperiodic</strong>:
+<span class="math notranslate nohighlight">\(\delta(t) = \lim_{\mu \rightarrow 0} \tilde{w}_{\mu}(t)\)</span></p></li>
+</ul>
+<p>These two Dirac deltas are related to one another and the
+relationship can be established using the Poisson sum formula in
+<a class="reference internal" href="#equation-e-poisson-x">(2.14)</a>.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x[n] = \tilde{w}_{\mu}(t)
+\stackrel{\text{FT}}{\longleftrightarrow} X(\omega) =
+\tilde{W}_{\mu}(\omega)\)</span> in <a class="reference internal" href="#equation-e-poisson-x">(2.14)</a>. We get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  \sum_{n=-\infty}^{\infty}  \tilde{w}_{\mu}(t+nT)
+  &amp;=
+  \frac{1}{T} \sum_{k=-\infty}^{\infty} \tilde{W}_{\mu} \left(
+  \frac{2\pi k}{T}\right)  e^{j\frac{2\pi k t}{T}}
+  \\
+  &amp;=
+  \frac{1}{T} \sum_{k=-\infty}^{\infty} e^{-\mu\frac{2\pi |k}{T}} 
+  \cdot  e^{j\frac{2\pi k t}{T}}
+  \end{align*}\]</div>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -496,6 +540,20 @@ e^{j\frac{2\pi k t}{T}}
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-vs-aperiodic-dirac-delta">2.8.1. Periodic vs aperiodic Dirac delta</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

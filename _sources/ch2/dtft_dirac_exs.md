@@ -222,7 +222,7 @@ of $x[n]$ is given by
 \begin{align*}
 X(e^{j\hat{\omega}})
 &=
-\sum_{k=0}^{N-1} x[k] e^{-j \hat{\omega} k} \cdot
+\sum_{k=0}^{N-1} x[k] e^{-j \hat{\omega} k} \cdot \frac{2\pi}{N} 
 \sum_{l = 0}^{N-1} \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}\right)
 \\
 &=
