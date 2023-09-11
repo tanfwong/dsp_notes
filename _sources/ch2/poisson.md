@@ -41,7 +41,7 @@ formula:
   That is, $X\left(\frac{2\pi k}{T}\right)$ is simply the $k$th FS coefficient
   of $x_T(t)$.  Hence, 
   $\left\{X\left(\frac{2\pi k}{T}\right) \right\}_{k \in \mathbb{Z}} \in l^2$. 
-  The synthesis FS formula {eq}`e:fs_syn` then gives the following version
+  The FS synthesis formula {eq}`e:fs_syn` then gives the following version
   of the *Poisson sum formula*:
   ```{math}
   :label: e:poisson_x
