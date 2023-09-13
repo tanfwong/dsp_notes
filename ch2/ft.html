@@ -173,10 +173,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="fs.html">2.5. Fourier Series</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.6. Continuous-Time Fourieer Transform (FT)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dirac.html">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="poisson.html">2.8. Poisson Sum Formula</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../refs.html">3. References</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch3/samp.html">3. Sampling Theorem</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch3/poisson.html">3.1. Poisson Sum Formula</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">4. References</a></li>
 </ul>
 
     </div>
@@ -446,7 +449,7 @@ finite-energy signals is trickier than in the case of DTFT because
 <span class="math notranslate nohighlight">\(L^2 \not\subset L^1\)</span>. That is, there may be finite-energy FT
 <span class="math notranslate nohighlight">\(X(\omega)\)</span> such that the integral <span class="math notranslate nohighlight">\(\frac{1}{2\pi}
 \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega\)</span> does not
-exist (hence the inverse FT formula cannot hold)$! Nevertheless,
+exist (hence the inverse FT formula cannot hold)! Nevertheless,
 this difficulty can be resolved by an approach similar to the
 windowing idea used in DTFT. The resulting extension is often called
 the <em>Plancherel theorem</em> <span id="id1">[<a class="reference internal" href="../refs.html#id4" title="Walter Rudin. Real and complex analysis. McGraw-Hill, 3rd edition, 1987.">Rud87</a>]</span>:</p>

@@ -65,7 +65,7 @@ For a continuous-time signal $x(t)$:
   $L^2 \not\subset L^1$. That is, there may be finite-energy FT
   $X(\omega)$ such that the integral $\frac{1}{2\pi}
   \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega$ does not
-  exist (hence the inverse FT formula cannot hold)$! Nevertheless,
+  exist (hence the inverse FT formula cannot hold)! Nevertheless,
   this difficulty can be resolved by an approach similar to the
   windowing idea used in DTFT. The resulting extension is often called
   the *Plancherel theorem* {cite}`rudin1987real`:
