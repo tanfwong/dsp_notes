@@ -1,4 +1,4 @@
-# Continuous-Time Fourieer Transform (FT)
+# Continuous-Time Fourier Transform (FT)
 
 For a continuous-time signal $x(t)$:
 * **<u>Forward FT</u>**:

@@ -3,7 +3,7 @@
 ## Time-domain Poisson sum formula
 Let us re-develop a slightly more general version of the Poisson sum
 formula:
-* Coonsider $x(t) \in L^1 \cap L^2$. Fix $T>0$. Then
+* Consider $x(t) \in L^1 \cap L^2$. Fix $T>0$. Then
   - $\sum_{n=-\infty}^{\infty} |x(t+nT)| < \infty$ for almost
     everywhere on $\mathbb{R}$,
   - $x(t)$ has its FT $X(\omega) \in L^2$, and
@@ -146,3 +146,7 @@ formula:
        \frac{2\pi n}{T} \right)
        \end{equation*}
 
+## Frequency-domain Poisson sum formula
+Let us re-develop the Poisson sum fromula from a frequency-domain perspective:
+
+* 
