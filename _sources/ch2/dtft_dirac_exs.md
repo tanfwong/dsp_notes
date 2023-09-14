@@ -238,7 +238,8 @@ x[n] ~~
 ~~ 2\pi \sum_{l = 0}^{N-1} a_l \delta\left(e^{j(\hat{\omega} - \frac{2\pi l}{N})}
 \right)
 \end{equation*}
-```{tip}
+```{admonition} DIscrete Fourier Series
+:class: tip
 * The coefficients $a_0, a_1, \ldots, a_{N-1}$ are referred to as the
   *discrete Fourier series (DFS)* coefficients of the periodic $x[n]$.
 * The inverse DTFT formula {eq}`e:idtft` gives

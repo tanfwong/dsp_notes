@@ -398,8 +398,8 @@ formula:</p>
 <li><p>Consider <span class="math notranslate nohighlight">\(x(t) \in L^1 \cap L^2\)</span>. Fix <span class="math notranslate nohighlight">\(T&gt;0\)</span>. Then</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\sum_{n=-\infty}^{\infty} |x(t+nT)| &lt; \infty\)</span> for almost
-everywhere on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(x(t)\)</span> has its FT <span class="math notranslate nohighlight">\(X(\omega) \in L^2\)</span>, and</p></li>
+everywhere on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(x(t)\)</span> has its FT <span class="math notranslate nohighlight">\(X(\omega) \in L^2\)</span>.</p></li>
 </ul>
 <p>Thus, <span class="math notranslate nohighlight">\(x_T (t) = T \sum_{n=-\infty}^{\infty} x(t+nT)\)</span> is
 well-defined and finite. Clearly, <span class="math notranslate nohighlight">\(x_T(t)\)</span> is a periodic signal with
@@ -441,8 +441,8 @@ of <span class="math notranslate nohighlight">\(x_T(t)\)</span>.  Hence,
 The FS synthesis formula <a class="reference internal" href="../ch2/fs.html#equation-e-fs-syn">(2.9)</a> then gives the following version
 of the <em>Poisson sum formula</em>:</p>
 <div class="tip admonition">
-<p class="admonition-title">Poisson Sum Formula (time-domain)</p>
-<p>For any <span class="math notranslate nohighlight">\(x(t) \in L^1 \cap L^2\)</span>,</p>
+<p class="admonition-title">(Time-domain) Poisson Sum Formula</p>
+<p>For any <span class="math notranslate nohighlight">\(x(t) \in L^1 \cap L^2\)</span> and <span class="math notranslate nohighlight">\(T&gt;0\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-e-poisson-x">
 <span class="eqno">(3.1)<a class="headerlink" href="#equation-e-poisson-x" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sum_{n=-\infty}^{\infty} x(t+nT)
@@ -551,8 +551,64 @@ and using the linearity property of FT and Example 1. in
 <section id="frequency-domain-poisson-sum-formula">
 <h2><span class="section-number">3.1.4. </span>Frequency-domain Poisson sum formula<a class="headerlink" href="#frequency-domain-poisson-sum-formula" title="Permalink to this headline">#</a></h2>
 <p>Let us re-develop the Poisson sum fromula from a frequency-domain perspective:</p>
+<ul>
+<li><p>Consider <span class="math notranslate nohighlight">\(X(\omega) \in L^1 \cap L^2\)</span>. Fix <span class="math notranslate nohighlight">\(f_s&gt;0\)</span> and let
+<span class="math notranslate nohighlight">\(\hat\omega = \frac{\omega}{fs}\)</span>. Then</p>
 <ul class="simple">
-<li></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{k=-\infty}^{\infty} |X((\hat\omega+2\pi k)f_s)| &lt; \infty\)</span> for almost
+everywhere on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> and</p></li>
+<li><p><span class="math notranslate nohighlight">\(X(\omega)\)</span> has its inverse FT <span class="math notranslate nohighlight">\(x(t) \in L^2\)</span>.</p></li>
+</ul>
+<p>Thus, <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = f_s \sum_{k=-\infty}^{\infty}
+X((\hat\omega+2\pi k)f_s) \)</span> is well-defined and finite. Clearly,
+<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is a periodic function in <span class="math notranslate nohighlight">\(\hat\omega\)</span> with
+period <span class="math notranslate nohighlight">\(2\pi\)</span> and <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \in L^2[-\pi,\pi]\)</span>.</p>
+</li>
+<li><p>Now, consider sampling <span class="math notranslate nohighlight">\(x(t)\)</span> with the sampling rate <span class="math notranslate nohighlight">\(f_s\)</span> samples
+per second to obtain the discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span>. Then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x[n] 
+  &amp;= x\left(\frac{n}{f_s}\right)
+  \\
+  &amp;=
+  \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega)  e^{j\frac{\omega n}{f_s}} \, d\omega
+  &amp; \text{(inverse FT)} 
+  \notag \\
+  &amp;= 
+  \sum_{k=-\infty}^{\infty} \frac{1}{2\pi}
+  \int_{2\pi k f_s - \pi f_s}^{2\pi k f_s + \pi f_s}
+  X(\omega)  e^{j\frac{\omega n}{f_s}} \, d\omega
+  \notag \\
+  &amp;=
+  \sum_{k=-\infty}^{\infty}  \frac{f_s}{2\pi} \int_{-\pi}^{\pi}
+  X((\hat\omega+2\pi k)f_s) e^{j\hat\omega n} \, d\hat\omega
+  \notag \\
+  &amp;=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} \left( f_s \sum_{k=-\infty}^{\infty} 
+  X((\hat\omega+2\pi k)f_s) \right) e^{j\hat\omega n} \, d\hat\omega
+  &amp; \text{(dominated convergence)}
+  \notag \\
+  &amp;=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat\omega}) e^{j\hat\omega n} 
+  \, d\hat\omega.
+  \end{align*}\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is simply the DTFT of <span class="math notranslate nohighlight">\(x[n]\)</span>. The forward DTFT
+formula <a class="reference internal" href="../ch2/dtft.html#equation-e-dtft">(2.1)</a> then gives the following frequency-domain version
+of the <em>Poisson sum formula</em>:</p>
+<div class="tip admonition">
+<p class="admonition-title">(Frequency-domain) Poisson Sum Formula</p>
+<p>For any <span class="math notranslate nohighlight">\(X(\omega) \in L^1 \cap L^2\)</span> and <span class="math notranslate nohighlight">\(f_s&gt;0\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-e-poisson-f">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-e-poisson-f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+f_s \sum_{k=-\infty}^{\infty} X((\hat\omega+2\pi k)f_s) 
+= 
+\sum_{n=-\infty}^{\infty} x\left(\frac{n}{f_s}\right)
+e^{-j\hat\omega n} 
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span>.</p>
+</div>
+</li>
 </ul>
 </section>
 </section>

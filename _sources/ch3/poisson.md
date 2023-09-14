@@ -5,8 +5,8 @@ Let us re-develop a slightly more general version of the Poisson sum
 formula:
 * Consider $x(t) \in L^1 \cap L^2$. Fix $T>0$. Then
   - $\sum_{n=-\infty}^{\infty} |x(t+nT)| < \infty$ for almost
-    everywhere on $\mathbb{R}$,
-  - $x(t)$ has its FT $X(\omega) \in L^2$, and
+    everywhere on $\mathbb{R}$ and
+  - $x(t)$ has its FT $X(\omega) \in L^2$.
   
   Thus, $x_T (t) = T \sum_{n=-\infty}^{\infty} x(t+nT)$ is
   well-defined and finite. Clearly, $x_T(t)$ is a periodic signal with
@@ -45,9 +45,9 @@ formula:
   $\left\{X\left(\frac{2\pi k}{T}\right) \right\}_{k \in \mathbb{Z}} \in l^2$. 
   The FS synthesis formula {eq}`e:fs_syn` then gives the following version
   of the *Poisson sum formula*:
-  ```{admonition} Poisson Sum Formula (time-domain)
+  ```{admonition} (Time-domain) Poisson Sum Formula
   :class: tip
-  For any $x(t) \in L^1 \cap L^2$,
+  For any $x(t) \in L^1 \cap L^2$ and $T>0$,
   ~~~{math}
   :label: e:poisson_x
   \begin{equation}
@@ -149,4 +149,59 @@ formula:
 ## Frequency-domain Poisson sum formula
 Let us re-develop the Poisson sum fromula from a frequency-domain perspective:
 
-* 
+* Consider $X(\omega) \in L^1 \cap L^2$. Fix $f_s>0$ and let
+  $\hat\omega = \frac{\omega}{fs}$. Then
+  - $\sum_{k=-\infty}^{\infty} |X((\hat\omega+2\pi k)f_s)| < \infty$ for almost
+    everywhere on $\mathbb{R}$ and 
+  - $X(\omega)$ has its inverse FT $x(t) \in L^2$.
+  
+  Thus, $X(e^{j\hat\omega}) = f_s \sum_{k=-\infty}^{\infty}
+  X((\hat\omega+2\pi k)f_s) $ is well-defined and finite. Clearly,
+  $X(e^{j\hat\omega})$ is a periodic function in $\hat\omega$ with
+  period $2\pi$ and $X(e^{j\hat\omega}) \in L^2[-\pi,\pi]$. 
+
+* Now, consider sampling $x(t)$ with the sampling rate $f_s$ samples
+  per second to obtain the discrete-time signal $x[n]$. Then
+  \begin{align*}
+  x[n] 
+  &= x\left(\frac{n}{f_s}\right)
+  \\
+  &=
+  \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega)  e^{j\frac{\omega n}{f_s}} \, d\omega
+  & \text{(inverse FT)} 
+  \notag \\
+  &= 
+  \sum_{k=-\infty}^{\infty} \frac{1}{2\pi}
+  \int_{2\pi k f_s - \pi f_s}^{2\pi k f_s + \pi f_s}
+  X(\omega)  e^{j\frac{\omega n}{f_s}} \, d\omega
+  \notag \\
+  &=
+  \sum_{k=-\infty}^{\infty}  \frac{f_s}{2\pi} \int_{-\pi}^{\pi}
+  X((\hat\omega+2\pi k)f_s) e^{j\hat\omega n} \, d\hat\omega
+  \notag \\
+  &=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} \left( f_s \sum_{k=-\infty}^{\infty} 
+  X((\hat\omega+2\pi k)f_s) \right) e^{j\hat\omega n} \, d\hat\omega
+  & \text{(dominated convergence)}
+  \notag \\
+  &=
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\hat\omega}) e^{j\hat\omega n} 
+  \, d\hat\omega.
+  \end{align*}
+  That is, $X(e^{j\hat\omega})$ is simply the DTFT of $x[n]$. The forward DTFT
+  formula {eq}`e:dtft` then gives the following frequency-domain version
+  of the *Poisson sum formula*:
+  ```{admonition} (Frequency-domain) Poisson Sum Formula
+  :class: tip
+  For any $X(\omega) \in L^1 \cap L^2$ and $f_s>0$,
+  ~~~{math}
+  :label: e:poisson_f
+  \begin{equation}
+  f_s \sum_{k=-\infty}^{\infty} X((\hat\omega+2\pi k)f_s) 
+  = 
+  \sum_{n=-\infty}^{\infty} x\left(\frac{n}{f_s}\right)
+  e^{-j\hat\omega n} 
+  \end{equation}
+  ~~~
+  where $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$.
+  ```
