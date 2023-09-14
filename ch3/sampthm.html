@@ -393,14 +393,39 @@ X((\hat\omega+2\pi k)f_s)
 <p>where the quantity on the RHS is often referred tp as the <em><strong>folded
 spectrum</strong></em> of <span class="math notranslate nohighlight">\(x(t)\)</span>. In other words, the DTFT of the sampled
 signal <span class="math notranslate nohighlight">\(x[n]\)</span> is the folded spectrum of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One may extend the Poisson sum formula to include all finite-energy
+and some common infinite-energy signals and FTs based on the
+limiting process with windowing as we did before.</p>
+</div>
 </li>
-<li><p>The folded spectrum is best interpreted in picture.</p>
+<li><p>From <a class="reference internal" href="#equation-e-folded-spectrum">(3.6)</a>, it is clear that the folded spectrum
+depends on both the FT of the continuous-time signal and the sampling
+rate. The effects of both factors are best explained in
+picture. First, let us introduce the concept of <em>bandlimtedness</em>:</p>
 <div class="admonition-notation admonition">
 <p class="admonition-title">Notation</p>
 <p>A continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> is <em><strong>bandlimited</strong></em> to <span class="math notranslate nohighlight">\(\Omega =
 2\pi B\)</span> radian per second (or <span class="math notranslate nohighlight">\(B\)</span> Hz) if its FT <span class="math notranslate nohighlight">\(X(\omega) = 0\)</span> for
-<span class="math notranslate nohighlight">\(|\omega| &gt; \Omega\)</span>.</p>
+<span class="math notranslate nohighlight">\(|\omega| &gt; \Omega\)</span>. The quantity <span class="math notranslate nohighlight">\(\Omega\)</span> (or <span class="math notranslate nohighlight">\(B\)</span>) is called the
+<em><strong>bandwidth</strong></em> of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
 </div>
+</li>
+<li><p>For a simple illustration, consider a bandlimited continuous-time
+signal <span class="math notranslate nohighlight">\(x(t)\)</span> whose FT <span class="math notranslate nohighlight">\(X(\omega)\)</span> is of real-valued and as shown below:</p>
+<a class="reference internal image-reference" href="../_images/blspectrum.jpg"><img alt="A bandlimited spectrum" class="align-center" src="../_images/blspectrum.jpg" style="width: 400px;" /></a>
+<p>The bandwidth of <span class="math notranslate nohighlight">\(x(t)\)</span> is <span class="math notranslate nohighlight">\(\Omega\)</span> radians per second, or <span class="math notranslate nohighlight">\(B\)</span> Hz.
+To draw the folded spectrum of <span class="math notranslate nohighlight">\(x(t)\)</span>, we need to consider two
+different cases:</p>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(f_s &gt; 2B\)</span>, then the folded spectrum is as below:</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/oversample.jpg"><img alt="Folded spectrum (oversampling)" class="align-center" src="../_images/oversample.jpg" style="width: 800px;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>If <span class="math notranslate nohighlight">\(f_s \leq 2B\)</span>, then the folded spectrum is as below:</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/undersample.jpg"><img alt="Folded spectrum (undersampling)" class="align-center" src="../_images/undersample.jpg" style="width: 600px;" /></a>
 </li>
 </ul>
 </section>
