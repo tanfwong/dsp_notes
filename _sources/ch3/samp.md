@@ -1,1 +1,1 @@
-# Sampling Theorem 
+# Sampling and Reconstruction 
