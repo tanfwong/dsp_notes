@@ -41,15 +41,24 @@
   The bandwidth of $x(t)$ is $\Omega$ radians per second, or $B$ Hz.
   To draw the folded spectrum of $x(t)$, we need to consider two
   different cases:
-  1. If $f_s > 2B$, then the folded spectrum is as below:
-  ```{image} ../figs/oversample.jpg
-  :alt: Folded spectrum (oversampling)
-  :width: 800px
-  :align: center
-  ```
-  2. If $f_s \leq 2B$, then the folded spectrum is as below:
-  ```{image} ../figs/undersample.jpg
-  :alt: Folded spectrum (undersampling)
-  :width: 600px
-  :align: center
-  ```
+
+    1. If $f_s > 2B$, then the folded spectrum is as below:
+    ```{image} ../figs/oversample.jpg
+    :alt: Folded spectrum (oversampling)
+    :width: 800px
+    :align: center
+    ```
+    ```{admonition} Notation
+    The condition $f_s > 2B$ is referred to as ***oversampling***.
+    ```
+    2. If $f_s \leq 2B$, then the folded spectrum is as below:
+    ```{image} ../figs/undersample.jpg
+    :alt: Folded spectrum (undersampling)
+    :width: 600px
+    :align: center
+    ```
+    ```{admonition} Notation
+    The condition $f_s \leq 2B$ is referred to as ***undersampling***.
+    ```
+
+*
