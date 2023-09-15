@@ -60,5 +60,6 @@
     ```{admonition} Notation
     The condition $f_s \leq 2B$ is referred to as ***undersampling***.
     ```
+## Oversampling ($f_s > 2B$) 
+## Undersampling ($f_s \leq 2B$) 
 
-*

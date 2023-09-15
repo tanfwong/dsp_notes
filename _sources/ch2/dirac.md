@@ -5,7 +5,7 @@
   some common infinite-energy continuous-time signals by considering
   the following counterpart of the window signal in continuous time:
   \begin{equation*}
-  w_{\mu} (t) = e^{\mu |t|} ~~\stackrel{\text{FT}}{\longleftrightarrow} 
+  w_{\mu} (t) = e^{-\mu |t|} ~~\stackrel{\text{FT}}{\longleftrightarrow} 
   ~~ W_{\mu}(\omega) = \frac{2\mu}{\mu^2 + \omega^2}
   \end{equation*}
   for any $\mu >0$.
@@ -56,8 +56,7 @@
       extend the FT mapping to $x(t)$ as:
       \begin{equation*}
       x(t) \stackrel{\text{FT}}{\longleftrightarrow}  2\pi
-      \sum_{k=-\infty}^{\infty} a_k \delta\left(\omega - \frac{2\pi k
-      t}{T} \right)
+      \sum_{k=-\infty}^{\infty} a_k \delta\left(\omega - \frac{2\pi k}{T} \right)
       \end{equation*}
       ```{caution}
       We have assumed the linearity property of FT extends to the infinite series of the
@@ -72,7 +71,7 @@
   infinite-energy FTs by considering the following frequency-domain window:
    \begin{equation*}
   \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2 + t^2)}~~\stackrel{\text{FT}}{\longleftrightarrow} 
-  ~~ \tilde{W}_{\mu}(\omega) = e^{\mu |\omega|} 
+  ~~ \tilde{W}_{\mu}(\omega) = e^{-\mu |\omega|} 
   \end{equation*}
   for any $\mu >0$. The same Dirac delta mnemonics 1.-3. can be used 
   
