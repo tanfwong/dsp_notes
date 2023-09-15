@@ -74,7 +74,7 @@ formula:
   relationship can be established using the Poisson sum formula in
   {eq}`e:poisson_x`.
 
-* Let $x[n] = \tilde{w}_{\mu}(t)
+* Let $x(t) = \tilde{w}_{\mu}(t)
   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega) =
   \tilde{W}_{\mu}(\omega)$ in {eq}`e:poisson_x`. We get
   ```{math} 
