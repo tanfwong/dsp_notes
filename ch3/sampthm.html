@@ -449,6 +449,39 @@ different cases:</p>
 </ul>
 <section id="oversampling-f-s-2b">
 <h2><span class="section-number">3.2.1. </span>Oversampling (<span class="math notranslate nohighlight">\(f_s &gt; 2B\)</span>)<a class="headerlink" href="#oversampling-f-s-2b" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>In this case, we can see from the plot that the FT <span class="math notranslate nohighlight">\(X(\omega)\)</span> of
+the original continuous-time signal is perserved in the folded
+spectrum <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>. Thus, <span class="math notranslate nohighlight">\(X(\omega)\)</span> can be easily
+recovered from <span class="math notranslate nohighlight">\(X(\omega)\)</span>, or equivalently in the time domain,
+<span class="math notranslate nohighlight">\(x(t)\)</span> can be recovered from <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>In the frequency domain, the ideal recovery process is simply:</p>
+<ol class="arabic">
+<li><p>Cut out the period of the folded spectrum <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>
+over <span class="math notranslate nohighlight">\([-\pi, \pi)\)</span> and scale it by <span class="math notranslate nohighlight">\(\frac{1}{f_s}\)</span>.</p></li>
+<li><p>Substitute <span class="math notranslate nohighlight">\(\hat\omega = \frac{\omega}{f_s}\)</span> in the cut-outi and
+scaled period of  <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> to convert it to the FT
+<span class="math notranslate nohighlight">\(\tilde{X}(\omega)\)</span> of the reconstructed continuous-time signal
+<span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span>, i.e.,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     \tilde{X}(\omega)
+     =
+     \begin{cases}
+     \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) =
+     X(\omega), &amp; \text{if } -\pi f_s \leq \omega &lt; \pi f_s
+     \\
+     0, &amp; \text{otherwise.}
+     \end{cases}
+     \end{equation*}\]</div>
+</li>
+</ol>
+<p>Since <span class="math notranslate nohighlight">\(X(\omega) = 0\)</span> for <span class="math notranslate nohighlight">\(|\omega| &gt; \Omega\)</span> (<span class="math notranslate nohighlight">\(x(t)\)</span> is
+bandlimited to <span class="math notranslate nohighlight">\(\Omega\)</span>), we then have <span class="math notranslate nohighlight">\(\tilde{X}(\omega) =
+  X(\omega)\)</span>, which of course implies <span class="math notranslate nohighlight">\(\tilde{x}(t) = x(t)\)</span> in the
+time domain.</p>
+</li>
+</ul>
 </section>
 <section id="undersampling-f-s-leq-2b">
 <h2><span class="section-number">3.2.2. </span>Undersampling (<span class="math notranslate nohighlight">\(f_s \leq 2B\)</span>)<a class="headerlink" href="#undersampling-f-s-leq-2b" title="Permalink to this headline">#</a></h2>

@@ -61,5 +61,34 @@
     The condition $f_s \leq 2B$ is referred to as ***undersampling***.
     ```
 ## Oversampling ($f_s > 2B$) 
+* In this case, we can see from the plot that the FT $X(\omega)$ of
+  the original continuous-time signal is perserved in the folded
+  spectrum $X(e^{j\hat\omega})$. Thus, $X(\omega)$ can be easily
+  recovered from $X(\omega)$, or equivalently in the time domain,
+  $x(t)$ can be recovered from $x[n]$.
+
+* In the frequency domain, the ideal recovery process is simply:
+  1. Cut out the period of the folded spectrum $X(e^{j\hat\omega})$
+     over $[-\pi, \pi)$ and scale it by $\frac{1}{f_s}$.
+  2. Substitute $\hat\omega = \frac{\omega}{f_s}$ in the cut-outi and
+     scaled period of  $X(e^{j\hat\omega})$ to convert it to the FT
+     $\tilde{X}(\omega)$ of the reconstructed continuous-time signal
+     $\tilde{x}(t)$, i.e.,
+     \begin{equation*}
+     \tilde{X}(\omega)
+     =
+     \begin{cases}
+     \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) =
+     X(\omega), & \text{if } -\pi f_s \leq \omega < \pi f_s
+     \\
+     0, & \text{otherwise.}
+     \end{cases}
+     \end{equation*}
+    Since $X(\omega) = 0$ for $|\omega| > \Omega$ ($x(t)$ is
+    bandlimited to $\Omega$), we then have $\tilde{X}(\omega) =
+    X(\omega)$, which of course implies $\tilde{x}(t) = x(t)$ in the
+    time domain.
+  
+
 ## Undersampling ($f_s \leq 2B$) 
 
