@@ -78,14 +78,14 @@
      \tilde{X}(\omega)
      =
      \begin{cases}
-     \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) =
-     X(\omega), & \text{if } -\pi f_s \leq \omega < \pi f_s
+     \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right), 
+     & \text{if } -\pi f_s \leq \omega < \pi f_s
      \\
      0, & \text{otherwise.}
      \end{cases}
      \end{equation*}
     Since $X(\omega) = 0$ for $|\omega| > \Omega$ ($x(t)$ is
-    bandlimited to $\Omega$), we then have $\tilde{X}(\omega) =
+    bandlimited to $\Omega$) and $\pi f_s > \Omega$, we have $\tilde{X}(\omega) =
     X(\omega)$, which of course implies $\tilde{x}(t) = x(t)$ in the
     time domain.
   
