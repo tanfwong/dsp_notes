@@ -483,8 +483,8 @@ time domain.</p>
 </li>
 <li><p>Let us reconsider the ideal reconstruction steps above from a
 time-domain perspective:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87b70d09-e38a-4396-9d2c-5579871af24d">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-87b70d09-e38a-4396-9d2c-5579871af24d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-68e3d279-1eaa-476e-af0b-ca5219b57719">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-68e3d279-1eaa-476e-af0b-ca5219b57719" title="Permalink to this equation">#</a></span>\[\begin{align}
   \tilde{x}(t) 
   &amp;= 
   \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
@@ -525,6 +525,37 @@ x(t) = \sum_{n=-\infty}^{\infty} x[n] \, \text{sinc} \left( \pi f_s
 <p>where <span class="math notranslate nohighlight">\(\text{sinc}(t) = \frac{\sin t}{t}\)</span>.</p>
 </div>
 </li>
+<li><p>To illustrate the sampling theorem in picture, let us first plot the
+sinc kernel (signal) <span class="math notranslate nohighlight">\(\text{sinc}(\pi f_s t)\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/sinc.png"><img alt="sinc kernel" class="align-center" src="../_images/sinc.png" style="width: 600px;" /></a>
+<p>The sampling theorem says that the original continuous-time signal
+<span class="math notranslate nohighlight">\(x(t)\)</span> can be reconstructed by interpolating the discrete-time (sampled)
+signal <span class="math notranslate nohighlight">\(x[n]\)</span> using the sinc kernel as long as we oversample:</p>
+<a class="reference internal image-reference" href="../_images/sampthm.png"><img alt="Interpolation using the sinc kernel" class="align-center" src="../_images/sampthm.png" style="width: 800px;" /></a>
+</li>
+<li><p>In practice, we can’t use the ideal sinc kernel to perform
+interpolation because the length (support) of the sinc kernel is
+infinite. We have to approximate the reconstruction by using a
+truncated version of the sinc kernel or other kernels of finite support:</p>
+<ul class="simple">
+<li><p><strong>zero-order hold</strong>: rectangular kernel
+<span class="math notranslate nohighlight">\(\begin{cases} 
+1, &amp; \text{if } |t| &lt; \frac{1}{2f_s} \\ 
+0, &amp; \text{otherwise.}
+\end{cases}\)</span></p></li>
+<li><p><strong>first-order hold (linear interpolation)</strong>: triangle kernel
+<span class="math notranslate nohighlight">\(\begin{cases} 
+1 - f_s |t|, &amp; \text{if } |t| &lt; \frac{1}{f_s} \\ 
+0, &amp; \text{otherwise.}
+\end{cases}\)</span></p></li>
+</ul>
+</li>
+<li><p>A typical practical implementation employs zero-order hold
+interpolation and then passes the reconstructed signal through an
+analog lowpass filter to further smooth it. The combination of the
+zero-order hold interpolation and lowpass filtering is equivalent to
+using an interpolation kernel that is the convolution between the
+rectangular kernel and the impulse response of the lowpass filter.</p></li>
 </ul>
 </section>
 <section id="undersampling-f-s-leq-2b">

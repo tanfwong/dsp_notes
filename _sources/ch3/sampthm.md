@@ -134,5 +134,43 @@
   where $\text{sinc}(t) = \frac{\sin t}{t}$.
   ```
 
+* To illustrate the sampling theorem in picture, let us first plot the
+  sinc kernel (signal) $\text{sinc}(\pi f_s t)$:
+  ```{image} ../figs/sinc.png
+  :alt: sinc kernel
+  :width: 600px
+  :align: center
+  ```
+  The sampling theorem says that the original continuous-time signal
+  $x(t)$ can be reconstructed by interpolating the discrete-time (sampled)
+  signal $x[n]$ using the sinc kernel as long as we oversample:
+  ```{image} ../figs/sampthm.png
+  :alt: Interpolation using the sinc kernel
+  :width: 800px
+  :align: center
+  ```
+
+* In practice, we can't use the ideal sinc kernel to perform
+  interpolation because the length (support) of the sinc kernel is
+  infinite. We have to approximate the reconstruction by using a
+  truncated version of the sinc kernel or other kernels of finite support:
+  - **zero-order hold**: rectangular kernel 
+    $\begin{cases} 
+    1, & \text{if } |t| < \frac{1}{2f_s} \\ 
+    0, & \text{otherwise.}
+    \end{cases}$
+  - **first-order hold (linear interpolation)**: triangle kernel 
+    $\begin{cases} 
+    1 - f_s |t|, & \text{if } |t| < \frac{1}{f_s} \\ 
+    0, & \text{otherwise.}
+    \end{cases}$
+
+* A typical practical implementation employs zero-order hold
+  interpolation and then passes the reconstructed signal through an
+  analog lowpass filter to further smooth it. The combination of the
+  zero-order hold interpolation and lowpass filtering is equivalent to
+  using an interpolation kernel that is the convolution between the
+  rectangular kernel and the impulse response of the lowpass filter.
+  
 ## Undersampling ($f_s \leq 2B$) 
 
