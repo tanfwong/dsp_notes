@@ -91,6 +91,8 @@
 
 * Let us reconsider the ideal reconstruction steps above from a
   time-domain perspective:
+  ```{math}
+  :label: e:interpolation
   \begin{align}
   \tilde{x}(t) 
   &= 
@@ -115,6 +117,7 @@
    \sum_{n=-\infty}^{\infty} x[n]  \cdot \frac{\sin\left( \pi f_s
   (t-\frac{n}{f_s}) \right)}{  \pi f_s (t-\frac{n}{f_s})}
   \end{align}
+  ```
   Since $\tilde{x}(t)=x(t)$ if $\pi f_s > \Omega$, we obtain the
   following result which is usually referred to as the ***sampling
   theorem***:
@@ -174,3 +177,31 @@
   
 ## Undersampling ($f_s \leq 2B$) 
 
+* In this case, we see from the plot of the folded spectrum that the
+  frequency-shifted copies of $X(\omega)$ superimpose on each
+  other. This phenomenon is usually called ***aliasing***. Thus,
+  $X(\omega)$ cannot be recovered from the folded spectrum using the
+  simple steps in the case of oversampling because $\tilde{X}(\omega)
+  \neq X(\omega)$.
+
+* Nevertheless, the interpolation formula in {eq}`e:interpolation` is
+  still valid, but $\tilde{x}(t) \neq x(t)$. The reconstructed signal
+  $\tilde{x}(t)$ given by {eq}`e:interpolation` is called the
+  **aliased** version of $x(t)$.
+  ```{caution}
+  Note that undersampling $x(t)$ doesn't necessarily means that there
+  is no possibility of recovering it from the sampled signal
+  $x[n]$. However, to be able to do so may require $x(t)$ to have some special
+  structures and more significant signal processing.
+  ```
+
+* In practice, to avoid the "uncontrolled" effects of aliasing, the
+  continuous-time signal $x(t)$ is usually passed through an analog
+  lowpass filter with cutoff frequency $\frac{f_s}{2}$ Hz to remove
+  any frequency components in $x(t)$ that are above $\frac{f_s}{2}$ Hz
+  before sampling. The lowpassed signal then will not suffer from
+  aliasing. The analog lowpass filter is often called an
+  ***antialiasing filter***.  Of course, we may only reconstruct the
+  lowpassed version of $x(t)$ from the sampled signal. Nevertheless,
+  applying the antialiasing filter allows us to control the distortion
+  we may suffer from potential undersampling. 

@@ -483,31 +483,31 @@ time domain.</p>
 </li>
 <li><p>Let us reconsider the ideal reconstruction steps above from a
 time-domain perspective:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68e3d279-1eaa-476e-af0b-ca5219b57719">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-68e3d279-1eaa-476e-af0b-ca5219b57719" title="Permalink to this equation">#</a></span>\[\begin{align}
-  \tilde{x}(t) 
-  &amp;= 
-  \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
-  t} \, d\omega
-  \\
-  &amp;=
-  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
-  \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) e^{j\omega
-  t} \, d\omega
-  \\
-  &amp;=
-  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s} \left(
-  \frac{1}{f_s} \sum_{n=-\infty}^{\infty} x[n] e^{-j\frac{\omega n}{f_s}}
-  \right) e^{j\omega t} \, d\omega
-  \\
-  &amp;=
-  \sum_{n=-\infty}^{\infty} x[n]  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
-  \frac{1}{f_s}  e^{j\omega \left( t - \frac{n}{f_s} \right)} \, d\omega
-  \\
-  &amp;=
-   \sum_{n=-\infty}^{\infty} x[n]  \cdot \frac{\sin\left( \pi f_s
-  (t-\frac{n}{f_s}) \right)}{  \pi f_s (t-\frac{n}{f_s})}
-  \end{align}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-interpolation">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-e-interpolation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+\tilde{x}(t) 
+&amp;= 
+\frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
+t} \, d\omega
+\\
+&amp;=
+\frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+\frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) e^{j\omega
+t} \, d\omega
+\\
+&amp;=
+\frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s} \left(
+\frac{1}{f_s} \sum_{n=-\infty}^{\infty} x[n] e^{-j\frac{\omega n}{f_s}}
+\right) e^{j\omega t} \, d\omega
+\\
+&amp;=
+\sum_{n=-\infty}^{\infty} x[n]  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+\frac{1}{f_s}  e^{j\omega \left( t - \frac{n}{f_s} \right)} \, d\omega
+\\
+&amp;=
+ \sum_{n=-\infty}^{\infty} x[n]  \cdot \frac{\sin\left( \pi f_s
+(t-\frac{n}{f_s}) \right)}{  \pi f_s (t-\frac{n}{f_s})}
+\end{align}\end{split}\]</div>
 <p>Since <span class="math notranslate nohighlight">\(\tilde{x}(t)=x(t)\)</span> if <span class="math notranslate nohighlight">\(\pi f_s &gt; \Omega\)</span>, we obtain the
 following result which is usually referred to as the <em><strong>sampling
 theorem</strong></em>:</p>
@@ -560,6 +560,36 @@ rectangular kernel and the impulse response of the lowpass filter.</p></li>
 </section>
 <section id="undersampling-f-s-leq-2b">
 <h2><span class="section-number">3.2.2. </span>Undersampling (<span class="math notranslate nohighlight">\(f_s \leq 2B\)</span>)<a class="headerlink" href="#undersampling-f-s-leq-2b" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>In this case, we see from the plot of the folded spectrum that the
+frequency-shifted copies of <span class="math notranslate nohighlight">\(X(\omega)\)</span> superimpose on each
+other. This phenomenon is usually called <em><strong>aliasing</strong></em>. Thus,
+<span class="math notranslate nohighlight">\(X(\omega)\)</span> cannot be recovered from the folded spectrum using the
+simple steps in the case of oversampling because <span class="math notranslate nohighlight">\(\tilde{X}(\omega)
+\neq X(\omega)\)</span>.</p></li>
+<li><p>Nevertheless, the interpolation formula in <a class="reference internal" href="#equation-e-interpolation">(3.7)</a> is
+still valid, but <span class="math notranslate nohighlight">\(\tilde{x}(t) \neq x(t)\)</span>. The reconstructed signal
+<span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> given by <a class="reference internal" href="#equation-e-interpolation">(3.7)</a> is called the
+<strong>aliased</strong> version of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Note that undersampling <span class="math notranslate nohighlight">\(x(t)\)</span> doesn’t necessarily means that there
+is no possibility of recovering it from the sampled signal
+<span class="math notranslate nohighlight">\(x[n]\)</span>. However, to be able to do so may require <span class="math notranslate nohighlight">\(x(t)\)</span> to have some special
+structures and more significant signal processing.</p>
+</div>
+</li>
+<li><p>In practice, to avoid the “uncontrolled” effects of aliasing, the
+continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> is usually passed through an analog
+lowpass filter with cutoff frequency <span class="math notranslate nohighlight">\(\frac{f_s}{2}\)</span> Hz to remove
+any frequency components in <span class="math notranslate nohighlight">\(x(t)\)</span> that are above <span class="math notranslate nohighlight">\(\frac{f_s}{2}\)</span> Hz
+before sampling. The lowpassed signal then will not suffer from
+aliasing. The analog lowpass filter is often called an
+<em><strong>antialiasing filter</strong></em>.  Of course, we may only reconstruct the
+lowpassed version of <span class="math notranslate nohighlight">\(x(t)\)</span> from the sampled signal. Nevertheless,
+applying the antialiasing filter allows us to control the distortion
+we may suffer from potential undersampling.</p></li>
+</ul>
 </section>
 </section>
 
