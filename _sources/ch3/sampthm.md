@@ -67,7 +67,7 @@
   recovered from $X(\omega)$, or equivalently in the time domain,
   $x(t)$ can be recovered from $x[n]$.
 
-* In the frequency domain, the ideal recovery process is simply:
+* In the frequency domain, the ideal reconstruction process is simply:
   1. Cut out the period of the folded spectrum $X(e^{j\hat\omega})$
      over $[-\pi, \pi)$ and scale it by $\frac{1}{f_s}$.
   2. Substitute $\hat\omega = \frac{\omega}{f_s}$ in the cut-outi and
@@ -88,7 +88,51 @@
     bandlimited to $\Omega$) and $\pi f_s > \Omega$, we have $\tilde{X}(\omega) =
     X(\omega)$, which of course implies $\tilde{x}(t) = x(t)$ in the
     time domain.
-  
+
+* Let us reconsider the ideal reconstruction steps above from a
+  time-domain perspective:
+  \begin{align}
+  \tilde{x}(t) 
+  &= 
+  \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
+  t} \, d\omega
+  \\
+  &=
+  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+  \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) e^{j\omega
+  t} \, d\omega
+  \\
+  &=
+  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s} \left(
+  \frac{1}{f_s} \sum_{n=-\infty}^{\infty} x[n] e^{-j\frac{\omega n}{f_s}}
+  \right) e^{j\omega t} \, d\omega
+  \\
+  &=
+  \sum_{n=-\infty}^{\infty} x[n]  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+  \frac{1}{f_s}  e^{j\omega \left( t - \frac{n}{f_s} \right)} \, d\omega
+  \\
+  &=
+   \sum_{n=-\infty}^{\infty} x[n]  \cdot \frac{\sin\left( \pi f_s
+  (t-\frac{n}{f_s}) \right)}{  \pi f_s (t-\frac{n}{f_s})}
+  \end{align}
+  Since $\tilde{x}(t)=x(t)$ if $\pi f_s > \Omega$, we obtain the
+  following result which is usually referred to as the ***sampling
+  theorem***:
+  ```{admonition} Sampling Theorem
+  :class: tip
+  Consider sampling a continuous-time signal $x(t)$ that is bandlimited to $B$ Hz
+  at the sampling rate of $f_s$ samples per second to
+  obtain the discrete-time signal $x[n] = x(\frac{n}{f_s})$. If $f_s >
+  2B$, then
+  ~~~{math}
+  :label: e:sampthm
+  \begin{equation}
+  x(t) = \sum_{n=-\infty}^{\infty} x[n] \, \text{sinc} \left( \pi f_s
+  (t-\frac{n}{f_s}) \right)
+  \end{equation}
+  ~~~
+  where $\text{sinc}(t) = \frac{\sin t}{t}$.
+  ```
 
 ## Undersampling ($f_s \leq 2B$) 
 

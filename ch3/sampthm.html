@@ -455,7 +455,7 @@ the original continuous-time signal is perserved in the folded
 spectrum <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>. Thus, <span class="math notranslate nohighlight">\(X(\omega)\)</span> can be easily
 recovered from <span class="math notranslate nohighlight">\(X(\omega)\)</span>, or equivalently in the time domain,
 <span class="math notranslate nohighlight">\(x(t)\)</span> can be recovered from <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
-<li><p>In the frequency domain, the ideal recovery process is simply:</p>
+<li><p>In the frequency domain, the ideal reconstruction process is simply:</p>
 <ol class="arabic">
 <li><p>Cut out the period of the folded spectrum <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>
 over <span class="math notranslate nohighlight">\([-\pi, \pi)\)</span> and scale it by <span class="math notranslate nohighlight">\(\frac{1}{f_s}\)</span>.</p></li>
@@ -480,6 +480,50 @@ scaled period of  <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}
 bandlimited to <span class="math notranslate nohighlight">\(\Omega\)</span>) and <span class="math notranslate nohighlight">\(\pi f_s &gt; \Omega\)</span>, we have <span class="math notranslate nohighlight">\(\tilde{X}(\omega) =
   X(\omega)\)</span>, which of course implies <span class="math notranslate nohighlight">\(\tilde{x}(t) = x(t)\)</span> in the
 time domain.</p>
+</li>
+<li><p>Let us reconsider the ideal reconstruction steps above from a
+time-domain perspective:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-87b70d09-e38a-4396-9d2c-5579871af24d">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-87b70d09-e38a-4396-9d2c-5579871af24d" title="Permalink to this equation">#</a></span>\[\begin{align}
+  \tilde{x}(t) 
+  &amp;= 
+  \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
+  t} \, d\omega
+  \\
+  &amp;=
+  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+  \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right) e^{j\omega
+  t} \, d\omega
+  \\
+  &amp;=
+  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s} \left(
+  \frac{1}{f_s} \sum_{n=-\infty}^{\infty} x[n] e^{-j\frac{\omega n}{f_s}}
+  \right) e^{j\omega t} \, d\omega
+  \\
+  &amp;=
+  \sum_{n=-\infty}^{\infty} x[n]  \frac{1}{2\pi} \int_{-\pi f_s}^{\pi f_s}
+  \frac{1}{f_s}  e^{j\omega \left( t - \frac{n}{f_s} \right)} \, d\omega
+  \\
+  &amp;=
+   \sum_{n=-\infty}^{\infty} x[n]  \cdot \frac{\sin\left( \pi f_s
+  (t-\frac{n}{f_s}) \right)}{  \pi f_s (t-\frac{n}{f_s})}
+  \end{align}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\tilde{x}(t)=x(t)\)</span> if <span class="math notranslate nohighlight">\(\pi f_s &gt; \Omega\)</span>, we obtain the
+following result which is usually referred to as the <em><strong>sampling
+theorem</strong></em>:</p>
+<div class="tip admonition">
+<p class="admonition-title">Sampling Theorem</p>
+<p>Consider sampling a continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> that is bandlimited to <span class="math notranslate nohighlight">\(B\)</span> Hz
+at the sampling rate of <span class="math notranslate nohighlight">\(f_s\)</span> samples per second to
+obtain the discrete-time signal <span class="math notranslate nohighlight">\(x[n] = x(\frac{n}{f_s})\)</span>. If <span class="math notranslate nohighlight">\(f_s &gt;
+2B\)</span>, then</p>
+<div class="math notranslate nohighlight" id="equation-e-sampthm">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-e-sampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x(t) = \sum_{n=-\infty}^{\infty} x[n] \, \text{sinc} \left( \pi f_s
+(t-\frac{n}{f_s}) \right)
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{sinc}(t) = \frac{\sin t}{t}\)</span>.</p>
+</div>
 </li>
 </ul>
 </section>
