@@ -421,11 +421,11 @@ L^2 \left[-\frac{T}{2}, \frac{T}{2}\right]\)</span>. As a consequence, <span cla
   \notag \\
   &amp;=
   \sum_{n=-\infty}^{\infty} \int_{-\frac{T}{2}}^{\frac{T}{2}}
-  x(t) e^{-j\omega (t+nT)} \, dt
+  x(t+nT) e^{-j\omega (t+nT)} \, dt
   \notag \\
   &amp;=
   \int_{-\frac{T}{2}}^{\frac{T}{2}} \left( \sum_{n=-\infty}^{\infty} 
-  x(t) e^{-j\omega (t+nT)} \right) \, dt
+  x(t+nT) e^{-j\omega (t+nT)} \right) \, dt
   &amp; \text{(dominated convergence)}
   \end{align*}\]</div>
 <p>In particular, at <span class="math notranslate nohighlight">\(\omega = \frac{2\pi k}{T}\)</span>, for <span class="math notranslate nohighlight">\(k \in \mathbb{Z}\)</span>,

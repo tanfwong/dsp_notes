@@ -26,11 +26,11 @@ formula:
   \notag \\
   &=
   \sum_{n=-\infty}^{\infty} \int_{-\frac{T}{2}}^{\frac{T}{2}}
-  x(t) e^{-j\omega (t+nT)} \, dt
+  x(t+nT) e^{-j\omega (t+nT)} \, dt
   \notag \\
   &=
   \int_{-\frac{T}{2}}^{\frac{T}{2}} \left( \sum_{n=-\infty}^{\infty} 
-  x(t) e^{-j\omega (t+nT)} \right) \, dt
+  x(t+nT) e^{-j\omega (t+nT)} \right) \, dt
   & \text{(dominated convergence)}
   \end{align*}
   In particular, at $\omega = \frac{2\pi k}{T}$, for $k \in \mathbb{Z}$,
