@@ -50,6 +50,7 @@
     ```
     ```{admonition} Notation
     The condition $f_s > 2B$ is referred to as ***oversampling***.
+    The sampling rate $2B$ is usually referred to as the **Nyquits rate**.
     ```
     2. If $f_s \leq 2B$, then the folded spectrum is as below:
     ```{image} ../figs/undersample.jpg
