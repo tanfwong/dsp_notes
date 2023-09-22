@@ -121,3 +121,29 @@
   problematic because for $x[n]=\delta[n]$, the value of such defined
   $\sigma_t$ is $0$. Thus, no meaningful lower bound on the
   time-bandwidth product can be obtained.
+  ```{tip}
+  Nonethless, we may still obtain a meaningful lower bound on the
+  spread (resolution) $\sigma_t$ in the time domain by treating
+  $\delta[n]$ is obtained from oversampling some continuous-time signal
+  $x(t)$ whose FT is $X(\omega)$. Since 
+  $\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1$,
+  we have $X(\omega) =
+  \begin{cases} 
+  \frac{1}{f_s}, & \text{if} -\pi f_s \leq \omega \leq \pi f_s \\
+  0, & \text{otherwise}
+  \end{cases}$ from {eq}`e:cutfold`. Simple calculation then
+  shows that $\displaystyle \sigma_{\omega} = \frac{\pi
+  f_s}{\sqrt{3}}$ for this $X(\omega)$. Applying the uncertainty
+  principle inequality, we get $\displaystyle \sigma_t \geq
+  \frac{1}{2\sigma_{\omega}} = \frac{\sqrt{3}}{2\pi f_s}$. We may now
+  treat the lovwr bound $\displaystyle \frac{\sqrt{3}}{2\pi f_s}$ as
+  the finest possible time resolution that we can obtain from the
+  sampled signal $\delta[n]$. The finest possible time resolution for
+  any generate discrete-time signal $x[n]$ can be obtained in a
+  similar manner.
+  ```
+
+* The overall implication provided by the uncertainty principle is
+  that we can not simultaneously achieve arbitrarily fine resolution
+  in time and in frequency for any practical continuous- or
+  discrete-time signal.

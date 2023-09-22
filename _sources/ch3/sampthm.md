@@ -12,7 +12,7 @@
   X((\hat\omega+2\pi k)f_s)
   \end{equation}
   ```
-  where the quantity on the RHS is often referred tp as the ***folded
+  where the quantity on the RHS is often referred to as the ***folded
   spectrum*** of $x(t)$. In other words, the DTFT of the sampled
   signal $x[n]$ is the folded spectrum of $x(t)$.
   ```{tip}
@@ -75,7 +75,9 @@
      scaled period of  $X(e^{j\hat\omega})$ to convert it to the FT
      $\tilde{X}(\omega)$ of the reconstructed continuous-time signal
      $\tilde{x}(t)$, i.e.,
-     \begin{equation*}
+     ```{math}
+     :label: e:cutfold
+     \begin{equation}
      \tilde{X}(\omega)
      =
      \begin{cases}
@@ -84,11 +86,12 @@
      \\
      0, & \text{otherwise.}
      \end{cases}
-     \end{equation*}
+     \end{equation}
     Since $X(\omega) = 0$ for $|\omega| > \Omega$ ($x(t)$ is
     bandlimited to $\Omega$) and $\pi f_s > \Omega$, we have $\tilde{X}(\omega) =
     X(\omega)$, which of course implies $\tilde{x}(t) = x(t)$ in the
     time domain.
+    ```
 
 * Let us reconsider the ideal reconstruction steps above from a
   time-domain perspective:

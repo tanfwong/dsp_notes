@@ -502,7 +502,34 @@ uncertainty principle inequality by defining <span class="math notranslate nohig
 = \sqrt{\frac{1}{E_x} \sum_{n=-\infty}^{\infty} n^2 |x[n]|^2}\)</span> is
 problematic because for <span class="math notranslate nohighlight">\(x[n]=\delta[n]\)</span>, the value of such defined
 <span class="math notranslate nohighlight">\(\sigma_t\)</span> is <span class="math notranslate nohighlight">\(0\)</span>. Thus, no meaningful lower bound on the
-time-bandwidth product can be obtained.</p></li>
+time-bandwidth product can be obtained.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nonethless, we may still obtain a meaningful lower bound on the
+spread (resolution) <span class="math notranslate nohighlight">\(\sigma_t\)</span> in the time domain by treating
+<span class="math notranslate nohighlight">\(\delta[n]\)</span> is obtained from oversampling some continuous-time signal
+<span class="math notranslate nohighlight">\(x(t)\)</span> whose FT is <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Since
+<span class="math notranslate nohighlight">\(\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1\)</span>,
+we have <span class="math notranslate nohighlight">\(X(\omega) =
+\begin{cases} 
+\frac{1}{f_s}, &amp; \text{if} -\pi f_s \leq \omega \leq \pi f_s \\
+0, &amp; \text{otherwise}
+\end{cases}\)</span> from <a class="reference internal" href="../ch3/sampthm.html#equation-e-cutfold">(3.7)</a>. Simple calculation then
+shows that <span class="math notranslate nohighlight">\(\displaystyle \sigma_{\omega} = \frac{\pi
+f_s}{\sqrt{3}}\)</span> for this <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Applying the uncertainty
+principle inequality, we get <span class="math notranslate nohighlight">\(\displaystyle \sigma_t \geq
+\frac{1}{2\sigma_{\omega}} = \frac{\sqrt{3}}{2\pi f_s}\)</span>. We may now
+treat the lovwr bound <span class="math notranslate nohighlight">\(\displaystyle \frac{\sqrt{3}}{2\pi f_s}\)</span> as
+the finest possible time resolution that we can obtain from the
+sampled signal <span class="math notranslate nohighlight">\(\delta[n]\)</span>. The finest possible time resolution for
+any generate discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> can be obtained in a
+similar manner.</p>
+</div>
+</li>
+<li><p>The overall implication provided by the uncertainty principle is
+that we can not simultaneously achieve arbitrarily fine resolution
+in time and in frequency for any practical continuous- or
+discrete-time signal.</p></li>
 </ul>
 </section>
 

@@ -405,7 +405,7 @@ DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> of
 X(e^{j\hat\omega}) = f_s \sum_{k=-\infty}^{\infty}
 X((\hat\omega+2\pi k)f_s)
 \end{equation}\]</div>
-<p>where the quantity on the RHS is often referred tp as the <em><strong>folded
+<p>where the quantity on the RHS is often referred to as the <em><strong>folded
 spectrum</strong></em> of <span class="math notranslate nohighlight">\(x(t)\)</span>. In other words, the DTFT of the sampled
 signal <span class="math notranslate nohighlight">\(x[n]\)</span> is the folded spectrum of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
 <div class="admonition tip">
@@ -468,28 +468,31 @@ over <span class="math notranslate nohighlight">\([-\pi, \pi)\)</span> and scale
 scaled period of  <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> to convert it to the FT
 <span class="math notranslate nohighlight">\(\tilde{X}(\omega)\)</span> of the reconstructed continuous-time signal
 <span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span>, i.e.,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-     \tilde{X}(\omega)
-     =
-     \begin{cases}
-     \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right), 
-     &amp; \text{if } -\pi f_s \leq \omega &lt; \pi f_s
-     \\
-     0, &amp; \text{otherwise.}
-     \end{cases}
-     \end{equation*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-cutfold">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-e-cutfold" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation}
+\tilde{X}(\omega)
+=
+\begin{cases}
+\frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right), 
+&amp; \text{if } -\pi f_s \leq \omega &lt; \pi f_s
+\\
+0, &amp; \text{otherwise.}
+\end{cases}
+\end{equation}\end{split}\]</div>
 </li>
 </ol>
 <p>Since <span class="math notranslate nohighlight">\(X(\omega) = 0\)</span> for <span class="math notranslate nohighlight">\(|\omega| &gt; \Omega\)</span> (<span class="math notranslate nohighlight">\(x(t)\)</span> is
 bandlimited to <span class="math notranslate nohighlight">\(\Omega\)</span>) and <span class="math notranslate nohighlight">\(\pi f_s &gt; \Omega\)</span>, we have <span class="math notranslate nohighlight">\(\tilde{X}(\omega) =
   X(\omega)\)</span>, which of course implies <span class="math notranslate nohighlight">\(\tilde{x}(t) = x(t)\)</span> in the
 time domain.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </li>
 <li><p>Let us reconsider the ideal reconstruction steps above from a
 time-domain perspective:</p>
 <div class="math notranslate nohighlight" id="equation-e-interpolation">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-e-interpolation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-e-interpolation" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
 \tilde{x}(t) 
 &amp;= 
 \frac{1}{2\pi} \int_{-\infty}^{\infty} \tilde{X}(\omega) e^{j\omega
@@ -523,7 +526,7 @@ at the sampling rate of <span class="math notranslate nohighlight">\(f_s\)</span
 obtain the discrete-time signal <span class="math notranslate nohighlight">\(x[n] = x(\frac{n}{f_s})\)</span>. If <span class="math notranslate nohighlight">\(f_s &gt;
 2B\)</span>, then</p>
 <div class="math notranslate nohighlight" id="equation-e-sampthm">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-e-sampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-e-sampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x(t) = \sum_{n=-\infty}^{\infty} x[n] \, \text{sinc} \left( \pi f_s
 (t-\frac{n}{f_s}) \right)
 \end{equation}\]</div>
@@ -572,9 +575,9 @@ other. This phenomenon is usually called <em><strong>aliasing</strong></em>. Thu
 <span class="math notranslate nohighlight">\(X(\omega)\)</span> cannot be recovered from the folded spectrum using the
 simple steps in the case of oversampling because <span class="math notranslate nohighlight">\(\tilde{X}(\omega)
 \neq X(\omega)\)</span>.</p></li>
-<li><p>Nevertheless, the interpolation formula in <a class="reference internal" href="#equation-e-interpolation">(3.7)</a> is
+<li><p>Nevertheless, the interpolation formula in <a class="reference internal" href="#equation-e-interpolation">(3.8)</a> is
 still valid, but <span class="math notranslate nohighlight">\(\tilde{x}(t) \neq x(t)\)</span>. The reconstructed signal
-<span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> given by <a class="reference internal" href="#equation-e-interpolation">(3.7)</a> is called the
+<span class="math notranslate nohighlight">\(\tilde{x}(t)\)</span> given by <a class="reference internal" href="#equation-e-interpolation">(3.8)</a> is called the
 <strong>aliased</strong> version of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
