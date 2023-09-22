@@ -101,3 +101,23 @@
   ***time-bandwidth product*** $\displaystyle
   \sigma_t \sigma_{\omega} \geq \frac{1}{2}$.
   ```
+
+* The uncertainty principle inequality dictates that the
+  time-bandwidth product of a practical continuous-time signal can not be
+  arbitrarily small. That is, if the signal's energy is concentrated
+  in time, its energy must be spread out in frequency, and *vice versa*.
+
+  **Example**: Recall for $\tilde{w}_{\mu}
+  \stackrel{\text{FT}}{\longleftrightarrow}  \tilde{W}_{\mu}(\omega)$, 
+  $\sigma_t = \sqrt{\pi} \mu$ and $\sigma_{\omega} =
+  \frac{1}{\sqrt{2} \mu}$. As $\mu \rightarrow 0$, $\sigma_t
+  \rightarrow 0$ but $\sigma_{\omega} \rightarrow \infty$ with
+  $\displaystyle \sigma_t \sigma_{\omega} = \sqrt{\frac{\pi}{2}} >
+  \frac{1}{2}$.
+
+* For a discrete-time signal $x[n]$, the intuitive extension of the
+  uncertainty principle inequality by defining $\sigma_t 
+  = \sqrt{\frac{1}{E_x} \sum_{n=-\infty}^{\infty} n^2 |x[n]|^2}$ is
+  problematic because for $x[n]=\delta[n]$, the value of such defined
+  $\sigma_t$ is $0$. Thus, no meaningful lower bound on the
+  time-bandwidth product can be obtained.
