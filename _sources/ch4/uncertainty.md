@@ -143,7 +143,7 @@
   similar manner.
   ```
 
-* The overall implication provided by the uncertainty principle is
+* **The overall implication provided by the uncertainty principle is
   that we can not simultaneously achieve arbitrarily fine resolution
   in time and in frequency for any practical continuous- or
-  discrete-time signal.
+  discrete-time signal.**
