@@ -33,3 +33,9 @@
   X(e^{j\hat\omega}; m) = \sum_{n=-\infty}^{\infty} x[n]
   \tilde{w}[n-m] e^{-j\hat\omega n}.
   \end{equation*}
+
+* From the uncertainty principle, we know that for each fixed $m$, we
+  will suffer from a poorer frequency resolution by using
+  $X(e^{j\hat\omega}; m)$ instead of $X(e^{j\hat\omega})$ because the
+  time resolution of the windowed signal $x[n] \tilde{w}[n-m]$ is
+  finer than that of the whole signal $x[n]$.
