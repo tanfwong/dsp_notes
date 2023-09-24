@@ -1,3 +1,4 @@
+(sec:uncertainty)=
 # Uncertainty Principle
 
 * Consider a finite-energy continuous-time signal $x(t)
