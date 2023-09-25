@@ -3,7 +3,7 @@
 
 * Consider a finite-energy continuous-time signal $x(t)
   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$ with energy
-  $\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt - \frac{1}{2\pi}
+  $\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt = \frac{1}{2\pi}
   \int_{-\infty}^{\infty} |X(\omega)|^2 \,d\omega$.
 
 * Without loss of generality, assume $x(t)$ satisfies:
@@ -42,7 +42,9 @@
   e^{-\mu |\omega|}$, $\sigma_t = \sqrt{\pi} \mu$ and $\sigma_{\omega} =
   \frac{1}{\sqrt{2} \mu}$.
 
-* Now, suppose $\sigma_t < \infty$ (i.e., $tx(t) \in L^2$). Then, we have
+* Now, suppose $\sigma_t < \infty$ (i.e., $tx(t) \in L^2$) and
+  $\sigma_{\omega} < \infty$ (i.e., $\omega X(\omega) \in L^2$). Then,
+  we have
   - $tx(t) \rightarrow 0$ and hence $t|x(t)|^2  \rightarrow 0$ as $t \rightarrow \pm \infty$
   - $tx(t) \stackrel{\text{FT}}{\longleftrightarrow}  j
     \frac{dX(\omega)}{d\omega}$

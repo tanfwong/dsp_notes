@@ -386,7 +386,7 @@ document.write(`
 <ul>
 <li><p>Consider a finite-energy continuous-time signal <span class="math notranslate nohighlight">\(x(t)
 \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span> with energy
-<span class="math notranslate nohighlight">\(\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt - \frac{1}{2\pi}
+<span class="math notranslate nohighlight">\(\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt = \frac{1}{2\pi}
 \int_{-\infty}^{\infty} |X(\omega)|^2 \,d\omega\)</span>.</p></li>
 <li><p>Without loss of generality, assume <span class="math notranslate nohighlight">\(x(t)\)</span> satisfies:</p>
 <ul class="simple">
@@ -425,7 +425,9 @@ For <span class="math notranslate nohighlight">\(\displaystyle \tilde{w}_{\mu} =
 e^{-\mu |\omega|}\)</span>, <span class="math notranslate nohighlight">\(\sigma_t = \sqrt{\pi} \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\omega} =
 \frac{1}{\sqrt{2} \mu}\)</span>.</p>
 </li>
-<li><p>Now, suppose <span class="math notranslate nohighlight">\(\sigma_t &lt; \infty\)</span> (i.e., <span class="math notranslate nohighlight">\(tx(t) \in L^2\)</span>). Then, we have</p>
+<li><p>Now, suppose <span class="math notranslate nohighlight">\(\sigma_t &lt; \infty\)</span> (i.e., <span class="math notranslate nohighlight">\(tx(t) \in L^2\)</span>) and
+<span class="math notranslate nohighlight">\(\sigma_{\omega} &lt; \infty\)</span> (i.e., <span class="math notranslate nohighlight">\(\omega X(\omega) \in L^2\)</span>). Then,
+we have</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(tx(t) \rightarrow 0\)</span> and hence <span class="math notranslate nohighlight">\(t|x(t)|^2  \rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(t \rightarrow \pm \infty\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(tx(t) \stackrel{\text{FT}}{\longleftrightarrow}  j
