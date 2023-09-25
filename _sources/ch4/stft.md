@@ -66,7 +66,7 @@
 
 * The table below gives some commonly used window signals. Note that
   the expression of each window signal $w[n]$ given doesn't centered
-  at $n=0$ (this is the form usually given in textbooks). For the
+  at $n=0$ ($w[n]$ is the form usually given in textbooks). For the
   purpose of windowing in short-time DTFT, we use only odd-length
   windows. That is, we may obtain the $0$-centered window
   $\tilde{w}[n]$ from the window $w[n]$ provided by letting
@@ -78,6 +78,9 @@
   
   * - **Window name**
     - $\boldsymbol{w[n]}~~$ **for** $\boldsymbol{0 \leq n \leq L-1}$ 
+
+  * - Rectangular 
+    - $1$
 
   * - Bartlett (triangular)
     - $\displaystyle 1 - \frac{2\left| n - \frac{L-1}{2}
@@ -93,4 +96,19 @@
   * - Hanning
     - $\displaystyle \frac{1}{2} \left[ 1 - \cos \left(\frac{2\pi
       n}{L-1}\right) \right]$
+
+  * - Kaiser
+    - $\displaystyle \frac{I_0\left(\beta
+      \sqrt{1-\left(\frac{2n}{L-1} - 1\right)^2}\right)}{I_0(\beta)}$ 
   ```
+  For the Kaiser window, $I_0(\cdot)$ is the zeroth-order modified
+      Bessel function of the first kind and $\beta \geq 0$ is a
+      parameter to control the shape of the window and the prominence
+      of the sidelobes in the window's FT. When $\beta=0$, the Kaiser
+      window reduces to the rectangular window. 
+ 
+* The length $L$ of the window signal determines the time
+  resolution. A larger $L$ gives poorer time but finer frequency
+  resolution. The choice of the window signal is often based on a
+  tradeoff between a smaller $\sigma_{\omega}$ and the prominence of
+  the sidelobes in the window's FT for a chosen value of $L$.

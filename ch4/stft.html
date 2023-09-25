@@ -449,7 +449,7 @@ of <span class="math notranslate nohighlight">\(m\)</span> of interest with a st
 finest possible time resolution using the window <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span>.</p></li>
 <li><p>The table below gives some commonly used window signals. Note that
 the expression of each window signal <span class="math notranslate nohighlight">\(w[n]\)</span> given doesn’t centered
-at <span class="math notranslate nohighlight">\(n=0\)</span> (this is the form usually given in textbooks). For the
+at <span class="math notranslate nohighlight">\(n=0\)</span> (<span class="math notranslate nohighlight">\(w[n]\)</span> is the form usually given in textbooks). For the
 purpose of windowing in short-time DTFT, we use only odd-length
 windows. That is, we may obtain the <span class="math notranslate nohighlight">\(0\)</span>-centered window
 <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> from the window <span class="math notranslate nohighlight">\(w[n]\)</span> provided by letting
@@ -466,24 +466,41 @@ odd window length of <span class="math notranslate nohighlight">\(w[n]\)</span>.
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Bartlett (triangular)</p></td>
+<tr class="row-even"><td><p>Rectangular</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bartlett (triangular)</p></td>
 <td><p><span class="math notranslate nohighlight">\(\displaystyle 1 - \frac{2\left| n - \frac{L-1}{2}
 \right|}{L-1}\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>Blackman</p></td>
+<tr class="row-even"><td><p>Blackman</p></td>
 <td><p><span class="math notranslate nohighlight">\(\displaystyle 0.42 - 0.5\cos \left(\frac{2\pi n}{L-1}\right) +
 0.08 \cos \left(\frac{4\pi n}{L-1}\right)\)</span></p></td>
 </tr>
-<tr class="row-even"><td><p>Hamming</p></td>
+<tr class="row-odd"><td><p>Hamming</p></td>
 <td><p><span class="math notranslate nohighlight">\(\displaystyle 0.54 - 0.46 \cos \left(\frac{2\pi n}{L-1}\right)\)</span></p></td>
 </tr>
-<tr class="row-odd"><td><p>Hanning</p></td>
+<tr class="row-even"><td><p>Hanning</p></td>
 <td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2} \left[ 1 - \cos \left(\frac{2\pi
 n}{L-1}\right) \right]\)</span></p></td>
 </tr>
+<tr class="row-odd"><td><p>Kaiser</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{I_0\left(\beta
+\sqrt{1-\left(\frac{2n}{L-1} - 1\right)^2}\right)}{I_0(\beta)}\)</span></p></td>
+</tr>
 </tbody>
 </table>
+<p>For the Kaiser window, <span class="math notranslate nohighlight">\(I_0(\cdot)\)</span> is the zeroth-order modified
+Bessel function of the first kind and <span class="math notranslate nohighlight">\(\beta \geq 0\)</span> is a
+parameter to control the shape of the window and the prominence
+of the sidelobes in the window’s FT. When <span class="math notranslate nohighlight">\(\beta=0\)</span>, the Kaiser
+window reduces to the rectangular window.</p>
 </li>
+<li><p>The length <span class="math notranslate nohighlight">\(L\)</span> of the window signal determines the time
+resolution. A larger <span class="math notranslate nohighlight">\(L\)</span> gives poorer time but finer frequency
+resolution. The choice of the window signal is often based on a
+tradeoff between a smaller <span class="math notranslate nohighlight">\(\sigma_{\omega}\)</span> and the prominence of
+the sidelobes in the window’s FT for a chosen value of <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
 </ul>
 </section>
 
