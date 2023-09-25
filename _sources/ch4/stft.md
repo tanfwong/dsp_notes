@@ -39,3 +39,58 @@
   $X(e^{j\hat\omega}; m)$ instead of $X(e^{j\hat\omega})$ because the
   time resolution of the windowed signal $x[n] \tilde{w}[n-m]$ is
   finer than that of the whole signal $x[n]$.
+
+* To further see this tradeoff,  let $\tilde{w}[n]
+  \stackrel{\text{DTFT}}{\longleftrightarrow}
+  \tilde{W}(e^{j\hat\omega})$. Since $X(e^{j\hat\omega}; m)$
+  is the DTFT of  $x[n] \tilde{w}[n-m]$, the time-shifting and
+  multiplication properties of DTFT gives
+  \begin{equation*}
+  X(e^{j\hat\omega}; m)
+  =
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\theta})
+  \tilde{W}(e^{j(\hat\omega -\theta)}) e^{j(\hat\omega -\theta)m}
+  \,d\theta.
+  \end{equation*}
+  That is, $X(e^{j\hat\omega}; m)$ is the circular convolution between
+  $X(e^{j\hat\omega})$ and $\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega
+  m}$ in the frequency domain. Pictorially, it means that the plot of
+  $X(e^{j\hat\omega})$ is "blurred" or "smoothed out" by
+  $\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega m}$.
+
+* In practice, we don't usually calculate $X(e^{j\hat\omega}; m)$ for
+  every $m$. Instead, we only need to at most step through the range
+  of $m$ of interest with a step size comparable to the lower bound on
+  $\sigma_t$ of $\tilde{w}[n]$ because the lower bound gives the
+  finest possible time resolution using the window $\tilde{w}[n]$.
+
+* The table below gives some commonly used window signals. Note that
+  the expression of each window signal $w[n]$ given doesn't centered
+  at $n=0$ (this is the form usually given in textbooks). For the
+  purpose of windowing in short-time DTFT, we use only odd-length
+  windows. That is, we may obtain the $0$-centered window
+  $\tilde{w}[n]$ from the window $w[n]$ provided by letting
+  $\tilde{w}[n] = w\left[ n + \frac{L-1}{2} \right]$, where $L$ is the
+  odd window length of $w[n]$.
+  
+  ```{list-table}
+  :header-rows: 1
+  
+  * - **Window name**
+    - $\boldsymbol{w[n]}~~$ **for** $\boldsymbol{0 \leq n \leq L-1}$ 
+
+  * - Bartlett (triangular)
+    - $\displaystyle 1 - \frac{2\left| n - \frac{L-1}{2}
+      \right|}{L-1}$
+
+  * - Blackman
+    - $\displaystyle 0.42 - 0.5\cos \left(\frac{2\pi n}{L-1}\right) +
+      0.08 \cos \left(\frac{4\pi n}{L-1}\right)$
+
+  * - Hamming
+    - $\displaystyle 0.54 - 0.46 \cos \left(\frac{2\pi n}{L-1}\right)$
+
+  * - Hanning
+    - $\displaystyle \frac{1}{2} \left[ 1 - \cos \left(\frac{2\pi
+      n}{L-1}\right) \right]$
+  ```

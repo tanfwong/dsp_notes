@@ -423,6 +423,67 @@ will suffer from a poorer frequency resolution by using
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> instead of <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> because the
 time resolution of the windowed signal <span class="math notranslate nohighlight">\(x[n] \tilde{w}[n-m]\)</span> is
 finer than that of the whole signal <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+<li><p>To further see this tradeoff,  let <span class="math notranslate nohighlight">\(\tilde{w}[n]
+\stackrel{\text{DTFT}}{\longleftrightarrow}
+\tilde{W}(e^{j\hat\omega})\)</span>. Since <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span>
+is the DTFT of  <span class="math notranslate nohighlight">\(x[n] \tilde{w}[n-m]\)</span>, the time-shifting and
+multiplication properties of DTFT gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  X(e^{j\hat\omega}; m)
+  =
+  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\theta})
+  \tilde{W}(e^{j(\hat\omega -\theta)}) e^{j(\hat\omega -\theta)m}
+  \,d\theta.
+  \end{equation*}\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> is the circular convolution between
+<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega
+m}\)</span> in the frequency domain. Pictorially, it means that the plot of
+<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is “blurred” or “smoothed out” by
+<span class="math notranslate nohighlight">\(\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega m}\)</span>.</p>
+</li>
+<li><p>In practice, we don’t usually calculate <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> for
+every <span class="math notranslate nohighlight">\(m\)</span>. Instead, we only need to at most step through the range
+of <span class="math notranslate nohighlight">\(m\)</span> of interest with a step size comparable to the lower bound on
+<span class="math notranslate nohighlight">\(\sigma_t\)</span> of <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> because the lower bound gives the
+finest possible time resolution using the window <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span>.</p></li>
+<li><p>The table below gives some commonly used window signals. Note that
+the expression of each window signal <span class="math notranslate nohighlight">\(w[n]\)</span> given doesn’t centered
+at <span class="math notranslate nohighlight">\(n=0\)</span> (this is the form usually given in textbooks). For the
+purpose of windowing in short-time DTFT, we use only odd-length
+windows. That is, we may obtain the <span class="math notranslate nohighlight">\(0\)</span>-centered window
+<span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> from the window <span class="math notranslate nohighlight">\(w[n]\)</span> provided by letting
+<span class="math notranslate nohighlight">\(\tilde{w}[n] = w\left[ n + \frac{L-1}{2} \right]\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the
+odd window length of <span class="math notranslate nohighlight">\(w[n]\)</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Window name</strong></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{w[n]}~~\)</span> <strong>for</strong> <span class="math notranslate nohighlight">\(\boldsymbol{0 \leq n \leq L-1}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bartlett (triangular)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle 1 - \frac{2\left| n - \frac{L-1}{2}
+\right|}{L-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Blackman</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle 0.42 - 0.5\cos \left(\frac{2\pi n}{L-1}\right) +
+0.08 \cos \left(\frac{4\pi n}{L-1}\right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Hamming</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle 0.54 - 0.46 \cos \left(\frac{2\pi n}{L-1}\right)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hanning</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2} \left[ 1 - \cos \left(\frac{2\pi
+n}{L-1}\right) \right]\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 </section>
 
