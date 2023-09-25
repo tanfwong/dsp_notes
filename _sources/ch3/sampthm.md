@@ -1,3 +1,4 @@
+(sec:sampthm)=
 # Sampling Theorem
 * Suppose that a continuous-time signal $x(t)$ is sampled at the
   sampling rate of $f_s$ samples per second to obtain the

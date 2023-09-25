@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.1. Uncertainty Principle &#8212; Foundations of DSP Notes</title>
+    <title>5. Computation of Fourier Analysis &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -60,14 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch4/uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch5/comp';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Short-time DTFT" href="stft.html" />
-    <link rel="prev" title="4. Time-dependent Fourier Analysis" href="tdft.html" />
+    <link rel="next" title="5.1. Frequency-domain Sampling" href="fsamp.html" />
+    <link rel="prev" title="4.2. Short-time DTFT" href="../ch4/stft.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -180,13 +178,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch3/sampthm.html">3.2. Sampling Theorem</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="tdft.html">4. Time-dependent Fourier Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Uncertainty Principle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stft.html">4.2. Short-time DTFT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/tdft.html">4. Time-dependent Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/uncertainty.html">4.1. Uncertainty Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/stft.html">4.2. Short-time DTFT</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/comp.html">5. Computation of Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch5/fsamp.html">5.1. Frequency-domain Sampling</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Computation of Fourier Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="fsamp.html">5.1. Frequency-domain Sampling</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">6. References</a></li>
@@ -261,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch4/uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch5/comp.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch4/uncertainty.md" target="_blank"
+      <li><a href="../_sources/ch5/comp.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +369,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Uncertainty Principle</h1>
+    <h1>Computation of Fourier Analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,159 +383,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="uncertainty-principle">
-<span id="sec-uncertainty"></span><h1><span class="section-number">4.1. </span>Uncertainty Principle<a class="headerlink" href="#uncertainty-principle" title="Permalink to this headline">#</a></h1>
-<ul>
-<li><p>Consider a finite-energy continuous-time signal <span class="math notranslate nohighlight">\(x(t)
-\stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span> with energy
-<span class="math notranslate nohighlight">\(\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt = \frac{1}{2\pi}
-\int_{-\infty}^{\infty} |X(\omega)|^2 \,d\omega &gt; 0\)</span>.</p></li>
-<li><p>Without loss of generality, assume <span class="math notranslate nohighlight">\(x(t)\)</span> satisfies:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle\int_{-\infty}^{\infty} t |x(t)|^2 \,
-dt = 0\)</span>, and</p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2\pi} \int_{-\infty}^{\infty}  \omega
-|X(\omega)|^2 \,d\omega = 0\)</span>.</p></li>
-</ul>
-<p>Note that these two assumptions mean that the signal energy is
-centered about <span class="math notranslate nohighlight">\(t=0\)</span> in the time domain and about <span class="math notranslate nohighlight">\(\omega = 0\)</span> in
-the frequency domain.  If either assumption is not satisfied, we may
-simply shift the time or frequency axis to force the assumption to
-hold.</p>
-</li>
-<li><p>Define the quantities</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  \sigma_t 
-  &amp;=
-  \sqrt{\frac{1}{E_x}
-  \int_{-\infty}^{\infty} t^2 |x(t)|^2 \, dt 
-  }
-  \\
-  \sigma_{\omega}
-  &amp;=
-  \sqrt{\frac{1}{2\pi E_x}
-  \int_{-\infty}^{\infty}  \omega^2
-    |X(\omega)|^2 \,d\omega
-   }
-  \end{align*}\]</div>
-<p>to measure the spreads of signal energy about the centers in the time and
-frequency domains, respectively.</p>
-<p><strong>Example</strong>:
-For <span class="math notranslate nohighlight">\(\displaystyle \tilde{w}_{\mu} = \frac{\mu}{\pi (\mu^2+t^2)}
-\stackrel{\text{FT}}{\longleftrightarrow} \tilde{W}_{\mu}(\omega) =
-e^{-\mu |\omega|}\)</span>, <span class="math notranslate nohighlight">\(\sigma_t = \sqrt{\pi} \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\omega} =
-\frac{1}{\sqrt{2} \mu}\)</span>.</p>
-</li>
-<li><p>Now, suppose <span class="math notranslate nohighlight">\(\sigma_t &lt; \infty\)</span> (i.e., <span class="math notranslate nohighlight">\(tx(t) \in L^2\)</span>) and
-<span class="math notranslate nohighlight">\(\sigma_{\omega} &lt; \infty\)</span> (i.e., <span class="math notranslate nohighlight">\(\omega X(\omega) \in L^2\)</span>). Then,
-we have</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(tx(t) \rightarrow 0\)</span> and hence <span class="math notranslate nohighlight">\(t|x(t)|^2  \rightarrow 0\)</span> as <span class="math notranslate nohighlight">\(t \rightarrow \pm \infty\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(tx(t) \stackrel{\text{FT}}{\longleftrightarrow}  j
-\frac{dX(\omega)}{d\omega}\)</span></p></li>
-</ul>
-<p>Further, suppose <span class="math notranslate nohighlight">\(\frac{dx(t)}{dt}\)</span> exists on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. Then</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{d|x(t)|^2}{dt} = \frac{dx(t)}{dt} \cdot
-x^*(t) + x(t) \cdot \left(  \frac{dx(t)}{dt} \right)^*\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{dx(t)}{dt}
-\stackrel{\text{FT}}{\longleftrightarrow}  j\omega X(\omega)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty} \left| \frac{dx(t)}{dt}
-\right|^2 \,dt  = \frac{1}{2\pi} \int_{-\infty}^{\infty} \omega^2
- | X(\omega)|^2 \,d\omega\)</span>.</p></li>
-</ul>
-<p>As a result, integration by parts gives</p>
-<div class="math notranslate nohighlight" id="equation-e-uncert">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-e-uncert" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-E_x 
-&amp;=
-\int_{-\infty}^{\infty} |x(t)|^2 \, dt 
-\\
-&amp;= 
-t|x(t)|^2 \Big|_{-\infty}^{\infty}  - \int_{-\infty}^{\infty} t
-\frac{d|x(t)|^2}{dt} \, dt
-\\
-&amp;=
--  \int_{-\infty}^{\infty} t \frac{d|x(t)|^2}{dt} \, dt
-\\
-&amp;=
-- \int_{-\infty}^{\infty} \frac{dx(t)}{dt} \cdot (tx(t))^* \, dt 
-- \int_{-\infty}^{\infty} (tx(t)) \cdot \left(  \frac{dx(t)}{dt}
-\right)^* \,dt
-\\
-&amp;\leq
-2 \int_{-\infty}^{\infty}  \left| \frac{dx(t)}{dt} \right| \cdot 
-|tx(t)| \,dt
-\\
-&amp;\leq 
-2 \sqrt{\int_{-\infty}^{\infty}  \left| \frac{dx(t)}{dt} \right|^2
-\,dt} \cdot
-\sqrt{\int_{-\infty}^{\infty} t^2 |x(t)|^2 \,dt}
-&amp; \text{(Cauchy-Schwartz inequality)}
-\\
-&amp;=
-2 
-\sqrt{ \frac{1}{2\pi} \int_{-\infty}^{\infty} \omega^2
-  | X(\omega)|^2 \,d\omega}
-\cdot
-\sqrt{\int_{-\infty}^{\infty} t^2 |x(t)|^2 \,dt}.
-\end{align*}\end{split}\]</div>
-<p>Expressing <a class="reference internal" href="#equation-e-uncert">(4.1)</a> in terms of <span class="math notranslate nohighlight">\(\sigma_t\)</span> and
-<span class="math notranslate nohighlight">\(\sigma_{\omega}\)</span>, we get:</p>
-<div class="tip admonition">
-<p class="admonition-title">Uncertainty Principle</p>
-<p>For any (non-trivial) finite-energy, differentiable signal <span class="math notranslate nohighlight">\(x(t)\)</span>, its
-<em><strong>time-bandwidth product</strong></em> <span class="math notranslate nohighlight">\(\displaystyle
-\sigma_t \sigma_{\omega} \geq \frac{1}{2}\)</span>.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="computation-of-fourier-analysis">
+<h1><span class="section-number">5. </span>Computation of Fourier Analysis<a class="headerlink" href="#computation-of-fourier-analysis" title="Permalink to this headline">#</a></h1>
+<div class="toctree-wrapper compound">
 </div>
-</li>
-<li><p>The uncertainty principle inequality dictates that the
-time-bandwidth product of a practical continuous-time signal can not be
-arbitrarily small. That is, if the signal’s energy is concentrated
-in time, its energy must be spread out in frequency, and <em>vice versa</em>.</p>
-<p><strong>Example</strong>: Recall for <span class="math notranslate nohighlight">\(\tilde{w}_{\mu}
-\stackrel{\text{FT}}{\longleftrightarrow}  \tilde{W}_{\mu}(\omega)\)</span>,
-<span class="math notranslate nohighlight">\(\sigma_t = \sqrt{\pi} \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\omega} =
-\frac{1}{\sqrt{2} \mu}\)</span>. As <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(\sigma_t
-\rightarrow 0\)</span> but <span class="math notranslate nohighlight">\(\sigma_{\omega} \rightarrow \infty\)</span> with
-<span class="math notranslate nohighlight">\(\displaystyle \sigma_t \sigma_{\omega} = \sqrt{\frac{\pi}{2}} &gt;
-\frac{1}{2}\)</span>.</p>
-</li>
-<li><p>For a discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span>, the intuitive extension of the
-uncertainty principle inequality by defining <span class="math notranslate nohighlight">\(\sigma_t 
-= \sqrt{\frac{1}{E_x} \sum_{n=-\infty}^{\infty} n^2 |x[n]|^2}\)</span> is
-problematic because for <span class="math notranslate nohighlight">\(x[n]=\delta[n]\)</span>, the value of such defined
-<span class="math notranslate nohighlight">\(\sigma_t\)</span> is <span class="math notranslate nohighlight">\(0\)</span>. Thus, no meaningful lower bound on the
-time-bandwidth product can be obtained.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Nonethless, we may still obtain a meaningful lower bound on the
-spread (resolution) <span class="math notranslate nohighlight">\(\sigma_t\)</span> in the time domain by treating
-<span class="math notranslate nohighlight">\(\delta[n]\)</span> is obtained from oversampling some continuous-time signal
-<span class="math notranslate nohighlight">\(x(t)\)</span> whose FT is <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Since
-<span class="math notranslate nohighlight">\(\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1\)</span>,
-we have <span class="math notranslate nohighlight">\(X(\omega) =
-\begin{cases} 
-\frac{1}{f_s}, &amp; \text{if} -\pi f_s \leq \omega \leq \pi f_s \\
-0, &amp; \text{otherwise}
-\end{cases}\)</span> from <a class="reference internal" href="../ch3/sampthm.html#equation-e-cutfold">(3.7)</a>. Simple calculation then
-shows that <span class="math notranslate nohighlight">\(\displaystyle \sigma_{\omega} = \frac{\pi
-f_s}{\sqrt{3}}\)</span> for this <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Applying the uncertainty
-principle inequality, we get <span class="math notranslate nohighlight">\(\displaystyle \sigma_t \geq
-\frac{1}{2\sigma_{\omega}} = \frac{\sqrt{3}}{2\pi f_s}\)</span>. We may now
-treat the lovwr bound <span class="math notranslate nohighlight">\(\displaystyle \frac{\sqrt{3}}{2\pi f_s}\)</span> as
-the finest possible time resolution that we can obtain from the
-sampled signal <span class="math notranslate nohighlight">\(\delta[n]\)</span>. The finest possible time resolution for
-any generate discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> can be obtained in a
-similar manner.</p>
-</div>
-</li>
-<li><p><strong>The overall implication provided by the uncertainty principle is
-that we can not simultaneously achieve arbitrarily fine resolution
-in time and in frequency for any practical continuous- or
-discrete-time signal.</strong></p></li>
-</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -553,7 +402,7 @@ discrete-time signal.</strong></p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch4"
+            path: "./ch5"
         },
         predefinedOutput: true
     }
@@ -572,20 +421,20 @@ discrete-time signal.</strong></p></li>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tdft.html"
+       href="../ch4/stft.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Time-dependent Fourier Analysis</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Short-time DTFT</p>
       </div>
     </a>
     <a class="right-next"
-       href="stft.html"
+       href="fsamp.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Short-time DTFT</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Frequency-domain Sampling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
