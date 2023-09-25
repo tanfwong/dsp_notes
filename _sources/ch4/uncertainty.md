@@ -4,7 +4,7 @@
 * Consider a finite-energy continuous-time signal $x(t)
   \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$ with energy
   $\displaystyle E_x = \int_{-\infty}^{\infty} |x(t)|^2 \, dt = \frac{1}{2\pi}
-  \int_{-\infty}^{\infty} |X(\omega)|^2 \,d\omega$.
+  \int_{-\infty}^{\infty} |X(\omega)|^2 \,d\omega > 0$.
 
 * Without loss of generality, assume $x(t)$ satisfies:
   - $\displaystyle\int_{-\infty}^{\infty} t |x(t)|^2 \,
@@ -100,7 +100,7 @@
   $\sigma_{\omega}$, we get:
   ```{admonition} Uncertainty Principle
   :class: tip
-  For any finite-energy, differentiable signal $x(t)$, its
+  For any (non-trivial) finite-energy, differentiable signal $x(t)$, its
   ***time-bandwidth product*** $\displaystyle
   \sigma_t \sigma_{\omega} \geq \frac{1}{2}$.
   ```
