@@ -387,7 +387,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="frequency-domain-sampling">
 <h1><span class="section-number">5.1. </span>Frequency-domain Sampling<a class="headerlink" href="#frequency-domain-sampling" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
+<ul>
 <li><p>The sampling theorem (see <a class="reference internal" href="../ch3/sampthm.html#sec-sampthm"><span class="std std-numref">Section 3.2</span></a>) tells us that we
 can reconstruct a bandlimited continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> with
 bandwidht <span class="math notranslate nohighlight">\(B\)</span> Hz from its samples <span class="math notranslate nohighlight">\(x[n]=x\left(\frac{n}{f_s}\right)\)</span>
@@ -403,7 +403,37 @@ continuous-time counterpart as an exercise. More specifically,
 consider <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
 X(e^{j\hat\omega})\)</span>. Suppose we take <span class="math notranslate nohighlight">\(M\)</span> samples in one period of
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> at the normalized radian frequencies
-<span class="math notranslate nohighlight">\(\hat\omega = \frac{2\pi k}{M}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots,M-1\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(\hat\omega = \frac{2\pi k}{M}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots,M-1\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Recall that <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is periodic in <span class="math notranslate nohighlight">\(\hat\omega\)</span> with
+period <span class="math notranslate nohighlight">\(2\pi\)</span>. In particular, <span class="math notranslate nohighlight">\(\displaystyle
+X(e^{j\hat\omega})\Big|_{\hat\omega = \frac{2\pi k}{M}} =
+X(e^{j\hat\omega})\Big|_{\hat\omega = \frac{2\pi
+(M-k)}{M}}\)</span>. Thus there is no difference between taking samples over
+the periods <span class="math notranslate nohighlight">\([0,2\pi)\)</span> and <span class="math notranslate nohighlight">\([-\pi,\pi)\)</span>. The former is usually
+considered in the context of frequency-domain sampling.</p>
+</div>
+<p>We want to determine whether, and if so the condition under which,
+the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> can be recovered from the <span class="math notranslate nohighlight">\(M\)</span>
+frequency-domain samples <span class="math notranslate nohighlight">\(\left\{X(e^{j\frac{2\pi k}{M}})
+\right\}_{k=0}^{M-1}\)</span>. This frequency-domain sampling question can
+again be answered by way of the Poisson sum formula(s).</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(x[n]\)</span> be obtained from sampling a continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span>
+at the sampling rate <span class="math notranslate nohighlight">\(f_s = \frac{1}{T_s}\)</span> samples per second, i.e.,
+<span class="math notranslate nohighlight">\(x[n] = x(nT_s)\)</span> and set <span class="math notranslate nohighlight">\(T=MT_s\)</span>. Then the time-domain Poisson sum
+formula <a class="reference internal" href="../ch3/poisson.html#equation-e-poisson-x">(3.1)</a> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \sum_{n=-\infty}^{\infty} x(t+nMT_s)
+  =
+  \frac{1}{MT_s} \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi l}{MT_s}
+  \right) e^{j\frac{2\pi l t}{MT_s}} 
+  \end{equation*}\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span>.</p>
+</li>
 </ul>
 </section>
 
