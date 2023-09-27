@@ -361,7 +361,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -377,6 +379,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-properties">5.2.1. DFT properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-property-table">5.2.2. DFT property table</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -388,9 +399,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="discrete-fourier-transform">
 <h1><span class="section-number">5.2. </span>Discrete Fourier Transform<a class="headerlink" href="#discrete-fourier-transform" title="Permalink to this headline">#</a></h1>
-<ul>
-<li><p>The frequency-domain sampling result given in <a class="reference internal" href="fsamp.html#equation-e-fsamp">(5.1)</a> motivates
-the  following definition of <span class="math notranslate nohighlight">\(M\)</span>-point <strong>Discrete Fourier Transform
+<p>The frequency-domain sampling result given in <a class="reference internal" href="fsamp.html#equation-e-fsamp">(5.1)</a> motivates
+the following definition of <span class="math notranslate nohighlight">\(M\)</span>-point <strong>Discrete Fourier Transform
 (DFT)</strong> pair between a signal of length at most <span class="math notranslate nohighlight">\(M\)</span> and the <span class="math notranslate nohighlight">\(M\)</span>
 frequency domain samples <span class="math notranslate nohighlight">\(X_k = X(e^{j\frac{2\pi k}{M}})\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,2,\ldots,M-1\)</span>:</p>
@@ -406,8 +416,79 @@ frequency domain samples <span class="math notranslate nohighlight">\(X_k = X(e^
   x[n] &amp;= \frac{1}{M} \sum_{k=0}^{M-1} X_k e^{j\frac{2\pi kn}{M}} &amp;
   n=0,1,2, \dots, M-1
   \end{align*}\]</div>
-</li>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>We use the notation <span class="math notranslate nohighlight">\(x[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
+X_k\)</span> to denote the mapping between a discrete-time signal of at most
+length <span class="math notranslate nohighlight">\(M\)</span> and its set of <span class="math notranslate nohighlight">\(M\)</span>-point DFT coefficients <span class="math notranslate nohighlight">\(\{X_k\}_{k=0}^{M-1}\)</span>.</p>
+</div>
+<section id="dft-properties">
+<h2><span class="section-number">5.2.1. </span>DFT properties<a class="headerlink" href="#dft-properties" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Since the DFT coefficients <span class="math notranslate nohighlight">\(X_k\)</span>’s are the frequency-domain samples
+of the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>, the properties of DTFT (see
+<a class="reference internal" href="../ch2/dtft_tables.html#sec-dtft-table"><span class="std std-numref">Section 2.2.2</span></a>) carry over to DFT with the caveat that we
+have to consider the periodic extension <span class="math notranslate nohighlight">\(x_M[n]\)</span> instead of <span class="math notranslate nohighlight">\(x[n]\)</span>
+when the operation involved makes the resulting signal violate the
+condition that its value must be zero except for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots,M-1\)</span>.</p></li>
+<li><p><strong>Circular Time Shifting</strong>:</p></li>
 </ul>
+</section>
+<section id="dft-property-table">
+<h2><span class="section-number">5.2.2. </span>DFT property table<a class="headerlink" href="#dft-property-table" title="Permalink to this headline">#</a></h2>
+<p>For each property listed below, assume both <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span> are
+signals of at most length <span class="math notranslate nohighlight">\(M\)</span>, as well as
+<span class="math notranslate nohighlight">\(x[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
+X_k\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DFT}}{\longleftrightarrow}
+Y(e^{j\hat\omega})\)</span>:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Time domain</p></th>
+<th class="head"><p>Frequency domain</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Linearity</p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha x[n] + \beta y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha X_k + \beta Y_k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Circular Time Shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_k e^{-j \widehat{\omega} n_0}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Circular Frequency Shifting</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n] e^{j \frac{2\pi ln}{M}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{(k-l)_M)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Conjugation</p></td>
+<td><p><span class="math notranslate nohighlight">\(x^*[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X^*_{M-k}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Time Reversal</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[M-n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{M-k}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Circular Convolution</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n] \circledast_M y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_k Y_k\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Multiplication</p></td>
+<td><p><span class="math notranslate nohighlight">\(x[n] y[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_k \circledast_M Y_k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Parseval Theorem</p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{n=0}^{M-1} x[n] y^*[n]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{M} \sum_{k=0}^{M-1} X_k Y^*_k\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,6 +549,21 @@ frequency domain samples <span class="math notranslate nohighlight">\(X_k = X(e^
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-properties">5.2.1. DFT properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-property-table">5.2.2. DFT property table</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

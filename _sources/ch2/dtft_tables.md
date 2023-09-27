@@ -126,7 +126,7 @@ Y(e^{j\hat\omega})$:
   - $\displaystyle j\frac{d X(e^{j\hat{\omega}})}{d\hat{\omega}}$
 
 * - Parseval Theorem
-  - $\displaystyle \sum_{n=-\infty}^{N} x[n] y^*[n]$
+  - $\displaystyle \sum_{n=-\infty}^{\infty} x[n] y^*[n]$
   - $\displaystyle \frac{1}{2\pi} \int_{-\pi}^{\pi}
     X(e^{j\hat\omega}) Y^*(e^{j\hat\omega}) d\hat\omega$
 ```

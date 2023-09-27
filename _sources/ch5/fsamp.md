@@ -9,7 +9,7 @@
 * One may ask whether a similar result applies to sampling the FT
   $X(\omega)$ in the frequency domain. That is, can we get back
   $X(\omega)$ (and hence $x(t)$) from its samples? If so, what is the
-  condition under which we can do that. 
+  condition under which we can do that? 
 
 * We will answer the above questions in the context of a discrete-time
   signal $x[n]$ and its DTFT $X(e^{j\hat\omega})$, leaving the
