@@ -434,17 +434,23 @@ formula <a class="reference internal" href="../ch3/poisson.html#equation-e-poiss
 <p>where
 <span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span>. At
 <span class="math notranslate nohighlight">\(t=nT_s\)</span>, we get</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-   \sum_{m=-\infty}^{\infty} x[n+mM] 
-   &amp;=
-   \frac{1}{MT_s}  \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi
-  l}{MT_s} \right) e^{j\frac{2\pi l n}{M}} 
-  \\
-  &amp;= 
-  \frac{1}{M} \sum_{k=0}^{M-1} f_s \sum_{m=-\infty}^{\infty} X\left(
-  \frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}. 
-  \end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-fsamp">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-e-fsamp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+ \sum_{m=-\infty}^{\infty} x[n+mM] 
+ &amp;=
+ \frac{1}{MT_s}  \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi
+l}{MT_s} \right) e^{j\frac{2\pi l n}{M}} 
+\\
+&amp;= 
+\frac{1}{M} \sum_{k=0}^{M-1} f_s \sum_{m=-\infty}^{\infty} X\left(
+\frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}
+\\
+&amp;=
+\frac{1}{M} \sum_{k=0}^{M-1} X(e^{j\frac{2\pi k}{M}})  e^{j\frac{2\pi
+k n}{M}}
+\end{align*}\end{split}\]</div>
+<p>where the last equality is due to the frequency-domain Poisson sum
+formula <a class="reference internal" href="../ch3/sampthm.html#equation-e-folded-spectrum">(3.6)</a>.</p>
 </li>
 </ul>
 </section>

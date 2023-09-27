@@ -46,6 +46,8 @@
   where
   $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$. At
   $t=nT_s$, we get
+  ```{math}
+  :label: e:fsamp
   \begin{align*}
    \sum_{m=-\infty}^{\infty} x[n+mM] 
    &=
@@ -54,5 +56,12 @@
   \\
   &= 
   \frac{1}{M} \sum_{k=0}^{M-1} f_s \sum_{m=-\infty}^{\infty} X\left(
-  \frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}. 
+  \frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}
+  \\
+  &=
+  \frac{1}{M} \sum_{k=0}^{M-1} X(e^{j\frac{2\pi k}{M}})  e^{j\frac{2\pi
+  k n}{M}}
   \end{align*}
+  ```
+  where the last equality is due to the frequency-domain Poisson sum
+  formula {eq}`e:folded_spectrum`.
