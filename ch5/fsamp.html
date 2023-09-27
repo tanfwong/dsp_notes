@@ -426,13 +426,25 @@ at the sampling rate <span class="math notranslate nohighlight">\(f_s = \frac{1}
 formula <a class="reference internal" href="../ch3/poisson.html#equation-e-poisson-x">(3.1)</a> gives</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-  \sum_{n=-\infty}^{\infty} x(t+nMT_s)
-  =
+  \sum_{m=-\infty}^{\infty} x(t+mMT_s)
+  = 
   \frac{1}{MT_s} \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi l}{MT_s}
   \right) e^{j\frac{2\pi l t}{MT_s}} 
   \end{equation*}\]</div>
 <p>where
-<span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span>.</p>
+<span class="math notranslate nohighlight">\(x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)\)</span>. At
+<span class="math notranslate nohighlight">\(t=nT_s\)</span>, we get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+   \sum_{m=-\infty}^{\infty} x[n+mM] 
+   &amp;=
+   \frac{1}{MT_s}  \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi
+  l}{MT_s} \right) e^{j\frac{2\pi l n}{M}} 
+  \\
+  &amp;= 
+  \frac{1}{M} \sum_{k=0}^{M-1} f_s \sum_{m=-\infty}^{\infty} X\left(
+  \frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}. 
+  \end{align*}\]</div>
 </li>
 </ul>
 </section>

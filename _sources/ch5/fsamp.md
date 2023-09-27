@@ -38,10 +38,21 @@
   $x[n] = x(nT_s)$ and set $T=MT_s$. Then the time-domain Poisson sum
   formula {eq}`e:poisson_x` gives
   \begin{equation*}
-  \sum_{n=-\infty}^{\infty} x(t+nMT_s)
-  =
+  \sum_{m=-\infty}^{\infty} x(t+mMT_s)
+  = 
   \frac{1}{MT_s} \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi l}{MT_s}
   \right) e^{j\frac{2\pi l t}{MT_s}} 
   \end{equation*}
   where
-  $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$.
+  $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$. At
+  $t=nT_s$, we get
+  \begin{align*}
+   \sum_{m=-\infty}^{\infty} x[n+mM] 
+   &=
+   \frac{1}{MT_s}  \sum_{l=-\infty}^{\infty} X\left(\frac{2\pi
+  l}{MT_s} \right) e^{j\frac{2\pi l n}{M}} 
+  \\
+  &= 
+  \frac{1}{M} \sum_{k=0}^{M-1} f_s \sum_{m=-\infty}^{\infty} X\left(
+  \frac{2\pi (k+mM)}{MT_s} \right) e^{j\frac{2\pi (k+mM) n}{M}}. 
+  \end{align*}
