@@ -462,6 +462,18 @@ k}{M}\}_{k=0}^{M-1}\)</span>. The frequency-domain samples
 \right\}_{k=0}^{M-1}\)</span> serve as the DFS coefficients to weigh the
 harmonics.</p>
 </li>
+<li><p>In particular, if <span class="math notranslate nohighlight">\(x[n]=0\)</span> except for <span class="math notranslate nohighlight">\(n=0,1,\ldots, M-1\)</span>, then
+<span class="math notranslate nohighlight">\(x_M[n] = x[n]\)</span> for <span class="math notranslate nohighlight">\(n=0,1,\ldots, M-1\)</span>.
+We often say that the <strong>length</strong> of the signal <span class="math notranslate nohighlight">\(x[n]\)</span> is at most
+<span class="math notranslate nohighlight">\(M\)</span>. Thus, as long as the length of <span class="math notranslate nohighlight">\(x[n]\)</span> is at most <span class="math notranslate nohighlight">\(M\)</span>, we can
+easily obtain <span class="math notranslate nohighlight">\(x[n]\)</span>, and hence <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>, back from the
+frequency-domain samples
+<span class="math notranslate nohighlight">\(\left\{X(e^{j\frac{2\pi k}{M}}) \right\}_{k=0}^{M-1}\)</span> using
+<a class="reference internal" href="#equation-e-fsamp">(5.1)</a>.</p></li>
+<li><p>On the other hand, if the length of <span class="math notranslate nohighlight">\(x[n]\)</span> is larger than <span class="math notranslate nohighlight">\(M\)</span>, then
+<span class="math notranslate nohighlight">\(x_M[n] \neq x[n]\)</span> over any period. The DFS synthesis method in
+<a class="reference internal" href="#equation-e-fsamp">(5.1)</a> can only give us <span class="math notranslate nohighlight">\(x_M[m]\)</span> but not <span class="math notranslate nohighlight">\(x[n]\)</span>. We often
+call this reconstruction suffers from <strong>time-aliasing</strong>.</p></li>
 </ul>
 </section>
 

@@ -75,3 +75,17 @@
   $\left\{\frac{1}{M} X(e^{j\frac{2\pi k}{M}})
   \right\}_{k=0}^{M-1}$ serve as the DFS coefficients to weigh the
   harmonics.
+
+* In particular, if $x[n]=0$ except for $n=0,1,\ldots, M-1$, then
+  $x_M[n] = x[n]$ for $n=0,1,\ldots, M-1$.
+  We often say that the **length** of the signal $x[n]$ is at most 
+  $M$. Thus, as long as the length of $x[n]$ is at most $M$, we can
+  easily obtain $x[n]$, and hence $X(e^{j\hat\omega})$, back from the
+  frequency-domain samples 
+  $\left\{X(e^{j\frac{2\pi k}{M}}) \right\}_{k=0}^{M-1}$ using
+  {eq}`e:fsamp`. 
+
+* On the other hand, if the length of $x[n]$ is larger than $M$, then
+  $x_M[n] \neq x[n]$ over any period. The DFS synthesis method in
+  {eq}`e:fsamp` can only give us $x_M[m]$ but not $x[n]$. We often
+  call this reconstruction suffers from **time-aliasing**.
