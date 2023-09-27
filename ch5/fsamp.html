@@ -450,7 +450,17 @@ l}{MT_s} \right) e^{j\frac{2\pi l n}{M}}
 k n}{M}}
 \end{align*}\end{split}\]</div>
 <p>where the last equality is due to the frequency-domain Poisson sum
-formula <a class="reference internal" href="../ch3/sampthm.html#equation-e-folded-spectrum">(3.6)</a>.</p>
+formula <a class="reference internal" href="../ch3/sampthm.html#equation-e-folded-spectrum">(3.6)</a>. Let <span class="math notranslate nohighlight">\(x_M[n] =
+\sum_{m=-\infty}^{\infty} x[n+mM]\)</span> be the periodic signal (with
+period <span class="math notranslate nohighlight">\(M\)</span>) on the LHS of <a class="reference internal" href="#equation-e-fsamp">(5.1)</a>.  We often call <span class="math notranslate nohighlight">\(x_M[n]\)</span> the
+<em>periodic extension</em> of <span class="math notranslate nohighlight">\(x[n]\)</span>. Then, <a class="reference internal" href="#equation-e-fsamp">(5.1)</a> is simply the
+synthesis formula of the DFS of <span class="math notranslate nohighlight">\(x_M[n]\)</span> (see
+<a class="reference internal" href="../ch2/dtft_dirac_exs.html#sec-dfs"><span class="std std-numref">Section 2.4.4</span></a>).  That is, <span class="math notranslate nohighlight">\(x_M[n]\)</span> can be constructed as the sum
+of the <span class="math notranslate nohighlight">\(M\)</span> weighted harmonics at frequencies <span class="math notranslate nohighlight">\(\{\frac{2\pi
+k}{M}\}_{k=0}^{M-1}\)</span>. The frequency-domain samples
+<span class="math notranslate nohighlight">\(\left\{\frac{1}{M} X(e^{j\frac{2\pi k}{M}})
+\right\}_{k=0}^{M-1}\)</span> serve as the DFS coefficients to weigh the
+harmonics.</p>
 </li>
 </ul>
 </section>

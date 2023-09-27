@@ -64,4 +64,14 @@
   \end{align*}
   ```
   where the last equality is due to the frequency-domain Poisson sum
-  formula {eq}`e:folded_spectrum`.
+  formula {eq}`e:folded_spectrum`. Let $x_M[n] =
+  \sum_{m=-\infty}^{\infty} x[n+mM]$ be the periodic signal (with
+  period $M$) on the LHS of {eq}`e:fsamp`.  We often call $x_M[n]$ the
+  *periodic extension* of $x[n]$. Then, {eq}`e:fsamp` is simply the
+      synthesis formula of the DFS of $x_M[n]$ (see
+  {numref}`sec:dfs`).  That is, $x_M[n]$ can be constructed as the sum
+  of the $M$ weighted harmonics at frequencies $\{\frac{2\pi
+  k}{M}\}_{k=0}^{M-1}$. The frequency-domain samples
+  $\left\{\frac{1}{M} X(e^{j\frac{2\pi k}{M}})
+  \right\}_{k=0}^{M-1}$ serve as the DFS coefficients to weigh the
+  harmonics.

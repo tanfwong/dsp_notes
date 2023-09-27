@@ -215,6 +215,7 @@ As a result, the DTFT $\displaystyle \Delta_N (e^{j\hat{\omega}}) =
 \right)
 \end{equation*}
 
+(sec:dfs)=
 ## General periodic $x[n]$ with period $N$
 Note that we can write $\displaystyle x[n] = \sum_{k=0}^{N-1} x[k] \delta_N[n-k]$.
 Hence, by the linearity and time shifting properties, the DTFT $X(e^{j\hat{\omega}})$
