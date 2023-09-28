@@ -437,7 +437,7 @@ X(e^{j\hat\omega})\)</span>. Then from the time shifting property of DTFT,
 we have <span class="math notranslate nohighlight">\(x[n-n_0] \stackrel{\text{DTFT}}{\longleftrightarrow}
 e^{-j\hat\omega n_0} X(e^{j\hat\omega})\)</span>. From <a class="reference internal" href="fsamp.html#equation-e-fsamp">(5.1)</a>, the
 frequency-domain samples <span class="math notranslate nohighlight">\(\{ e^{-j\frac{2\pi k n_0}{M}}
-X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}\)</span> give the periodic
+X(e^{j\frac{2\pi k }{M}}) \}_{k=0}^{M-1}\)</span> give the periodic
 extended signal <span class="math notranslate nohighlight">\(x_M[n-n_0]\)</span>. As the length of <span class="math notranslate nohighlight">\(x[n]\)</span> is at most
 <span class="math notranslate nohighlight">\(M\)</span>, the period of <span class="math notranslate nohighlight">\(x_M[n-n_0]\)</span> over <span class="math notranslate nohighlight">\(n=0,1,2,\dots, M-1\)</span> is simply
 a circularly shifted version of <span class="math notranslate nohighlight">\(x[n]\)</span> by <span class="math notranslate nohighlight">\(n_0\)</span>.</p>
@@ -448,7 +448,7 @@ the notation <span class="math notranslate nohighlight">\((n-n_0)\bmod M\)</span
 circularly shifted version of <span class="math notranslate nohighlight">\(x[n]\)</span> will be <span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span>.</p>
 </div>
 <p>Since the frequency-domain samples <span class="math notranslate nohighlight">\(\{ e^{-j\frac{2\pi k n_0}{M}}
-X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}\)</span> are by definition the DFT
+X(e^{j\frac{2\pi k }{M}}) \}_{k=0}^{M-1}\)</span> are by definition the DFT
 coefficients of the circularly shifted <span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span>, we have just
 established the DFT mapping:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -456,6 +456,17 @@ established the DFT mapping:</p>
   x[(n-n_0)_M] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
   ~~e^{-j\frac{2\pi k n_0}{M}} X_k
   \end{equation*}\]</div>
+</li>
+<li><p><strong>Circular convolution</strong>:</p>
+<p>Let <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n]
+\stackrel{\text{DTFT}}{\longleftrightarrow} Y(e^{j\hat\omega})\)</span>. The
+convolution property of DTFT gives <span class="math notranslate nohighlight">\(x[n]*y[n]
+\stackrel{\text{DTFT}}{\longleftrightarrow} X(e^{j\hat\omega})
+Y(e^{j\hat\omega})\)</span>. Then from <a class="reference internal" href="fsamp.html#equation-e-fsamp">(5.1)</a>, the frequency-domain
+samples <span class="math notranslate nohighlight">\(\{ X(e^{j\frac{2\pi k}{M}}) Y(e^{j\frac{2\pi
+k}{M}})\}_{k=0}^{M-1}\)</span> give the periodic extended signal
+<span class="math notranslate nohighlight">\((x*y)_M[n]\)</span>.</p>
 </li>
 </ul>
 </section>

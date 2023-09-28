@@ -39,7 +39,7 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   we have $x[n-n_0] \stackrel{\text{DTFT}}{\longleftrightarrow}
  e^{-j\hat\omega n_0} X(e^{j\hat\omega})$. From {eq}`e:fsamp`, the
   frequency-domain samples $\{ e^{-j\frac{2\pi k n_0}{M}}
-  X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}$ give the periodic
+  X(e^{j\frac{2\pi k }{M}}) \}_{k=0}^{M-1}$ give the periodic
   extended signal $x_M[n-n_0]$. As the length of $x[n]$ is at most
   $M$, the period of $x_M[n-n_0]$ over $n=0,1,2,\dots, M-1$ is simply
   a circularly shifted version of $x[n]$ by $n_0$.
@@ -49,13 +49,26 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   circularly shifted version of $x[n]$ will be $x[(n-n_0)_M]$.
   ```
   Since the frequency-domain samples $\{ e^{-j\frac{2\pi k n_0}{M}}
-  X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}$ are by definition the DFT
+  X(e^{j\frac{2\pi k }{M}}) \}_{k=0}^{M-1}$ are by definition the DFT
   coefficients of the circularly shifted $x[(n-n_0)_M]$, we have just
   established the DFT mapping:
   \begin{equation*}
   x[(n-n_0)_M] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
   ~~e^{-j\frac{2\pi k n_0}{M}} X_k
   \end{equation*}
+
+* **Circular convolution**:
+
+  Let $x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+  X(e^{j\hat\omega})$ and $y[n]
+  \stackrel{\text{DTFT}}{\longleftrightarrow} Y(e^{j\hat\omega})$. The
+  convolution property of DTFT gives $x[n]*y[n]
+  \stackrel{\text{DTFT}}{\longleftrightarrow} X(e^{j\hat\omega})
+  Y(e^{j\hat\omega})$. Then from {eq}`e:fsamp`, the frequency-domain
+  samples $\{ X(e^{j\frac{2\pi k}{M}}) Y(e^{j\frac{2\pi
+  k}{M}})\}_{k=0}^{M-1}$ give the periodic extended signal
+  $(x*y)_M[n]$. 
+
 
 ## DFT property table
 For each property listed below, assume both $x[n]$ and $y[n]$ are
