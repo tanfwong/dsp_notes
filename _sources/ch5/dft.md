@@ -31,6 +31,7 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   have to consider the periodic extension $x_M[n]$ instead of $x[n]$
   when the operation involved makes the resulting signal violate the
   condition that its value must be zero except for $n=0,1,2,\ldots,M-1$.
+  We consider two examples below.
 
 * **Circular Time Shifting**:
   
@@ -69,6 +70,39 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   k}{M}})\}_{k=0}^{M-1}$ give the periodic extended signal
   $(x*y)_M[n]$. 
 
+  Let us examine  the signal $(x*y)_M[n]$ in detail for the case that
+  the lengths of both $x[n]$ and $y[n]$ are at most $M$:
+  ```{math}
+  :label: e:circonv
+  \begin{align}
+  (x*y)_M[n]
+  &=
+  \sum_{m=-\infty}^{\infty} (x*y)[n+mM]
+  \\
+  &=
+  \sum_{m=-\infty}^{\infty}  \sum_{k=-\infty}^{\infty} x[k]y[n+mM-k] 
+  \\
+  &=
+  \sum_{k=-\infty}^{\infty} x[k] y_M[n-k]
+  \\
+  &=
+  \sum_{k=0}^{M-1} x[k] y[(n-k)_M]
+  \end{align}
+  ```
+   The last expression in {eq}`e:circonv` is similar to a convolution
+  sum between $x[n]$ and $y[n]$, except that we use the circularly
+  shifted version $y[(n-k)_M]$ instead. This observation motivates the
+  following definition of circular convolution:
+  ```{admonition} Notation
+  $\displaystyle x[n] \circledast_M y[n] =  \sum_{k=0}^{M-1} x[k]
+  y[(n-k)_M]$ denotes the **circular convolution** between two signals
+  $x[n]$ and $y[n]$ of length at most $M$.
+  ```
+  With this definition, we get the following DFT mapping:
+  \begin{equation*}
+   x[n] \circledast_M y[n] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
+   ~~ X_k Y_k
+  \end{equation*}
 
 ## DFT property table
 For each property listed below, assume both $x[n]$ and $y[n]$ are

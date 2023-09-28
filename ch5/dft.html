@@ -430,7 +430,8 @@ of the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</s
 <a class="reference internal" href="../ch2/dtft_tables.html#sec-dtft-table"><span class="std std-numref">Section 2.2.2</span></a>) carry over to DFT with the caveat that we
 have to consider the periodic extension <span class="math notranslate nohighlight">\(x_M[n]\)</span> instead of <span class="math notranslate nohighlight">\(x[n]\)</span>
 when the operation involved makes the resulting signal violate the
-condition that its value must be zero except for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots,M-1\)</span>.</p></li>
+condition that its value must be zero except for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots,M-1\)</span>.
+We consider two examples below.</p></li>
 <li><p><strong>Circular Time Shifting</strong>:</p>
 <p>Let <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
 X(e^{j\hat\omega})\)</span>. Then from the time shifting property of DTFT,
@@ -467,6 +468,39 @@ Y(e^{j\hat\omega})\)</span>. Then from <a class="reference internal" href="fsamp
 samples <span class="math notranslate nohighlight">\(\{ X(e^{j\frac{2\pi k}{M}}) Y(e^{j\frac{2\pi
 k}{M}})\}_{k=0}^{M-1}\)</span> give the periodic extended signal
 <span class="math notranslate nohighlight">\((x*y)_M[n]\)</span>.</p>
+<p>Let us examine  the signal <span class="math notranslate nohighlight">\((x*y)_M[n]\)</span> in detail for the case that
+the lengths of both <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span> are at most <span class="math notranslate nohighlight">\(M\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-e-circonv">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-e-circonv" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+(x*y)_M[n]
+&amp;=
+\sum_{m=-\infty}^{\infty} (x*y)[n+mM]
+\\
+&amp;=
+\sum_{m=-\infty}^{\infty}  \sum_{k=-\infty}^{\infty} x[k]y[n+mM-k] 
+\\
+&amp;=
+\sum_{k=-\infty}^{\infty} x[k] y_M[n-k]
+\\
+&amp;=
+\sum_{k=0}^{M-1} x[k] y[(n-k)_M]
+\end{align}\end{split}\]</div>
+<p>The last expression in <a class="reference internal" href="#equation-e-circonv">(5.2)</a> is similar to a convolution
+sum between <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>, except that we use the circularly
+shifted version <span class="math notranslate nohighlight">\(y[(n-k)_M]\)</span> instead. This observation motivates the
+following definition of circular convolution:</p>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle x[n] \circledast_M y[n] =  \sum_{k=0}^{M-1} x[k]
+y[(n-k)_M]\)</span> denotes the <strong>circular convolution</strong> between two signals
+<span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span> of length at most <span class="math notranslate nohighlight">\(M\)</span>.</p>
+</div>
+<p>With this definition, we get the following DFT mapping:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+   x[n] \circledast_M y[n] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
+   ~~ X_k Y_k
+  \end{equation*}\]</div>
 </li>
 </ul>
 </section>
