@@ -501,6 +501,20 @@ y[(n-k)_M]\)</span> denotes the <strong>circular convolution</strong> between tw
    x[n] \circledast_M y[n] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
    ~~ X_k Y_k
   \end{equation*}\]</div>
+<p>It is easy to check circular convolution has the following
+properties similar to standard convolution:</p>
+<ul class="simple">
+<li><p><strong>Commutativity</strong>:  $x[n] \circledast_M y[n] = y[n] \circledast_M x[n]</p></li>
+<li><p><strong>Associativity</strong>: <span class="math notranslate nohighlight">\((x[n] \circledast_M y[n]) \circledast_M z[n] =
+x[n] \circledast_M (y[n] \circledast_M z[n])\)</span></p></li>
+<li><p><strong>Distributivity</strong>:  <span class="math notranslate nohighlight">\(x[n] \circledast_M (\alpha y[n] + \beta z[n]
+= \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]\)</span></p></li>
+<li><p><strong>Identity</strong>: <span class="math notranslate nohighlight">\(x[n] \circledast_M \delta[n-k] = x[(n-k)_M]\)</span> for
+<span class="math notranslate nohighlight">\(k=0,1,\ldots, M-1\)</span></p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(L\)</span> be the lengths of <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>,
+respectively. If <span class="math notranslate nohighlight">\(M \geq N+L-1\)</span>, then <span class="math notranslate nohighlight">\(x[n] \circledast_M y[n] =
+x[n]*y[n]\)</span>.</p></li>
+</ul>
 </li>
 </ul>
 </section>
@@ -550,7 +564,7 @@ Y(e^{j\hat\omega})\)</span>:</p>
 </tr>
 <tr class="row-even"><td><p>Multiplication</p></td>
 <td><p><span class="math notranslate nohighlight">\(x[n] y[n]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X_k \circledast_M Y_k\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{M} X_k \circledast_M Y_k\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>Parseval Theorem</p></td>
 <td><p><span class="math notranslate nohighlight">\(\displaystyle \sum_{n=0}^{M-1} x[n] y^*[n]\)</span></p></td>

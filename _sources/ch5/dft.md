@@ -104,6 +104,20 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
    ~~ X_k Y_k
   \end{equation*}
 
+  It is easy to check circular convolution has the following
+  properties similar to standard convolution:
+  - **Commutativity**:  $x[n] \circledast_M y[n] = y[n] \circledast_M x[n]
+  - **Associativity**: $(x[n] \circledast_M y[n]) \circledast_M z[n] =
+    x[n] \circledast_M (y[n] \circledast_M z[n])$
+  - **Distributivity**:  $x[n] \circledast_M (\alpha y[n] + \beta z[n]
+    = \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]$
+  - **Identity**: $x[n] \circledast_M \delta[n-k] = x[(n-k)_M]$ for
+    $k=0,1,\ldots, M-1$
+  - Let $N$ and $L$ be the lengths of $x[n]$ and $y[n]$,
+    respectively. If $M \geq N+L-1$, then $x[n] \circledast_M y[n] =
+    x[n]*y[n]$.
+
+
 ## DFT property table
 For each property listed below, assume both $x[n]$ and $y[n]$ are
 signals of at most length $M$, as well as
@@ -143,7 +157,7 @@ Y(e^{j\hat\omega})$:
 
 * - Multiplication
   - $x[n] y[n]$
-  - $X_k \circledast_M Y_k$ 
+  - $\frac{1}{M} X_k \circledast_M Y_k$ 
     
 * - Parseval Theorem
   - $\displaystyle \sum_{n=0}^{M-1} x[n] y^*[n]$
