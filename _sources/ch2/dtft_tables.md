@@ -89,7 +89,7 @@ Y(e^{j\hat\omega})$:
 
 * - Time Shifting
   - $x[n-n_0]$
-  - $X(e^{j{\hat{\omega}}}) e^{-j \widehat{\omega} n_0}$
+  - $X(e^{j{\hat{\omega}}}) e^{-j \hat{\omega} n_0}$
 
 * - Frequency Shifting
   - $x[n] e^{j \hat{\omega}_0 n}$

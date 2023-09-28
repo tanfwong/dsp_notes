@@ -424,14 +424,39 @@ length <span class="math notranslate nohighlight">\(M\)</span> and its set of <s
 </div>
 <section id="dft-properties">
 <h2><span class="section-number">5.2.1. </span>DFT properties<a class="headerlink" href="#dft-properties" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>Since the DFT coefficients <span class="math notranslate nohighlight">\(X_k\)</span>’s are the frequency-domain samples
 of the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>, the properties of DTFT (see
 <a class="reference internal" href="../ch2/dtft_tables.html#sec-dtft-table"><span class="std std-numref">Section 2.2.2</span></a>) carry over to DFT with the caveat that we
 have to consider the periodic extension <span class="math notranslate nohighlight">\(x_M[n]\)</span> instead of <span class="math notranslate nohighlight">\(x[n]\)</span>
 when the operation involved makes the resulting signal violate the
 condition that its value must be zero except for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots,M-1\)</span>.</p></li>
-<li><p><strong>Circular Time Shifting</strong>:</p></li>
+<li><p><strong>Circular Time Shifting</strong>:</p>
+<p>Let <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+X(e^{j\hat\omega})\)</span>. Then from the time shifting property of DTFT,
+we have <span class="math notranslate nohighlight">\(x[n-n_0] \stackrel{\text{DTFT}}{\longleftrightarrow}
+e^{-j\hat\omega n_0} X(e^{j\hat\omega})\)</span>. From <a class="reference internal" href="fsamp.html#equation-e-fsamp">(5.1)</a>, the
+frequency-domain samples <span class="math notranslate nohighlight">\(\{ e^{-j\frac{2\pi k n_0}{M}}
+X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}\)</span> give the periodic
+extended signal <span class="math notranslate nohighlight">\(x_M[n-n_0]\)</span>. As the length of <span class="math notranslate nohighlight">\(x[n]\)</span> is at most
+<span class="math notranslate nohighlight">\(M\)</span>, the period of <span class="math notranslate nohighlight">\(x_M[n-n_0]\)</span> over <span class="math notranslate nohighlight">\(n=0,1,2,\dots, M-1\)</span> is simply
+a circularly shifted version of <span class="math notranslate nohighlight">\(x[n]\)</span> by <span class="math notranslate nohighlight">\(n_0\)</span>.</p>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>We denote the circular shifting of the time index <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n_0\)</span> with
+the notation <span class="math notranslate nohighlight">\((n-n_0)\bmod M\)</span> or <span class="math notranslate nohighlight">\((n-n_0)_M\)</span>. For example, the
+circularly shifted version of <span class="math notranslate nohighlight">\(x[n]\)</span> will be <span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span>.</p>
+</div>
+<p>Since the frequency-domain samples <span class="math notranslate nohighlight">\(\{ e^{-j\frac{2\pi k n_0}{M}}
+X(e^{j\frac{2\pi k n_0}{M}}) \}_{k=0}^{M-1}\)</span> are by definition the DFT
+coefficients of the circularly shifted <span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span>, we have just
+established the DFT mapping:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  x[(n-n_0)_M] ~~\stackrel{M\text{-DFT}}{\longleftrightarrow} 
+  ~~e^{-j\frac{2\pi k n_0}{M}} X_k
+  \end{equation*}\]</div>
+</li>
 </ul>
 </section>
 <section id="dft-property-table">
@@ -439,7 +464,7 @@ condition that its value must be zero except for <span class="math notranslate n
 <p>For each property listed below, assume both <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span> are
 signals of at most length <span class="math notranslate nohighlight">\(M\)</span>, as well as
 <span class="math notranslate nohighlight">\(x[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
-X_k\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DFT}}{\longleftrightarrow}
+X_k\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
 Y(e^{j\hat\omega})\)</span>:</p>
 <table class="table">
 <colgroup>
@@ -460,11 +485,11 @@ Y(e^{j\hat\omega})\)</span>:</p>
 </tr>
 <tr class="row-odd"><td><p>Circular Time Shifting</p></td>
 <td><p><span class="math notranslate nohighlight">\(x[(n-n_0)_M]\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X_k e^{-j \widehat{\omega} n_0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e^{-j \frac{2\pi k n_0}{M}} X_k\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p>Circular Frequency Shifting</p></td>
 <td><p><span class="math notranslate nohighlight">\(x[n] e^{j \frac{2\pi ln}{M}}\)</span></p></td>
-<td><p><span class="math notranslate nohighlight">\(X_{(k-l)_M)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(X_{(k-l)_M}\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>Conjugation</p></td>
 <td><p><span class="math notranslate nohighlight">\(x^*[n]\)</span></p></td>
