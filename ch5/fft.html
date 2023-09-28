@@ -490,6 +490,35 @@ X^{(\nu-1)}_{0,k} +w^{k+2^{\nu-1}}_{2^\nu} X^{(\nu-1)}_{1,k}
 &amp; k=0,1,\ldots,2^{\nu-1} -1
 \end{align}\end{split}\]</div>
 </li>
+<li><p>Repeat the decomposition above recursively, we get, for <span class="math notranslate nohighlight">\(i=\nu-1, \nu-2, \ldots, 1\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dit3">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-e-fft-dit3" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X^{(i)}_{b,k} 
+&amp; =
+X^{(i-1)}_{0b,k} +  w^{k}_{2^i} X^{(i-1)}_{1b,k}
+\\
+X^{(i)}_{b,k+2^{i-1}} 
+&amp;= 
+X^{(i-1)}_{0b,k} +w^{k+2^{i-1}}_{2^i} X^{(i-1)}_{1b,k}
+\end{align}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(k=0,1,\ldots,2^{i-1} -1\)</span> and each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of
+length <span class="math notranslate nohighlight">\(\nu-i\)</span> until reaching the trivial terminating case:</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dit4">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-e-fft-dit4" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X^{(1)}_{b,0} 
+&amp;=
+X^{(0)}_{0b,0} + w^{0}_{2} X^{(0)}_{1b,0}
+=
+x^{(0)}_{0b}[0] + x^{(0)}_{1b}[0]
+\\
+X^{(1)}_{b,1} 
+&amp;= 
+X^{(0)}_{0b,0} + w^{1}_{2} X^{(0)}_{1b,0}
+=
+x^{(0)}_{0b}[0] - x^{(0)}_{1b}[0]
+\end{align}\end{split}\]</div>
+<p>for each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of length <span class="math notranslate nohighlight">\(\nu-1\)</span>.</p>
+</li>
 </ul>
 </section>
 </section>

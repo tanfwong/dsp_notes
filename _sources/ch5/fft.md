@@ -95,3 +95,36 @@
   X^{(\nu-1)}_{0,k} +w^{k+2^{\nu-1}}_{2^\nu} X^{(\nu-1)}_{1,k}
   & k=0,1,\ldots,2^{\nu-1} -1
   \end{align}
+  ```
+* Repeat the decomposition above recursively, we get, for $i=\nu-1, \nu-2, \ldots, 1$,
+  ```{math}
+  :label: e:fft_dit3
+  \begin{align}
+  X^{(i)}_{b,k} 
+  & =
+  X^{(i-1)}_{0b,k} +  w^{k}_{2^i} X^{(i-1)}_{1b,k}
+  \\
+  X^{(i)}_{b,k+2^{i-1}} 
+  &= 
+  X^{(i-1)}_{0b,k} +w^{k+2^{i-1}}_{2^i} X^{(i-1)}_{1b,k}
+  \end{align}
+  ```
+    for each $k=0,1,\ldots,2^{i-1} -1$ and each binary sequence $b$ of
+    length $\nu-i$ until reaching the trivial terminating case:
+    ```{math}
+  :label: e:fft_dit4
+  \begin{align}
+  X^{(1)}_{b,0} 
+  &=
+  X^{(0)}_{0b,0} + w^{0}_{2} X^{(0)}_{1b,0}
+  =
+  x^{(0)}_{0b}[0] + x^{(0)}_{1b}[0]
+  \\
+  X^{(1)}_{b,1} 
+  &= 
+  X^{(0)}_{0b,0} + w^{1}_{2} X^{(0)}_{1b,0}
+  =
+  x^{(0)}_{0b}[0] - x^{(0)}_{1b}[0]
+  \end{align}
+  ```
+  for each binary sequence $b$ of length $\nu-1$.
