@@ -386,6 +386,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-properties">5.2.1. DFT properties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-property-table">5.2.2. DFT property table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-domain-analysis-using-dft">5.2.3. Frequency-domain analysis using DFT</a></li>
 </ul>
             </nav>
         </div>
@@ -405,17 +406,17 @@ the following definition of <span class="math notranslate nohighlight">\(M\)</sp
 frequency domain samples <span class="math notranslate nohighlight">\(X_k = X(e^{j\frac{2\pi k}{M}})\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,2,\ldots,M-1\)</span>:</p>
 <p><strong>Forward DFT</strong>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  X_k &amp;= \sum_{n=0}^{M-1} x[n] e^{-j\frac{2\pi kn}{M}} &amp; k=0,1,2,
-  \ldots, M-1
-  \end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-dft">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-e-dft" title="Permalink to this equation">#</a></span>\[\begin{align}
+X_k &amp;= \sum_{n=0}^{M-1} x[n] e^{-j\frac{2\pi kn}{M}} &amp; k=0,1,2,
+\ldots, M-1
+\end{align}\]</div>
 <p><strong>Inverse DFT</strong>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  x[n] &amp;= \frac{1}{M} \sum_{k=0}^{M-1} X_k e^{j\frac{2\pi kn}{M}} &amp;
-  n=0,1,2, \dots, M-1
-  \end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-idft">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-e-idft" title="Permalink to this equation">#</a></span>\[\begin{align}
+x[n] &amp;= \frac{1}{M} \sum_{k=0}^{M-1} X_k e^{j\frac{2\pi kn}{M}} &amp;
+n=0,1,2, \dots, M-1
+\end{align}\]</div>
 <div class="admonition-notation admonition">
 <p class="admonition-title">Notation</p>
 <p>We use the notation <span class="math notranslate nohighlight">\(x[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
@@ -471,7 +472,7 @@ k}{M}})\}_{k=0}^{M-1}\)</span> give the periodic extended signal
 <p>Let us examine  the signal <span class="math notranslate nohighlight">\((x*y)_M[n]\)</span> in detail for the case that
 the lengths of both <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span> are at most <span class="math notranslate nohighlight">\(M\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-e-circonv">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-e-circonv" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-e-circonv" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
 (x*y)_M[n]
 &amp;=
 \sum_{m=-\infty}^{\infty} (x*y)[n+mM]
@@ -485,7 +486,7 @@ the lengths of both <span class="math notranslate nohighlight">\(x[n]\)</span> a
 &amp;=
 \sum_{k=0}^{M-1} x[k] y[(n-k)_M]
 \end{align}\end{split}\]</div>
-<p>The last expression in <a class="reference internal" href="#equation-e-circonv">(5.2)</a> is similar to a convolution
+<p>The last expression in <a class="reference internal" href="#equation-e-circonv">(5.4)</a> is similar to a convolution
 sum between <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>, except that we use the circularly
 shifted version <span class="math notranslate nohighlight">\(y[(n-k)_M]\)</span> instead. This observation motivates the
 following definition of circular convolution:</p>
@@ -511,7 +512,7 @@ x[n] \circledast_M (y[n] \circledast_M z[n])\)</span></p></li>
 = \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]\)</span></p></li>
 <li><p><strong>Identity</strong>: <span class="math notranslate nohighlight">\(x[n] \circledast_M \delta[n-k] = x[(n-k)_M]\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, M-1\)</span></p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(L\)</span> be the lengths of <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>,
+<li><p><strong>Reduction to convolution</strong>: Let <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(L\)</span> be the lengths of <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>,
 respectively. If <span class="math notranslate nohighlight">\(M \geq N+L-1\)</span>, then <span class="math notranslate nohighlight">\(x[n] \circledast_M y[n] =
 x[n]*y[n]\)</span>.</p></li>
 </ul>
@@ -572,6 +573,29 @@ Y(e^{j\hat\omega})\)</span>:</p>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="frequency-domain-analysis-using-dft">
+<h2><span class="section-number">5.2.3. </span>Frequency-domain analysis using DFT<a class="headerlink" href="#frequency-domain-analysis-using-dft" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The last property of circular convolution given above allows us to
+perform convolution <span class="math notranslate nohighlight">\(x[n]*y[n]\)</span> in the frequency domain using DFT
+between signals of finite lengths:</p>
+<ol class="arabic simple">
+<li><p>Let <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(L\)</span> be the lengths of <span class="math notranslate nohighlight">\(x[n]\)</span> and <span class="math notranslate nohighlight">\(y[n]\)</span>. Choose <span class="math notranslate nohighlight">\(M
+\geq N+L-1\)</span> (length of <span class="math notranslate nohighlight">\(x[n]*y[n]\)</span>).</p></li>
+<li><p>Calculate the <span class="math notranslate nohighlight">\(M\)</span>-point DFT of <span class="math notranslate nohighlight">\(x[n]\)</span> to get <span class="math notranslate nohighlight">\(\{X_k\}_{k=0}^{M-1}\)</span>.</p></li>
+<li><p>Calculate the <span class="math notranslate nohighlight">\(M\)</span>-point DFT of <span class="math notranslate nohighlight">\(y[n]\)</span> to get <span class="math notranslate nohighlight">\(\{Y_k\}_{k=0}^{M-1}\)</span>.</p></li>
+<li><p>Calculate the <span class="math notranslate nohighlight">\(M\)</span>-point IDFT of <span class="math notranslate nohighlight">\(\{X_k Y_k\}_{k=0}^{M-1}\)</span> to
+obtain <span class="math notranslate nohighlight">\(x[n] \circledast_M y[n] = x[n]*y[n]\)</span>.</p></li>
+</ol>
+</li>
+<li><p>Note that direct implementation of the step above, using the DFT and
+IDFT formulas <a class="reference internal" href="#equation-e-dft">(5.2)</a> and <a class="reference internal" href="#equation-e-idft">(5.3)</a>, is actually higher than
+doing convolution directly. Luckily, the FFT algorithms can
+significantly speed up the calculations of DFT and IDFT; thus making
+the frequency-domain analysis above much more computationally
+efficient.</p></li>
+</ul>
 </section>
 </section>
 
@@ -644,6 +668,7 @@ Y(e^{j\hat\omega})\)</span>:</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-properties">5.2.1. DFT properties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dft-property-table">5.2.2. DFT property table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-domain-analysis-using-dft">5.2.3. Frequency-domain analysis using DFT</a></li>
 </ul>
   </nav></div>
 

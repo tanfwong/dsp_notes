@@ -7,16 +7,22 @@ The frequency-domain sampling result given in {eq}`e:fsamp` motivates
   $k=0,1,2,\ldots,M-1$:
 
   **Forward DFT**:
-  \begin{align*}
+  ```{math}
+  :label: e:dft
+  \begin{align}
   X_k &= \sum_{n=0}^{M-1} x[n] e^{-j\frac{2\pi kn}{M}} & k=0,1,2,
   \ldots, M-1
-  \end{align*}
+  \end{align}
+  ```
   
   **Inverse DFT**:
-  \begin{align*}
+  ```{math}
+  :label: e:idft
+  \begin{align}
   x[n] &= \frac{1}{M} \sum_{k=0}^{M-1} X_k e^{j\frac{2\pi kn}{M}} &
   n=0,1,2, \dots, M-1
-  \end{align*}
+  \end{align}
+  ```
 
 ```{admonition} Notation
 We use the notation $x[n] \stackrel{M\text{-DFT}}{\longleftrightarrow}
@@ -113,7 +119,7 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
     = \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]$
   - **Identity**: $x[n] \circledast_M \delta[n-k] = x[(n-k)_M]$ for
     $k=0,1,\ldots, M-1$
-  - Let $N$ and $L$ be the lengths of $x[n]$ and $y[n]$,
+  - **Reduction to convolution**: Let $N$ and $L$ be the lengths of $x[n]$ and $y[n]$,
     respectively. If $M \geq N+L-1$, then $x[n] \circledast_M y[n] =
     x[n]*y[n]$.
 
@@ -163,3 +169,22 @@ Y(e^{j\hat\omega})$:
   - $\displaystyle \sum_{n=0}^{M-1} x[n] y^*[n]$
   - $\displaystyle \frac{1}{M} \sum_{k=0}^{M-1} X_k Y^*_k$
 ```
+
+## Frequency-domain analysis using DFT
+
+* The last property of circular convolution given above allows us to
+  perform convolution $x[n]*y[n]$ in the frequency domain using DFT
+  between signals of finite lengths:
+  1. Let $N$ and $L$ be the lengths of $x[n]$ and $y[n]$. Choose $M
+     \geq N+L-1$ (length of $x[n]*y[n]$).
+  2. Calculate the $M$-point DFT of $x[n]$ to get $\{X_k\}_{k=0}^{M-1}$.
+  3. Calculate the $M$-point DFT of $y[n]$ to get $\{Y_k\}_{k=0}^{M-1}$.
+  4. Calculate the $M$-point IDFT of $\{X_k Y_k\}_{k=0}^{M-1}$ to
+     obtain $x[n] \circledast_M y[n] = x[n]*y[n]$.
+
+* Note that direct implementation of the step above, using the DFT and
+  IDFT formulas {eq}`e:dft` and {eq}`e:idft`, is actually higher than
+  doing convolution directly. Luckily, the FFT algorithms can
+  significantly speed up the calculations of DFT and IDFT; thus making
+  the frequency-domain analysis above much more computationally
+  efficient.
