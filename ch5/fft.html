@@ -362,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -378,6 +380,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-time-algorithm">5.3.1. Radix-2 Decimation-in-Time Algorithm</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -422,6 +432,66 @@ X_k = \sum_{k=0}^{M-1} x[n] w^{kn}_{M}.
 \end{equation}\]</div>
 </li>
 </ul>
+<section id="radix-2-decimation-in-time-algorithm">
+<h2><span class="section-number">5.3.1. </span>Radix-2 Decimation-in-Time Algorithm<a class="headerlink" href="#radix-2-decimation-in-time-algorithm" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Let <span class="math notranslate nohighlight">\(x[n]\)</span> be of length at most <span class="math notranslate nohighlight">\(M=2^{\nu}\)</span>. We will use binary
+sequences of length at most <span class="math notranslate nohighlight">\(\nu -1\)</span> bits to index “sub-signals”
+generated from <span class="math notranslate nohighlight">\(x[n]\)</span>. Let <span class="math notranslate nohighlight">\(b\)</span> be a binary sequence (<span class="math notranslate nohighlight">\(b\)</span> can be a
+null sequence). Then <span class="math notranslate nohighlight">\(0b\)</span> and  <span class="math notranslate nohighlight">\(1b\)</span> denote
+concatenating a most significant bit to <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
+<li><p>Define <span class="math notranslate nohighlight">\(x^{(\nu)}[n] = x[n]\)</span>. For <span class="math notranslate nohighlight">\(i=\nu-1, \nu-2, \ldots, 1\)</span>,
+define iteratively:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x^{(i)}_{0b}[n] &amp;= x^{(i+1)}_b [2n] \\
+  x^{(i)}_{1b}[n] &amp;= x^{(i+1)}_b [2n+1] 
+  \end{align*}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(n=0,1,\ldots,2^i-1\)</span> and each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of length <span class="math notranslate nohighlight">\(\nu-1-i\)</span>.</p>
+</li>
+<li><p>Note that the length of <span class="math notranslate nohighlight">\(x^{(i)}_{b}[n]\)</span>  is <span class="math notranslate nohighlight">\(2^i\)</span>.
+Write the <span class="math notranslate nohighlight">\(2^i\)</span>-point DFT of <span class="math notranslate nohighlight">\(x^{(i)}_{b}[n]\)</span> as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  X^{(i)}_{b,k} &amp;= \sum_{n=0}^{2^i-1} x^{(i)}_{b}[n] w^{kn}_{2^i} &amp;
+  k=0,1,\ldots, 2^i-1.
+  \end{align*}\]</div>
+</li>
+<li><p>Now, consider the forward DFT formula <a class="reference internal" href="#equation-e-dftw">(5.5)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dit1">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-e-fft-dit1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X_k 
+&amp;= 
+\sum_{n=0}^{2^\nu-1} x^{(\nu)}[n] w^{kn}_{2^\nu}
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} x^{(\nu)}[2n]  w^{k(2n)}_{2^\nu} +
+\sum_{n=0}^{2^{\nu-1}-1} x^{(\nu)}[2n+1]  w^{k(2n+1)}_{2^\nu} 
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} x^{(\nu-1)}_0[n] w^{kn}_{2^{\nu-1}} +
+w^{k}_{2^\nu}  \left(
+\sum_{n=0}^{2^{\nu-1}-1} x^{(\nu-1)}_1[n] w^{kn}_{2^{\nu-1}} 
+\right)
+&amp; k=0,1,\ldots,2^\nu -1
+\end{align}\end{split}\]</div>
+<p>Notice that the two sums in the last expression of <a class="reference internal" href="#equation-e-fft-dit1">(5.6)</a> above are simply
+<span class="math notranslate nohighlight">\(2^{\nu-1}\)</span>-point DFTs. We may rewrite <a class="reference internal" href="#equation-e-fft-dit1">(5.6)</a> in the
+following form:</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dit2">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-e-fft-dit2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X_k 
+&amp; =
+X^{(\nu-1)}_{0,k} +  w^{k}_{2^\nu} X^{(\nu-1)}_{1,k}
+\\
+X_{k+2^{\nu-1}} 
+&amp;= 
+X^{(\nu-1)}_{0,k} +w^{k+2^{\nu-1}}_{2^\nu} X^{(\nu-1)}_{1,k}
+&amp; k=0,1,\ldots,2^{\nu-1} -1
+\end{align}\end{split}\]</div>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -482,6 +552,20 @@ X_k = \sum_{k=0}^{M-1} x[n] w^{kn}_{M}.
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-time-algorithm">5.3.1. Radix-2 Decimation-in-Time Algorithm</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
