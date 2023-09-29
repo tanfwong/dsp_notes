@@ -517,7 +517,24 @@ X^{(0)}_{0b,0} + w^{1}_{2} X^{(0)}_{1b,0}
 =
 x^{(0)}_{0b}[0] - x^{(0)}_{1b}[0]
 \end{align}\end{split}\]</div>
-<p>for each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of length <span class="math notranslate nohighlight">\(\nu-1\)</span>.</p>
+<p>for each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of length <span class="math notranslate nohighlight">\(\nu-1\)</span>.
+Note that in <a class="reference internal" href="#equation-e-fft-dit4">(5.9)</a>, for each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of
+length <span class="math notranslate nohighlight">\(\nu\)</span>, <span class="math notranslate nohighlight">\(x^{(0)}_{b}[0] = x[b]\)</span> where <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(x[b]\)</span> should be
+interpreted as the standard binary representation of the time index
+<span class="math notranslate nohighlight">\(n\)</span> in <span class="math notranslate nohighlight">\(x[n]\)</span>. For example, if <span class="math notranslate nohighlight">\(\nu = 4\)</span>, <span class="math notranslate nohighlight">\(x^{(0)}_{1000}[0] = 
+x[1000] = x[8]\)</span>.</p>
+</li>
+<li><p>The decomposition from <a class="reference internal" href="#equation-e-fft-dit2">(5.7)</a> to  <a class="reference internal" href="#equation-e-fft-dit4">(5.9)</a> shows
+that the original <span class="math notranslate nohighlight">\(2^{\nu}\)</span>-point DFT of <span class="math notranslate nohighlight">\(x[n]\)</span> can be obtained as a
+simple combination of two <span class="math notranslate nohighlight">\(2^{\nu-1}\)</span>-point DFTs (see
+<a class="reference internal" href="#equation-e-fft-dit2">(5.7)</a>), each of which can be calculated from two
+<span class="math notranslate nohighlight">\(2^{\nu-2}\)</span>-point DFTs and so on (see <a class="reference internal" href="#equation-e-fft-dit2">(5.7)</a>) until the
+terminating case of <span class="math notranslate nohighlight">\(2\)</span>-point DFTs that can be calculated trivially
+from the time-domain signal <span class="math notranslate nohighlight">\(x[n]\)</span> (see  <a class="reference internal" href="#equation-e-fft-dit4">(5.9)</a>). This
+recursive process is best expressed by the well known
+<em><strong>butterfly</strong></em> diagram. For example, see the following butterfly
+diagram for the case of <span class="math notranslate nohighlight">\(M=2^3 = 8\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/fft_dit_bfly.jpg"><img alt="8-point decimation-in-time FFT butterfly" class="align-center" src="../_images/fft_dit_bfly.jpg" style="width: 800px;" /></a>
 </li>
 </ul>
 </section>

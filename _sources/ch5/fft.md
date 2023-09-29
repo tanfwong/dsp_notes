@@ -127,4 +127,26 @@
   x^{(0)}_{0b}[0] - x^{(0)}_{1b}[0]
   \end{align}
   ```
-  for each binary sequence $b$ of length $\nu-1$.
+  for each binary sequence $b$ of length $\nu-1$. 
+  Note that in {eq}`e:fft_dit4`, for each binary sequence $b$ of
+  length $\nu$, $x^{(0)}_{b}[0] = x[b]$ where $b$ in $x[b]$ should be
+  interpreted as the standard binary representation of the time index
+  $n$ in $x[n]$. For example, if $\nu = 4$, $x^{(0)}_{1000}[0] = 
+  x[1000] = x[8]$.
+
+* The decomposition from {eq}`e:fft_dit2` to  {eq}`e:fft_dit4` shows
+  that the original $2^{\nu}$-point DFT of $x[n]$ can be obtained as a
+  simple combination of two $2^{\nu-1}$-point DFTs (see
+  {eq}`e:fft_dit2`), each of which can be calculated from two
+  $2^{\nu-2}$-point DFTs and so on (see {eq}`e:fft_dit2`) until the
+  terminating case of $2$-point DFTs that can be calculated trivially
+  from the time-domain signal $x[n]$ (see  {eq}`e:fft_dit4`). This
+  recursive process is best expressed by the well known
+  ***butterfly*** diagram. For example, see the following butterfly
+  diagram for the case of $M=2^3 = 8$:
+  ```{image} ../figs/fft_dit_bfly.jpg
+  :alt: 8-point decimation-in-time FFT butterfly 
+  :width: 800px
+  :align: center
+  ```
+  
