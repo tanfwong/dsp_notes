@@ -190,7 +190,7 @@
 
 * Again, assume $x[n]$ is of at most length $M=2^{\nu}$. Define
   $y^{(0)}[n] = x[n]$ and $z^{(0)}[n] = w^n_{2^\nu} y^{(0)}[n]$. For
-  $i=1,2,\ldots, \nu-1$, define iteratively
+  $i=1,2,\ldots, \nu$, define iteratively
   ```{math}
   :label: e:fft_dif1
   \begin{align}
@@ -253,4 +253,24 @@
   Y^{(1)}_{1,k} 
   \end{align}
   ```
-  for $k=0,1,\ldots, 2^{\nu-1}-1$.
+  for each $k=0,1,\ldots, 2^{\nu-1}-1$.
+
+* Continuing on the same decomposition recursively, we get, for
+  $i=1,2,\ldots,\nu-1$: 
+  ```{math}
+  :label: e:fft_dif3
+  \begin{align}
+  Y^{(i)}_{b,2k} &= Y^{(i+1)}_{0b,k}
+  \\
+  Y^{(i)}_{b,2k+1} &= Y^{(i+1)}_{1b,k}
+  \end{align}
+  ```
+  for each $k=0,1,\ldots, 2^{\nu-i-1}-1$ and each binary sequence $b$
+  of length $i$ until the terminating case of 
+  ```{math}
+  :label: e:fft_dif4
+  \begin{equation}
+  Y^{(\nu)}_{b,0} = y^{(\nu)}_{b}[0]
+  \end{equation}
+  ```
+  is reached.

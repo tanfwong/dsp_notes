@@ -582,7 +582,7 @@ DFT recursively. The following <strong>decimation-in-frequency</strong>
 decomposition is another common approach.</p></li>
 <li><p>Again, assume <span class="math notranslate nohighlight">\(x[n]\)</span> is of at most length <span class="math notranslate nohighlight">\(M=2^{\nu}\)</span>. Define
 <span class="math notranslate nohighlight">\(y^{(0)}[n] = x[n]\)</span> and <span class="math notranslate nohighlight">\(z^{(0)}[n] = w^n_{2^\nu} y^{(0)}[n]\)</span>. For
-<span class="math notranslate nohighlight">\(i=1,2,\ldots, \nu-1\)</span>, define iteratively</p>
+<span class="math notranslate nohighlight">\(i=1,2,\ldots, \nu\)</span>, define iteratively</p>
 <div class="math notranslate nohighlight" id="equation-e-fft-dif1">
 <span class="eqno">(5.10)<a class="headerlink" href="#equation-e-fft-dif1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
 y^{(i)}_{0b}[n] &amp;= y^{(i-1)}_b[n] + y^{(i-1)}_b[n+2^{\nu-i}] 
@@ -642,7 +642,23 @@ Y^{(0)}_{2k+1}
 &amp;= 
 Y^{(1)}_{1,k} 
 \end{align}\end{split}\]</div>
-<p>for <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2^{\nu-1}-1\)</span>.</p>
+<p>for each <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2^{\nu-1}-1\)</span>.</p>
+</li>
+<li><p>Continuing on the same decomposition recursively, we get, for
+<span class="math notranslate nohighlight">\(i=1,2,\ldots,\nu-1\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dif3">
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-e-fft-dif3" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+Y^{(i)}_{b,2k} &amp;= Y^{(i+1)}_{0b,k}
+\\
+Y^{(i)}_{b,2k+1} &amp;= Y^{(i+1)}_{1b,k}
+\end{align}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2^{\nu-i-1}-1\)</span> and each binary sequence <span class="math notranslate nohighlight">\(b\)</span>
+of length <span class="math notranslate nohighlight">\(i\)</span> until the terminating case of</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dif4">
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-e-fft-dif4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Y^{(\nu)}_{b,0} = y^{(\nu)}_{b}[0]
+\end{equation}\]</div>
+<p>is reached.</p>
 </li>
 </ul>
 </section>
