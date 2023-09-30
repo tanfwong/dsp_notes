@@ -536,6 +536,41 @@ recursive process is best expressed by the well known
 diagram for the case of <span class="math notranslate nohighlight">\(M=2^3 = 8\)</span>:</p>
 <a class="reference internal image-reference" href="../_images/fft_dit_bfly.jpg"><img alt="8-point decimation-in-time FFT butterfly" class="align-center" src="../_images/fft_dit_bfly.jpg" style="width: 800px;" /></a>
 </li>
+<li><p>In general, we need to store the intermediate values generated in
+the FFT calculation. Referring back to the butterfly diagram, we
+need to store <span class="math notranslate nohighlight">\(X^{(i)}_{b,k}\)</span> in the circles of each of the <span class="math notranslate nohighlight">\(\nu\)</span>
+stages of recursive calculation. Each stage requires:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2^{\nu}\)</span> complex-valued storage units, and</p></li>
+<li><p>at most <span class="math notranslate nohighlight">\(2^{\nu}\)</span> complex multiplications and <span class="math notranslate nohighlight">\(2^{\nu}\)</span> complex
+additions.</p></li>
+</ul>
+<p>Hence, both the computational complexity and the storage requirement
+are <span class="math notranslate nohighlight">\(\mathcal{O}(\nu 2^{\nu}) = \mathcal{O}(M \log_2 M)\)</span>. For
+comparison, the computation complexity of directly using the forward DFT
+formula <a class="reference internal" href="dft.html#equation-e-dft">(5.2)</a> to calculate the DFT is <span class="math notranslate nohighlight">\(\mathcal{O}(M^2)\)</span> and
+the storage requirement is <span class="math notranslate nohighlight">\(\mathcal{O}(M)\)</span>. <strong>Thus, the FFT algorithm
+provides a significant reduction in the computational complexity,
+requiring a relatively small increase in the storage requirement.</strong></p>
+</li>
+<li><p>We see from the butterfly diagram that the input <span class="math notranslate nohighlight">\(x[n]\)</span> to the
+butterfly is shuffled (decimated) according to the binary pattern
+<span class="math notranslate nohighlight">\(b\)</span> in the <span class="math notranslate nohighlight">\(i=0\)</span> stage. The <strong>bit reversal</strong> process (from MSB to
+LSB) provides a simple mnemonic to establish the order of shuffling.</p></li>
+<li><p>Rewriting the inverse DFT formula <a class="reference internal" href="dft.html#equation-e-idft">(5.3)</a> in the form below</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  M x[n] = \sum_{k=0}^{M-1} X_k (w^{kn}_M)^*
+  \end{equation*}\]</div>
+<p>indicates that the same butterfly above can be used to calculate
+IDFT if one replaces:</p>
+<ol class="arabic simple">
+<li><p>the butterfly input (still needs to shuffle the order)
+with <span class="math notranslate nohighlight">\(X_k\)</span>,</p></li>
+<li><p>the butterfly output with <span class="math notranslate nohighlight">\(Mx[n]\)</span>, and</p></li>
+<li><p>all weighting factors with their respective complex conjugates.</p></li>
+</ol>
+</li>
 </ul>
 </section>
 </section>

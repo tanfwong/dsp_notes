@@ -150,3 +150,34 @@
   :align: center
   ```
   
+* In general, we need to store the intermediate values generated in
+  the FFT calculation. Referring back to the butterfly diagram, we
+  need to store $X^{(i)}_{b,k}$ in the circles of each of the $\nu$
+  stages of recursive calculation. Each stage requires:
+  - $2^{\nu}$ complex-valued storage units, and
+  - at most $2^{\nu}$ complex multiplications and $2^{\nu}$ complex
+    additions. 
+
+  Hence, both the computational complexity and the storage requirement
+  are $\mathcal{O}(\nu 2^{\nu}) = \mathcal{O}(M \log_2 M)$. For
+  comparison, the computation complexity of directly using the forward DFT
+  formula {eq}`e:dft` to calculate the DFT is $\mathcal{O}(M^2)$ and
+  the storage requirement is $\mathcal{O}(M)$. **Thus, the FFT algorithm
+  provides a significant reduction in the computational complexity,
+  requiring a relatively small increase in the storage requirement.**
+
+* We see from the butterfly diagram that the input $x[n]$ to the
+  butterfly is shuffled (decimated) according to the binary pattern
+  $b$ in the $i=0$ stage. The **bit reversal** process (from MSB to
+  LSB) provides a simple mnemonic to establish the order of shuffling.
+
+* Rewriting the inverse DFT formula {eq}`e:idft` in the form below
+  \begin{equation*}
+  M x[n] = \sum_{k=0}^{M-1} X_k (w^{kn}_M)^*
+  \end{equation*}
+  indicates that the same butterfly above can be used to calculate
+  IDFT if one replaces:
+  1. the butterfly input (still needs to shuffle the order)
+     with $X_k$,
+  2. the butterfly output with $Mx[n]$, and
+  3. all weighting factors with their respective complex conjugates.
