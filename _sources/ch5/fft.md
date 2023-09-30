@@ -181,3 +181,76 @@
      with $X_k$,
   2. the butterfly output with $Mx[n]$, and
   3. all weighting factors with their respective complex conjugates.
+
+## Radix-2 Decimation-in-Frequency Algorithm
+
+* The decimation-in-time algorithm is  not the only way to decompose
+  DFT recursively. The following **decimation-in-frequency**
+  decomposition is another common approach. 
+
+* Again, assume $x[n]$ is of at most length $M=2^{\nu}$. Define
+  $y^{(0)}[n] = x[n]$ and $z^{(0)}[n] = w^n_{2^\nu} y^{(0)}[n]$. For
+  $i=1,2,\ldots, \nu-1$, define iteratively
+  ```{math}
+  :label: e:fft_dif1
+  \begin{align}
+  y^{(i)}_{0b}[n] &= y^{(i-1)}_b[n] + y^{(i-1)}_b[n+2^{\nu-i}] 
+  \\
+  y^{(i)}_{1b}[n] &= z^{(i-1)}_b[n] + z^{(i-1)}_b[n+2^{\nu-i}]
+  \\
+  z^{(i)}_{0b}[n] &= w^n_{2^{\nu-i}}  y^{(i)}_{0b}[n]
+  \\
+  z^{(i)}_{1b}[n] &= w^n_{2^{\nu-i}}  y^{(i)}_{1b}[n]
+  \end{align}
+  ```
+  for each $n=0,1,\ldots, 2^{\nu-i}-1$ and each binary sequence $b$ of
+  length $i-1$.
+
+* Note that the length of $y^{(i)}_{b}[n]$ is $2^{\nu-i} $. 
+  Write the $2^{\nu-i}$-point DFT of $y^{(i)}_{b}[n]$ as 
+  \begin{align*}
+  Y^{(i)}_{b,k} 
+  &= \sum_{n=0}^{2^{\nu-i}-1} y^{(i)}_{b}[n] w^{kn}_{2^{\nu-i}}
+  & k=0,1,\ldots, 2^{\nu-i}-1.
+  \end{align*}
+
+* The forward DFT formula {eq}`e:dft` gives
+  ```{math}
+  :label: e:fft_dif2
+  \begin{align}
+  X_{2k} 
+  &= 
+  Y^{(0)}_{2k} 
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu}-1} y^{(0)}[n] w^{2kn}_{2^{\nu}}
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu-1}-1} y^{(0)}[n] w^{kn}_{2^{\nu-1}} +
+  \sum_{n=0}^{2^{\nu-1}-1} y^{(0)}[n+2^{\nu-1}] w^{k(n+2^{\nu-1})}_{2^{\nu-1}}
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu-1}-1} y^{(1)}_{0}[n] w^{kn}_{2^{\nu-1}}
+  \\
+  &= 
+  Y^{(1)}_{0,k} 
+  \\
+  X_{2k+1} 
+  &= 
+  Y^{(0)}_{2k+1} 
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu}-1} y^{(0)}[n] w^{(2k+1)n}_{2^{\nu}}
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu-1}-1} z^{(0)}[n] w^{kn}_{2^{\nu-1}} +
+  \sum_{n=0}^{2^{\nu-1}-1} z^{(0)}[n+2^{\nu-1}] w^{k(n+2^{\nu-1})}_{2^{\nu-1}}
+  \\
+  &=
+  \sum_{n=0}^{2^{\nu-1}-1} y^{(1)}_{1}[n] w^{kn}_{2^{\nu-1}}
+  \\
+  &= 
+  Y^{(1)}_{1,k} 
+  \end{align}
+  ```
+  for $k=0,1,\ldots, 2^{\nu-1}-1$.

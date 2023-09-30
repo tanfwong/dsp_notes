@@ -386,6 +386,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-time-algorithm">5.3.1. Radix-2 Decimation-in-Time Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-frequency-algorithm">5.3.2. Radix-2 Decimation-in-Frequency Algorithm</a></li>
 </ul>
             </nav>
         </div>
@@ -573,6 +574,78 @@ with <span class="math notranslate nohighlight">\(X_k\)</span>,</p></li>
 </li>
 </ul>
 </section>
+<section id="radix-2-decimation-in-frequency-algorithm">
+<h2><span class="section-number">5.3.2. </span>Radix-2 Decimation-in-Frequency Algorithm<a class="headerlink" href="#radix-2-decimation-in-frequency-algorithm" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>The decimation-in-time algorithm is  not the only way to decompose
+DFT recursively. The following <strong>decimation-in-frequency</strong>
+decomposition is another common approach.</p></li>
+<li><p>Again, assume <span class="math notranslate nohighlight">\(x[n]\)</span> is of at most length <span class="math notranslate nohighlight">\(M=2^{\nu}\)</span>. Define
+<span class="math notranslate nohighlight">\(y^{(0)}[n] = x[n]\)</span> and <span class="math notranslate nohighlight">\(z^{(0)}[n] = w^n_{2^\nu} y^{(0)}[n]\)</span>. For
+<span class="math notranslate nohighlight">\(i=1,2,\ldots, \nu-1\)</span>, define iteratively</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dif1">
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-e-fft-dif1" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+y^{(i)}_{0b}[n] &amp;= y^{(i-1)}_b[n] + y^{(i-1)}_b[n+2^{\nu-i}] 
+\\
+y^{(i)}_{1b}[n] &amp;= z^{(i-1)}_b[n] + z^{(i-1)}_b[n+2^{\nu-i}]
+\\
+z^{(i)}_{0b}[n] &amp;= w^n_{2^{\nu-i}}  y^{(i)}_{0b}[n]
+\\
+z^{(i)}_{1b}[n] &amp;= w^n_{2^{\nu-i}}  y^{(i)}_{1b}[n]
+\end{align}\end{split}\]</div>
+<p>for each <span class="math notranslate nohighlight">\(n=0,1,\ldots, 2^{\nu-i}-1\)</span> and each binary sequence <span class="math notranslate nohighlight">\(b\)</span> of
+length <span class="math notranslate nohighlight">\(i-1\)</span>.</p>
+</li>
+<li><p>Note that the length of <span class="math notranslate nohighlight">\(y^{(i)}_{b}[n]\)</span> is <span class="math notranslate nohighlight">\(2^{\nu-i} \)</span>.
+Write the <span class="math notranslate nohighlight">\(2^{\nu-i}\)</span>-point DFT of <span class="math notranslate nohighlight">\(y^{(i)}_{b}[n]\)</span> as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  Y^{(i)}_{b,k} 
+  &amp;= \sum_{n=0}^{2^{\nu-i}-1} y^{(i)}_{b}[n] w^{kn}_{2^{\nu-i}}
+  &amp; k=0,1,\ldots, 2^{\nu-i}-1.
+  \end{align*}\]</div>
+</li>
+<li><p>The forward DFT formula <a class="reference internal" href="dft.html#equation-e-dft">(5.2)</a> gives</p>
+<div class="math notranslate nohighlight" id="equation-e-fft-dif2">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-e-fft-dif2" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X_{2k} 
+&amp;= 
+Y^{(0)}_{2k} 
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu}-1} y^{(0)}[n] w^{2kn}_{2^{\nu}}
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} y^{(0)}[n] w^{kn}_{2^{\nu-1}} +
+\sum_{n=0}^{2^{\nu-1}-1} y^{(0)}[n+2^{\nu-1}] w^{k(n+2^{\nu-1})}_{2^{\nu-1}}
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} y^{(1)}_{0}[n] w^{kn}_{2^{\nu-1}}
+\\
+&amp;= 
+Y^{(1)}_{0,k} 
+\\
+X_{2k+1} 
+&amp;= 
+Y^{(0)}_{2k+1} 
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu}-1} y^{(0)}[n] w^{(2k+1)n}_{2^{\nu}}
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} z^{(0)}[n] w^{kn}_{2^{\nu-1}} +
+\sum_{n=0}^{2^{\nu-1}-1} z^{(0)}[n+2^{\nu-1}] w^{k(n+2^{\nu-1})}_{2^{\nu-1}}
+\\
+&amp;=
+\sum_{n=0}^{2^{\nu-1}-1} y^{(1)}_{1}[n] w^{kn}_{2^{\nu-1}}
+\\
+&amp;= 
+Y^{(1)}_{1,k} 
+\end{align}\end{split}\]</div>
+<p>for <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2^{\nu-1}-1\)</span>.</p>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -643,6 +716,7 @@ with <span class="math notranslate nohighlight">\(X_k\)</span>,</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-time-algorithm">5.3.1. Radix-2 Decimation-in-Time Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radix-2-decimation-in-frequency-algorithm">5.3.2. Radix-2 Decimation-in-Frequency Algorithm</a></li>
 </ul>
   </nav></div>
 
