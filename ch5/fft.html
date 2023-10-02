@@ -533,8 +533,8 @@ simple combination of two <span class="math notranslate nohighlight">\(2^{\nu-1}
 terminating case of <span class="math notranslate nohighlight">\(2\)</span>-point DFTs that can be calculated trivially
 from the time-domain signal <span class="math notranslate nohighlight">\(x[n]\)</span> (see  <a class="reference internal" href="#equation-e-fft-dit4">(5.9)</a>). This
 recursive process is best expressed by the well known
-<em><strong>butterfly</strong></em> diagram. For example, see the following butterfly
-diagram for the case of <span class="math notranslate nohighlight">\(M=2^3 = 8\)</span>:</p>
+<em><strong>butterfly</strong></em> diagram. For example, see the following
+decimation-in-time butterfly diagram for the case of <span class="math notranslate nohighlight">\(M=2^3 = 8\)</span>:</p>
 <a class="reference internal image-reference" href="../_images/fft_dit_bfly.jpg"><img alt="8-point decimation-in-time FFT butterfly" class="align-center" src="../_images/fft_dit_bfly.jpg" style="width: 800px;" /></a>
 </li>
 <li><p>In general, we need to store the intermediate values generated in
@@ -660,6 +660,22 @@ Y^{(\nu)}_{b,0} = y^{(\nu)}_{b}[0]
 \end{equation}\]</div>
 <p>is reached.</p>
 </li>
+<li><p>Combing <a class="reference internal" href="#equation-e-fft-dif2">(5.11)</a>-<a class="reference internal" href="#equation-e-fft-dif4">(5.13)</a>, it is easy to check that
+<span class="math notranslate nohighlight">\(X_b = Y^{\nu}_{b,0} = y^{\nu}_{b}[0]\)</span> where the index <span class="math notranslate nohighlight">\(b\)</span> in <span class="math notranslate nohighlight">\(X_b\)</span>
+should be interpreted as the standard binary representation of the
+index <span class="math notranslate nohighlight">\(k\)</span> of the <span class="math notranslate nohighlight">\(2^\nu\)</span>-point FFT coefficient <span class="math notranslate nohighlight">\(X_k\)</span>.
+As a result, we may use <a class="reference internal" href="#equation-e-fft-dif1">(5.10)</a> to recursively calculate
+the <span class="math notranslate nohighlight">\(y^{(i)}_b[n]\)</span>’s until reaching the <span class="math notranslate nohighlight">\(y^{(\nu)}_n[0]\)</span>’s, which
+give us the <span class="math notranslate nohighlight">\(2^\nu\)</span>-point FFT <span class="math notranslate nohighlight">\(X_k\)</span>.</p></li>
+<li><p>Once again, the recursive calculation process is best expressed by a
+(different) butterfly diagram. For example, see the following
+decimation-in-frequency butterfly diagram for the case of <span class="math notranslate nohighlight">\(M=2^3 = 8\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/fft_dif_bfly.jpg"><img alt="8-point decimation-in-frequency FFT butterfly" class="align-center" src="../_images/fft_dif_bfly.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Unlike the decimation-in-time butterfly, it is the butterfly output
+<span class="math notranslate nohighlight">\(X_k\)</span> that is shuffled (decimated) according to the binary pattern
+<span class="math notranslate nohighlight">\(b\)</span> in the <span class="math notranslate nohighlight">\(i=\nu\)</span> stage. The <strong>bit reversal</strong> process
+still establishes the order of shuffling.</p></li>
 </ul>
 </section>
 </section>

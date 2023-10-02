@@ -142,8 +142,8 @@
   terminating case of $2$-point DFTs that can be calculated trivially
   from the time-domain signal $x[n]$ (see  {eq}`e:fft_dit4`). This
   recursive process is best expressed by the well known
-  ***butterfly*** diagram. For example, see the following butterfly
-  diagram for the case of $M=2^3 = 8$:
+  ***butterfly*** diagram. For example, see the following
+  decimation-in-time butterfly diagram for the case of $M=2^3 = 8$:
   ```{image} ../figs/fft_dit_bfly.jpg
   :alt: 8-point decimation-in-time FFT butterfly 
   :width: 800px
@@ -274,3 +274,25 @@
   \end{equation}
   ```
   is reached.
+
+* Combing {eq}`e:fft_dif2`-{eq}`e:fft_dif4`, it is easy to check that
+  $X_b = Y^{\nu}_{b,0} = y^{\nu}_{b}[0]$ where the index $b$ in $X_b$
+  should be interpreted as the standard binary representation of the
+  index $k$ of the $2^\nu$-point FFT coefficient $X_k$.
+  As a result, we may use {eq}`e:fft_dif1` to recursively calculate
+  the $y^{(i)}_b[n]$'s until reaching the $y^{(\nu)}_n[0]$'s, which
+  give us the $2^\nu$-point FFT $X_k$.
+
+* Once again, the recursive calculation process is best expressed by a
+  (different) butterfly diagram. For example, see the following
+  decimation-in-frequency butterfly diagram for the case of $M=2^3 = 8$:
+  ```{image} ../figs/fft_dif_bfly.jpg
+  :alt: 8-point decimation-in-frequency FFT butterfly 
+  :width: 800px
+  :align: center
+  ```
+
+* Unlike the decimation-in-time butterfly, it is the butterfly output
+  $X_k$ that is shuffled (decimated) according to the binary pattern
+  $b$ in the $i=\nu$ stage. The **bit reversal** process 
+  still establishes the order of shuffling.
