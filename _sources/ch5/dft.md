@@ -170,7 +170,9 @@ Y(e^{j\hat\omega})$:
   - $\displaystyle \frac{1}{M} \sum_{k=0}^{M-1} X_k Y^*_k$
 ```
 
-## Frequency-domain analysis using DFT
+
+(sec:freq_fil)=
+## Frequency-domain filtering using DFT
 
 * The last property of circular convolution given above allows us to
   perform convolution $x[n]*y[n]$ in the frequency domain using DFT

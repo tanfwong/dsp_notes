@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2.7. Dirac delta and FTs of infinite-energy signals &#8212; Foundations of DSP Notes</title>
+    <title>5.4. Linear Filtering with FFT &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch2/dirac';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch5/fil_fft';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Sampling and Reconstruction" href="../ch3/samp.html" />
-    <link rel="prev" title="2.6. Continuous-Time Fourier Transform (FT)" href="ft.html" />
+    <link rel="next" title="6. References" href="../refs.html" />
+    <link rel="prev" title="5.3. Fast Fourier Transform" href="fft.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -165,14 +165,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch1/ztransform.html">1.3. <span class="math notranslate nohighlight">\(z\)</span>-Transform</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="fourier.html">2. Fourier (Frequency Domain) Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="dtft.html">2.1. Discrete-Time Fourier Transform (DTFT)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dtft_tables.html">2.2. DTFT properties and tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dirac_periodic.html">2.3. Periodic Dirac delta</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dtft_dirac_exs.html">2.4. DTFTs of infinite-energy signals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fs.html">2.5. Fourier Series</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ft.html">2.6. Continuous-Time Fourier Transform (FT)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch2/fourier.html">2. Fourier (Frequency Domain) Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/dtft.html">2.1. Discrete-Time Fourier Transform (DTFT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/dtft_tables.html">2.2. DTFT properties and tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/dirac_periodic.html">2.3. Periodic Dirac delta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/dtft_dirac_exs.html">2.4. DTFTs of infinite-energy signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/fs.html">2.5. Fourier Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/ft.html">2.6. Continuous-Time Fourier Transform (FT)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch2/dirac.html">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch3/samp.html">3. Sampling and Reconstruction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -185,11 +185,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch4/stft.html">4.2. Short-time DTFT</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/comp.html">5. Computation of Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch5/fsamp.html">5.1. Frequency-domain Sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch5/dft.html">5.2. Discrete Fourier Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch5/fft.html">5.3. Fast Fourier Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch5/fil_fft.html">5.4. Linear Filtering with FFT</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="comp.html">5. Computation of Fourier Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fsamp.html">5.1. Frequency-domain Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dft.html">5.2. Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fft.html">5.3. Fast Fourier Transform</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.4. Linear Filtering with FFT</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">6. References</a></li>
@@ -264,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch2/dirac.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch5/fil_fft.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +294,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch2/dirac.md" target="_blank"
+      <li><a href="../_sources/ch5/fil_fft.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Dirac delta and FTs of infinite-energy signals</h1>
+    <h1>Linear Filtering with FFT</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,103 +388,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dirac-delta-and-fts-of-infinite-energy-signals">
-<span id="sec-dirac"></span><h1><span class="section-number">2.7. </span>Dirac delta and FTs of infinite-energy signals<a class="headerlink" href="#dirac-delta-and-fts-of-infinite-energy-signals" title="Permalink to this headline">#</a></h1>
-<ul>
-<li><p>Similar to DTFT, we can use windowing to extend the FT toolset to
-some common infinite-energy continuous-time signals by considering
-the following counterpart of the window signal in continuous time:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  w_{\mu} (t) = e^{-\mu |t|} ~~\stackrel{\text{FT}}{\longleftrightarrow} 
-  ~~ W_{\mu}(\omega) = \frac{2\mu}{\mu^2 + \omega^2}
-  \end{equation*}\]</div>
-<p>for any <span class="math notranslate nohighlight">\(\mu &gt;0\)</span>.</p>
-</li>
-<li><p>Similar to before, we can define the following (aperiodic) <em>Dirac delta</em>
-“function”:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \delta(\omega) = \lim_{\mu \rightarrow 0}
-\frac{W_{\mu}(\omega)}{2\pi} = \begin{cases}
- \infty, &amp; \omega = 0  \\
- 0, &amp; \omega \neq 0 ,
- \end{cases}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty} \delta(\omega) \, d\omega
-= 1\)</span>, and</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(X(\omega)\)</span> is bounded and continuous at <span class="math notranslate nohighlight">\(\omega = \omega_0\)</span>, then
-<span class="math notranslate nohighlight">\(\displaystyle \int_{-\infty}^{\infty} \delta(\theta)
-X(\omega_0 - \theta) \, d\theta = X(\omega_0)\)</span>,</p></li>
-</ol>
-<p>as a mnemonic to shorthand the limiting processing of considering
-<span class="math notranslate nohighlight">\(w_{\mu} (t) \stackrel{\text{FT}}{\longleftrightarrow}
-W_{\mu}(\omega)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>.</p>
-</li>
-<li><p>For an infinite-energy signal <span class="math notranslate nohighlight">\(x(t)\)</span> that grows only polynomially in
-<span class="math notranslate nohighlight">\(|t|\)</span>, the windowed signal <span class="math notranslate nohighlight">\(w_{\mu} (t) x(t) \in L^1 \cap L^2\)</span> and hence
-has FT <span class="math notranslate nohighlight">\(X_{w_{\mu}}(\omega)\)</span>. Since <span class="math notranslate nohighlight">\(\lim_{\mu \rightarrow 0}
-w_{\mu} (t) x(t) = x(t)\)</span> for each fixed <span class="math notranslate nohighlight">\(t \in \mathbb{R}\)</span>, we may
-define the limit of <span class="math notranslate nohighlight">\(X_{w_{\mu}}(\omega)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>
-(note again that such a limit may not exist) to be the FT of <span class="math notranslate nohighlight">\(x(t)\)</span>.</p></li>
-<li><p><strong>Examples</strong>: Calculation of the FTs of the following signals in
-terms of <span class="math notranslate nohighlight">\(\delta(\omega)\)</span> is similar to the DTFT examples given in
-<a class="reference internal" href="dtft_dirac_exs.html#sec-dtft-dirac-exs"><span class="std std-numref">Section 2.4</span></a>.</p>
-<ol class="arabic">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~e^{j\omega_0 t} \stackrel{\text{FT}}{\longleftrightarrow} 2\pi
-\delta(\omega - \omega_0)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\cos(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
-\pi \delta(\omega - \omega_0) + \pi \delta(\omega + \omega_0)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\sin(\omega_0 t) \stackrel{\text{FT}}{\longleftrightarrow} 
-\frac{\pi}{j} \delta(\omega - \omega_0) - \frac{\pi}{j} \delta(\omega + \omega_0)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~u(t) = \begin{cases}
- 1, &amp; t \geq 0  \\
- 0, &amp; t &lt; 0 
- \end{cases} \stackrel{\text{FT}}{\longleftrightarrow} 
- \pi \delta(\omega) + \frac{1}{j\omega}\)</span>.</p></li>
-<li><p>Let <span class="math notranslate nohighlight">\(x(t)\)</span> be a finite-power periodic signal with period
-<span class="math notranslate nohighlight">\(T\)</span>. Hence, <span class="math notranslate nohighlight">\(x(t)\)</span> has the FS expansion
-<span class="math notranslate nohighlight">\(x(t) = \sum_{k=-\infty}^{\infty} a_k e^{j\frac{2\pi k t}{T}}\)</span>,
-where <span class="math notranslate nohighlight">\(a_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>th FS coefficient of <span class="math notranslate nohighlight">\(x(t)\)</span>. By the
-linearity property of FS and Example 1. above, we may
-extend the FT mapping to <span class="math notranslate nohighlight">\(x(t)\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-      x(t) \stackrel{\text{FT}}{\longleftrightarrow}  2\pi
-      \sum_{k=-\infty}^{\infty} a_k \delta\left(\omega - \frac{2\pi k}{T} \right)
-      \end{equation*}\]</div>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>We have assumed the linearity property of FT extends to the infinite series of the
-FS synthesis formula above. This assumption can be justified in
-this case by first considering the partial sum <span class="math notranslate nohighlight">\(\sum_{k=-N}^{N}
-a_k e^{j\frac{2\pi k t}{T}}\)</span> and then the
-<span class="math notranslate nohighlight">\(L^2[-T/2,T/2]\)</span>-convergence of the partial sum to <span class="math notranslate nohighlight">\(x(t)\)</span> as <span class="math notranslate nohighlight">\(N
-\rightarrow \infty\)</span>.</p>
-</div>
-</li>
-</ol>
-</li>
-<li><p>Similarly, we may extend the FT toolset to handle some
-infinite-energy FTs by considering the following frequency-domain window:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2 + t^2)}~~\stackrel{\text{FT}}{\longleftrightarrow} 
-  ~~ \tilde{W}_{\mu}(\omega) = e^{-\mu |\omega|} 
-  \end{equation*}\]</div>
-<p>for any <span class="math notranslate nohighlight">\(\mu &gt;0\)</span>. The same Dirac delta mnemonics 1.-3. can be used</p>
-</li>
-<li><p>For an infinite-energy FT <span class="math notranslate nohighlight">\(X(\omega)\)</span> that grows only polynomially in
-<span class="math notranslate nohighlight">\(|\omega|\)</span>, the windowed FT <span class="math notranslate nohighlight">\(\tilde{W}_{\mu} (\omega) X(\omega) \in L^1 \cap
-L^2\)</span> and hence has an inverse FT <span class="math notranslate nohighlight">\(x_{\tilde{w}_{\mu}} (t)\)</span>.  Since
-<span class="math notranslate nohighlight">\(\lim_{\mu \rightarrow 0} \tilde{W}_{\mu} (\omega) X(\omega) =
-X(\omega)\)</span> for every <span class="math notranslate nohighlight">\(\omega \in \mathbb{R}\)</span>, we may define the
-limit of <span class="math notranslate nohighlight">\(x_{\tilde{w}_{\mu}} (t)\)</span> as <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span> as the
-inverse FT of <span class="math notranslate nohighlight">\(X(\omega)\)</span>.</p></li>
-<li><p><strong>Example</strong>:</p>
-<ol class="arabic simple" start="6">
-<li><p><span class="math notranslate nohighlight">\(\displaystyle ~~\delta(t-t_0) \stackrel{\text{FT}}{\longleftrightarrow}
-e^{-j\omega t_0}\)</span></p></li>
-</ol>
-</li>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-filtering-with-fft">
+<h1><span class="section-number">5.4. </span>Linear Filtering with FFT<a class="headerlink" href="#linear-filtering-with-fft" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Consider passing a signal <span class="math notranslate nohighlight">\(x[n]\)</span> of length <span class="math notranslate nohighlight">\(N\)</span> to an FIR Filter with
+impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> of length <span class="math notranslate nohighlight">\(L\)</span>. In practice, we often have <span class="math notranslate nohighlight">\(N
+\gg L\)</span>. We will adopt this assumption in the discussion below.</p></li>
+<li><p>Direct implementation of the the convolution <span class="math notranslate nohighlight">\(h[n]*x[n]\)</span> requires
+<span class="math notranslate nohighlight">\(\mathcal{O}(NL)\)</span> complex multiplications (and additions). While
+performing the convolution in the frequency domain using  FFT algorithms
+to calculate DFT and IDFT as suggested in <a class="reference internal" href="dft.html#sec-freq-fil"><span class="std std-numref">Section 5.2.3</span></a>
+requires <span class="math notranslate nohighlight">\(\mathcal{O}(M\log_2 M)\)</span> complex multiplications, where <span class="math notranslate nohighlight">\(M
+\geq N+L-1\)</span>. Since <span class="math notranslate nohighlight">\(N \gg L\)</span>, the computational complexity of this
+frequency-domain filtering approach is thus <span class="math notranslate nohighlight">\(\mathcal{O}(N\log_2 N)\)</span>.</p></li>
 </ul>
 </section>
 
@@ -501,7 +417,7 @@ e^{-j\omega t_0}\)</span></p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch2"
+            path: "./ch5"
         },
         predefinedOutput: true
     }
@@ -520,20 +436,20 @@ e^{-j\omega t_0}\)</span></p></li>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ft.html"
+       href="fft.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.6. </span>Continuous-Time Fourier Transform (FT)</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Fast Fourier Transform</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ch3/samp.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Sampling and Reconstruction</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
