@@ -386,7 +386,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithm">5.4.1. Overlap-Add Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithmi">5.4.1. Overlap-Add Algorithmi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-save-algorithm">5.4.2. Overlap-Save Algorithm</a></li>
 </ul>
             </nav>
         </div>
@@ -427,30 +428,30 @@ large; thus preventing the applicability of the frequency-domain
 filtering approach in scenarios where real-time, low-latency
 processing is required.</p></li>
 </ul>
-<section id="overlap-add-algorithm">
-<h2><span class="section-number">5.4.1. </span>Overlap-Add Algorithm<a class="headerlink" href="#overlap-add-algorithm" title="Permalink to this headline">#</a></h2>
-<ul>
+<section id="overlap-add-algorithmi">
+<h2><span class="section-number">5.4.1. </span>Overlap-Add Algorithmi<a class="headerlink" href="#overlap-add-algorithmi" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
 <li><p>The standard solution to the storage and latency problems is to:</p>
 <ol class="arabic simple">
 <li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>smaller blocks</em> of length
 <span class="math notranslate nohighlight">\(\tilde{N}\)</span>,</p></li>
 <li><p>perform frequency-domain filtering on each smaller block of
-length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with a smaller size FFT, and</p></li>
+length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with an FFT of a smaller size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
 <li><p>combine the filter output blocks to obtain the output to the
 whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
 </ol>
 </li>
-<li><p>To filter each smaller input block of length <span class="math notranslate nohighlight">\(\tilde{N}\)</span>, one may
-choose the FFT size <span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(\tilde{M} \geq
-\tilde{N} + L -1\)</span> so that the output block contains the valid
-convolution result of length <span class="math notranslate nohighlight">\(\tilde{N} + L -1\)</span>. The filtered output
-to the whole <span class="math notranslate nohighlight">\(x[n]\)</span> can then be superimposing overlapped blocks of
-output corresponding to consecutive blocks of input as shown in the
-diagram below:</p>
+</ul>
+<p>*To filter each smaller input block of length <span class="math notranslate nohighlight">\(\tilde{N}\)</span>, one may choose the
+FFT size <span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(\tilde{M} \geq \tilde{N} + L -1\)</span> so
+that the output block contains the valid convolution result of
+length <span class="math notranslate nohighlight">\(\tilde{N} + L -1\)</span>. The filtered output to the whole <span class="math notranslate nohighlight">\(x[n]\)</span>
+can then be superimposing overlapped blocks of output corresponding
+to consecutive blocks of input as shown in the diagram below:</p>
 <a class="reference internal image-reference" href="../_images/ola.jpg"><img alt="Overlap-add algorithm" class="align-center" src="../_images/ola.jpg" style="width: 800px;" /></a>
-<p>This approach to perform frequency-domain filtering is often
-referred to as the <strong>overlap-add algorithm</strong>.</p>
-</li>
+<p>This approach to perform frequency-domain
+filtering is often referred to as the <strong>overlap-add algorithm</strong>.</p>
+<ul class="simple">
 <li><p>Since we need to perform filtering on <span class="math notranslate nohighlight">\(\frac{N}{\tilde{N}}\)</span> input
 blocks and each block requires <span class="math notranslate nohighlight">\(\mathcal{O}(\tilde{M} \log_2
 \tilde{M})\)</span> calculations, the computational complexity of filtering
@@ -462,9 +463,44 @@ then the computational complexity becomes <span class="math notranslate nohighli
 and the storage requirement becomes <span class="math notranslate nohighlight">\(\mathcal{O}(N+ L\log_2
 L)\)</span>. Comparing with direct convolution, we can still get a
 significant reduction in computational complexity as long as <span class="math notranslate nohighlight">\(L \gg
-1\)</span>. The storage requirement is significantly lowered compared to
+1\)</span>. The storage requirement is significantly lowered, compared with
 applying frequency-domain filtering with a single large-size FFT on
 the whole <span class="math notranslate nohighlight">\(x[n]\)</span>. The filter latency reduces to <span class="math notranslate nohighlight">\(\mathcal{O}(L)\)</span>.</p></li>
+</ul>
+</section>
+<section id="overlap-save-algorithm">
+<h2><span class="section-number">5.4.2. </span>Overlap-Save Algorithm<a class="headerlink" href="#overlap-save-algorithm" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Another approach is to:</p>
+<ol class="arabic simple">
+<li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>overlapping blocks</em> of
+length <span class="math notranslate nohighlight">\(\tilde{M} \geq L\)</span>,</p></li>
+<li><p>perform frequency-domain filtering on each input block of
+length <span class="math notranslate nohighlight">\(\tilde{M}\)</span> with an FFT of size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
+<li><p>combine the filter output blocks to obtain the output to the
+whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
+</ol>
+</li>
+<li><p>Since the length of the input block is the same as the FFT size,
+the frequency-domain filtering output in this case gives
+us the circular convolution <span class="math notranslate nohighlight">\((h \circledast_{\tilde{M}} x)[n]\)</span>
+rather than the convolution <span class="math notranslate nohighlight">\((h*x)[n]\)</span> in this case. Referring
+back to  <a class="reference internal" href="dft.html#equation-e-circonv">(5.4)</a>, <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> is the
+simply the circular extension of <span class="math notranslate nohighlight">\((h*x)[n]\)</span>, whose length is
+<span class="math notranslate nohighlight">\(\tilde{M}+L-1\)</span>. Thus, it is easy to check that the last <span class="math notranslate nohighlight">\(\tilde{M}-L+1\)</span>
+samples in <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> are not corrupted by
+time aliasing in the periodic extension process. That is, we have
+<span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n] = (h*x)[n]\)</span> for <span class="math notranslate nohighlight">\(n=L-1, L, \ldots,
+\tilde{M}-1\)</span>. As a result, we may still be able to obtain the
+convolution output <span class="math notranslate nohighlight">\(y[n]\)</span> to the whole <span class="math notranslate nohighlight">\(x[n]\)</span> by concatenating the
+non-corrupted portions of the circular convoluted output blocks as
+long as the input blocks overlap by <span class="math notranslate nohighlight">\(L-1\)</span> samples. This leads to the
+<strong>overlap-save algorithm</strong> as depicted below:</p>
+<a class="reference internal image-reference" href="../_images/ols.jpg"><img alt="Overlap-save algorithm" class="align-center" src="../_images/ols.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>It is also easy to check that the same orders of computational
+complexity, storage requirement, and latency of the overlap-add
+algorithm can be achieved by the overlap-save algorithm as well.</p></li>
 </ul>
 </section>
 </section>
@@ -536,7 +572,8 @@ the whole <span class="math notranslate nohighlight">\(x[n]\)</span>. The filter
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithm">5.4.1. Overlap-Add Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithmi">5.4.1. Overlap-Add Algorithmi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-save-algorithm">5.4.2. Overlap-Save Algorithm</a></li>
 </ul>
   </nav></div>
 
