@@ -112,7 +112,8 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
 
   It is easy to check circular convolution has the following
   properties similar to standard convolution:
-  - **Commutativity**:  $x[n] \circledast_M y[n] = y[n] \circledast_M x[n]
+  - **Commutativity**:  $x[n] \circledast_M y[n] = y[n] \circledast_M
+    x[n]$
   - **Associativity**: $(x[n] \circledast_M y[n]) \circledast_M z[n] =
     x[n] \circledast_M (y[n] \circledast_M z[n])$
   - **Distributivity**:  $x[n] \circledast_M (\alpha y[n] + \beta z[n]
