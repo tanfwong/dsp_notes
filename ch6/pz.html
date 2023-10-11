@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.1. Frequency Response of LTI System &#8212; Foundations of DSP Notes</title>
+    <title>6.2. Pole-Zero Placement &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch6/freqresp';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch6/pz';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.2. Pole-Zero Placement" href="pz.html" />
-    <link rel="prev" title="6. Filter Design" href="fildesign.html" />
+    <link rel="next" title="7. References" href="../refs.html" />
+    <link rel="prev" title="6.1. Frequency Response of LTI System" href="freqresp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -193,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="fildesign.html">6. Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. Frequency Response of LTI System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pz.html">6.2. Pole-Zero Placement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freqresp.html">6.1. Frequency Response of LTI System</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.2. Pole-Zero Placement</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">7. References</a></li>
@@ -269,7 +269,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch6/freqresp.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch6/pz.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch6/freqresp.md" target="_blank"
+      <li><a href="../_sources/ch6/pz.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,9 +368,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -381,20 +379,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Frequency Response of LTI System</h1>
+    <h1>Pole-Zero Placement</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-frequency-response">6.1.1. Properties of Frequency Response</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fir-and-iir-filters">6.1.2. FIR and IIR Filters</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -404,175 +393,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="frequency-response-of-lti-system">
-<h1><span class="section-number">6.1. </span>Frequency Response of LTI System<a class="headerlink" href="#frequency-response-of-lti-system" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>The <strong>frequency response</strong> <span class="math notranslate nohighlight">\(H(e^{j\hat\omega})\)</span> of an LTI system is
-the DTFT (if exists) of the system’s impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>, i.e.,
-<span class="math notranslate nohighlight">\(h[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-c\)</span>.</p></li>
-</ul>
-<section id="properties-of-frequency-response">
-<h2><span class="section-number">6.1.1. </span>Properties of Frequency Response<a class="headerlink" href="#properties-of-frequency-response" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="pole-zero-placement">
+<h1><span class="section-number">6.2. </span>Pole-Zero Placement<a class="headerlink" href="#pole-zero-placement" title="Permalink to this headline">#</a></h1>
 <ul>
-<li><p>Let <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow} H(z)\)</span>. If the ROC of the
-transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> contains the unit circle, then <span class="math notranslate nohighlight">\(H(e^{j\hat\omega})
-= H(z) \big|_{z=e^{j\hat\omega}}\)</span>.</p></li>
-<li><p>The convolution properties of DTFT gives:</p>
-<p>If <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-Y(e^{j\hat\omega})\)</span> are the input and output signals of the LTI
-system, then <span class="math notranslate nohighlight">\(Y(e^{j\hat\omega}) =  H(e^{j\hat\omega})
-X(e^{j\hat\omega})\)</span>.</p>
+<li><p>From <a class="reference internal" href="freqresp.html#sec-rational"><span class="std std-numref">Section 6.1.2</span></a>, we see that the magnitude and phase
+responses of any causal, stable FIR (IIR) filter can be decomposed into
+those of first-order systems, specified by the poles and zeros of
+the FIR (IIR) filter. Thus, it is necessary to study the magnitude
+and phase responses of first-order systems in detail.</p></li>
+<li><p>There are two types of causal, stable first-order systems:</p>
+<ol class="arabic simple">
+<li><p><strong>first-order FIR filter</strong>: <span class="math notranslate nohighlight">\(\displaystyle H(z) = 1 - cz^{-1}\)</span></p></li>
+<li><p><strong>first-order IIR filter</strong>: <span class="math notranslate nohighlight">\(\displaystyle H(z) = \frac{1}{1 -
+cz^{-1}}\)</span> where <span class="math notranslate nohighlight">\(|c| &lt; 1\)</span>.</p></li>
+</ol>
+<p>Here, we focus on investigating the magnitude and phase responses as
+a function of the parameter <span class="math notranslate nohighlight">\(c\)</span>, i.e., the zero (pole) of the
+first-order FIR (IIR) filter.</p>
 </li>
-<li><p>For the special case <span class="math notranslate nohighlight">\(x[n] = Ae^{j\phi} e^{j\hat\omega_0 n}\)</span>, the
-DTFT of the output signal of the LTI system is <span class="math notranslate nohighlight">\(Y(e^{j\hat\omega}) =
-H(e^{j\hat\omega}) 2\pi Ae^{j\phi} \delta((e^{j(\hat\omega -
-\hat\omega_0)}) = H(e^{j\hat\omega_0}) 2\pi Ae^{j\phi}
-\delta(e^{j(\hat\omega - \hat\omega_0)}) \)</span>, and hence the output
-signal is <span class="math notranslate nohighlight">\(y[n] = H(e^{j\hat\omega_0}) Ae^{j\phi} e^{j\hat\omega_0
-n}\)</span>.</p></li>
-<li><p>The <strong>phase delay</strong> of the LTI system is defined as <span class="math notranslate nohighlight">\(\displaystyle
-\tau_p(e^{j\hat\omega}) = -\frac{ \angle
-H(e^{j\hat\omega})}{\hat\omega}\)</span>, and the <strong>group delay</strong> of the LTI
-system is defined as <span class="math notranslate nohighlight">\(\displaystyle \tau_g(e^{j\hat\omega}) =
--\frac{ d\angle H(e^{j\hat\omega})}{d\hat\omega}\)</span>. The phase and
-group delays are of interest in many practical applications as we
-will see later. The following two examples help to illustrate the
-physical interpretation of the phase and group delays:</p>
-<ul>
-<li><p><strong>Example 1</strong>:  Let <span class="math notranslate nohighlight">\(\displaystyle H(e^{j\hat\omega}) =
-e^{-j\hat\omega  \tau_p(e^{j\hat\omega})}\)</span>, i.e.,
-<span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})| = 1\)</span> and <span class="math notranslate nohighlight">\(\angle H(e^{j\hat\omega}) =
--\hat\omega \tau_p(e^{j\hat\omega})\)</span>. Consider the sinusoidal input
-<span class="math notranslate nohighlight">\(x[n] = e^{j\hat\omega_0 n}\)</span>. Then the output is</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    y[n] = e^{-j\hat\omega_0 \tau_p(e^{j\hat\omega_0})} e^{j\hat\omega_0 n} =
-    e^{j\hat\omega_0( n - \tau_p(e^{j\hat\omega_0}))}. 
-    \end{equation*}\]</div>
-<p>As a result, we may interpret the phase delay
-causing a <em>phase shift</em> of  <span class="math notranslate nohighlight">\(-\hat\omega_0
-\tau_p(e^{j\hat\omega_0})\)</span>, or equivalently a <em>time shift</em> of
-<span class="math notranslate nohighlight">\(\tau_p(e^{j\hat\omega_0})\)</span>, to the input sinusoid at frequency
-<span class="math notranslate nohighlight">\(\hat\omega_0\)</span>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If <span class="math notranslate nohighlight">\(\tau_p(e^{j\hat\omega_0})\)</span> is anot an integer, we may
-interpret that <span class="math notranslate nohighlight">\(x[n]\)</span> is obtained from oversampling (with sampling
-rate <span class="math notranslate nohighlight">\(f_s\)</span>) a
-continuous-time sinusoid <span class="math notranslate nohighlight">\(x(t)\)</span> with frequency <span class="math notranslate nohighlight">\(\hat\omega_0 f_s\)</span>
-and <span class="math notranslate nohighlight">\(y[n]\)</span> is the sampled (at <span class="math notranslate nohighlight">\(f_s\)</span>) signal obtained from the
-delayed version <span class="math notranslate nohighlight">\(x(t - \frac{\tau_p(e^{j\hat\omega_0})}{f_s})\)</span>.</p>
-</div>
-</li>
-<li><p><strong>Example 2</strong>: Consider the same frequency response in <strong>Example
-1</strong>, but instead with input signal <span class="math notranslate nohighlight">\(x[n] =
-2\cos(\frac{\Delta\hat\omega}{2} n) e^{j\hat\omega_0 n} =
-e^{j(\hat\omega_0 + \frac{\Delta\hat\omega}{2}) n} +
-e^{j(\hat\omega_0 - \frac{\Delta\hat\omega}{2}) n}\)</span> where
-<span class="math notranslate nohighlight">\(|\Delta\hat\omega| \ll |\hat\omega_0|\)</span>. Using the following
-Taylor series approximations</p>
+<li><p>Note also that the magnitude (phase) response of the first-order IIR
+filter is simply the reciprocal (negation) of that of the
+first-order FIR filter (if <span class="math notranslate nohighlight">\(|c| &lt;1\)</span>). Hence, it suffices to consider
+only the first-order FIR filter.</p></li>
+<li><p>Write <span class="math notranslate nohighlight">\(c=re^{j\phi}\)</span> where <span class="math notranslate nohighlight">\(r=|c|\)</span> and <span class="math notranslate nohighlight">\(\phi = \angle c\)</span>. Then
+<span class="math notranslate nohighlight">\(H(e^{j\hat\omega}) = 1 - re^{-j(\hat\omega - \phi)}\)</span>, and</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-    \angle H(e^{j(\hat\omega_0 + \frac{\Delta\hat\omega}{2})}) 
-    &amp;\approx 
-    \angle H(e^{j\hat\omega_0}) - \frac{\Delta\hat\omega}{2} \tau_g(e^{j\hat\omega_0})
-    = -  \hat\omega_0 \tau_p(e^{j\hat\omega_0}) -
-    \frac{\Delta\hat\omega}{2} \tau_g(e^{j\hat\omega_0})
-    \\
-    \angle H(e^{j(\hat\omega_0 - \frac{\Delta\hat\omega}{2})}) 
-    &amp;\approx 
-    \angle H(e^{j\hat\omega_0}) + \frac{\Delta\hat\omega}{2} \tau_g(e^{j\hat\omega_0})
-    = -  \hat\omega_0 \tau_p(e^{j\hat\omega_0}) +
-    \frac{\Delta\hat\omega}{2} \tau_g(e^{j\hat\omega_0}),
-    \end{align*}\]</div>
-<p>we get the output signal</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    y[n]
-    &amp;=
-    e^{j\angle H(e^{j(\hat\omega_0 + \frac{\Delta\hat\omega}{2})})}
-    e^{j(\hat\omega_0 + \frac{\Delta\hat\omega}{2}) n}
-    + 
-    e^{j\angle H(e^{j(\hat\omega_0 - \frac{\Delta\hat\omega}{2})})}
-    e^{j(\hat\omega_0 - \frac{\Delta\hat\omega}{2}) n}
-    \\
-    &amp; \approx
-    2 \cos\left(\frac{\Delta\hat\omega}{2} (n -
-    \tau_g(e^{j\hat\omega_0})) \right) e^{j\hat\omega_0(n -
-    \tau_p(e^{j\hat\omega_0}) )}.
-    \end{align*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(|\Delta\hat\omega| \ll |\hat\omega_0|\)</span>, the term
-<span class="math notranslate nohighlight">\(2\cos(\frac{\Delta\hat\omega}{2} n)\)</span> in <span class="math notranslate nohighlight">\(x[n]\)</span> slowly varies the
-amplitude of the underlying sinusoid <span class="math notranslate nohighlight">\(e^{j\hat\omega_0 n}\)</span>. As a
-result, <span class="math notranslate nohighlight">\(2\cos(\frac{\Delta\hat\omega}{2} n)\)</span> is often called the
-<strong>envelope</strong> of <span class="math notranslate nohighlight">\(x[n]\)</span>. The group delay of the system thus then
-specifies the delay in the envelope of <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="fir-and-iir-filters">
-<span id="sec-rational"></span><h2><span class="section-number">6.1.2. </span>FIR and IIR Filters<a class="headerlink" href="#fir-and-iir-filters" title="Permalink to this headline">#</a></h2>
-<ul>
-<li><p>We will focus on the design of causal LTI systems whose transfer
-functions are in the rational form:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  H(z) = \frac{B(z)}{A(z)} = \frac{\sum_{k=0}^M b_k z^{-k}}{\sum_{k=0}^N a_k z^{-k}}
-  \end{equation*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(a_0 = 1\)</span>. These include both FIR and IIR filters. The <span class="math notranslate nohighlight">\(b_k\)</span>’s
-and <span class="math notranslate nohighlight">\(a_k\)</span>’s are often called the <em>feedforward</em> and <em>feedback</em> taps,
-respectively.</p>
-</li>
-<li><p>Let <span class="math notranslate nohighlight">\(z_1, z_2, \ldots, z_M\)</span> and <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_N\)</span> be the roots
-of <span class="math notranslate nohighlight">\(B(z)\)</span> and <span class="math notranslate nohighlight">\(A(z)\)</span>, respectively. We can rewrite</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  H(z) = b_0 \frac{\prod_{k=1}^M (1- z_k z^{-1})}{\prod_{k=1}^N (1-p_k
-  z^{-1})}.
-  \end{equation*}\]</div>
-<p>If <span class="math notranslate nohighlight">\(\{z_k\}_{k=1}^M\)</span> and <span class="math notranslate nohighlight">\(\{p_k\}_{k=1}^N\)</span> do not intersect, then
-<span class="math notranslate nohighlight">\(\{z_k\}_{k=1}^M\)</span> are <em>zeros</em> and <span class="math notranslate nohighlight">\(\{p_k\}_{k=1}^N\)</span> are <em>poles</em>
-of <span class="math notranslate nohighlight">\(H(z)\)</span>.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>There may be additional zeros (<span class="math notranslate nohighlight">\(M&lt;N\)</span>) or poles (<span class="math notranslate nohighlight">\(M&gt;N\)</span>) at <span class="math notranslate nohighlight">\(z=0\)</span>.</p>
-</div>
-</li>
-<li><p>If all the poles are strictly inside the unit circle, then the
-system is <em>stable</em>, and its frequency response is given by</p>
-<div class="math notranslate nohighlight" id="equation-e-freq-resp">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-e-freq-resp" title="Permalink to this equation">#</a></span>\[\begin{equation}
-H(e^{j\hat\omega}) 
-=
-b_0 \frac{\prod_{k=1}^M (1- z_k e^{-j\hat\omega})}{\prod_{k=1}^N (1-p_k
-e^{-j\hat\omega})}.
-\end{equation}\]</div>
-</li>
-<li><p>Let <span class="math notranslate nohighlight">\(|\cdot|_{\text{dB}} = 20 \log_{10} |\cdot|\)</span>. Then
-<a class="reference internal" href="#equation-e-freq-resp">(6.1)</a> gives the following formulas for the <em>magnitude</em>
-and <em>phase</em> responses:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  |H(e^{j\hat\omega})|_{\text{dB}} 
-  &amp;= |b_0|_{\text{dB}}  + 
-  \sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
-  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+  |H(e^{j\hat\omega}) | 
+  &amp;=
+  1 + r^2 - 2r\cos(\hat\omega - \phi)
   \\
   \angle H(e^{j\hat\omega})
-  &amp;= \angle b_0 + 
-  \sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
-  - \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
+  &amp;=
+  \text{arctan2} \left( r\sin(\hat\omega - \phi), 1-
+  r\cos(\hat\omega - \phi) \right).
   \end{align*}\]</div>
-<p>Hence, both the magnitude and phase responses are governed by those
-of first-order systems with transfer functions in the form of
-<span class="math notranslate nohighlight">\(1-cz^{-1}\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(0&lt;r&lt;1\)</span>, the plots of the magnitude response <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})|\)</span> and
+phase responses <span class="math notranslate nohighlight">\(\angle H(e^{j\hat\omega})\)</span> look like the following figures:</p>
+<a class="reference internal image-reference" href="../_images/magphase.jpg"><img alt="Magnitude and phase responses of a first-order FIR filter" class="align-center" src="../_images/magphase.jpg" style="width: 800px;" /></a>
+<p>In particular, <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})|\)</span> reaches its maximum and
+minimum at <span class="math notranslate nohighlight">\(\hat\omega = \phi-\pi\)</span> and <span class="math notranslate nohighlight">\(\hat\omega=\phi\)</span>,
+respectively.</p>
 </li>
 </ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -607,20 +470,20 @@ of first-order systems with transfer functions in the form of
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="fildesign.html"
+       href="freqresp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Filter Design</p>
+        <p class="prev-next-title"><span class="section-number">6.1. </span>Frequency Response of LTI System</p>
       </div>
     </a>
     <a class="right-next"
-       href="pz.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.2. </span>Pole-Zero Placement</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -633,21 +496,6 @@ of first-order systems with transfer functions in the form of
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-frequency-response">6.1.1. Properties of Frequency Response</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fir-and-iir-filters">6.1.2. FIR and IIR Filters</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

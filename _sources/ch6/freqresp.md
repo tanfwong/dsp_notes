@@ -100,6 +100,7 @@
     **envelope** of $x[n]$. The group delay of the system thus then
     specifies the delay in the envelope of $x[n]$.
 
+(sec:rational)=
 ## FIR and IIR Filters
 * We will focus on the design of causal LTI systems whose transfer
   functions are in the rational form:
