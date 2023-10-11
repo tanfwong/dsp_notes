@@ -77,18 +77,18 @@
      whole $x[n]$.
 
 * Since the length of the input block is the same as the FFT size, 
-  the frequency-domain filtering output in this case gives
+  the frequency-domain filtering output gives
   us the circular convolution $(h \circledast_{\tilde{M}} x)[n]$
   rather than the convolution $(h*x)[n]$ in this case. Referring
   back to  {eq}`e:circonv`, $(h\circledast_{\tilde{M}} x)[n]$ is the
-  simply the circular extension of $(h*x)[n]$, whose length is
+  simply the periodic extension of $(h*x)[n]$, whose length is
   $\tilde{M}+L-1$. Thus, it is easy to check that the last $\tilde{M}-L+1$
   samples in $(h\circledast_{\tilde{M}} x)[n]$ are not corrupted by 
   time aliasing in the periodic extension process. That is, we have
   $(h\circledast_{\tilde{M}} x)[n] = (h*x)[n]$ for $n=L-1, L, \ldots,
   \tilde{M}-1$. As a result, we may still be able to obtain the
   convolution output $y[n]$ to the whole $x[n]$ by concatenating the
-  non-corrupted portions of the circular convoluted output blocks as
+  uncorrupted portions of the circular convoluted output blocks as
   long as the input blocks overlap by $L-1$ samples. This leads to the
  **overlap-save algorithm** as depicted below:
   ```{image} ../figs/ols.jpg 

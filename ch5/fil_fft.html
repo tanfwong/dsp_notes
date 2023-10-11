@@ -486,18 +486,18 @@ whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
 </ol>
 </li>
 <li><p>Since the length of the input block is the same as the FFT size,
-the frequency-domain filtering output in this case gives
+the frequency-domain filtering output gives
 us the circular convolution <span class="math notranslate nohighlight">\((h \circledast_{\tilde{M}} x)[n]\)</span>
 rather than the convolution <span class="math notranslate nohighlight">\((h*x)[n]\)</span> in this case. Referring
 back to  <a class="reference internal" href="dft.html#equation-e-circonv">(5.4)</a>, <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> is the
-simply the circular extension of <span class="math notranslate nohighlight">\((h*x)[n]\)</span>, whose length is
+simply the periodic extension of <span class="math notranslate nohighlight">\((h*x)[n]\)</span>, whose length is
 <span class="math notranslate nohighlight">\(\tilde{M}+L-1\)</span>. Thus, it is easy to check that the last <span class="math notranslate nohighlight">\(\tilde{M}-L+1\)</span>
 samples in <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> are not corrupted by
 time aliasing in the periodic extension process. That is, we have
 <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n] = (h*x)[n]\)</span> for <span class="math notranslate nohighlight">\(n=L-1, L, \ldots,
 \tilde{M}-1\)</span>. As a result, we may still be able to obtain the
 convolution output <span class="math notranslate nohighlight">\(y[n]\)</span> to the whole <span class="math notranslate nohighlight">\(x[n]\)</span> by concatenating the
-non-corrupted portions of the circular convoluted output blocks as
+uncorrupted portions of the circular convoluted output blocks as
 long as the input blocks overlap by <span class="math notranslate nohighlight">\(L-1\)</span> samples. This leads to the
 <strong>overlap-save algorithm</strong> as depicted below:</p>
 <a class="reference internal image-reference" href="../_images/ols.jpg"><img alt="Overlap-save algorithm" class="align-center" src="../_images/ols.jpg" style="width: 800px;" /></a>
