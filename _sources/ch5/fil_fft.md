@@ -29,7 +29,7 @@
   filtering approach in scenarios where real-time, low-latency
   processing is required.
 
-## Overlap-Add Algorithmi
+## Overlap-Add Algorithm
 * The standard solution to the storage and latency problems is to:
   1. break the long $x[n]$ into consecutive *smaller blocks* of length
      $\tilde{N}$,
