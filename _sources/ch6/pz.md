@@ -50,3 +50,27 @@
   - For the **first-order IIR filter**, $\phi$ determines the
     frequency of the peak (maximum) in $|H(e^{j\hat\omega})|$ and $r$
     determines the "sharpness" of the peak.
+
+* We may also obtain a simple geometric viewpoint for the first-order
+  FIR filter. Rewrite the magnitude and phase responses as:
+  \begin{align*} 
+  |H(e^{j\hat\omega}) | &= | e^{j\hat\omega} - r e^{j\phi} | 
+  \\ 
+  \angle H(e^{j\hat\omega}) &= \angle \left(
+  e^{j\hat\omega} - r e^{j\phi} \right) - \hat\omega.
+  \end{align*}
+  Now, consider the phasor diagram below that shows the relationship
+  between the phasors $e^{j\hat\omega}$, $r e^{j\phi}$, and
+  $e^{j\hat\omega}-r e^{j\phi}$:
+  ```{image} ../figs/phasor.jpg
+  :alt: Phasor diagram showing the phasors that make up the magnitude and phase responses of a first-order FIR filter
+  :width: 400px
+  :align: center
+  ```
+  Note that $|H(e^{j\hat\omega}) |$ is given by the length of the
+  phasor $e^{j\hat\omega}-r e^{j\phi}$ and $\angle H(e^{j\hat\omega})$
+  is given by the difference between the angle of $e^{j\hat\omega}-r
+  e^{j\phi}$ and that of the phasor $e^{j\hat\omega}$. Hence, sketches
+  of the magnitude and phase responses can be easily obtained by
+  tracing the phasor $e^{j\hat\omega}-r e^{j\phi}$ in the figure above
+  as $e^{j\hat\omega}$ rotates.

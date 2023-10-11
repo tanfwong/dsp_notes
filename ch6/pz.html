@@ -445,6 +445,27 @@ frequency of the peak (maximum) in <span class="math notranslate nohighlight">\(
 determines the “sharpness” of the peak.</p></li>
 </ul>
 </li>
+<li><p>We may also obtain a simple geometric viewpoint for the first-order
+FIR filter. Rewrite the magnitude and phase responses as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+  |H(e^{j\hat\omega}) | &amp;= | e^{j\hat\omega} - r e^{j\phi} | 
+  \\ 
+  \angle H(e^{j\hat\omega}) &amp;= \angle \left(
+  e^{j\hat\omega} - r e^{j\phi} \right) - \hat\omega.
+  \end{align*}\]</div>
+<p>Now, consider the phasor diagram below that shows the relationship
+between the phasors <span class="math notranslate nohighlight">\(e^{j\hat\omega}\)</span>, <span class="math notranslate nohighlight">\(r e^{j\phi}\)</span>, and
+<span class="math notranslate nohighlight">\(e^{j\hat\omega}-r e^{j\phi}\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/phasor.jpg"><img alt="Phasor diagram showing the phasors that make up the magnitude and phase responses of a first-order FIR filter" class="align-center" src="../_images/phasor.jpg" style="width: 400px;" /></a>
+<p>Note that <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega}) |\)</span> is given by the length of the
+phasor <span class="math notranslate nohighlight">\(e^{j\hat\omega}-r e^{j\phi}\)</span> and <span class="math notranslate nohighlight">\(\angle H(e^{j\hat\omega})\)</span>
+is given by the difference between the angle of <span class="math notranslate nohighlight">\(e^{j\hat\omega}-r
+e^{j\phi}\)</span> and that of the phasor <span class="math notranslate nohighlight">\(e^{j\hat\omega}\)</span>. Hence, sketches
+of the magnitude and phase responses can be easily obtained by
+tracing the phasor <span class="math notranslate nohighlight">\(e^{j\hat\omega}-r e^{j\phi}\)</span> in the figure above
+as <span class="math notranslate nohighlight">\(e^{j\hat\omega}\)</span> rotates.</p>
+</li>
 </ul>
 </section>
 
