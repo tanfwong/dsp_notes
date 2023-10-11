@@ -38,7 +38,7 @@
   3. combine the filter output blocks to obtain the output to the
      whole $x[n]$.
      
-*To filter each smaller input block of length $\tilde{N}$, one may choose the
+* To filter each smaller input block of length $\tilde{N}$, one may choose the
   FFT size $\tilde{M}$ satisfying $\tilde{M} \geq \tilde{N} + L -1$ so
   that the output block contains the valid convolution result of
   length $\tilde{N} + L -1$. The filtered output to the whole $x[n]$

@@ -435,7 +435,7 @@ processing is required.</p></li>
 </ul>
 <section id="overlap-add-algorithm">
 <h2><span class="section-number">5.4.1. </span>Overlap-Add Algorithm<a class="headerlink" href="#overlap-add-algorithm" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>The standard solution to the storage and latency problems is to:</p>
 <ol class="arabic simple">
 <li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>smaller blocks</em> of length
@@ -446,8 +446,7 @@ length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with an F
 whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
 </ol>
 </li>
-</ul>
-<p>*To filter each smaller input block of length <span class="math notranslate nohighlight">\(\tilde{N}\)</span>, one may choose the
+<li><p>To filter each smaller input block of length <span class="math notranslate nohighlight">\(\tilde{N}\)</span>, one may choose the
 FFT size <span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(\tilde{M} \geq \tilde{N} + L -1\)</span> so
 that the output block contains the valid convolution result of
 length <span class="math notranslate nohighlight">\(\tilde{N} + L -1\)</span>. The filtered output to the whole <span class="math notranslate nohighlight">\(x[n]\)</span>
@@ -456,7 +455,7 @@ to consecutive blocks of input as shown in the diagram below:</p>
 <a class="reference internal image-reference" href="../_images/ola.jpg"><img alt="Overlap-add algorithm" class="align-center" src="../_images/ola.jpg" style="width: 800px;" /></a>
 <p>This approach to perform frequency-domain
 filtering is often referred to as the <strong>overlap-add algorithm</strong>.</p>
-<ul class="simple">
+</li>
 <li><p>Since we need to perform filtering on <span class="math notranslate nohighlight">\(\frac{N}{\tilde{N}}\)</span> input
 blocks and each block requires <span class="math notranslate nohighlight">\(\mathcal{O}(\tilde{M} \log_2
 \tilde{M})\)</span> calculations, the computational complexity of filtering
