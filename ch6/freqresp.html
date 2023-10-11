@@ -391,6 +391,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-frequency-response">6.1.1. Properties of Frequency Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fir-and-iir-filters">6.1.2. FIR and IIR Filters</a></li>
 </ul>
             </nav>
         </div>
@@ -512,6 +513,65 @@ specifies the delay in the envelope of <span class="math notranslate nohighlight
 </li>
 </ul>
 </section>
+<section id="fir-and-iir-filters">
+<h2><span class="section-number">6.1.2. </span>FIR and IIR Filters<a class="headerlink" href="#fir-and-iir-filters" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>We will focus on the design of causal LTI systems whose transfer
+functions are in the rational form:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(z) = \frac{B(z)}{A(z)} = \frac{\sum_{k=0}^M b_k z^{-k}}{\sum_{k=0}^N a_k z^{-k}}
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_0 = 1\)</span>. These include both FIR and IIR filters. The <span class="math notranslate nohighlight">\(b_k\)</span>’s
+and <span class="math notranslate nohighlight">\(a_k\)</span>’s are often called the <em>feedforward</em> and <em>feedback</em> taps,
+respectively.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(z_1, z_2, \ldots, z_M\)</span> and <span class="math notranslate nohighlight">\(p_1, p_2, \ldots, p_N\)</span> be the roots
+of <span class="math notranslate nohighlight">\(B(z)\)</span> and <span class="math notranslate nohighlight">\(A(z)\)</span>, respectively. We can rewrite</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(z) = b_0 \frac{\prod_{k=1}^M (1- z_k z^{-1})}{\prod_{k=1}^N (1-p_k
+  z^{-1})}.
+  \end{equation*}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\{z_k\}_{k=1}^M\)</span> and <span class="math notranslate nohighlight">\(\{p_k\}_{k=1}^N\)</span> do not intersect, then
+<span class="math notranslate nohighlight">\(\{z_k\}_{k=1}^M\)</span> are <em>zeros</em> and <span class="math notranslate nohighlight">\(\{p_k\}_{k=1}^N\)</span> are <em>poles</em>
+of <span class="math notranslate nohighlight">\(H(z)\)</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>There may be additional zeros (<span class="math notranslate nohighlight">\(M&lt;N\)</span>) or poles (<span class="math notranslate nohighlight">\(M&gt;N\)</span>) at <span class="math notranslate nohighlight">\(z=0\)</span>.</p>
+</div>
+</li>
+<li><p>If all the poles are strictly inside the unit circle, then the
+system is <em>stable</em>, and its frequency response is given by</p>
+<div class="math notranslate nohighlight" id="equation-e-freq-resp">
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-e-freq-resp" title="Permalink to this equation">#</a></span>\[\begin{equation}
+H(e^{j\hat\omega}) 
+=
+b_0 \frac{\prod_{k=1}^M (1- z_k e^{-j\hat\omega})}{\prod_{k=1}^N (1-p_k
+e^{-j\hat\omega})}.
+\end{equation}\]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(|\cdot|_{\text{dB}} = 20 \log_{10} |\cdot|\)</span>. Then
+<a class="reference internal" href="#equation-e-freq-resp">(6.1)</a> gives the following formulas for the <em>magnitude</em>
+and <em>phase</em> responses:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  |H(e^{j\hat\omega})|_{\text{dB}} 
+  &amp;= |b_0|_{\text{dB}}  + 
+  \sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
+  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+  \\
+  \angle H(e^{j\hat\omega})
+  &amp;= \angle b_0 + 
+  \sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
+  - \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
+  \end{align*}\]</div>
+<p>Hence, both the magnitude and phase responses are governed by those
+of first-order systems with transfer functions in the form of
+<span class="math notranslate nohighlight">\(1-cz^{-1}\)</span>.</p>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -582,6 +642,7 @@ specifies the delay in the envelope of <span class="math notranslate nohighlight
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-frequency-response">6.1.1. Properties of Frequency Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fir-and-iir-filters">6.1.2. FIR and IIR Filters</a></li>
 </ul>
   </nav></div>
 

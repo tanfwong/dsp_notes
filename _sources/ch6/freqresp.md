@@ -99,3 +99,55 @@
     result, $2\cos(\frac{\Delta\hat\omega}{2} n)$ is often called the
     **envelope** of $x[n]$. The group delay of the system thus then
     specifies the delay in the envelope of $x[n]$.
+
+## FIR and IIR Filters
+* We will focus on the design of causal LTI systems whose transfer
+  functions are in the rational form:
+  \begin{equation*}
+  H(z) = \frac{B(z)}{A(z)} = \frac{\sum_{k=0}^M b_k z^{-k}}{\sum_{k=0}^N a_k z^{-k}}
+  \end{equation*}
+  where $a_0 = 1$. These include both FIR and IIR filters. The $b_k$'s
+  and $a_k$'s are often called the *feedforward* and *feedback* taps,
+  respectively.
+
+* Let $z_1, z_2, \ldots, z_M$ and $p_1, p_2, \ldots, p_N$ be the roots
+  of $B(z)$ and $A(z)$, respectively. We can rewrite
+  \begin{equation*}
+  H(z) = b_0 \frac{\prod_{k=1}^M (1- z_k z^{-1})}{\prod_{k=1}^N (1-p_k
+  z^{-1})}.
+  \end{equation*}
+  If $\{z_k\}_{k=1}^M$ and $\{p_k\}_{k=1}^N$ do not intersect, then
+  $\{z_k\}_{k=1}^M$ are *zeros* and $\{p_k\}_{k=1}^N$ are *poles*
+  of $H(z)$.
+  ```{caution}
+  There may be additional zeros ($M<N$) or poles ($M>N$) at $z=0$.
+  ```
+* If all the poles are strictly inside the unit circle, then the
+  system is *stable*, and its frequency response is given by
+  ```{math}
+  :label: e:freq_resp
+  \begin{equation}
+  H(e^{j\hat\omega}) 
+  =
+  b_0 \frac{\prod_{k=1}^M (1- z_k e^{-j\hat\omega})}{\prod_{k=1}^N (1-p_k
+  e^{-j\hat\omega})}.
+  \end{equation}
+  ```
+
+* Let $|\cdot|_{\text{dB}} = 20 \log_{10} |\cdot|$. Then
+  {eq}`e:freq_resp` gives the following formulas for the *magnitude*
+  and *phase* responses:
+  \begin{align*}
+  |H(e^{j\hat\omega})|_{\text{dB}} 
+  &= |b_0|_{\text{dB}}  + 
+  \sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
+  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+  \\
+  \angle H(e^{j\hat\omega})
+  &= \angle b_0 + 
+  \sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
+  - \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
+  \end{align*}
+  Hence, both the magnitude and phase responses are governed by those
+  of first-order systems with transfer functions in the form of
+  $1-cz^{-1}$. 
