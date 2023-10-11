@@ -74,3 +74,13 @@
   of the magnitude and phase responses can be easily obtained by
   tracing the phasor $e^{j\hat\omega}-r e^{j\phi}$ in the figure above
   as $e^{j\hat\omega}$ rotates.
+
+
+* After the magnitude and phase responses of the first-order
+  components are understood, the magnitude and phase responses of the
+  general FIR/IIR filter can then be constructed from the first-order
+  responses using {eq}`e:freq_resp_comp`. Design of the filter can
+  also be decomposed into the design of the first-order components,
+  which are specified by the locations of the poles and zeros. Hence,
+  by an appropriate placement of the poles and zeros of an FIR/IIR
+  filter, we can obtain the desired magnitude and phase responses.

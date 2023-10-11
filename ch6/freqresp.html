@@ -555,18 +555,18 @@ e^{-j\hat\omega})}.
 <li><p>Let <span class="math notranslate nohighlight">\(|\cdot|_{\text{dB}} = 20 \log_{10} |\cdot|\)</span>. Then
 <a class="reference internal" href="#equation-e-freq-resp">(6.1)</a> gives the following formulas for the <em>magnitude</em>
 and <em>phase</em> responses:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  |H(e^{j\hat\omega})|_{\text{dB}} 
-  &amp;= |b_0|_{\text{dB}}  + 
-  \sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
-  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
-  \\
-  \angle H(e^{j\hat\omega})
-  &amp;= \angle b_0 + 
-  \sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
-  - \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
-  \end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-freq-resp-comp">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-e-freq-resp-comp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+|H(e^{j\hat\omega})|_{\text{dB}} 
+&amp;= |b_0|_{\text{dB}}  + 
+\sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
+- \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+\\
+\angle H(e^{j\hat\omega})
+&amp;= \angle b_0 + 
+\sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
+- \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
+\end{align*}\end{split}\]</div>
 <p>Hence, both the magnitude and phase responses are governed by those
 of first-order systems with transfer functions in the form of
 <span class="math notranslate nohighlight">\(1-cz^{-1}\)</span>.</p>

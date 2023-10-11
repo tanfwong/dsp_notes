@@ -138,6 +138,8 @@
 * Let $|\cdot|_{\text{dB}} = 20 \log_{10} |\cdot|$. Then
   {eq}`e:freq_resp` gives the following formulas for the *magnitude*
   and *phase* responses:
+  ```{math}
+  :label: e:freq_resp_comp
   \begin{align*}
   |H(e^{j\hat\omega})|_{\text{dB}} 
   &= |b_0|_{\text{dB}}  + 
@@ -149,6 +151,8 @@
   \sum_{k=1}^M \angle (1- z_k e^{-j\hat\omega})
   - \sum_{k=1}^N \angle (1- p_k e^{-j\hat\omega}).
   \end{align*}
+  ```
   Hence, both the magnitude and phase responses are governed by those
   of first-order systems with transfer functions in the form of
   $1-cz^{-1}$. 
+
