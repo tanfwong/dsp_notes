@@ -42,3 +42,11 @@
   In particular, $|H(e^{j\hat\omega})|$ reaches its maximum and
   minimum at $\hat\omega = \phi-\pi$ and $\hat\omega=\phi$,
   respectively. 
+
+* From the plots above, we may conclude:
+  - For the **first-order FIR filter**, $\phi$ determines the
+    frequency of the dip (minimum) in $|H(e^{j\hat\omega})|$ and $r$
+    determines the "sharpness" of the dip.
+  - For the **first-order IIR filter**, $\phi$ determines the
+    frequency of the peak (maximum) in $|H(e^{j\hat\omega})|$ and $r$
+    determines the "sharpness" of the peak.
