@@ -482,6 +482,17 @@ of <span class="math notranslate nohighlight">\(H(z)\)</span> are strictly insid
 filter that is on or outside the unit circle, then <span class="math notranslate nohighlight">\(H_d(z)\)</span> will not
 be stable. In particular, if <span class="math notranslate nohighlight">\(H(z)\)</span> is a minimum-phase filter, then
 the stability of the inverse filter <span class="math notranslate nohighlight">\(H_d(z)\)</span> is guaranteed.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(H(z)\)</span> is not minimum phase, then the inverse filter
+<span class="math notranslate nohighlight">\(\displaystyle \frac{1}{H(z)}\)</span> will be unstable, and hence can not
+be implemented in practice. In such case, a possible tradeoff is to
+employ the minimum-phase decomposition <span class="math notranslate nohighlight">\(H(z) = H_{\min} (z) \cdot
+H_{\text{ap}}(z)\)</span> in <a class="reference internal" href="#equation-e-minphasedecom">(6.6)</a> and select the stable
+inverse <span class="math notranslate nohighlight">\(\displaystyle H_d(z) = \frac{1}{H_{\min}(z)}\)</span> instead. The
+resulting cascade has the transfer function <span class="math notranslate nohighlight">\(H(z)H_d(z) =
+H_{\text{ap}}(z)\)</span>, which is allpass, i.e.,
+<span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})H_d(e^{j\hat\omega})| = 1\)</span>. That is, we may at
+least reverse the magnitude distortion on the input signal caused by
+<span class="math notranslate nohighlight">\(H(z)\)</span>.</p></li>
 </ul>
 </section>
 </section>

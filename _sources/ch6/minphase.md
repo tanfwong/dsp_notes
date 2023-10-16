@@ -72,3 +72,14 @@
   be stable. In particular, if $H(z)$ is a minimum-phase filter, then
   the stability of the inverse filter $H_d(z)$ is guaranteed.
   
+* If $H(z)$ is not minimum phase, then the inverse filter
+  $\displaystyle \frac{1}{H(z)}$ will be unstable, and hence can not
+  be implemented in practice. In such case, a possible tradeoff is to
+  employ the minimum-phase decomposition $H(z) = H_{\min} (z) \cdot
+  H_{\text{ap}}(z)$ in {eq}`e:minphasedecom` and select the stable
+  inverse $\displaystyle H_d(z) = \frac{1}{H_{\min}(z)}$ instead. The
+  resulting cascade has the transfer function $H(z)H_d(z) =
+  H_{\text{ap}}(z)$, which is allpass, i.e.,
+  $|H(e^{j\hat\omega})H_d(e^{j\hat\omega})| = 1$. That is, we may at
+  least reverse the magnitude distortion on the input signal caused by
+  $H(z)$.
