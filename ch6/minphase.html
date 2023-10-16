@@ -394,6 +394,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
 </ul>
             </nav>
         </div>
@@ -466,6 +467,23 @@ filter has the smallest group delay</em>.</p>
 </li>
 </ul>
 </section>
+<section id="deconvolution-with-minimum-phase-filter">
+<h2><span class="section-number">6.4.2. </span>Deconvolution with minimum-phase filter<a class="headerlink" href="#deconvolution-with-minimum-phase-filter" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Consider the <em>deconvolution</em> problem in which we try to reverse the
+effects of a rational filter <span class="math notranslate nohighlight">\(H(z)\)</span> on the input signal by
+connecting its output to another rational filter <span class="math notranslate nohighlight">\(H_d{z}\)</span> in cascade:</p>
+<a class="reference internal image-reference" href="../_images/dconv.jpg"><img alt="Deconvolution" class="align-center" src="../_images/dconv.jpg" style="width: 600px;" /></a>
+</li>
+<li><p>By the convolution property of <span class="math notranslate nohighlight">\(z\)</span>-transform, the inverse filter
+that performs deconvolution is <span class="math notranslate nohighlight">\(\displaystyle H_d(z) =
+\frac{1}{H(z)}\)</span>. Clearly, this inverse filter is stable if all zeros
+of <span class="math notranslate nohighlight">\(H(z)\)</span> are strictly inside the unit circle. If <span class="math notranslate nohighlight">\(H(z)\)</span> has a
+filter that is on or outside the unit circle, then <span class="math notranslate nohighlight">\(H_d(z)\)</span> will not
+be stable. In particular, if <span class="math notranslate nohighlight">\(H(z)\)</span> is a minimum-phase filter, then
+the stability of the inverse filter <span class="math notranslate nohighlight">\(H_d(z)\)</span> is guaranteed.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -536,6 +554,7 @@ filter has the smallest group delay</em>.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
 </ul>
   </nav></div>
 

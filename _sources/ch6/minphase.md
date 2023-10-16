@@ -54,3 +54,21 @@
   The above properties implies that *amongst all causal, stable, rational
   filters that have the same magnitude response, the minimum-phase
   filter has the smallest group delay*.
+
+## Deconvolution with minimum-phase filter
+* Consider the *deconvolution* problem in which we try to reverse the
+  effects of a rational filter $H(z)$ on the input signal by
+  connecting its output to another rational filter $H_d{z}$ in cascade:
+  ```{image} ../figs/dconv.jpg
+  :alt: Deconvolution
+  :width: 600px
+  :align: center
+  ```
+* By the convolution property of $z$-transform, the inverse filter
+  that performs deconvolution is $\displaystyle H_d(z) =
+  \frac{1}{H(z)}$. Clearly, this inverse filter is stable if all zeros
+  of $H(z)$ are strictly inside the unit circle. If $H(z)$ has a
+  filter that is on or outside the unit circle, then $H_d(z)$ will not
+  be stable. In particular, if $H(z)$ is a minimum-phase filter, then
+  the stability of the inverse filter $H_d(z)$ is guaranteed.
+  
