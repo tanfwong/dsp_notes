@@ -50,7 +50,7 @@
     $\tau_p(e^{j\hat\omega_0})$, to the input sinusoid at frequency
     $\hat\omega_0$. 
     ```{tip}
-    If $\tau_p(e^{j\hat\omega_0})$ is anot an integer, we may
+    If $\tau_p(e^{j\hat\omega_0})$ is not an integer, we may
     interpret that $x[n]$ is obtained from oversampling (with sampling
     rate $f_s$) a
     continuous-time sinusoid $x(t)$ with frequency $\hat\omega_0 f_s$

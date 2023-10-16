@@ -38,7 +38,7 @@
   \end{equation*}
   and its group delay is
   \begin{equation*}
-  \tau_g (e^{j\ hat\omega})
+  \tau_g (e^{j\hat\omega})
   = -\frac{d \angle H(e^{j\hat\omega})}{d\hat\omega} =
   \frac{1-r^2}{|1-re^{-j(\hat\omega - \phi)}|^2} \geq 0
   \end{equation*}
