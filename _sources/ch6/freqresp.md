@@ -3,7 +3,7 @@
 * The **frequency response** $H(e^{j\hat\omega})$ of an LTI system is
   the DTFT (if exists) of the system's impulse response $h[n]$, i.e.,
   $h[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
- c$.
+  H(e^{j\hat\omega})$.
 
 ## Properties of Frequency Response
 * Let $h[n] \stackrel{z}{\longleftrightarrow} H(z)$. If the ROC of the
