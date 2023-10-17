@@ -51,7 +51,7 @@
     H_{\text{ap}}(e^{j\hat\omega})}{d\hat\omega} \geq  - \frac{d  \angle
     H_{\min}(e^{j\hat\omega})}{d\hat\omega}$
 
-  The above properties implies that *amongst all causal, stable, rational
+  The above properties imply that *amongst all causal, stable, rational
   filters that have the same magnitude response, the minimum-phase
   filter has the smallest group delay*.
 
