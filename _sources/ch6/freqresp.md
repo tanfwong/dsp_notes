@@ -13,8 +13,8 @@
 * The convolution properties of DTFT gives:
 
   If $x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-  X(e^{j\hat\omega})$ and $y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-  Y(e^{j\hat\omega})$ are the input and output signals of the LTI
+  X(e^{j\hat\omega})$ and $h[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+  H(e^{j\hat\omega})$ are the input and output signals of the LTI
   system, then $Y(e^{j\hat\omega}) =  H(e^{j\hat\omega})
   X(e^{j\hat\omega})$.
 
@@ -143,8 +143,8 @@
   \begin{align*}
   |H(e^{j\hat\omega})|_{\text{dB}} 
   &= |b_0|_{\text{dB}}  + 
-  \sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
-  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+  \sum_{k=1}^M |1- z_k e^{-j\hat\omega}|_{\text{dB}} 
+  - \sum_{k=1}^N |1- p_k e^{-j\hat\omega}|_{\text{dB}} 
   \\
   \angle H(e^{j\hat\omega})
   &= \angle b_0 + 

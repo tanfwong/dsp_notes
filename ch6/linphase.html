@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>5.4. Linear Filtering with FFT &#8212; Foundations of DSP Notes</title>
+    <title>6.5. Linear-phase Filter &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch5/fil_fft';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch6/linphase';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Filter Design" href="../ch6/fildesign.html" />
-    <link rel="prev" title="5.3. Fast Fourier Transform" href="fft.html" />
+    <link rel="next" title="7. References" href="../refs.html" />
+    <link rel="prev" title="6.4. Minimum-phase Filter" href="minphase.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -185,19 +185,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch4/stft.html">4.2. Short-time DTFT</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="comp.html">5. Computation of Fourier Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fsamp.html">5.1. Frequency-domain Sampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dft.html">5.2. Discrete Fourier Transform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fft.html">5.3. Fast Fourier Transform</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.4. Linear Filtering with FFT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/comp.html">5. Computation of Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch5/fsamp.html">5.1. Frequency-domain Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch5/dft.html">5.2. Discrete Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch5/fft.html">5.3. Fast Fourier Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch5/fil_fft.html">5.4. Linear Filtering with FFT</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch6/fildesign.html">6. Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/freqresp.html">6.1. Frequency Response of LTI System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/pz.html">6.2. Pole-Zero Placement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/allpass.html">6.3. Allpass Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/minphase.html">6.4. Minimum-phase Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch6/linphase.html">6.5. Linear-phase Filter</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="fildesign.html">6. Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freqresp.html">6.1. Frequency Response of LTI System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pz.html">6.2. Pole-Zero Placement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allpass.html">6.3. Allpass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="minphase.html">6.4. Minimum-phase Filter</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.5. Linear-phase Filter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">7. References</a></li>
@@ -272,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch5/fil_fft.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch6/linphase.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch5/fil_fft.md" target="_blank"
+      <li><a href="../_sources/ch6/linphase.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,9 +371,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -384,20 +382,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Linear Filtering with FFT</h1>
+    <h1>Linear-phase Filter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithm">5.4.1. Overlap-Add Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-save-algorithm">5.4.2. Overlap-Save Algorithm</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -407,109 +396,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-filtering-with-fft">
-<h1><span class="section-number">5.4. </span>Linear Filtering with FFT<a class="headerlink" href="#linear-filtering-with-fft" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>Consider passing a signal <span class="math notranslate nohighlight">\(x[n]\)</span> of length <span class="math notranslate nohighlight">\(N\)</span> to an FIR Filter with
-impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> of length <span class="math notranslate nohighlight">\(L\)</span>. In practice, we often have <span class="math notranslate nohighlight">\(N
-\gg L \gg 1\)</span>. We will adopt this assumption in the discussion below.</p></li>
-<li><p>Direct implementation of the the convolution <span class="math notranslate nohighlight">\(y[n] = h[n]*x[n]\)</span>
-requires <span class="math notranslate nohighlight">\(\mathcal{O}(NL)\)</span> complex multiplications (and
-additions). While performing the filtering operation in the
-frequency domain using FFT algorithms to calculate DFT and IDFT as
-suggested in <a class="reference internal" href="dft.html#sec-freq-fil"><span class="std std-numref">Section 5.2.3</span></a> requires <span class="math notranslate nohighlight">\(\mathcal{O}(M\log_2
-M)\)</span> complex multiplications, where <span class="math notranslate nohighlight">\(M \geq N+L-1\)</span>. Since <span class="math notranslate nohighlight">\(N \gg L\)</span>,
-the computational complexity of this frequency-domain filtering
-approach is thus <span class="math notranslate nohighlight">\(\mathcal{O}(N\log_2 N)\)</span>. Hence, if <span class="math notranslate nohighlight">\(L \gg \log_2
-N\)</span>, then we may obtain a significant reduction in computational
-complexity by performing frequency-domain filtering using FFT.</p></li>
-<li><p>Nevertheless, the FFT implementation requires <span class="math notranslate nohighlight">\(\mathcal{O}(N\log_2
-N)\)</span> complex storage units, as compared to the <span class="math notranslate nohighlight">\(\mathcal{O}(N)\)</span>
-required for direct convolution. The additional amount of storage
-requirement may be excessive if <span class="math notranslate nohighlight">\(N\)</span> is very large for say some
-embedded systems which may have limited amount of memory.</p></li>
-<li><p>More importantly, frequency-domain filtering using FFT is a block
-processing approach. That is, one can not produce any output until
-the whole block of <span class="math notranslate nohighlight">\(N\)</span> input samples becomes available. This
-introduces a large latency in the filtering processing if <span class="math notranslate nohighlight">\(N\)</span> is
-large; thus preventing the applicability of the frequency-domain
-filtering approach in scenarios where real-time, low-latency
-processing is required.</p></li>
-</ul>
-<section id="overlap-add-algorithm">
-<h2><span class="section-number">5.4.1. </span>Overlap-Add Algorithm<a class="headerlink" href="#overlap-add-algorithm" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-phase-filter">
+<h1><span class="section-number">6.5. </span>Linear-phase Filter<a class="headerlink" href="#linear-phase-filter" title="Permalink to this headline">#</a></h1>
 <ul>
-<li><p>The standard solution to the storage and latency problems is to:</p>
-<ol class="arabic simple">
-<li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>smaller blocks</em> of length
-<span class="math notranslate nohighlight">\(\tilde{N}\)</span>,</p></li>
-<li><p>perform frequency-domain filtering on each smaller block of
-length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with an FFT of a smaller size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
-<li><p>combine the filter output blocks to obtain the output to the
-whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
-</ol>
+<li><p>A <strong>linear-phase filter</strong> is an LTI system that has frequency response
+of the form:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(e^{j\hat\omega}) = |H(e^{j\hat\omega})| e^{-j\hat\omega \alpha}.
+  \end{equation*}\]</div>
+<p>That is, its phase response  <span class="math notranslate nohighlight">\(\angle  H(e^{j\hat\omega}) = -
+\hat\omega \alpha\)</span> is linear in <span class="math notranslate nohighlight">\(\hat\omega\)</span> with slope <span class="math notranslate nohighlight">\(-\alpha\)</span>.</p>
 </li>
-<li><p>To filter each smaller input block of length <span class="math notranslate nohighlight">\(\tilde{N}\)</span>, one may choose the
-FFT size <span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(\tilde{M} \geq \tilde{N} + L -1\)</span> so
-that the output block contains the valid convolution result of
-length <span class="math notranslate nohighlight">\(\tilde{N} + L -1\)</span>. The filtered output to the whole <span class="math notranslate nohighlight">\(x[n]\)</span>
-can then be superimposing overlapped blocks of output corresponding
-to consecutive blocks of input as shown in the diagram below:</p>
-<a class="reference internal image-reference" href="../_images/ola.jpg"><img alt="Overlap-add algorithm" class="align-center" src="../_images/ola.jpg" style="width: 800px;" /></a>
-<p>This approach to perform frequency-domain
-filtering is often referred to as the <strong>overlap-add algorithm</strong>.</p>
-</li>
-<li><p>Since we need to perform filtering on <span class="math notranslate nohighlight">\(\frac{N}{\tilde{N}}\)</span> input
-blocks and each block requires <span class="math notranslate nohighlight">\(\mathcal{O}(\tilde{M} \log_2
-\tilde{M})\)</span> calculations, the computational complexity of filtering
-the whole input signal is this <span class="math notranslate nohighlight">\(\mathcal{O}\left(
-\frac{N\tilde{M}}{\tilde{N}} \log_2 \tilde{M} \right)\)</span> and the
-storage requirement is <span class="math notranslate nohighlight">\(\tilde{M} \log_2 \tilde{M}\)</span>. For instance,
-if we choose <span class="math notranslate nohighlight">\(\tilde{N} \sim L\)</span> and <span class="math notranslate nohighlight">\(\tilde{M} = \tilde{N}+L-1\)</span>,
-then the computational complexity becomes <span class="math notranslate nohighlight">\(\mathcal{O}(N\log_2 L)\)</span>
-and the storage requirement becomes <span class="math notranslate nohighlight">\(\mathcal{O}(N+ L\log_2
-L)\)</span>. Comparing with direct convolution, we can still get a
-significant reduction in computational complexity as long as <span class="math notranslate nohighlight">\(L \gg
-1\)</span>. The storage requirement is significantly lowered, compared with
-applying frequency-domain filtering with a single large-size FFT on
-the whole <span class="math notranslate nohighlight">\(x[n]\)</span>. The filter latency reduces to <span class="math notranslate nohighlight">\(\mathcal{O}(L)\)</span>.</p></li>
+<li><p>It is easy to check that both the phase delay and group delay of a
+linear-phase filter are equal to the constant <span class="math notranslate nohighlight">\(\alpha\)</span>, i.e.,
+<span class="math notranslate nohighlight">\(\tau_p(e^{j\hat\omega}) = \tau_g(e^{j\hat\omega}) = \alpha\)</span>. This
+means that all frequency components as well as the envelope of the
+input signal are delayed by the same amount (<span class="math notranslate nohighlight">\(\alpha\)</span>). This is a
+desirable property in some applications, e.g., digital
+communications, where the envelope is employed to convey
+information.</p></li>
 </ul>
-</section>
-<section id="overlap-save-algorithm">
-<h2><span class="section-number">5.4.2. </span>Overlap-Save Algorithm<a class="headerlink" href="#overlap-save-algorithm" title="Permalink to this headline">#</a></h2>
-<ul>
-<li><p>Another approach is to:</p>
-<ol class="arabic simple">
-<li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>overlapping blocks</em> of
-length <span class="math notranslate nohighlight">\(\tilde{M} \geq L\)</span>,</p></li>
-<li><p>perform frequency-domain filtering on each input block of
-length <span class="math notranslate nohighlight">\(\tilde{M}\)</span> with an FFT of size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
-<li><p>combine the filter output blocks to obtain the output to the
-whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
-</ol>
-</li>
-<li><p>Since the length of the input block is the same as the FFT size,
-the frequency-domain filtering output gives
-us the circular convolution <span class="math notranslate nohighlight">\((h \circledast_{\tilde{M}} x)[n]\)</span>
-rather than the convolution <span class="math notranslate nohighlight">\((h*x)[n]\)</span> in this case. Referring
-back to  <a class="reference internal" href="dft.html#equation-e-circonv">(5.4)</a>, <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> is the
-simply the periodic extension of <span class="math notranslate nohighlight">\((h*x)[n]\)</span>, whose length is
-<span class="math notranslate nohighlight">\(\tilde{M}+L-1\)</span>. Thus, it is easy to check that the last <span class="math notranslate nohighlight">\(\tilde{M}-L+1\)</span>
-samples in <span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n]\)</span> are not corrupted by
-time aliasing in the periodic extension process. That is, we have
-<span class="math notranslate nohighlight">\((h\circledast_{\tilde{M}} x)[n] = (h*x)[n]\)</span> for <span class="math notranslate nohighlight">\(n=L-1, L, \ldots,
-\tilde{M}-1\)</span>. As a result, we may still be able to obtain the
-convolution output <span class="math notranslate nohighlight">\(y[n]\)</span> to the whole <span class="math notranslate nohighlight">\(x[n]\)</span> by concatenating the
-uncorrupted portions of the circular convoluted output blocks as
-long as the input blocks overlap by <span class="math notranslate nohighlight">\(L-1\)</span> samples. This leads to the
-<strong>overlap-save algorithm</strong> as depicted below:</p>
-<a class="reference internal image-reference" href="../_images/ols.jpg"><img alt="Overlap-save algorithm" class="align-center" src="../_images/ols.jpg" style="width: 800px;" /></a>
-</li>
-<li><p>It is also easy to check that the same orders of computational
-complexity, storage requirement, and latency of the overlap-add
-algorithm can be achieved by the overlap-save algorithm as well.</p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -525,7 +432,7 @@ algorithm can be achieved by the overlap-save algorithm as well.</p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch5"
+            path: "./ch6"
         },
         predefinedOutput: true
     }
@@ -544,20 +451,20 @@ algorithm can be achieved by the overlap-save algorithm as well.</p></li>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="fft.html"
+       href="minphase.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5.3. </span>Fast Fourier Transform</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Minimum-phase Filter</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ch6/fildesign.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Filter Design</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -570,21 +477,6 @@ algorithm can be achieved by the overlap-save algorithm as well.</p></li>
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-add-algorithm">5.4.1. Overlap-Add Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-save-algorithm">5.4.2. Overlap-Save Algorithm</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

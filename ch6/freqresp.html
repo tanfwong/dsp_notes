@@ -197,6 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="pz.html">6.2. Pole-Zero Placement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allpass.html">6.3. Allpass Filter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="minphase.html">6.4. Minimum-phase Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linphase.html">6.5. Linear-phase Filter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">7. References</a></li>
@@ -422,8 +423,8 @@ transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> con
 = H(z) \big|_{z=e^{j\hat\omega}}\)</span>.</p></li>
 <li><p>The convolution properties of DTFT gives:</p>
 <p>If <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(y[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
-Y(e^{j\hat\omega})\)</span> are the input and output signals of the LTI
+X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(h[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
+H(e^{j\hat\omega})\)</span> are the input and output signals of the LTI
 system, then <span class="math notranslate nohighlight">\(Y(e^{j\hat\omega}) =  H(e^{j\hat\omega})
 X(e^{j\hat\omega})\)</span>.</p>
 </li>
@@ -561,8 +562,8 @@ and <em>phase</em> responses:</p>
 <span class="eqno">(6.2)<a class="headerlink" href="#equation-e-freq-resp-comp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 |H(e^{j\hat\omega})|_{\text{dB}} 
 &amp;= |b_0|_{\text{dB}}  + 
-\sum_{k=1}^M |1- z_k e^{-j\hat\omega})|_{\text{dB}} 
-- \sum_{k=1}^N |1- p_k e^{-j\hat\omega})|_{\text{dB}} 
+\sum_{k=1}^M |1- z_k e^{-j\hat\omega}|_{\text{dB}} 
+- \sum_{k=1}^N |1- p_k e^{-j\hat\omega}|_{\text{dB}} 
 \\
 \angle H(e^{j\hat\omega})
 &amp;= \angle b_0 + 
