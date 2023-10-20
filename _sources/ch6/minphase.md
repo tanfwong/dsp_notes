@@ -24,8 +24,9 @@
   H(z) 
   &= \underbrace{b_0
   \frac{\prod_{k=1}^{M_0} (1-z_k z^{-1})}{\prod_{k=1}^N (1 - p_k z^{-1})}
-  \cdot \prod_{k=M_0+1}^{M} (1-z_k z^{-1})}_{\text{Minimum-phase}} \cdot
-  \underbrace{\frac{\prod_{k=M_0+1}^{M} -z_k \left(-\frac{1}{z_k} -
+  \cdot \prod_{k=M_0+1}^{M} \left(1- \frac{1}{z^*_k} z^{-1} \right)}_{\text{Minimum-phase}} 
+  \cdot
+  \underbrace{\frac{\prod_{k=M_0+1}^{M} -z_k \left(-\frac{1}{z_k} +
   z^{-1} \right)}{\prod_{k=M_0+1}^M
   \left(1 - \frac{1}{z_k^*} z^{-1}\right)}}_{\text{Allpass}}
   \\
