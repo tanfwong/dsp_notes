@@ -12,7 +12,7 @@
      cz^{-1}}$ where $|c| < 1$.
 
   Here, we focus on investigating the magnitude and phase responses as
-  a function of the parameter $c$, i.e., the zero (pole) of the
+  functions of the parameter $c$, i.e., the zero (pole) of the
   first-order FIR (IIR) filter.
  
 * Note also that the magnitude (phase) response of the first-order IIR

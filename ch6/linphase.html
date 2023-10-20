@@ -371,7 +371,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -387,6 +389,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -417,6 +427,34 @@ desirable property in some applications, e.g., digital
 communications, where the envelope is employed to convey
 information.</p></li>
 </ul>
+<section id="ideal-filter">
+<h2><span class="section-number">6.5.1. </span>Ideal Filter<a class="headerlink" href="#ideal-filter" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>A linear-phase filter with a constant magnitude response over the
+passband is considered as an <strong>ideal filter</strong>. For example, the
+frequency response of an <strong>ideal lowpass filter</strong> is</p>
+<div class="math notranslate nohighlight" id="equation-e-ideallpf">
+<span class="eqno">(6.7)<a class="headerlink" href="#equation-e-ideallpf" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation}
+H_{\text{LP}}(e^{j\hat\omega}) = \begin{cases}
+e^{-j\hat\omega\alpha} &amp; \text{if } |\hat\omega| &lt;
+\hat\omega_{\text{LP}} \\
+0 &amp; \text{if } \hat\omega_{\text{LP}} \leq |\hat\omega| \leq \pi
+\end{cases}
+\end{equation}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat\omega_{\text{LP}}\)</span> is the cutoff frequency of the
+ideal lowpass filter. For <span class="math notranslate nohighlight">\(\hat\omega_{\text{LP}} = \pi\)</span>, the filter
+is called an <strong>ideal allpass filter</strong>.</p>
+</li>
+<li><p>It is easy to check that the impulse response of the ideal lowpass
+filter in <a class="reference internal" href="#equation-e-ideallpf">(6.7)</a> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  h_{\text{LP}}[n] = \frac{\sin \left(\hat\omega_{\text{LP}} (n -
+  \alpha) \right)}{\pi (n - \alpha)}.
+  \end{equation*}\]</div>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -477,6 +515,20 @@ information.</p></li>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
