@@ -56,7 +56,7 @@
   \begin{equation*}
   H(z) 
   = b_0 \cdot
-  \prod_{k=1}^N \frac{-a_k^* + e^{-j\hat\omega}}{1 - a_k e^{-j\hat\omega}}
+  \prod_{k=1}^N \frac{-a_k^* + z^{-1}}{1 - a_k z^{-1}}
   \end{equation*}
   ```
   where $|a_k| < 1$ for $k=1,2,\ldots,N$.
