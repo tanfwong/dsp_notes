@@ -54,5 +54,70 @@
   oversampled version of a continuous-time signal $x(t)$ at the
   sampling rate $f_s$, then $y[n]$ is the sampled version of
   $x\left(t-\frac{\alpha}{f_s}\right)$ obtained at the same sampling
-  rate. 
+  rate.
 
+## Generalized Linear-phase Filter
+* A **generalized linear-phase filter** has frequency response of the
+  following form: 
+  \begin{equation*} 
+  H(e^{j\hat\omega}) =
+  A(e^{j\hat\omega}) e^{-j(\hat\omega \alpha + \beta)} 
+  \end{equation*}
+  where $A(e^{j\hat\omega})$ is a real-valued (periodic) function of
+  $\hat\omega$.
+
+* The magnitude response of the generalized linear-phase filter is $|H(e^{j\hat\omega})| =
+  |A(e^{j\hat\omega})|$ and the phase response is $\displaystyle
+  \angle H(e^{j\hat\omega}) = \begin{cases}
+  -\hat\omega - \beta & \text{if } A(e^{j\hat\omega}) \geq 0 \\
+   -\hat\omega - \beta + \pi  & \text{if } A(e^{j\hat\omega}) < 0.
+   \end{cases}$ Therefore, the group delay $\tau_g(e^{j\hat\omega})$ is
+  essentially (except at frequencies where $A(e^{j\hat\omega})$
+  changes sign) constant at the value $\alpha$. Hence, the constant
+  group delay advantage of a linear-phase filter still holds for the
+  generalized linear-phase filter.
+
+## Causal Generalized Linear-phase FIR Filter
+```{admonition} Notation
+Let $h[n]$ be the impulse response of a causal FIR filter of order $M$
+with real-valued filter taps. We say that $h[n]$ is **symmetric** 
+(**antisymmetric**) if $h[n] = h[M-n]$ ($h[n] = -h[M-n]$) 
+for $n=0,1,\ldots, M$.
+```
+
+* The following four conditions give causal generalized linear-phase FIR filters:
+  1. **Symmetric $h[n]$ with an even order $M$**: 
+     \begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M}{2}}
+      \tilde{b}_k \cos (\hat\omega k) }_{A(e^{j\hat\omega})}
+      \cdot e^{-j\hat\omega \frac{M}{2}}
+     \end{equation*}
+     where $\tilde{b}_0 = h\left[\frac{M}{2}\right]$ and $\tilde{b}_k = 2
+     h\left[\frac{M}{2} -k\right]$ for $k=1,2,\ldots, \frac{M}{2}$.
+
+  2. **Symmetric $h[n]$ with an odd order $M$**: 
+     \begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M+1}{2}}
+      \tilde{b}_k \cos \left(\hat\omega (k - \frac{1}{2}) \right)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\hat\omega \frac{M}{2}}
+     \end{equation*}
+     where $\tilde{b}_k = 2 h\left[\frac{M+1}{2} -k\right]$ for $k=1,2,\ldots,
+     \frac{M+1}{2}$.
+
+  3. **Antisymmetric $h[n]$ with an even order $M$**: 
+     \begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M}{2}}
+      \tilde{b}_k \sin (\hat\omega k)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\left(\hat\omega \frac{M}{2} - \frac{\pi}{2} \right)}
+     \end{equation*}
+     where $\tilde{b}_k = 2 h\left[\frac{M}{2} -k\right]$ for $k=1,2,\ldots,
+     \frac{M}{2}$.
+
+  4. **Antisymmetric $h[n]$ with an odd order $M$**: 
+     \begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M+1}{2}}
+      \tilde{b}_k \sin \left(\hat\omega (k - \frac{1}{2}) \right)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\left(\hat\omega \frac{M}{2} - \frac{\pi}{2} \right)}
+     \end{equation*}
+     where $\tilde{b}_k = 2 h\left[\frac{M+1}{2} -k\right]$ for $k=1,2,\ldots,
+     \frac{M+1}{2}$.

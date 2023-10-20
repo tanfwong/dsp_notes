@@ -395,6 +395,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-linear-phase-filter">6.5.2. Generalized Linear-phase Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-generalized-linear-phase-fir-filter">6.5.3. Causal Generalized Linear-phase FIR Filter</a></li>
 </ul>
             </nav>
         </div>
@@ -471,6 +473,87 @@ rate.</p>
 </li>
 </ul>
 </section>
+<section id="generalized-linear-phase-filter">
+<h2><span class="section-number">6.5.2. </span>Generalized Linear-phase Filter<a class="headerlink" href="#generalized-linear-phase-filter" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>A <strong>generalized linear-phase filter</strong> has frequency response of the
+following form:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} 
+  H(e^{j\hat\omega}) =
+  A(e^{j\hat\omega}) e^{-j(\hat\omega \alpha + \beta)} 
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A(e^{j\hat\omega})\)</span> is a real-valued (periodic) function of
+<span class="math notranslate nohighlight">\(\hat\omega\)</span>.</p>
+</li>
+<li><p>The magnitude response of the generalized linear-phase filter is <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})| =
+|A(e^{j\hat\omega})|\)</span> and the phase response is <span class="math notranslate nohighlight">\(\displaystyle
+\angle H(e^{j\hat\omega}) = \begin{cases}
+-\hat\omega - \beta &amp; \text{if } A(e^{j\hat\omega}) \geq 0 \\
+ -\hat\omega - \beta + \pi  &amp; \text{if } A(e^{j\hat\omega}) &lt; 0.
+ \end{cases}\)</span> Therefore, the group delay <span class="math notranslate nohighlight">\(\tau_g(e^{j\hat\omega})\)</span> is
+essentially (except at frequencies where <span class="math notranslate nohighlight">\(A(e^{j\hat\omega})\)</span>
+changes sign) constant at the value <span class="math notranslate nohighlight">\(\alpha\)</span>. Hence, the constant
+group delay advantage of a linear-phase filter still holds for the
+generalized linear-phase filter.</p></li>
+</ul>
+</section>
+<section id="causal-generalized-linear-phase-fir-filter">
+<h2><span class="section-number">6.5.3. </span>Causal Generalized Linear-phase FIR Filter<a class="headerlink" href="#causal-generalized-linear-phase-fir-filter" title="Permalink to this headline">#</a></h2>
+<div class="admonition-notation admonition">
+<p class="admonition-title">Notation</p>
+<p>Let <span class="math notranslate nohighlight">\(h[n]\)</span> be the impulse response of a causal FIR filter of order <span class="math notranslate nohighlight">\(M\)</span>
+with real-valued filter taps. We say that <span class="math notranslate nohighlight">\(h[n]\)</span> is <strong>symmetric</strong>
+(<strong>antisymmetric</strong>) if <span class="math notranslate nohighlight">\(h[n] = h[M-n]\)</span> (<span class="math notranslate nohighlight">\(h[n] = -h[M-n]\)</span>)
+for <span class="math notranslate nohighlight">\(n=0,1,\ldots, M\)</span>.</p>
+</div>
+<ul>
+<li><p>The following four conditions give causal generalized linear-phase FIR filters:</p>
+<ol class="arabic">
+<li><p><strong>Symmetric <span class="math notranslate nohighlight">\(h[n]\)</span> with an even order <span class="math notranslate nohighlight">\(M\)</span></strong>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M}{2}}
+      \tilde{b}_k \cos (\hat\omega k) }_{A(e^{j\hat\omega})}
+      \cdot e^{-j\hat\omega \frac{M}{2}}
+     \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{b}_0 = h\left[\frac{M}{2}\right]\)</span> and <span class="math notranslate nohighlight">\(\tilde{b}_k = 2
+h\left[\frac{M}{2} -k\right]\)</span> for <span class="math notranslate nohighlight">\(k=1,2,\ldots, \frac{M}{2}\)</span>.</p>
+</li>
+<li><p><strong>Symmetric <span class="math notranslate nohighlight">\(h[n]\)</span> with an odd order <span class="math notranslate nohighlight">\(M\)</span></strong>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M+1}{2}}
+      \tilde{b}_k \cos \left(\hat\omega (k - \frac{1}{2}) \right)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\hat\omega \frac{M}{2}}
+     \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{b}_k = 2 h\left[\frac{M+1}{2} -k\right]\)</span> for <span class="math notranslate nohighlight">\(k=1,2,\ldots,
+\frac{M+1}{2}\)</span>.</p>
+</li>
+<li><p><strong>Antisymmetric <span class="math notranslate nohighlight">\(h[n]\)</span> with an even order <span class="math notranslate nohighlight">\(M\)</span></strong>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M}{2}}
+      \tilde{b}_k \sin (\hat\omega k)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\left(\hat\omega \frac{M}{2} - \frac{\pi}{2} \right)}
+     \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{b}_k = 2 h\left[\frac{M}{2} -k\right]\)</span> for <span class="math notranslate nohighlight">\(k=1,2,\ldots,
+\frac{M}{2}\)</span>.</p>
+</li>
+<li><p><strong>Antisymmetric <span class="math notranslate nohighlight">\(h[n]\)</span> with an odd order <span class="math notranslate nohighlight">\(M\)</span></strong>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+     H(e^{j\hat\omega}) = \underbrace{\sum_{k=0}^{\frac{M+1}{2}}
+      \tilde{b}_k \sin \left(\hat\omega (k - \frac{1}{2}) \right)}_{A(e^{j\hat\omega})}
+      \cdot e^{-j\left(\hat\omega \frac{M}{2} - \frac{\pi}{2} \right)}
+     \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{b}_k = 2 h\left[\frac{M+1}{2} -k\right]\)</span> for <span class="math notranslate nohighlight">\(k=1,2,\ldots,
+\frac{M+1}{2}\)</span>.</p>
+</li>
+</ol>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -541,6 +624,8 @@ rate.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-linear-phase-filter">6.5.2. Generalized Linear-phase Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-generalized-linear-phase-fir-filter">6.5.3. Causal Generalized Linear-phase FIR Filter</a></li>
 </ul>
   </nav></div>
 
