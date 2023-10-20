@@ -41,3 +41,18 @@
   \alpha) \right)}{\pi (n - \alpha)}.
   \end{equation*}
 
+* For any input signal $x[n]$ to the ideal lowpass filter in
+  {eq}`e:idealLPF`, the output is
+  \begin{equation*}
+  y[n] = x[n]*h_{\text{LP}}[n] 
+  = \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\hat\omega_{\text{LP}} (n - k -
+  \alpha) \right)}{\pi (n - k - \alpha)}.
+  \end{equation*}
+  For the special case of the ideal allpass filter
+  ($\hat\omega_{\text{LP}} = \pi$), if one interprets $x[n]$ as an
+  oversampled version of a continuous-time signal $x(t)$ at the
+  sampling rate $f_s$, then $y[n]$ is the sampled version of
+  $x\left(t-\frac{\alpha}{f_s}\right)$ obtained at the same sampling
+  rate. 
+

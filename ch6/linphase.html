@@ -453,6 +453,22 @@ filter in <a class="reference internal" href="#equation-e-ideallpf">(6.7)</a> is
   \alpha) \right)}{\pi (n - \alpha)}.
   \end{equation*}\]</div>
 </li>
+<li><p>For any input signal <span class="math notranslate nohighlight">\(x[n]\)</span> to the ideal lowpass filter in
+<a class="reference internal" href="#equation-e-ideallpf">(6.7)</a>, the output is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  y[n] = x[n]*h_{\text{LP}}[n] 
+  = \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\hat\omega_{\text{LP}} (n - k -
+  \alpha) \right)}{\pi (n - k - \alpha)}.
+  \end{equation*}\]</div>
+<p>For the special case of the ideal allpass filter
+(<span class="math notranslate nohighlight">\(\hat\omega_{\text{LP}} = \pi\)</span>), if one interprets <span class="math notranslate nohighlight">\(x[n]\)</span> as an
+oversampled version of a continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span> at the
+sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, then <span class="math notranslate nohighlight">\(y[n]\)</span> is the sampled version of
+<span class="math notranslate nohighlight">\(x\left(t-\frac{\alpha}{f_s}\right)\)</span> obtained at the same sampling
+rate.</p>
+</li>
 </ul>
 </section>
 </section>
