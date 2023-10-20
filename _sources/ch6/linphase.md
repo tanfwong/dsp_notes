@@ -56,6 +56,15 @@
   $x\left(t-\frac{\alpha}{f_s}\right)$ obtained at the same sampling
   rate.
 
+
+    ```{caution}
+    The transfer function of a general ideal filter is not rational. Hence, we
+    can't use an FIR/IIR filter to implement an ideal filter, except for
+    the special case of the ideal allpass filter
+    ($\hat\omega_{\text{LP}} = \pi$) with an integer $\alpha$ where
+    impulse response reduces to $ h_{\text{LP}}[n] = \delta[n - \alpha]$.
+    ```
+
 ## Generalized Linear-phase Filter
 * A **generalized linear-phase filter** has frequency response of the
   following form: 
@@ -76,6 +85,7 @@
   changes sign) constant at the value $\alpha$. Hence, the constant
   group delay advantage of a linear-phase filter still holds for the
   generalized linear-phase filter.
+
 
 ## Causal Generalized Linear-phase FIR Filter
 ```{admonition} Notation

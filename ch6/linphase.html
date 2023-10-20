@@ -470,6 +470,14 @@ oversampled version of a continuous-time signal <span class="math notranslate no
 sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, then <span class="math notranslate nohighlight">\(y[n]\)</span> is the sampled version of
 <span class="math notranslate nohighlight">\(x\left(t-\frac{\alpha}{f_s}\right)\)</span> obtained at the same sampling
 rate.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The transfer function of a general ideal filter is not rational. Hence, we
+can’t use an FIR/IIR filter to implement an ideal filter, except for
+the special case of the ideal allpass filter
+(<span class="math notranslate nohighlight">\(\hat\omega_{\text{LP}} = \pi\)</span>) with an integer <span class="math notranslate nohighlight">\(\alpha\)</span> where
+impulse response reduces to <span class="math notranslate nohighlight">\( h_{\text{LP}}[n] = \delta[n - \alpha]\)</span>.</p>
+</div>
 </li>
 </ul>
 </section>
