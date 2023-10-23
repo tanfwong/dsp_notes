@@ -82,9 +82,9 @@
    -\hat\omega - \beta + \pi  & \text{if } A(e^{j\hat\omega}) < 0.
    \end{cases}$ Therefore, the group delay $\tau_g(e^{j\hat\omega})$ is
   essentially (except at frequencies where $A(e^{j\hat\omega})$
-  changes sign) constant at the value $\alpha$. Hence, the constant
+  changes sign) constant at the value $\alpha$. Hence, **the constant
   group delay advantage of a linear-phase filter still holds for the
-  generalized linear-phase filter.
+  generalized linear-phase filter**.
 
 
 ## Causal Generalized Linear-phase FIR Filter
