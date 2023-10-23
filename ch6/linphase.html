@@ -650,7 +650,7 @@ lowpass prototype while maintaining the design specifications in the
 passband and stopband by doing some simple (circular) frequency
 shifting operations.</p></li>
 <li><p>To get a highpass filter with frequency response <span class="math notranslate nohighlight">\(\hat
-H(e^{j\hat\omega})\)</span>, frequency shift <span class="math notranslate nohighlight">\(H(z)\)</span> by <span class="math notranslate nohighlight">\(\pi\)</span>, i.e.,</p>
+H(e^{j\hat\omega})\)</span>, frequency shift <span class="math notranslate nohighlight">\(H(e^{j\hat\omega})\)</span> by <span class="math notranslate nohighlight">\(\pi\)</span>, i.e.,</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*} 
   \hat H(e^{j\hat\omega}) = H(e^{j(\hat\omega-\pi)})
@@ -664,7 +664,10 @@ passband of <span class="math notranslate nohighlight">\(\hat H(e^{j\hat\omega})
 H(e^{j\hat\omega})\)</span> is <span class="math notranslate nohighlight">\([\hat\omega_s - \pi, \pi - \hat\omega_s]\)</span>,
 and the specifications the passband and stopband of
 <span class="math notranslate nohighlight">\(H(e^{j\hat\omega})\)</span> carry over to those of <span class="math notranslate nohighlight">\(\hat
-H(e^{j\hat\omega})\)</span>.</p>
+H(e^{j\hat\omega})\)</span>. Note that the transfer function of the
+transformed highpass filter <span class="math notranslate nohighlight">\(\hat H(z) = H(-z)\)</span>, where <span class="math notranslate nohighlight">\(H(z)\)</span> is the
+transfer function of the prototype lowpass filter. This implies the
+highpass filter’s impulse response <span class="math notranslate nohighlight">\(\hat h[n] = (-1)^n h[n]\)</span>.</p>
 </li>
 </ul>
 </section>

@@ -216,7 +216,7 @@ for $n=0,1,\ldots, M$.
   shifting operations.
 
 * To get a highpass filter with frequency response $\hat
-  H(e^{j\hat\omega})$, frequency shift $H(z)$ by $\pi$, i.e.,
+  H(e^{j\hat\omega})$, frequency shift $H(e^{j\hat\omega})$ by $\pi$, i.e.,
   \begin{equation*} 
   \hat H(e^{j\hat\omega}) = H(e^{j(\hat\omega-\pi)})
   = A(e^{j(\hat\omega-\pi)}) e^{-j(\hat\omega\alpha+\beta -
@@ -229,4 +229,7 @@ for $n=0,1,\ldots, M$.
   H(e^{j\hat\omega})$ is $[\hat\omega_s - \pi, \pi - \hat\omega_s]$,
   and the specifications the passband and stopband of
   $H(e^{j\hat\omega})$ carry over to those of $\hat
-  H(e^{j\hat\omega})$.
+  H(e^{j\hat\omega})$. Note that the transfer function of the
+  transformed highpass filter $\hat H(z) = H(-z)$, where $H(z)$ is the
+  transfer function of the prototype lowpass filter. This implies the
+  highpass filter's impulse response $\hat h[n] = (-1)^n h[n]$. 
