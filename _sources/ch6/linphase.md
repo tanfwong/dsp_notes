@@ -75,7 +75,7 @@
   \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
   \\
   0 & \text{if } 0 \leq |\hat\omega| < \hat\omega_{l} \text{ or } 
-  \hat\omega_{l} < |\hat\omega| \leq \pi
+  \hat\omega_{u} < |\hat\omega| \leq \pi
   \end{cases}
   \\
   H_{\text{BS}}(e^{j\hat\omega}) 
@@ -83,7 +83,7 @@
   \begin{cases}
   e^{-j\hat\omega\alpha} & \text{if } 
   0 \leq |\hat\omega| < \hat\omega_{l} \text{ or } 
-  \hat\omega_{l} < |\hat\omega| \leq \pi
+  \hat\omega_{u} < |\hat\omega| \leq \pi
   \\
   0 & \text{if } 
   \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
@@ -209,21 +209,23 @@ for $n=0,1,\ldots, M$.
   frequency range $[\hat\omega_p, \hat\omega_s] \cup [-\hat\omega_s,
   -\hat\omega_p]$ is called the **transition band**.
 
-* We may obtain a highpass,
-  bandpass, or bandstop generalized linear-phase filter from the
+* We may obtain a highpass, bandpass, or bandstop filter from the
   lowpass prototype while maintaining the design specifications in the
   passband and stopband by doing some simple (circular) frequency
   shifting operations.
 
 * To get a highpass filter with frequency response $\hat
   H(e^{j\hat\omega})$, frequency shift $H(e^{j\hat\omega})$ by $\pi$, i.e.,
-  \begin{equation*} 
+  ```{math}
+  :label: e:lp2hp
+  \begin{equation} 
   \hat H(e^{j\hat\omega}) = H(e^{j(\hat\omega-\pi)})
   = A(e^{j(\hat\omega-\pi)}) e^{-j(\hat\omega\alpha+\beta -
-  \alpha\pi)}.  
-  \end{equation*} 
-  Clearly, $\hat H(e^{j\hat\omega})$ is
-  a generalized linear-phase filter. It is easy to check that the
+  \alpha\pi)}.
+  \end{equation}
+  ```
+  It is clear from {eq}`e:lp2hp` that $\hat H(e^{j\hat\omega})$ is
+  a generalized linear-phase filter. It is also easy to check that the
   passband of $\hat H(e^{j\hat\omega})$ is $[\pi - \hat\omega_p, \pi]
   \cup [-\pi, \hat\omega_p]$, the stopband of $\hat
   H(e^{j\hat\omega})$ is $[\hat\omega_s - \pi, \pi - \hat\omega_s]$,
@@ -233,3 +235,63 @@ for $n=0,1,\ldots, M$.
   transformed highpass filter $\hat H(z) = H(-z)$, where $H(z)$ is the
   transfer function of the prototype lowpass filter. This implies the
   highpass filter's impulse response $\hat h[n] = (-1)^n h[n]$. 
+
+* To get a bandpass filter frequency response $\tilde
+  H(e^{j\hat\omega})$, frequency modulate $h[n]$ by $\hat\omega_0$
+  where $\hat\omega_s < \hat\omega_0 \leq \pi-\hat\omega_s$. That is,
+  obtain the impulse response of the bandpass filter as $\tilde{h}[n]
+  = 2h[n]\cos(\hat\omega_0 n)$. By the frequency shifting property of
+  DTFT, we have
+  ```{math}
+  :label: e:lp2bp
+  \begin{align}
+  \tilde H(e^{j\hat\omega})
+  &= 
+  H(e^{j(\hat\omega-\hat\omega_0)}) +
+  H(e^{j(\hat\omega+\hat\omega_0)})
+  \\
+  &= 
+  A(e^{j(\hat\omega-\hat\omega_0)})
+  e^{-j(\hat\omega\alpha-\hat\omega_0\alpha +\beta)}
+  + 
+  A(e^{j(\hat\omega+\hat\omega_0)}) 
+  e^{-j(\hat\omega\alpha+\hat\omega_0\alpha +\beta)}
+  \\
+  &\approx
+  \begin{cases}
+  A(e^{j(\hat\omega-\hat\omega_0)})
+  e^{-j(\hat\omega\alpha-\hat\omega_0\alpha +\beta)}
+  & \text{if } \hat\omega_0 - \hat\omega_p \leq \hat\omega 
+  \leq \hat\omega_0 + \hat\omega_p 
+  \\
+  A(e^{j(\hat\omega+\hat\omega_0)}) 
+  e^{-j(\hat\omega\alpha+\hat\omega_0\alpha +\beta)}
+  & \text{if } -\hat\omega_0 - \hat\omega_p \leq \hat\omega 
+  \leq -\hat\omega_0 + \hat\omega_p 
+  \\
+  0 & \text{if } |\hat\omega| \leq \hat\omega_0 - \hat\omega_s
+  \text{ or } \hat\omega_0 + \hat\omega_s \leq |\hat\omega| \leq \pi
+  \end{cases}
+  \end{align}
+  ```
+  where the last approximation is obtained from the assumption that
+  $|A(e^{j\hat\omega})| \approx 0$ in the stopband of the prototype
+  lowpass filter, i.e., for $\hat\omega_s \leq |\hat\omega| \leq
+  \pi$. From {eq}`e:lp2bp`, we see that the passband of $\tilde
+  H(e^{j\hat\omega})$ is $[\hat\omega_0 - \hat\omega_p, \hat\omega_0 +
+  \hat\omega_p] \cup [-\hat\omega_0 - \hat\omega_p, -\hat\omega_0 +
+  \hat\omega_p]$ and the stopband of $\tilde H(e^{j\hat\omega})$ is
+  $[-\hat\omega_0 + \hat\omega_s, \hat\omega_0 - \hat\omega_s] \cup
+  [\hat\omega_0+\hat\omega_s, \pi] \cup [-\pi,
+  -\hat\omega_0-\hat\omega_s]$. The specifications the passband and
+  stopband of $H(e^{j\hat\omega})$ also approximately carry over to
+  those of $\tilde H(e^{j\hat\omega})$. Although $\tilde
+  H(e^{j\hat\omega})$ is not a generalized linear-phase filter, we may
+  nevertheless conclude from  {eq}`e:lp2bp` that the group delay of
+  $\tilde H(e^{j\hat\omega})$ is approximately constant at the value
+  $\alpha$ within its passband. 
+  
+* Finally, we may obtain a bandstop filter by frequency shifting
+  $\tilde H(e^{j\hat\omega})$ by $\pi$. 
+
+  
