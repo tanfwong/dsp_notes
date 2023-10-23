@@ -396,6 +396,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-phase-fir-filter">6.4.3. Maximum-phase FIR filter</a></li>
 </ul>
             </nav>
         </div>
@@ -497,6 +498,19 @@ least reverse the magnitude distortion on the input signal caused by
 <span class="math notranslate nohighlight">\(H(z)\)</span>.</p></li>
 </ul>
 </section>
+<section id="maximum-phase-fir-filter">
+<h2><span class="section-number">6.4.3. </span>Maximum-phase FIR filter<a class="headerlink" href="#maximum-phase-fir-filter" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span> be the transfer function of a minimum-phase,
+causal FIR filter of order <span class="math notranslate nohighlight">\(M\)</span>. Let <span class="math notranslate nohighlight">\(H_{\max}(z) = z^{-M}
+H_{\min}(z^{-1})\)</span>. Then, <span class="math notranslate nohighlight">\(H_{\max}\)</span> is a causal FIR filter whose
+zeros are located strictly outside the unit circle. We call
+<span class="math notranslate nohighlight">\(H_{\max}\)</span> a <strong>maximum-phase filter</strong>.</p></li>
+<li><p>Using a decomposition similar to <a class="reference internal" href="#equation-e-minphasedecom">(6.6)</a>, one can show
+that the maximum-phase filter has the largest group delay among all
+causal FIR filters that have the same magnitude response.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -568,6 +582,7 @@ least reverse the magnitude distortion on the input signal caused by
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-phase-fir-filter">6.4.3. Maximum-phase FIR filter</a></li>
 </ul>
   </nav></div>
 

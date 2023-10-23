@@ -560,6 +560,41 @@ h\left[\frac{M}{2} -k\right]\)</span> for <span class="math notranslate nohighli
 </li>
 </ol>
 </li>
+<li><p>The zeros of the 4 types of causal generalized linear-phase FIR
+filters above satisfy the following properties:</p>
+<ul>
+<li><p><strong>Types 1 &amp; 2</strong>:</p>
+<p>Since <span class="math notranslate nohighlight">\(h[n]\)</span> is symmetric, we have <span class="math notranslate nohighlight">\(H(z) = z^{-M}
+H(z^{-1})\)</span>. Hence, if <span class="math notranslate nohighlight">\(z_0\)</span> is a zero of <span class="math notranslate nohighlight">\(H(z)\)</span>, then
+<span class="math notranslate nohighlight">\(\frac{1}{z_0}\)</span> is also  a zero. That is, <span class="math notranslate nohighlight">\(H(z)\)</span> always have
+zero-pairs <span class="math notranslate nohighlight">\((z_0, \frac{1}{z_0})\)</span>. In particular, for type 2 (<span class="math notranslate nohighlight">\(M\)</span>
+is odd), <span class="math notranslate nohighlight">\(H(-1) = -H(-1)\)</span> which implies <span class="math notranslate nohighlight">\(H(-1)=0\)</span>; so there must
+be a zero at <span class="math notranslate nohighlight">\(z=-1\)</span>, i.e., the filter can’t be a highpass one.</p>
+</li>
+<li><p><strong>Types 3 &amp; 4</strong>:</p>
+<p>Since <span class="math notranslate nohighlight">\(h[n]\)</span> is antisymmetric, we have <span class="math notranslate nohighlight">\(H(z) =
+-z^{-M} H(z^{-1})\)</span>. Again, <span class="math notranslate nohighlight">\(H(z)\)</span> always have zero-pairs <span class="math notranslate nohighlight">\((z_0,
+\frac{1}{z_0})\)</span>. In addition, <span class="math notranslate nohighlight">\(H(1)=-H(1)\)</span> which implies <span class="math notranslate nohighlight">\(H(1)=0\)</span>;
+so there must be a zero at <span class="math notranslate nohighlight">\(z=1\)</span>, i.e., the filter can’t be a
+lowpass one. For type 4 (<span class="math notranslate nohighlight">\(M\)</span> is odd), <span class="math notranslate nohighlight">\(H(-1) = -H(-1)\)</span> which
+implies <span class="math notranslate nohighlight">\(H(-1)=0\)</span>; so there must be a zero at <span class="math notranslate nohighlight">\(z=-1\)</span>, i.e., the
+filter can’t be a highpass one either.</p>
+</li>
+</ul>
+</li>
+<li><p>It is not hard to show that any causal, generalized linear-phase,
+<span class="math notranslate nohighlight">\(M\)</span>-order FIR filter of any of the 4 types above has the following
+factorization:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+   H(z) = H_{\min}(z) \cdot H_{\text{uc}}(z) \cdot H_{\max}(z)
+   \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_{\text{uc}}(z)\)</span> is the transfer function whose zeros lie
+solely on the unit circle, and <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span> and <span class="math notranslate nohighlight">\(H_{\max}(z)\)</span> are
+a pair of minimum-phase and maximum-phase FIR filters of order
+<span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(H_{\max}(z) = z^{-\tilde{M}}
+H_{\min}(z^{-1})\)</span>.</p>
+</li>
 </ul>
 </section>
 </section>

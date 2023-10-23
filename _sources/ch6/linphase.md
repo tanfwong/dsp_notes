@@ -131,3 +131,36 @@ for $n=0,1,\ldots, M$.
      \end{equation*}
      where $\tilde{b}_k = 2 h\left[\frac{M+1}{2} -k\right]$ for $k=1,2,\ldots,
      \frac{M+1}{2}$.
+
+* The zeros of the 4 types of causal generalized linear-phase FIR
+  filters above satisfy the following properties:
+  - **Types 1 & 2**: 
+    
+    Since $h[n]$ is symmetric, we have $H(z) = z^{-M}
+    H(z^{-1})$. Hence, if $z_0$ is a zero of $H(z)$, then
+    $\frac{1}{z_0}$ is also  a zero. That is, $H(z)$ always have
+    zero-pairs $(z_0, \frac{1}{z_0})$. In particular, for type 2 ($M$
+    is odd), $H(-1) = -H(-1)$ which implies $H(-1)=0$; so there must
+    be a zero at $z=-1$, i.e., the filter can't be a highpass one.
+    
+  - **Types 3 & 4**:
+
+    Since $h[n]$ is antisymmetric, we have $H(z) =
+    -z^{-M} H(z^{-1})$. Again, $H(z)$ always have zero-pairs $(z_0,
+    \frac{1}{z_0})$. In addition, $H(1)=-H(1)$ which implies $H(1)=0$;
+    so there must be a zero at $z=1$, i.e., the filter can't be a
+    lowpass one. For type 4 ($M$ is odd), $H(-1) = -H(-1)$ which
+    implies $H(-1)=0$; so there must be a zero at $z=-1$, i.e., the
+    filter can't be a highpass one either.
+ 
+ * It is not hard to show that any causal, generalized linear-phase,
+   $M$-order FIR filter of any of the 4 types above has the following
+   factorization:
+   \begin{equation*}
+   H(z) = H_{\min}(z) \cdot H_{\text{uc}}(z) \cdot H_{\max}(z)
+   \end{equation*}
+   where $H_{\text{uc}}(z)$ is the transfer function whose zeros lie
+   solely on the unit circle, and $H_{\min}(z)$ and $H_{\max}(z)$ are
+   a pair of minimum-phase and maximum-phase FIR filters of order
+   $\tilde{M}$ satisfying $H_{\max}(z) = z^{-\tilde{M}}
+   H_{\min}(z^{-1})$. 

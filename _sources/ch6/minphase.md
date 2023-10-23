@@ -84,3 +84,14 @@
   $|H(e^{j\hat\omega})H_d(e^{j\hat\omega})| = 1$. That is, we may at
   least reverse the magnitude distortion on the input signal caused by
   $H(z)$.
+
+## Maximum-phase FIR filter
+* Let $H_{\min}(z)$ be the transfer function of a minimum-phase,
+  causal FIR filter of order $M$. Let $H_{\max}(z) = z^{-M}
+  H_{\min}(z^{-1})$. Then, $H_{\max}$ is a causal FIR filter whose
+  zeros are located strictly outside the unit circle. We call
+  $H_{\max}$ a **maximum-phase filter**.
+
+* Using a decomposition similar to {eq}`e:minphasedecom`, one can show
+  that the maximum-phase filter has the largest group delay among all
+  causal FIR filters that have the same magnitude response.  
