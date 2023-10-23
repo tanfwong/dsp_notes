@@ -17,16 +17,16 @@
   information.
 
 ## Ideal Filter
-* A linear-phase filter with a constant magnitude response over the
-  passband is considered as an **ideal filter**. For example, the
-  frequency response of an **ideal lowpass filter** is 
+* A linear-phase filter whose magnitude response equals $1$ over the
+  passband and $0$ over the stopband is considered as an **ideal filter**. 
+  For example, the frequency response of an **ideal lowpass filter** is 
   ```{math}
   :label: e:idealLPF
   \begin{equation}
   H_{\text{LP}}(e^{j\hat\omega}) = \begin{cases}
-  e^{-j\hat\omega\alpha} & \text{if } |\hat\omega| <
+  e^{-j\hat\omega\alpha} & \text{if } |\hat\omega|\leq 
   \hat\omega_{\text{LP}} \\
-  0 & \text{if } \hat\omega_{\text{LP}} \leq |\hat\omega| \leq \pi
+  0 & \text{if } \hat\omega_{\text{LP}} < |\hat\omega| \leq \pi
   \end{cases}
   \end{equation}
   ```
@@ -56,6 +56,39 @@
   $x\left(t-\frac{\alpha}{f_s}\right)$ obtained at the same sampling
   rate.
 
+* The frequency responses of ideal highpass, bandpass, and bandstop
+  filters are respectively given as below:
+  \begin{align*}
+  H_{\text{HP}}(e^{j\hat\omega})
+  &= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} & \text{if } \hat\omega_{\text{LP}} 
+  < |\hat\omega| \leq \pi
+  \\
+  0 & \text{if } |\hat\omega| \leq \hat\omega_{\text{HP}} 
+  \end{cases}
+  \\
+  H_{\text{BP}}(e^{j\hat\omega}) 
+  &= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} & \text{if } 
+  \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
+  \\
+  0 & \text{if } 0 \leq |\hat\omega| < \hat\omega_{l} \text{ or } 
+  \hat\omega_{l} < |\hat\omega| \leq \pi
+  \end{cases}
+  \\
+  H_{\text{BS}}(e^{j\hat\omega}) 
+  &= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} & \text{if } 
+  0 \leq |\hat\omega| < \hat\omega_{l} \text{ or } 
+  \hat\omega_{l} < |\hat\omega| \leq \pi
+  \\
+  0 & \text{if } 
+  \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
+  \end{cases}
+  \end{align*}
 
     ```{caution}
     The transfer function of a general ideal filter is not rational. Hence, we
@@ -78,8 +111,8 @@
 * The magnitude response of the generalized linear-phase filter is $|H(e^{j\hat\omega})| =
   |A(e^{j\hat\omega})|$ and the phase response is $\displaystyle
   \angle H(e^{j\hat\omega}) = \begin{cases}
-  -\hat\omega - \beta & \text{if } A(e^{j\hat\omega}) \geq 0 \\
-   -\hat\omega - \beta + \pi  & \text{if } A(e^{j\hat\omega}) < 0.
+  -\hat\omega \alpha- \beta & \text{if } A(e^{j\hat\omega}) \geq 0 \\
+   -\hat\omega \alpha- \beta + \pi  & \text{if } A(e^{j\hat\omega}) < 0.
    \end{cases}$ Therefore, the group delay $\tau_g(e^{j\hat\omega})$ is
   essentially (except at frequencies where $A(e^{j\hat\omega})$
   changes sign) constant at the value $\alpha$. Hence, **the constant
@@ -164,3 +197,36 @@ for $n=0,1,\ldots, M$.
    a pair of minimum-phase and maximum-phase FIR filters of order
    $\tilde{M}$ satisfying $H_{\max}(z) = z^{-\tilde{M}}
    H_{\min}(z^{-1})$. 
+
+
+## Frequency Transformation
+* Suppose that we have a prototype design of a lowpass generalized
+  linear-phase filter with impulse response $h[n]$ and frequency
+  response $H(e^{j\hat\omega}) = A(e^{j\hat\omega})
+  e^{-j(\hat\omega\alpha+\beta)}$ with **passband** $[-\hat\omega_p,
+  \hat\omega_p]$ and **stopband** $[\hat\omega_s, \pi] \cup [-\pi,
+  -\hat\omega_s]$, where $\hat\omega_p \leq \hat\omega_s$. The
+  frequency range $[\hat\omega_p, \hat\omega_s] \cup [-\hat\omega_s,
+  -\hat\omega_p]$ is called the **transition band**.
+
+* We may obtain a highpass,
+  bandpass, or bandstop generalized linear-phase filter from the
+  lowpass prototype while maintaining the design specifications in the
+  passband and stopband by doing some simple (circular) frequency
+  shifting operations.
+
+* To get a highpass filter with frequency response $\hat
+  H(e^{j\hat\omega})$, frequency shift $H(z)$ by $\pi$, i.e.,
+  \begin{equation*} 
+  \hat H(e^{j\hat\omega}) = H(e^{j(\hat\omega-\pi)})
+  = A(e^{j(\hat\omega-\pi)}) e^{-j(\hat\omega\alpha+\beta -
+  \alpha\pi)}.  
+  \end{equation*} 
+  Clearly, $\hat H(e^{j\hat\omega})$ is
+  a generalized linear-phase filter. It is easy to check that the
+  passband of $\hat H(e^{j\hat\omega})$ is $[\pi - \hat\omega_p, \pi]
+  \cup [-\pi, \hat\omega_p]$, the stopband of $\hat
+  H(e^{j\hat\omega})$ is $[\hat\omega_s - \pi, \pi - \hat\omega_s]$,
+  and the specifications the passband and stopband of
+  $H(e^{j\hat\omega})$ carry over to those of $\hat
+  H(e^{j\hat\omega})$.

@@ -397,6 +397,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-linear-phase-filter">6.5.2. Generalized Linear-phase Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-generalized-linear-phase-fir-filter">6.5.3. Causal Generalized Linear-phase FIR Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-transformation">6.5.4. Frequency Transformation</a></li>
 </ul>
             </nav>
         </div>
@@ -432,15 +433,15 @@ information.</p></li>
 <section id="ideal-filter">
 <h2><span class="section-number">6.5.1. </span>Ideal Filter<a class="headerlink" href="#ideal-filter" title="Permalink to this headline">#</a></h2>
 <ul>
-<li><p>A linear-phase filter with a constant magnitude response over the
-passband is considered as an <strong>ideal filter</strong>. For example, the
-frequency response of an <strong>ideal lowpass filter</strong> is</p>
+<li><p>A linear-phase filter whose magnitude response equals <span class="math notranslate nohighlight">\(1\)</span> over the
+passband and <span class="math notranslate nohighlight">\(0\)</span> over the stopband is considered as an <strong>ideal filter</strong>.
+For example, the frequency response of an <strong>ideal lowpass filter</strong> is</p>
 <div class="math notranslate nohighlight" id="equation-e-ideallpf">
 <span class="eqno">(6.7)<a class="headerlink" href="#equation-e-ideallpf" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation}
 H_{\text{LP}}(e^{j\hat\omega}) = \begin{cases}
-e^{-j\hat\omega\alpha} &amp; \text{if } |\hat\omega| &lt;
+e^{-j\hat\omega\alpha} &amp; \text{if } |\hat\omega|\leq 
 \hat\omega_{\text{LP}} \\
-0 &amp; \text{if } \hat\omega_{\text{LP}} \leq |\hat\omega| \leq \pi
+0 &amp; \text{if } \hat\omega_{\text{LP}} &lt; |\hat\omega| \leq \pi
 \end{cases}
 \end{equation}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat\omega_{\text{LP}}\)</span> is the cutoff frequency of the
@@ -470,6 +471,41 @@ oversampled version of a continuous-time signal <span class="math notranslate no
 sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, then <span class="math notranslate nohighlight">\(y[n]\)</span> is the sampled version of
 <span class="math notranslate nohighlight">\(x\left(t-\frac{\alpha}{f_s}\right)\)</span> obtained at the same sampling
 rate.</p>
+</li>
+<li><p>The frequency responses of ideal highpass, bandpass, and bandstop
+filters are respectively given as below:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  H_{\text{HP}}(e^{j\hat\omega})
+  &amp;= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} &amp; \text{if } \hat\omega_{\text{LP}} 
+  &lt; |\hat\omega| \leq \pi
+  \\
+  0 &amp; \text{if } |\hat\omega| \leq \hat\omega_{\text{HP}} 
+  \end{cases}
+  \\
+  H_{\text{BP}}(e^{j\hat\omega}) 
+  &amp;= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} &amp; \text{if } 
+  \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
+  \\
+  0 &amp; \text{if } 0 \leq |\hat\omega| &lt; \hat\omega_{l} \text{ or } 
+  \hat\omega_{l} &lt; |\hat\omega| \leq \pi
+  \end{cases}
+  \\
+  H_{\text{BS}}(e^{j\hat\omega}) 
+  &amp;= 
+  \begin{cases}
+  e^{-j\hat\omega\alpha} &amp; \text{if } 
+  0 \leq |\hat\omega| &lt; \hat\omega_{l} \text{ or } 
+  \hat\omega_{l} &lt; |\hat\omega| \leq \pi
+  \\
+  0 &amp; \text{if } 
+  \hat\omega_{l} \leq |\hat\omega| \leq \hat\omega_{u} 
+  \end{cases}
+  \end{align*}\]</div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The transfer function of a general ideal filter is not rational. Hence, we
@@ -497,8 +533,8 @@ following form:</p>
 <li><p>The magnitude response of the generalized linear-phase filter is <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})| =
 |A(e^{j\hat\omega})|\)</span> and the phase response is <span class="math notranslate nohighlight">\(\displaystyle
 \angle H(e^{j\hat\omega}) = \begin{cases}
--\hat\omega - \beta &amp; \text{if } A(e^{j\hat\omega}) \geq 0 \\
- -\hat\omega - \beta + \pi  &amp; \text{if } A(e^{j\hat\omega}) &lt; 0.
+-\hat\omega \alpha- \beta &amp; \text{if } A(e^{j\hat\omega}) \geq 0 \\
+ -\hat\omega \alpha- \beta + \pi  &amp; \text{if } A(e^{j\hat\omega}) &lt; 0.
  \end{cases}\)</span> Therefore, the group delay <span class="math notranslate nohighlight">\(\tau_g(e^{j\hat\omega})\)</span> is
 essentially (except at frequencies where <span class="math notranslate nohighlight">\(A(e^{j\hat\omega})\)</span>
 changes sign) constant at the value <span class="math notranslate nohighlight">\(\alpha\)</span>. Hence, <strong>the constant
@@ -597,6 +633,41 @@ H_{\min}(z^{-1})\)</span>.</p>
 </li>
 </ul>
 </section>
+<section id="frequency-transformation">
+<h2><span class="section-number">6.5.4. </span>Frequency Transformation<a class="headerlink" href="#frequency-transformation" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Suppose that we have a prototype design of a lowpass generalized
+linear-phase filter with impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> and frequency
+response <span class="math notranslate nohighlight">\(H(e^{j\hat\omega}) = A(e^{j\hat\omega})
+e^{-j(\hat\omega\alpha+\beta)}\)</span> with <strong>passband</strong> <span class="math notranslate nohighlight">\([-\hat\omega_p,
+\hat\omega_p]\)</span> and <strong>stopband</strong> <span class="math notranslate nohighlight">\([\hat\omega_s, \pi] \cup [-\pi,
+-\hat\omega_s]\)</span>, where <span class="math notranslate nohighlight">\(\hat\omega_p \leq \hat\omega_s\)</span>. The
+frequency range <span class="math notranslate nohighlight">\([\hat\omega_p, \hat\omega_s] \cup [-\hat\omega_s,
+-\hat\omega_p]\)</span> is called the <strong>transition band</strong>.</p></li>
+<li><p>We may obtain a highpass,
+bandpass, or bandstop generalized linear-phase filter from the
+lowpass prototype while maintaining the design specifications in the
+passband and stopband by doing some simple (circular) frequency
+shifting operations.</p></li>
+<li><p>To get a highpass filter with frequency response <span class="math notranslate nohighlight">\(\hat
+H(e^{j\hat\omega})\)</span>, frequency shift <span class="math notranslate nohighlight">\(H(z)\)</span> by <span class="math notranslate nohighlight">\(\pi\)</span>, i.e.,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*} 
+  \hat H(e^{j\hat\omega}) = H(e^{j(\hat\omega-\pi)})
+  = A(e^{j(\hat\omega-\pi)}) e^{-j(\hat\omega\alpha+\beta -
+  \alpha\pi)}.  
+  \end{equation*}\]</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(\hat H(e^{j\hat\omega})\)</span> is
+a generalized linear-phase filter. It is easy to check that the
+passband of <span class="math notranslate nohighlight">\(\hat H(e^{j\hat\omega})\)</span> is <span class="math notranslate nohighlight">\([\pi - \hat\omega_p, \pi]
+\cup [-\pi, \hat\omega_p]\)</span>, the stopband of <span class="math notranslate nohighlight">\(\hat
+H(e^{j\hat\omega})\)</span> is <span class="math notranslate nohighlight">\([\hat\omega_s - \pi, \pi - \hat\omega_s]\)</span>,
+and the specifications the passband and stopband of
+<span class="math notranslate nohighlight">\(H(e^{j\hat\omega})\)</span> carry over to those of <span class="math notranslate nohighlight">\(\hat
+H(e^{j\hat\omega})\)</span>.</p>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -669,6 +740,7 @@ H_{\min}(z^{-1})\)</span>.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-filter">6.5.1. Ideal Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-linear-phase-filter">6.5.2. Generalized Linear-phase Filter</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-generalized-linear-phase-fir-filter">6.5.3. Causal Generalized Linear-phase FIR Filter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-transformation">6.5.4. Frequency Transformation</a></li>
 </ul>
   </nav></div>
 
