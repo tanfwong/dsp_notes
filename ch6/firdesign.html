@@ -396,6 +396,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-specifications">6.6.1. Filter Specifications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-by-windowing">6.6.2. Design by Windowing</a></li>
 </ul>
             </nav>
         </div>
@@ -432,6 +433,52 @@ magnitude response shown in the figure below:</p>
 <li><p>For the phase response, we impose the restriction that the group
 delay of the filter must be a constant. That is, the filter must be
 a generalized linear-phase FIR filter.</p></li>
+</ul>
+</section>
+<section id="design-by-windowing">
+<h2><span class="section-number">6.6.2. </span>Design by Windowing<a class="headerlink" href="#design-by-windowing" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p><strong>Design Procedure</strong>:</p>
+<ol class="arabic simple">
+<li><p>Pick a window <span class="math notranslate nohighlight">\(w[n]\)</span> of length <span class="math notranslate nohighlight">\(L=M+1\)</span> from the <a class="reference internal" href="../ch4/stft.html#tab-windows"><span class="std std-ref">table</span></a> in <a class="reference internal" href="../ch4/stft.html#sec-stft"><span class="std std-numref">Section 4.2</span></a>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(H_d(e^{j\hat\omega})\)</span> be the desired frequency
+response. e.g., that of an ideal lowpass filter. Take the inverse
+DTFT of <span class="math notranslate nohighlight">\(H_d(e^{j\hat\omega})\)</span> to obtain the desired impulse
+response <span class="math notranslate nohighlight">\(h_d[n]\)</span>. Time-shift <span class="math notranslate nohighlight">\(h_d[n]\)</span>, if necessary, to make
+<span class="math notranslate nohighlight">\(h_d[n]\)</span> symmetric (antisymmetric), i.e., <span class="math notranslate nohighlight">\(h_d[M-n] = h_d[n]\)</span>
+(<span class="math notranslate nohighlight">\(h_d[M-n] = -h_d[n]\)</span>) for <span class="math notranslate nohighlight">\(n=0,1,\ldots,M\)</span>.</p></li>
+<li><p>Apply the window to <span class="math notranslate nohighlight">\(h_d[n]\)</span> to generate the FIR impulse response
+<span class="math notranslate nohighlight">\(h[n] = w[n] h_d[n]\)</span> of order <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Calculate the magnitude response <span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})|\)</span> of <span class="math notranslate nohighlight">\(h[n]\)</span>
+to check whether the specification <span class="math notranslate nohighlight">\((\hat\omega_p, \hat\omega_s,
+\delta_1, \delta_2)\)</span> is met.</p>
+<ul class="simple">
+<li><p>If yes, terminate and output <span class="math notranslate nohighlight">\(h[n]\)</span>.</p></li>
+<li><p>If no, increment <span class="math notranslate nohighlight">\(M\)</span> and/or change other window parameters and
+go back to step 2.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Note that every window <span class="math notranslate nohighlight">\(w[n]\)</span> listed in the <a class="reference internal" href="../ch4/stft.html#tab-windows"><span class="std std-ref">table</span></a> in <a class="reference internal" href="../ch4/stft.html#sec-stft"><span class="std std-numref">Section 4.2</span></a> is symmetric. As a result, if
+<span class="math notranslate nohighlight">\(h_d[n]\)</span> is symmetric (antisymmetric), then <span class="math notranslate nohighlight">\(h[n]\)</span> will be symmetric
+(antisymmetric). That is, the filter <span class="math notranslate nohighlight">\(h[n]\)</span> obtained will be a
+generalized linear-phase FIR filter. For lowpass filter design, we
+want <span class="math notranslate nohighlight">\(h[n]\)</span> to be symmetric (types 1 &amp; 2).</p></li>
+<li><p>By the multiplication property of DTFT,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(e^{j\hat\omega}) = \frac{1}{2\pi} \int_{-\pi}^{\pi} H_d(e^{j\theta})
+  W(e^{j(\hat\omega - \theta)}) \, d\theta.
+  \end{equation*}\]</div>
+<p>Pictorially, the DTFT <span class="math notranslate nohighlight">\(W(e^{j\hat\omega})\)</span> of the window <span class="math notranslate nohighlight">\(w[n]\)</span>
+smooths out any abrupt transitions in <span class="math notranslate nohighlight">\(H_d(e^{j\hat\omega})\)</span> and
+causes <strong>ripples</strong> in the passband and stopband.  These effects
+become less prominent as the window length <span class="math notranslate nohighlight">\(L\)</span> (order <span class="math notranslate nohighlight">\(M\)</span>)
+increases. The choice between different windows often amounts to a
+tradeoff between a wider transition band and smaller <span class="math notranslate nohighlight">\(\delta_1\)</span> and
+<span class="math notranslate nohighlight">\(\delta_2\)</span>.</p>
+</li>
 </ul>
 </section>
 </section>
@@ -504,6 +551,7 @@ a generalized linear-phase FIR filter.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-specifications">6.6.1. Filter Specifications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-by-windowing">6.6.2. Design by Windowing</a></li>
 </ul>
   </nav></div>
 

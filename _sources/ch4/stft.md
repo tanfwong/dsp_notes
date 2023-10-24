@@ -1,3 +1,4 @@
+(sec:stft)=
 # Short-time DTFT
 
 * Many practical signals, such as musical signals, have time-varying
@@ -74,6 +75,7 @@
   odd window length of $w[n]$.
   
   ```{list-table}
+  :name: tab:windows
   :header-rows: 1
   
   * - **Window name**
