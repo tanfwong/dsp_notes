@@ -198,7 +198,7 @@ for $n=0,1,\ldots, M$.
    $\tilde{M}$ satisfying $H_{\max}(z) = z^{-\tilde{M}}
    H_{\min}(z^{-1})$. 
 
-
+(sec:freqtrans)=
 ## Frequency Transformation
 * Suppose that we have a prototype design of a lowpass generalized
   linear-phase filter with impulse response $h[n]$ and frequency
