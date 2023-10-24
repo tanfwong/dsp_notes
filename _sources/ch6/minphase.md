@@ -88,9 +88,9 @@
 ## Maximum-phase FIR filter
 * Let $H_{\min}(z)$ be the transfer function of a minimum-phase,
   causal FIR filter of order $M$. Let $H_{\max}(z) = z^{-M}
-  H_{\min}(z^{-1})$. Then, $H_{\max}$ is a causal FIR filter whose
+  H_{\min}(z^{-1})$. Then, $H_{\max}(z)$ is a causal FIR filter whose
   zeros are located strictly outside the unit circle. We call
-  $H_{\max}$ a **maximum-phase filter**.
+  $H_{\max}(z)$ a **maximum-phase filter**.
 
 * Using a decomposition similar to {eq}`e:minphasedecom`, one can show
   that the maximum-phase filter has the largest group delay among all

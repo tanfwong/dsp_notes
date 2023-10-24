@@ -67,3 +67,118 @@ filter.
   increases. The choice between different windows often amounts to a
   tradeoff between a wider transition band and smaller $\delta_1$ and
   $\delta_2$. 
+
+* For the Kaiser window, extensive numerical studies have been
+  performed to obtain empirical formulas for good choices of $M$ and
+  $\beta$ in order to satisfy the design specification $(\hat\omega_p,
+  \hat\omega_p + \Delta\hat\omega, \delta, \delta)$
+  (see {cite}`oppenheim2010` Chapter 7 for details):
+  ```{math}
+  :label: e:kaiserord
+  \begin{align}
+  \beta 
+  &= 
+  \begin{cases}
+  0.1102 (D - 8.7) & \text{if } D>50
+  \\
+  0.5842(D-21)^{0.4} + 0.07886 (D-21) & \text{if } 21 \leq D \leq 50
+  \\
+  0 & \text{if } D < 21
+  \end{cases}
+  \\
+  M 
+  &= 
+  \frac{D-7.95}{2.285 \Delta\hat\omega}
+  \end{align}
+  ```
+  where $D = -20\log_{10} \delta$. As a result, one may use
+  {eq}`e:kaiserord` as a choice for step 1 in the design
+  procedure above to avoid going through the iterative design process. 
+  
+* **MATLAB Example 1**:
+
+  The objective is to design a lowpass generalized linear-phase FIR
+  filter with the specification $(0.3\pi, 0.35\pi, 0.001, 0.001)$. We
+  use the Kaiser window and {eq}`e:kaiserord` to select $M$ and
+  $\beta$. One may use the MATLAB function `kaiserord` to calculate
+  the choices of $M$ and $\beta$ given by {eq}`e:kaiserord`:
+  ```matlab
+  >> [M, wc, beta, ftype] = kaiserord([0.3, 0.35], [1, 0], [0.001, 0.001])
+  
+  M =
+ 
+     146
+
+
+  wc =
+ 
+      0.3250
+
+
+  beta =
+
+      5.6533
+
+
+  ftype =
+
+      'low'
+  ```
+  Set the desired frequency response to be that of an ideal
+  lowpass filter, i.e., $H_d(e^{j\hat\omega}) = \begin{cases}
+  1 & \text{if } |\hat\omega| \leq 0.325\pi \\
+  0 & \text{if } 0.325\pi < |\hat\omega| \leq \pi.
+  \end{cases}$ Taking inverse DTFT gives $\displaystyle h_d[n] =
+  \frac{sin(0.325\pi n)}{\pi n}$.  For $M=146$, we need to delay
+  $h_d[n]$ by $\frac{M}{2}=73$ time instants to get a symmetric
+  desired impulse response $h_d[n-\frac{M}{2}]$ before applying the Kaiser
+  window to obtain the target filter $h[n]$:
+  ```matlab
+  >> n = [0:M].';
+  >> hd = sin(0.325*pi*(n-M/2)) ./ (n-M/2) / pi;
+  >> hd(M/2+1) = 0.325;
+  >> h1 = kaiser(M+1, beta) .* hd;
+  >> fvtool(h1, 1);
+  ```
+  It turns out that the specification of $\delta = 0.001$ (-$60$ dB)
+  is slightly violated in the stopband. The achieved value is $\delta
+  = 0.001053$ ($-59.55$ dB). This is often acceptable in
+  practice. One may also use the MATLAB function `fir1` to generate
+  the desired impulse response by a least square optimization (instead of using
+  the ideal lowpass filter formula) and then apply the Kaiser window:
+  ```matlab
+  >> h1f = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> fvtool(h1f, 1)
+  ```
+  The filter given by `fir1` is very similar to the one obtained above
+  using the ideal lowpass filter formula to generate the desired impulse
+  response $h_d[n]$, but the specification of $\delta = 0.001$ is now 
+  slightly violated in both the passband and stopband.
+  
+* **MATLAB Example 2**:
+ 
+  One may employ the frequency transformations described in
+  {numref}`sec:freqtrans` to obtain other types of filters from the
+  lowpass filter obtained in Example 1 above. For instance, setting
+  $\hat h[n] = (-1)^n h[n]$ will give us a highpass, generalized
+  linear-phase FIR filter with stopband $[-0.65\pi, 0.65\pi]$ and
+  passband $[0.7\pi, \pi] \cup [-\pi, -0.7\pi]$. 
+
+  However, it is more convenient to use the MATLAB function `fir1`
+  again to design a highpass generalized linear-phase FIR filter:
+  ```matlab
+  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.001]);
+  >> h2 = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> fvtool(h2, 1);
+  ```
+
+* **MATLAB Example 3**:
+  
+  To design a bandpass generalized linear-phase FIR filter with
+  passband $[0.3\pi, 0.65\pi] \cup [-0.65\pi, -0.3\pi]$, we can
+  similarly use `fir1`:
+  ```matlab
+  >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.001, 0.001]);
+  >> h3 = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> fvtool(h3, 1);
+  ```

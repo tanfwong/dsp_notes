@@ -106,11 +106,11 @@
   For the Kaiser window, $I_0(\cdot)$ is the zeroth-order modified
       Bessel function of the first kind and $\beta \geq 0$ is a
       parameter to control the shape of the window and the prominence
-      of the sidelobes in the window's FT. When $\beta=0$, the Kaiser
+      of the sidelobes in the window's DTFT. When $\beta=0$, the Kaiser
       window reduces to the rectangular window. 
  
 * The length $L$ of the window signal determines the time
   resolution. A larger $L$ gives poorer time but finer frequency
   resolution. The choice of the window signal is often based on a
   tradeoff between a smaller $\sigma_{\omega}$ and the prominence of
-  the sidelobes in the window's FT for a chosen value of $L$.
+  the sidelobes in the window's DTFT for a chosen value of $L$.
