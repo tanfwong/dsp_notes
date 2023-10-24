@@ -167,7 +167,7 @@ filter.
   However, it is more convenient to use the MATLAB function `fir1`
   again to design a highpass generalized linear-phase FIR filter:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.001]);
+  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.001])
   >> h2 = fir1(M, wc , ftype, kaiser(M+1, beta));
   >> fvtool(h2, 1);
   ```
@@ -178,7 +178,7 @@ filter.
   passband $[0.3\pi, 0.65\pi] \cup [-0.65\pi, -0.3\pi]$, we can
   similarly use `fir1`:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.001, 0.001]);
+  >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.001, 0.001])
   >> h3 = fir1(M, wc , ftype, kaiser(M+1, beta));
   >> fvtool(h3, 1);
   ```
