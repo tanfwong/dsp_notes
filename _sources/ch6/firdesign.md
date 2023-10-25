@@ -228,7 +228,7 @@ filter.
   N =
   \begin{cases}
   \frac{M}{2} & \text{ Type 1} \\
-  \frac{M-1}{2} & \text{ Types 2 \& 4} \\
+  \frac{M-1}{2} & \text{ Types 2 & 4} \\
   \frac{M}{2} - 1 & \text{ Type 3}
   \end{cases}
   \end{equation*}
