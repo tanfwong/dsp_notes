@@ -129,25 +129,34 @@ filter.
   1 & \text{if } |\hat\omega| \leq 0.325\pi \\
   0 & \text{if } 0.325\pi < |\hat\omega| \leq \pi.
   \end{cases}$ Taking inverse DTFT gives $\displaystyle h_d[n] =
-  \frac{sin(0.325\pi n)}{\pi n}$.  For $M=146$, we need to delay
+  \frac{\sin(0.325\pi n)}{\pi n}$.  For $M=146$, we need to delay
   $h_d[n]$ by $\frac{M}{2}=73$ time instants to get a symmetric
   desired impulse response $h_d[n-\frac{M}{2}]$ before applying the Kaiser
-  window to obtain the target filter $h[n]$:
+  window to obtain the target type-1 filter $h[n]$:
   ```matlab
-  >> n = [0:M].';
+  >> n = [0:M];
   >> hd = sin(0.325*pi*(n-M/2)) ./ (n-M/2) / pi;
   >> hd(M/2+1) = 0.325;
-  >> h1 = kaiser(M+1, beta) .* hd;
+  >> h1 = kaiser(M+1, beta).' .* hd;
   >> fvtool(h1, 1);
   ```
   It turns out that the specification of $\delta = 0.001$ (-$60$ dB)
   is slightly violated in the stopband. The achieved value is $\delta
   = 0.001053$ ($-59.55$ dB). This is often acceptable in
-  practice. One may also use the MATLAB function `fir1` to generate
+  practice. 
+  ```{caution}
+  Increasing the order $M$ while keeping the value of $\beta$
+  unchanged does not monotonically reduce the ripples in the passband
+  and stopband. For example, setting $M=150$ meets the specification
+  of $\delta=0.001$ in the stopband, but fails to meet the same 
+  requirement in the passband by a slight margin!
+  ```
+
+  One may also use the MATLAB function `fir1` to generate
   the desired impulse response by a least square optimization (instead of using
   the ideal lowpass filter formula) and then apply the Kaiser window:
   ```matlab
-  >> h1f = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> h1f = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h1f, 1)
   ```
   The filter given by `fir1` is very similar to the one obtained above
@@ -161,24 +170,68 @@ filter.
   {numref}`sec:freqtrans` to obtain other types of filters from the
   lowpass filter obtained in Example 1 above. For instance, setting
   $\hat h[n] = (-1)^n h[n]$ will give us a highpass, generalized
-  linear-phase FIR filter with stopband $[-0.65\pi, 0.65\pi]$ and
-  passband $[0.7\pi, \pi] \cup [-\pi, -0.7\pi]$. 
+  linear-phase FIR filter with stopband $[0, 0.65\pi]$ and passband
+  $[0.7\pi, \pi]$.
 
   However, it is more convenient to use the MATLAB function `fir1`
   again to design a highpass generalized linear-phase FIR filter:
   ```matlab
   >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.001])
-  >> h2 = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> h2 = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h2, 1);
   ```
 
 * **MATLAB Example 3**:
   
   To design a bandpass generalized linear-phase FIR filter with
-  passband $[0.3\pi, 0.65\pi] \cup [-0.65\pi, -0.3\pi]$, we can
-  similarly use `fir1`:
+  passband $[0.3\pi, 0.65\pi]$ and stopband $[0,0.25\pi] \cup [0.7\pi,
+  \pi]$, we can similarly use `fir1`:
   ```matlab
   >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.001, 0.001])
-  >> h3 = fir1(M, wc , ftype, kaiser(M+1, beta));
+  >> h3 = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h3, 1);
   ```
+
+## Equiripple Design - Parks-McClellan Algorithm
+* The Parks-McClellan algorithm is a systematic procedure to generate
+  a generalized linear-phase FIR filter of order $M$ that satisfies
+  the specification $(\hat\omega_p, \hat\omega_s, \delta_1,
+  \delta_2)$.
+
+* To explain the algorithm, first note that the real-valued component
+  $A(e^{j\hat\omega})$ in the frequency response of any of the four
+  types of generalized linear-phase FIR filters described in
+  {numref}`sec:glinphaseFIR` can be expressed in the following form:
+  \begin{equation*}
+  A(e^{j\hat\omega}) = Q(e^{j\hat\omega}) P(e^{j\hat\omega})
+  \end{equation*}
+  where
+  \begin{equation*}
+  Q(e^{j\hat\omega}) 
+  =
+  \begin{cases}
+  1 & \text{ Type 1: } \text{even } M, \text{symmetric } h[n]\\
+  \cos \frac{\hat\omega}{2} & \text{ Type 2: } \text{odd } M,
+  \text{symmetric } h[n] \\
+  \sin \hat\omega & \text{ Type 3: } \text{even } M, \text{antisymmetric }
+  h[n] \\
+  \sin \frac{\hat\omega}{2} & \text{ Type 4: } \text{odd } M,
+  \text{antisymmetric } h[n]
+  \end{cases}
+  \end{equation*}
+  and
+  \begin{equation*}
+  P(e^{j\hat\omega}) = \sum_{k=0}^{N} \alpha_k \cos(\hat\omega k)
+  \end{equation*}
+  with
+  \begin{equation*}
+  N =
+  \begin{cases}
+  \frac{M}{2} & \text{ Type 1} \\
+  \frac{M-1}{2} & \text{ Types 2 \& 4} \\
+  \frac{M}{2} - 1 & \text{ Type 3}
+  \end{cases}
+  \end{equation*}
+  and the coefficients $\{\alpha_k\}_{k=0}^{N}$ are functions of
+  $h[n]$ depending on the type of the generalized linear-phase FIR
+  filter (see {cite}`proakis2022` $\S$10.2.4 for details). 

@@ -119,7 +119,7 @@
   group delay advantage of a linear-phase filter still holds for the
   generalized linear-phase filter**.
 
-
+(sec:glinphaseFIR)=
 ## Causal Generalized Linear-phase FIR Filter
 ```{admonition} Notation
 Let $h[n]$ be the impulse response of a causal FIR filter of order $M$
@@ -201,13 +201,27 @@ for $n=0,1,\ldots, M$.
 (sec:freqtrans)=
 ## Frequency Transformation
 * Suppose that we have a prototype design of a lowpass generalized
-  linear-phase filter with impulse response $h[n]$ and frequency
-  response $H(e^{j\hat\omega}) = A(e^{j\hat\omega})
-  e^{-j(\hat\omega\alpha+\beta)}$ with **passband** $[-\hat\omega_p,
-  \hat\omega_p]$ and **stopband** $[\hat\omega_s, \pi] \cup [-\pi,
-  -\hat\omega_s]$, where $\hat\omega_p \leq \hat\omega_s$. The
-  frequency range $[\hat\omega_p, \hat\omega_s] \cup [-\hat\omega_s,
-  -\hat\omega_p]$ is called the **transition band**.
+  linear-phase filter with real-valued impulse response $h[n]$ and
+  frequency response $H(e^{j\hat\omega}) = A(e^{j\hat\omega})
+  e^{-j(\hat\omega\alpha+\beta)}$. By the conjugation property of
+  DTFT, $H(e^{j\hat\omega})$ must be conjugate symmetric, i.e.,
+  $H(e^{-j\hat\omega}) = H^*(e^{j\hat\omega})$, which implies
+  $A(e^{-j\hat\omega}) = A(e^{j\hat\omega}) e^{2j\beta}$. It is then
+  easy to check that only the following two cases are possible:
+  - $A(e^{-j\hat\omega}) = A(e^{j\hat\omega})$ and $\beta=0$, or
+  - $A(e^{-j\hat\omega}) = -A(e^{j\hat\omega})$ and $\beta=\pm
+    \frac{\pi}{2}$.
+  
+  Note that the type-1 and -2 generalized linear-phase FIR filters
+  follow the former case while  the type-3 and -4 filters follow the
+  latter case.
+
+* Since $|H(e^{-j\hat\omega})| = |H(e^{j\hat\omega})|$, it suffices to
+  describe the specification of the lowpass generalized linear-phase
+  filter over the positive frequency axis. Let its **passband** be
+  $[0, \hat\omega_p]$ and **stopband** be $[\hat\omega_s, \pi]$, where
+  $\hat\omega_p \leq \hat\omega_s$. The frequency range
+  $[\hat\omega_p, \hat\omega_s]$ is called the **transition band**.
 
 * We may obtain a highpass, bandpass, or bandstop filter from the
   lowpass prototype while maintaining the design specifications in the
@@ -224,17 +238,16 @@ for $n=0,1,\ldots, M$.
   \alpha\pi)}.
   \end{equation}
   ```
-  It is clear from {eq}`e:lp2hp` that $\hat H(e^{j\hat\omega})$ is
-  a generalized linear-phase filter. It is also easy to check that the
-  passband of $\hat H(e^{j\hat\omega})$ is $[\pi - \hat\omega_p, \pi]
-  \cup [-\pi, \hat\omega_p]$, the stopband of $\hat
-  H(e^{j\hat\omega})$ is $[\hat\omega_s - \pi, \pi - \hat\omega_s]$,
-  and the specifications the passband and stopband of
+  It is clear from {eq}`e:lp2hp` that $\hat H(e^{j\hat\omega})$ is a
+  generalized linear-phase filter. It is also easy to check that the
+  passband of $\hat H(e^{j\hat\omega})$ is $[\pi - \hat\omega_p,
+  \pi]$, the stopband of $\hat H(e^{j\hat\omega})$ is $[0, \pi -
+  \hat\omega_s]$, and the specifications the passband and stopband of
   $H(e^{j\hat\omega})$ carry over to those of $\hat
   H(e^{j\hat\omega})$. Note that the transfer function of the
   transformed highpass filter $\hat H(z) = H(-z)$, where $H(z)$ is the
   transfer function of the prototype lowpass filter. This implies the
-  highpass filter's impulse response $\hat h[n] = (-1)^n h[n]$. 
+  highpass filter's impulse response $\hat h[n] = (-1)^n h[n]$.
 
 * To get a bandpass filter frequency response $\tilde
   H(e^{j\hat\omega})$, frequency modulate $h[n]$ by $\hat\omega_0$
@@ -274,22 +287,21 @@ for $n=0,1,\ldots, M$.
   \end{cases}
   \end{align}
   ```
+  
   where the last approximation is obtained from the assumption that
   $|A(e^{j\hat\omega})| \approx 0$ in the stopband of the prototype
   lowpass filter, i.e., for $\hat\omega_s \leq |\hat\omega| \leq
   \pi$. From {eq}`e:lp2bp`, we see that the passband of $\tilde
   H(e^{j\hat\omega})$ is $[\hat\omega_0 - \hat\omega_p, \hat\omega_0 +
-  \hat\omega_p] \cup [-\hat\omega_0 - \hat\omega_p, -\hat\omega_0 +
   \hat\omega_p]$ and the stopband of $\tilde H(e^{j\hat\omega})$ is
-  $[-\hat\omega_0 + \hat\omega_s, \hat\omega_0 - \hat\omega_s] \cup
-  [\hat\omega_0+\hat\omega_s, \pi] \cup [-\pi,
-  -\hat\omega_0-\hat\omega_s]$. The specifications the passband and
-  stopband of $H(e^{j\hat\omega})$ also approximately carry over to
-  those of $\tilde H(e^{j\hat\omega})$. Although $\tilde
-  H(e^{j\hat\omega})$ is not a generalized linear-phase filter, we may
-  nevertheless conclude from  {eq}`e:lp2bp` that the group delay of
-  $\tilde H(e^{j\hat\omega})$ is approximately constant at the value
-  $\alpha$ within its passband. 
+  $[0, \hat\omega_0 - \hat\omega_s] \cup [\hat\omega_0+\hat\omega_s,
+  \pi]$. The specifications the passband and stopband of
+  $H(e^{j\hat\omega})$ also approximately carry over to those of
+  $\tilde H(e^{j\hat\omega})$. Although $\tilde H(e^{j\hat\omega})$ is
+  not a generalized linear-phase filter, we may nevertheless conclude
+  from {eq}`e:lp2bp` that the group delay of $\tilde
+  H(e^{j\hat\omega})$ is approximately constant at the value $\alpha$
+  within its passband.
   
 * Finally, we may obtain a bandstop filter by frequency shifting
   $\tilde H(e^{j\hat\omega})$ by $\pi$. 
