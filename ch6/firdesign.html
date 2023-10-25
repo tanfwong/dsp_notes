@@ -649,6 +649,25 @@ types of generalized linear-phase FIR filters described in
 <span class="math notranslate nohighlight">\(h[n]\)</span> depending on the type of the generalized linear-phase FIR
 filter (see <span id="id2">[<a class="reference internal" href="../refs.html#id6" title="John Proakis and Dimitris Manolakis. Digital Signal Processing: Principles, Algorithms, and Applications. Pearson, 5th edition, 2022.">PM22</a>]</span> <span class="math notranslate nohighlight">\(\S\)</span>10.2.4 for details).</p>
 </li>
+<li><p>For the case of designing a lowpass filter, the specification
+<span class="math notranslate nohighlight">\((\hat\omega_p, \hat\omega_s, \delta_1, \delta_2)\)</span> translates to:</p>
+<div class="math notranslate nohighlight" id="equation-e-aspec">
+<span class="eqno">(6.11)<a class="headerlink" href="#equation-e-aspec" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+1 - \delta_1 &amp;\leq A(e^{j\hat\omega}) \leq 1 + \delta_1
+&amp; \text{for } |\hat\omega| \leq \hat\omega_p
+\\
+- \delta_2 &amp;\leq A(e^{j\hat\omega}) \leq \delta_2
+&amp; \text{for } \hat\omega_s &lt; |\hat\omega| \leq \pi.
+\end{align}\end{split}\]</div>
+<p>The filter design problem can then be formulated as  choosing
+<span class="math notranslate nohighlight">\(A(e^{j\hat\omega})\)</span> that satisfies the specification in
+<a class="reference internal" href="#equation-e-aspec">(6.11)</a> to best approximate the desired
+<span class="math notranslate nohighlight">\(\displaystyle A_d(e^{j\hat\omega}) 
+= \begin{cases}
+1 &amp; \text{for } |\hat\omega| \leq \hat\omega_p \\
+0 &amp; \text{for } \hat\omega_s &lt; |\hat\omega| \leq \pi .
+\end{cases}\)</span></p>
+</li>
 </ul>
 </section>
 </section>

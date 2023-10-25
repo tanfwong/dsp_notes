@@ -235,3 +235,24 @@ filter.
   and the coefficients $\{\alpha_k\}_{k=0}^{N}$ are functions of
   $h[n]$ depending on the type of the generalized linear-phase FIR
   filter (see {cite}`proakis2022` $\S$10.2.4 for details). 
+
+* For the case of designing a lowpass filter, the specification
+  $(\hat\omega_p, \hat\omega_s, \delta_1, \delta_2)$ translates to:
+  ```{math}
+  :label: e:Aspec
+  \begin{align}
+  1 - \delta_1 &\leq A(e^{j\hat\omega}) \leq 1 + \delta_1
+  & \text{for } |\hat\omega| \leq \hat\omega_p
+  \\
+  - \delta_2 &\leq A(e^{j\hat\omega}) \leq \delta_2
+  & \text{for } \hat\omega_s < |\hat\omega| \leq \pi.
+  \end{align}
+  ```
+  The filter design problem can then be formulated as  choosing
+  $A(e^{j\hat\omega})$ that satisfies the specification in
+  {eq}`e:Aspec` to best approximate the desired 
+  $\displaystyle A_d(e^{j\hat\omega}) 
+  = \begin{cases}
+  1 & \text{for } |\hat\omega| \leq \hat\omega_p \\
+  0 & \text{for } \hat\omega_s < |\hat\omega| \leq \pi .
+  \end{cases}$
