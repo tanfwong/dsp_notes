@@ -256,3 +256,38 @@ filter.
   1 & \text{for } |\hat\omega| \leq \hat\omega_p \\
   0 & \text{for } \hat\omega_s < |\hat\omega| \leq \pi .
   \end{cases}$
+
+* Note that both $A_d(e^{j\hat\omega})$ and $P(e^{j\hat\omega})$ are
+  even functions of $\hat\omega$, and $Q(e^{j\hat\omega})$ is either
+  even or odd in $\hat\omega$, it suffices to consider the design over 
+  the frequency range $S = [0, \hat\omega_p] \cup [\hat\omega_s,
+  \pi]$, i.e., the positive-frequency passband and stopband.
+
+* Consider the weighted approximation error
+  \begin{align*}
+  E(e^{j\hat\omega}) 
+  &= 
+  W(e^{j\hat\omega})  \left[
+  A_d(e^{j\hat\omega})  - A(e^{j\hat\omega})  \right]
+  \\
+  &=
+  \underbrace{W(e^{j\hat\omega}) Q(e^{j\hat\omega})}_{\tilde{W} (e^{j\hat\omega})} 
+  \Bigg[ 
+  \underbrace{\frac{A_d(e^{j\hat\omega})}{Q(e^{j\hat\omega})}}_{P_d(e^{j\hat\omega})}
+  - P(e^{j\hat\omega}) 
+  \Bigg] 
+  \end{align*}
+  where the weighting function 
+  \begin{equation*}
+  W(e^{j\hat\omega}) = \begin{cases}
+  \frac{\delta_2}{\delta_1} & \text{if } 0 \leq \hat\omega \leq \hat\omega_p
+  \\
+  0 & \text{if } \hat\omega_p < \hat\omega < \hat\omega_s
+  \\
+  1 & \text{if } \hat\omega_s \leq \hat\omega \leq \pi
+  \end{cases}
+  \end{equation*}
+  is chosen to make sure that satisfying $|E(e^{j\hat\omega})| \leq \delta_2$ in
+  $\hat\omega \in S$ implies satisfying the design specification in
+  {eq}`e:Aspec`.
+  

@@ -668,6 +668,41 @@ filter (see <span id="id2">[<a class="reference internal" href="../refs.html#id6
 0 &amp; \text{for } \hat\omega_s &lt; |\hat\omega| \leq \pi .
 \end{cases}\)</span></p>
 </li>
+<li><p>Note that both <span class="math notranslate nohighlight">\(A_d(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> are
+even functions of <span class="math notranslate nohighlight">\(\hat\omega\)</span>, and <span class="math notranslate nohighlight">\(Q(e^{j\hat\omega})\)</span> is either
+even or odd in <span class="math notranslate nohighlight">\(\hat\omega\)</span>, it suffices to consider the design over
+the frequency range <span class="math notranslate nohighlight">\(S = [0, \hat\omega_p] \cup [\hat\omega_s,
+\pi]\)</span>, i.e., the positive-frequency passband and stopband.</p></li>
+<li><p>Consider the weighted approximation error</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  E(e^{j\hat\omega}) 
+  &amp;= 
+  W(e^{j\hat\omega})  \left[
+  A_d(e^{j\hat\omega})  - A(e^{j\hat\omega})  \right]
+  \\
+  &amp;=
+  \underbrace{W(e^{j\hat\omega}) Q(e^{j\hat\omega})}_{\tilde{W} (e^{j\hat\omega})} 
+  \Bigg[ 
+  \underbrace{\frac{A_d(e^{j\hat\omega})}{Q(e^{j\hat\omega})}}_{P_d(e^{j\hat\omega})}
+  - P(e^{j\hat\omega}) 
+  \Bigg] 
+  \end{align*}\]</div>
+<p>where the weighting function</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  W(e^{j\hat\omega}) = \begin{cases}
+  \frac{\delta_2}{\delta_1} &amp; \text{if } 0 \leq \hat\omega \leq \hat\omega_p
+  \\
+  0 &amp; \text{if } \hat\omega_p &lt; \hat\omega &lt; \hat\omega_s
+  \\
+  1 &amp; \text{if } \hat\omega_s \leq \hat\omega \leq \pi
+  \end{cases}
+  \end{equation*}\]</div>
+<p>is chosen to make sure that satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega})| \leq \delta_2\)</span> in
+<span class="math notranslate nohighlight">\(\hat\omega \in S\)</span> implies satisfying the design specification in
+<a class="reference internal" href="#equation-e-aspec">(6.11)</a>.</p>
+</li>
 </ul>
 </section>
 </section>
