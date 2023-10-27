@@ -290,4 +290,25 @@ filter.
   is chosen to make sure that satisfying $|E(e^{j\hat\omega})| \leq \delta_2$ in
   $\hat\omega \in S$ implies satisfying the design specification in
   {eq}`e:Aspec`.
-  
+
+* We can now employ the following optimization formulation to address
+  the filter design problem:
+  ```{math}
+  :label: e:pmopt
+  \begin{equation}
+  \min_{\{\alpha_k\}} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
+  =
+  \min_{\{\alpha_k\}} \max_{\hat\omega \in S} \left|
+  \tilde{W}(e^{j\hat\omega}) [ P_d(e^{j\hat\omega}) - P(e^{j\hat\omega})]
+  \right|.
+  \end{equation}
+  ```
+  The design steps are then:
+  1. Pick a suitable generalized linear-phase FIR filter type (type 1
+     or 2 for lowpass design) and an initial value for the filter
+     order $M$.
+  2. Solve the optimization problem {eq}`e:pmopt`.
+  3. If the solution of {eq}`e:pmopt` (the minimum value) is smaller
+     than $\delta_2$, then terminate and output $\{\alpha_k\}$, and
+     hence the filter impulse response $h[n]$. Otherwise, increment
+     $M$ and go back to step 2. 

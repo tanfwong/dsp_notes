@@ -703,6 +703,28 @@ the frequency range <span class="math notranslate nohighlight">\(S = [0, \hat\om
 <span class="math notranslate nohighlight">\(\hat\omega \in S\)</span> implies satisfying the design specification in
 <a class="reference internal" href="#equation-e-aspec">(6.11)</a>.</p>
 </li>
+<li><p>We can now employ the following optimization formulation to address
+the filter design problem:</p>
+<div class="math notranslate nohighlight" id="equation-e-pmopt">
+<span class="eqno">(6.12)<a class="headerlink" href="#equation-e-pmopt" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\min_{\{\alpha_k\}} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
+=
+\min_{\{\alpha_k\}} \max_{\hat\omega \in S} \left|
+\tilde{W}(e^{j\hat\omega}) [ P_d(e^{j\hat\omega}) - P(e^{j\hat\omega})]
+\right|.
+\end{equation}\]</div>
+<p>The design steps are then:</p>
+<ol class="arabic simple">
+<li><p>Pick a suitable generalized linear-phase FIR filter type (type 1
+or 2 for lowpass design) and an initial value for the filter
+order <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Solve the optimization problem <a class="reference internal" href="#equation-e-pmopt">(6.12)</a>.</p></li>
+<li><p>If the solution of <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> (the minimum value) is smaller
+than <span class="math notranslate nohighlight">\(\delta_2\)</span>, then terminate and output <span class="math notranslate nohighlight">\(\{\alpha_k\}\)</span>, and
+hence the filter impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>. Otherwise, increment
+<span class="math notranslate nohighlight">\(M\)</span> and go back to step 2.</p></li>
+</ol>
+</li>
 </ul>
 </section>
 </section>
