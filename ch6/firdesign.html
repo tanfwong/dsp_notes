@@ -707,9 +707,9 @@ the frequency range <span class="math notranslate nohighlight">\(S = [0, \hat\om
 the filter design problem:</p>
 <div class="math notranslate nohighlight" id="equation-e-pmopt">
 <span class="eqno">(6.12)<a class="headerlink" href="#equation-e-pmopt" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\min_{\{\alpha_k\}} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
+\min_{\{\alpha_k\}_{k=0}^N} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
 =
-\min_{\{\alpha_k\}} \max_{\hat\omega \in S} \left|
+\min_{\{\alpha_k\}_{k=0}^N} \max_{\hat\omega \in S} \left|
 \tilde{W}(e^{j\hat\omega}) [ P_d(e^{j\hat\omega}) - P(e^{j\hat\omega})]
 \right|.
 \end{equation}\]</div>
@@ -720,9 +720,68 @@ or 2 for lowpass design) and an initial value for the filter
 order <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
 <li><p>Solve the optimization problem <a class="reference internal" href="#equation-e-pmopt">(6.12)</a>.</p></li>
 <li><p>If the solution of <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> (the minimum value) is smaller
-than <span class="math notranslate nohighlight">\(\delta_2\)</span>, then terminate and output <span class="math notranslate nohighlight">\(\{\alpha_k\}\)</span>, and
+than <span class="math notranslate nohighlight">\(\delta_2\)</span>, then terminate and output <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span>, and
 hence the filter impulse response <span class="math notranslate nohighlight">\(h[n]\)</span>. Otherwise, increment
 <span class="math notranslate nohighlight">\(M\)</span> and go back to step 2.</p></li>
+</ol>
+</li>
+<li><p>Because <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> is  a polynomial of degree <span class="math notranslate nohighlight">\(N\)</span> in
+<span class="math notranslate nohighlight">\(\cos\hat\omega\)</span>, we may employ the Chebyshev alternation theorem to
+solve the optimization problem  <a class="reference internal" href="#equation-e-pmopt">(6.12)</a>:</p>
+<div class="admonition-chebyshev-alternation admonition">
+<p class="admonition-title">Chebyshev Alternation</p>
+<p>A necessary ans sufficient condition for <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> to be
+a solution of <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> is that <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span> exhibits at
+least <span class="math notranslate nohighlight">\(N+2\)</span> alternations in <span class="math notranslate nohighlight">\(S\)</span>, i.e., there are at least <span class="math notranslate nohighlight">\(N+2\)</span>
+frequencies <span class="math notranslate nohighlight">\(\hat\omega_0 &lt; \hat\omega_1 &lt; \cdots &lt;
+\hat\omega_{N+1}\)</span> in <span class="math notranslate nohighlight">\(S\)</span>, where <span class="math notranslate nohighlight">\(\hat\omega_p=\hat\omega_j\)</span> and
+<span class="math notranslate nohighlight">\(\hat\omega_s= \hat\omega_{j+1}\)</span> for some <span class="math notranslate nohighlight">\(j\)</span>, such that</p>
+<div class="math notranslate nohighlight" id="equation-e-alternations">
+<span class="eqno">(6.13)<a class="headerlink" href="#equation-e-alternations" title="Permalink to this equation">#</a></span>\[\begin{equation}
+E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|\)</span> for
+all <span class="math notranslate nohighlight">\(i\)</span>. The property in <a class="reference internal" href="#equation-e-alternations">(6.13)</a> is usually referred to
+as <strong>equiripple</strong>.</p>
+</div>
+</li>
+<li><p>Using the Chebyshev alternation theorem, the solution to
+<a class="reference internal" href="#equation-e-pmopt">(6.12)</a> must satisfy</p>
+<div class="math notranslate nohighlight" id="equation-e-pmsolcond">
+<span class="eqno">(6.14)<a class="headerlink" href="#equation-e-pmsolcond" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\tilde{W}(e^{j\hat\omega_i}) [ P_d(e^{j\hat\omega_i}) -
+P(e^{j\hat\omega_i})]
+= (-1)^i \delta
+\end{equation}\]</div>
+<p>for <span class="math notranslate nohighlight">\(i=0,1,\ldots, N+1\)</span>. Given <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span>,
+<a class="reference internal" href="#equation-e-pmsolcond">(6.14)</a> is simply a system of <span class="math notranslate nohighlight">\(N+2\)</span> linear equations in
+the <span class="math notranslate nohighlight">\(N+2\)</span> unknowns <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span>. Solving this
+system of linear equations gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \delta = 
+  \frac{\sum_{i=0}^{N+1} \gamma_i  P_d(e^{j\hat\omega_i})}{\sum_{i=0}^{N+1} 
+  \frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega}_i)}}
+  \end{equation*}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  \gamma_i 
+  = \prod_{n \neq i} \frac{1}{\cos\hat\omega_i - \cos\hat\omega_n}.
+  \end{equation*}\]</div>
+</li>
+<li><p>Since we don’t know <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span>, we may use the
+<strong>Remez exchange algorithm</strong> to solve <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> iteratively:</p>
+<ol class="arabic simple">
+<li><p>Make an initial guess of <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span> with
+<span class="math notranslate nohighlight">\(\hat\omega_p=\hat\omega_j\)</span> and <span class="math notranslate nohighlight">\(\hat\omega_s= \hat\omega_{j+1}\)</span> for
+some <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p>Given <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span>, solve <a class="reference internal" href="#equation-e-pmsolcond">(6.14)</a> for
+<span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span> to obtain <span class="math notranslate nohighlight">\(P(e^{j\hat\omega_i})\)</span>.</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(E(e^{j\hat\omega_i})\)</span> on a dense set of sampling
+frequencies in <span class="math notranslate nohighlight">\(S\)</span>. Find the local extrema of
+<span class="math notranslate nohighlight">\(E(e^{j\hat\omega_i})\)</span> satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega_i})| \geq
+\delta\)</span>.</p></li>
 </ol>
 </li>
 </ul>

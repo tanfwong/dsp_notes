@@ -296,9 +296,9 @@ filter.
   ```{math}
   :label: e:pmopt
   \begin{equation}
-  \min_{\{\alpha_k\}} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
+  \min_{\{\alpha_k\}_{k=0}^N} \max_{\hat\omega \in S} |E(e^{j\hat\omega})|
   =
-  \min_{\{\alpha_k\}} \max_{\hat\omega \in S} \left|
+  \min_{\{\alpha_k\}_{k=0}^N} \max_{\hat\omega \in S} \left|
   \tilde{W}(e^{j\hat\omega}) [ P_d(e^{j\hat\omega}) - P(e^{j\hat\omega})]
   \right|.
   \end{equation}
@@ -309,6 +309,64 @@ filter.
      order $M$.
   2. Solve the optimization problem {eq}`e:pmopt`.
   3. If the solution of {eq}`e:pmopt` (the minimum value) is smaller
-     than $\delta_2$, then terminate and output $\{\alpha_k\}$, and
+     than $\delta_2$, then terminate and output $\{\alpha_k\}_{k=0}^N$, and
      hence the filter impulse response $h[n]$. Otherwise, increment
      $M$ and go back to step 2. 
+
+* Because $P(e^{j\hat\omega})$ is  a polynomial of degree $N$ in
+  $\cos\hat\omega$, we may employ the Chebyshev alternation theorem to
+  solve the optimization problem  {eq}`e:pmopt`:
+  ```{admonition} Chebyshev Alternation
+  A necessary ans sufficient condition for $P(e^{j\hat\omega})$ to be
+  a solution of {eq}`e:pmopt` is that $E(e^{j\hat\omega})$ exhibits at
+  least $N+2$ alternations in $S$, i.e., there are at least $N+2$
+  frequencies $\hat\omega_0 < \hat\omega_1 < \cdots <
+  \hat\omega_{N+1}$ in $S$, where $\hat\omega_p=\hat\omega_j$ and
+  $\hat\omega_s= \hat\omega_{j+1}$ for some $j$, such that
+  ~~~{math}
+  :label: e:alternations
+  \begin{equation}
+  E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
+  \end{equation}
+  ~~~
+  where $\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|$ for
+  all $i$. The property in {eq}`e:alternations` is usually referred to
+  as **equiripple**.
+  ```
+
+* Using the Chebyshev alternation theorem, the solution to
+  {eq}`e:pmopt` must satisfy 
+  ```{math}
+  :label: e:pmsolcond 
+  \begin{equation}
+  \tilde{W}(e^{j\hat\omega_i}) [ P_d(e^{j\hat\omega_i}) -
+  P(e^{j\hat\omega_i})]
+  = (-1)^i \delta
+  \end{equation}
+  ```
+  for $i=0,1,\ldots, N+1$. Given $\{\hat\omega_i\}_{i=0}^{N+1}$,
+  {eq}`e:pmsolcond` is simply a system of $N+2$ linear equations in
+  the $N+2$ unknowns $\{\alpha_k\}_{k=0}^N$ and $\delta$. Solving this
+  system of linear equations gives
+  \begin{equation*}
+  \delta = 
+  \frac{\sum_{i=0}^{N+1} \gamma_i  P_d(e^{j\hat\omega_i})}{\sum_{i=0}^{N+1} 
+  \frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega}_i)}}
+  \end{equation*}
+  where 
+  \begin{equation*}
+  \gamma_i 
+  = \prod_{n \neq i} \frac{1}{\cos\hat\omega_i - \cos\hat\omega_n}.
+  \end{equation*}
+
+* Since we don't know $\{\hat\omega_i\}_{i=0}^{N+1}$, we may use the
+  **Remez exchange algorithm** to solve {eq}`e:pmopt` iteratively:
+  1. Make an initial guess of $\{\hat\omega_i\}_{i=0}^{N+1}$ with
+     $\hat\omega_p=\hat\omega_j$ and $\hat\omega_s= \hat\omega_{j+1}$ for
+     some $j$.
+  2. Given $\{\hat\omega_i\}_{i=0}^{N+1}$, solve {eq}`e:pmsolcond` for
+     $\delta$ and $\{\alpha_k\}_{k=0}^N$ to obtain $P(e^{j\hat\omega_i})$.
+  3. Calculate $E(e^{j\hat\omega_i})$ on a dense set of sampling
+     frequencies in $S$. Find the local extrema of
+     $E(e^{j\hat\omega_i})$ satisfying $|E(e^{j\hat\omega_i})| \geq
+     \delta$.
