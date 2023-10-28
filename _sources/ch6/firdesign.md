@@ -313,16 +313,20 @@ filter.
      hence the filter impulse response $h[n]$. Otherwise, increment
      $M$ and go back to step 2. 
 
+* There is also an empirical formula for estimating the order $M$
+  required to meet the specification $(\hat\omega_p, \hat\omega_s,
+  \delta_1, \delta_2)$. See {cite}`proakis2022` $\S$10.2.7 for details.
+
 * Because $P(e^{j\hat\omega})$ is  a polynomial of degree $N$ in
   $\cos\hat\omega$, we may employ the Chebyshev alternation theorem to
   solve the optimization problem  {eq}`e:pmopt`:
   ```{admonition} Chebyshev Alternation
-  A necessary ans sufficient condition for $P(e^{j\hat\omega})$ to be
-  a solution of {eq}`e:pmopt` is that $E(e^{j\hat\omega})$ exhibits at
+  A necessary ans sufficient condition for $\{\alpha_k\}_{k=0}^N$
+  to be the unique solution of {eq}`e:pmopt` is that
+  $E(e^{j\hat\omega})$ exhibits at
   least $N+2$ alternations in $S$, i.e., there are at least $N+2$
-  frequencies $\hat\omega_0 < \hat\omega_1 < \cdots <
-  \hat\omega_{N+1}$ in $S$, where $\hat\omega_p=\hat\omega_j$ and
-  $\hat\omega_s= \hat\omega_{j+1}$ for some $j$, such that
+  **extremal frequencies** $\hat\omega_0 < \hat\omega_1 < \cdots <
+  \hat\omega_{N+1}$ in $S$ such that
   ~~~{math}
   :label: e:alternations
   \begin{equation}
@@ -347,12 +351,15 @@ filter.
   for $i=0,1,\ldots, N+1$. Given $\{\hat\omega_i\}_{i=0}^{N+1}$,
   {eq}`e:pmsolcond` is simply a system of $N+2$ linear equations in
   the $N+2$ unknowns $\{\alpha_k\}_{k=0}^N$ and $\delta$. Solving this
-  system of linear equations gives
-  \begin{equation*}
+  system of linear equations gives, in particular,
+  ```{math}
+  :label: e:pmdelta
+  \begin{equation}
   \delta = 
   \frac{\sum_{i=0}^{N+1} \gamma_i  P_d(e^{j\hat\omega_i})}{\sum_{i=0}^{N+1} 
-  \frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega}_i)}}
-  \end{equation*}
+  \frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega_i})}}
+  \end{equation}
+  ```
   where 
   \begin{equation*}
   \gamma_i 
@@ -365,8 +372,22 @@ filter.
      $\hat\omega_p=\hat\omega_j$ and $\hat\omega_s= \hat\omega_{j+1}$ for
      some $j$.
   2. Given $\{\hat\omega_i\}_{i=0}^{N+1}$, solve {eq}`e:pmsolcond` for
-     $\delta$ and $\{\alpha_k\}_{k=0}^N$ to obtain $P(e^{j\hat\omega_i})$.
-  3. Calculate $E(e^{j\hat\omega_i})$ on a dense set of sampling
-     frequencies in $S$. Find the local extrema of
-     $E(e^{j\hat\omega_i})$ satisfying $|E(e^{j\hat\omega_i})| \geq
-     \delta$.
+     $\delta$ and $\{\alpha_k\}_{k=0}^N$ to obtain
+     $P(e^{j\hat\omega_i})$. Alternatively, one may use
+     {eq}`e:pmdelta` to obtain $\delta$ and the Lagrange polynomial of
+     order $N$ to obtain $P(e^{j\hat\omega})$ from the set of values
+     $\{P(e^{j\hat\omega_i})\}_{i=0}^{n+1}$ given by {eq}`e:pmsolcond`
+     (see {cite}`oppenheim2010` Chapter 7 for details).
+  3. Calculate $E(e^{j\hat\omega})$ on a dense grid of frequencies in
+     $S$. Find the local maxima and minima of $E(e^{j\hat\omega})$
+     satisfying $|E(e^{j\hat\omega})| \geq \delta$. Note that there
+     can be at most $N-1$ such frequencies in the interior of $S$.
+  4. Add the passband and stopband edge frequencies, i.e., $0$,
+     $\hat\omega_s$, $\hat\omega_p$, and $\pi$, to the set of
+     frequencies of the local maxima and minima in step 3 above. This
+     set of frequencies give the *extrema* of $E(e^{j\hat\omega})$.
+  5. Retain the $N+2$ frequencies in step 4 that give the largest
+     $N+2$ extrema. Replace $\{\hat\omega_i\}_{i=0}^{N+1}$ by this set
+     of $N+2$ frequencies.
+  6. Go back to step 2 and repeat the procedure until
+     $\{\hat\omega_i\}_{i=0}^{N+1}$ coverges. 

@@ -725,17 +725,20 @@ hence the filter impulse response <span class="math notranslate nohighlight">\(h
 <span class="math notranslate nohighlight">\(M\)</span> and go back to step 2.</p></li>
 </ol>
 </li>
+<li><p>There is also an empirical formula for estimating the order <span class="math notranslate nohighlight">\(M\)</span>
+required to meet the specification <span class="math notranslate nohighlight">\((\hat\omega_p, \hat\omega_s,
+\delta_1, \delta_2)\)</span>. See <span id="id3">[<a class="reference internal" href="../refs.html#id6" title="John Proakis and Dimitris Manolakis. Digital Signal Processing: Principles, Algorithms, and Applications. Pearson, 5th edition, 2022.">PM22</a>]</span> <span class="math notranslate nohighlight">\(\S\)</span>10.2.7 for details.</p></li>
 <li><p>Because <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> is  a polynomial of degree <span class="math notranslate nohighlight">\(N\)</span> in
 <span class="math notranslate nohighlight">\(\cos\hat\omega\)</span>, we may employ the Chebyshev alternation theorem to
 solve the optimization problem  <a class="reference internal" href="#equation-e-pmopt">(6.12)</a>:</p>
 <div class="admonition-chebyshev-alternation admonition">
 <p class="admonition-title">Chebyshev Alternation</p>
-<p>A necessary ans sufficient condition for <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> to be
-a solution of <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> is that <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span> exhibits at
+<p>A necessary ans sufficient condition for <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span>
+to be the unique solution of <a class="reference internal" href="#equation-e-pmopt">(6.12)</a> is that
+<span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span> exhibits at
 least <span class="math notranslate nohighlight">\(N+2\)</span> alternations in <span class="math notranslate nohighlight">\(S\)</span>, i.e., there are at least <span class="math notranslate nohighlight">\(N+2\)</span>
-frequencies <span class="math notranslate nohighlight">\(\hat\omega_0 &lt; \hat\omega_1 &lt; \cdots &lt;
-\hat\omega_{N+1}\)</span> in <span class="math notranslate nohighlight">\(S\)</span>, where <span class="math notranslate nohighlight">\(\hat\omega_p=\hat\omega_j\)</span> and
-<span class="math notranslate nohighlight">\(\hat\omega_s= \hat\omega_{j+1}\)</span> for some <span class="math notranslate nohighlight">\(j\)</span>, such that</p>
+<strong>extremal frequencies</strong> <span class="math notranslate nohighlight">\(\hat\omega_0 &lt; \hat\omega_1 &lt; \cdots &lt;
+\hat\omega_{N+1}\)</span> in <span class="math notranslate nohighlight">\(S\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-e-alternations">
 <span class="eqno">(6.13)<a class="headerlink" href="#equation-e-alternations" title="Permalink to this equation">#</a></span>\[\begin{equation}
 E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
@@ -756,13 +759,13 @@ P(e^{j\hat\omega_i})]
 <p>for <span class="math notranslate nohighlight">\(i=0,1,\ldots, N+1\)</span>. Given <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span>,
 <a class="reference internal" href="#equation-e-pmsolcond">(6.14)</a> is simply a system of <span class="math notranslate nohighlight">\(N+2\)</span> linear equations in
 the <span class="math notranslate nohighlight">\(N+2\)</span> unknowns <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span>. Solving this
-system of linear equations gives</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  \delta = 
-  \frac{\sum_{i=0}^{N+1} \gamma_i  P_d(e^{j\hat\omega_i})}{\sum_{i=0}^{N+1} 
-  \frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega}_i)}}
-  \end{equation*}\]</div>
+system of linear equations gives, in particular,</p>
+<div class="math notranslate nohighlight" id="equation-e-pmdelta">
+<span class="eqno">(6.15)<a class="headerlink" href="#equation-e-pmdelta" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\delta = 
+\frac{\sum_{i=0}^{N+1} \gamma_i  P_d(e^{j\hat\omega_i})}{\sum_{i=0}^{N+1} 
+\frac{(-1)^i \gamma_i}{\tilde{W}(e^{j\hat\omega_i})}}
+\end{equation}\]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -777,11 +780,25 @@ system of linear equations gives</p>
 <span class="math notranslate nohighlight">\(\hat\omega_p=\hat\omega_j\)</span> and <span class="math notranslate nohighlight">\(\hat\omega_s= \hat\omega_{j+1}\)</span> for
 some <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
 <li><p>Given <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span>, solve <a class="reference internal" href="#equation-e-pmsolcond">(6.14)</a> for
-<span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span> to obtain <span class="math notranslate nohighlight">\(P(e^{j\hat\omega_i})\)</span>.</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\(E(e^{j\hat\omega_i})\)</span> on a dense set of sampling
-frequencies in <span class="math notranslate nohighlight">\(S\)</span>. Find the local extrema of
-<span class="math notranslate nohighlight">\(E(e^{j\hat\omega_i})\)</span> satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega_i})| \geq
-\delta\)</span>.</p></li>
+<span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\{\alpha_k\}_{k=0}^N\)</span> to obtain
+<span class="math notranslate nohighlight">\(P(e^{j\hat\omega_i})\)</span>. Alternatively, one may use
+<a class="reference internal" href="#equation-e-pmdelta">(6.15)</a> to obtain <span class="math notranslate nohighlight">\(\delta\)</span> and the Lagrange polynomial of
+order <span class="math notranslate nohighlight">\(N\)</span> to obtain <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> from the set of values
+<span class="math notranslate nohighlight">\(\{P(e^{j\hat\omega_i})\}_{i=0}^{n+1}\)</span> given by <a class="reference internal" href="#equation-e-pmsolcond">(6.14)</a>
+(see <span id="id4">[<a class="reference internal" href="../refs.html#id5" title="Alan Oppenheim and Ronald Schafer. Discrete-Time Signal Processing. Prentice Hall, 3rd edition, 2010.">OS10</a>]</span> Chapter 7 for details).</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span> on a dense grid of frequencies in
+<span class="math notranslate nohighlight">\(S\)</span>. Find the local maxima and minima of <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span>
+satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega})| \geq \delta\)</span>. Note that there
+can be at most <span class="math notranslate nohighlight">\(N-1\)</span> such frequencies in the interior of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p>Add the passband and stopband edge frequencies, i.e., <span class="math notranslate nohighlight">\(0\)</span>,
+<span class="math notranslate nohighlight">\(\hat\omega_s\)</span>, <span class="math notranslate nohighlight">\(\hat\omega_p\)</span>, and <span class="math notranslate nohighlight">\(\pi\)</span>, to the set of
+frequencies of the local maxima and minima in step 3 above. This
+set of frequencies give the <em>extrema</em> of <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span>.</p></li>
+<li><p>Retain the <span class="math notranslate nohighlight">\(N+2\)</span> frequencies in step 4 that give the largest
+<span class="math notranslate nohighlight">\(N+2\)</span> extrema. Replace <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span> by this set
+of <span class="math notranslate nohighlight">\(N+2\)</span> frequencies.</p></li>
+<li><p>Go back to step 2 and repeat the procedure until
+<span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span> coverges.</p></li>
 </ol>
 </li>
 </ul>
