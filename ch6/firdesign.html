@@ -507,31 +507,35 @@ procedure above to avoid going through the iterative design process.</p>
 </li>
 <li><p><strong>MATLAB Example 1</strong>:</p>
 <p>The objective is to design a lowpass generalized linear-phase FIR
-filter with the specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.001, 0.001)\)</span>. We
+filter with the specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01, 0.001)\)</span>. We
 use the Kaiser window and <a class="reference internal" href="#equation-e-kaiserord">(6.10)</a> to select <span class="math notranslate nohighlight">\(M\)</span> and
 <span class="math notranslate nohighlight">\(\beta\)</span>. One may use the MATLAB function <code class="docutils literal notranslate"><span class="pre">kaiserord</span></code> to calculate
 the choices of <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> given by <a class="reference internal" href="#equation-e-kaiserord">(6.10)</a>:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
 
 <span class="n">M</span><span class="w"> </span><span class="p">=</span>
 
-<span class="w">   </span><span class="mi">146</span>
-
+<span class="w">      </span><span class="mi">146</span>
 
 <span class="n">wc</span><span class="w"> </span><span class="p">=</span>
 
-<span class="w">    </span><span class="mf">0.3250</span>
-
+<span class="w">      </span><span class="mf">0.3250</span>
 
 <span class="nb">beta</span><span class="w"> </span><span class="p">=</span>
 
-<span class="w">    </span><span class="mf">5.6533</span>
-
+<span class="w">      </span><span class="mf">5.6533</span>
 
 <span class="n">ftype</span><span class="w"> </span><span class="p">=</span>
 
-<span class="w">    </span><span class="s">&#39;low&#39;</span>
+<span class="w">      </span><span class="s">&#39;low&#39;</span>
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The empirical formula <a class="reference internal" href="#equation-e-kaiserord">(6.10)</a> assumes
+<span class="math notranslate nohighlight">\(\delta_1=\delta_2=\delta\)</span>. If the input tolerance vector to <code class="docutils literal notranslate"><span class="pre">kaiserord</span></code>
+has elements of different values, such as in Example 1 above,
+the minimum value is taken as <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
 </div>
 <p>Set the desired frequency response to be that of an ideal
 lowpass filter, i.e., <span class="math notranslate nohighlight">\(H_d(e^{j\hat\omega}) = \begin{cases}
@@ -549,29 +553,34 @@ window to obtain the target type-1 filter <span class="math notranslate nohighli
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>It turns out that the specification of <span class="math notranslate nohighlight">\(\delta = 0.001\)</span> (-<span class="math notranslate nohighlight">\(60\)</span> dB)
-is slightly violated in the stopband. The achieved value is <span class="math notranslate nohighlight">\(\delta
-= 0.001053\)</span> (<span class="math notranslate nohighlight">\(-59.55\)</span> dB). This is often acceptable in
-practice.</p>
+<p>It turns out that the specification of <span class="math notranslate nohighlight">\(\delta_2 = 0.001\)</span> (-<span class="math notranslate nohighlight">\(60\)</span> dB)
+is slightly violated in the stopband. The achieved value is
+<span class="math notranslate nohighlight">\(\delta_2 = 0.001053\)</span> (<span class="math notranslate nohighlight">\(-59.55\)</span> dB). This is often acceptable in
+practice. The specification of <span class="math notranslate nohighlight">\(\delta_1 = 0.01\)</span> in the passband is well satisfied
+due to the more stringent value of <span class="math notranslate nohighlight">\(\delta=0.001\)</span> is employed by
+<code class="docutils literal notranslate"><span class="pre">kaiserord</span></code> to estimate the order <span class="math notranslate nohighlight">\(M\)</span>. One may also increment <span class="math notranslate nohighlight">\(M\)</span> to
+<span class="math notranslate nohighlight">\(150\)</span> (keeping a type-1 filter) to satisfy the specification of
+<span class="math notranslate nohighlight">\(\delta_2 = 0.001\)</span>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Increasing the order <span class="math notranslate nohighlight">\(M\)</span> while keeping the value of <span class="math notranslate nohighlight">\(\beta\)</span>
-unchanged does not monotonically reduce the ripples in the passband
+unchanged may not monotonically reduce the ripples in the passband
 and stopband. For example, setting <span class="math notranslate nohighlight">\(M=150\)</span> meets the specification
-of <span class="math notranslate nohighlight">\(\delta=0.001\)</span> in the stopband, but fails to meet the same
-requirement in the passband by a slight margin!</p>
+of <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span> in the stopband, but slightly increase the
+maximum ripple value in the passband!</p>
 </div>
-<p>One may also use the MATLAB function <code class="docutils literal notranslate"><span class="pre">fir1</span></code> to generate
-the desired impulse response by a least square optimization (instead of using
+<p>One may also use the MATLAB function <code class="docutils literal notranslate"><span class="pre">fir1</span></code> to generate the desired
+impulse response by a least square optimization (instead of using
 the ideal lowpass filter formula) and then apply the Kaiser window:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h1f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fir1</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">kaiser</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">));</span>
-<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h1f</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h1f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fir1</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">kaiser</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">));</span><span class="w"> </span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h1f</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
 </div>
-<p>The filter given by <code class="docutils literal notranslate"><span class="pre">fir1</span></code> is very similar to the one obtained above
-using the ideal lowpass filter formula to generate the desired impulse
-response <span class="math notranslate nohighlight">\(h_d[n]\)</span>, but the specification of <span class="math notranslate nohighlight">\(\delta = 0.001\)</span> is now
-slightly violated in both the passband and stopband.</p>
+<p>The filter given by <code class="docutils literal notranslate"><span class="pre">fir1</span></code> is very similar to the
+one obtained above using the ideal lowpass filter formula to
+generate the desired impulse response <span class="math notranslate nohighlight">\(h_d[n]\)</span>. The
+specification of <span class="math notranslate nohighlight">\(\delta_2 = 0.001\)</span> is again slightly violated in both
+the stopband. Increasing <span class="math notranslate nohighlight">\(M\)</span> to<span class="math notranslate nohighlight">\(150\)</span> again meets the specification.</p>
 </li>
 <li><p><strong>MATLAB Example 2</strong>:</p>
 <p>One may employ the frequency transformations described in
@@ -582,7 +591,7 @@ linear-phase FIR filter with stopband <span class="math notranslate nohighlight"
 <span class="math notranslate nohighlight">\([0.7\pi, \pi]\)</span>.</p>
 <p>However, it is more convenient to use the MATLAB function <code class="docutils literal notranslate"><span class="pre">fir1</span></code>
 again to design a highpass generalized linear-phase FIR filter:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.65</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.65</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fir1</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">kaiser</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">));</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
@@ -592,7 +601,7 @@ again to design a highpass generalized linear-phase FIR filter:</p>
 <p>To design a bandpass generalized linear-phase FIR filter with
 passband <span class="math notranslate nohighlight">\([0.3\pi, 0.65\pi]\)</span> and stopband <span class="math notranslate nohighlight">\([0,0.25\pi] \cup [0.7\pi,
 \pi]\)</span>, we can similarly use <code class="docutils literal notranslate"><span class="pre">fir1</span></code>:</p>
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.65</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiserord</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.65</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fir1</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">wc</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">kaiser</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">));</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
@@ -800,6 +809,51 @@ of <span class="math notranslate nohighlight">\(N+2\)</span> frequencies.</p></l
 <li><p>Go back to step 2 and repeat the procedure until
 <span class="math notranslate nohighlight">\(\{\hat\omega_i\}_{i=0}^{N+1}\)</span> coverges.</p></li>
 </ol>
+</li>
+<li><p><strong>MATLAB Example 4</strong>:</p>
+<p>Consider the same design specification as in Example 1 above. That
+is, we want to design a lowpass type-1 FIR filter with the
+specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01, 0.001)\)</span>. We may use the
+MATLAB function <code class="docutils literal notranslate"><span class="pre">firpmord</span></code> to first estimate the filter order <span class="math notranslate nohighlight">\(M\)</span>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">firpmord</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">])</span>
+
+<span class="n">M</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">   </span><span class="mi">102</span>
+
+<span class="n">we</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">         </span><span class="mi">0</span>
+<span class="w">    </span><span class="mf">0.3000</span>
+<span class="w">    </span><span class="mf">0.3500</span>
+<span class="w">    </span><span class="mf">1.0000</span>
+
+<span class="n">A</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">     </span><span class="mi">1</span>
+<span class="w">     </span><span class="mi">1</span>
+<span class="w">     </span><span class="mi">0</span>
+<span class="w">     </span><span class="mi">0</span>
+
+<span class="n">W</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">     </span><span class="mi">1</span>
+<span class="w">    </span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>Then, we can use the MATLAB function <code class="docutils literal notranslate"><span class="pre">firpm</span></code> to implement the
+Parks-McClellan algorithm to obtain a target impulse response:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">firpm</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The resulting specifications of <span class="math notranslate nohighlight">\(\delta_1=0.01\)</span> in the passband and
+<span class="math notranslate nohighlight">\(\delta_2=0.001\)</span> in the stopband are both slightly
+violated. Increasing the order <span class="math notranslate nohighlight">\(M\)</span> to <span class="math notranslate nohighlight">\(106\)</span> (keeping a type-1 filter)
+meets both specifications. Note that <strong>the order of the filter
+obtained using the Parks-McClellan algorithm is significantly
+smaller than that of the filter obtained by windowing design in
+Example 1.</strong></p>
 </li>
 </ul>
 </section>

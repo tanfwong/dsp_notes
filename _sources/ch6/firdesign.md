@@ -98,31 +98,34 @@ filter.
 * **MATLAB Example 1**:
 
   The objective is to design a lowpass generalized linear-phase FIR
-  filter with the specification $(0.3\pi, 0.35\pi, 0.001, 0.001)$. We
+  filter with the specification $(0.3\pi, 0.35\pi, 0.01, 0.001)$. We
   use the Kaiser window and {eq}`e:kaiserord` to select $M$ and
   $\beta$. One may use the MATLAB function `kaiserord` to calculate
   the choices of $M$ and $\beta$ given by {eq}`e:kaiserord`:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.3, 0.35], [1, 0], [0.001, 0.001])
+  >> [M, wc, beta, ftype] = kaiserord([0.3, 0.35], [1, 0], [0.01, 0.001])
   
   M =
  
-     146
-
+        146
 
   wc =
  
-      0.3250
-
+        0.3250
 
   beta =
 
-      5.6533
-
+        5.6533
 
   ftype =
 
-      'low'
+        'low'
+  ```
+  ```{tip}
+  The empirical formula {eq}`e:kaiserord` assumes
+  $\delta_1=\delta_2=\delta$. If the input tolerance vector to `kaiserord` 
+  has elements of different values, such as in Example 1 above,
+  the minimum value is taken as $\delta$.
   ```
   Set the desired frequency response to be that of an ideal
   lowpass filter, i.e., $H_d(e^{j\hat\omega}) = \begin{cases}
@@ -140,29 +143,34 @@ filter.
   >> h1 = kaiser(M+1, beta).' .* hd;
   >> fvtool(h1, 1);
   ```
-  It turns out that the specification of $\delta = 0.001$ (-$60$ dB)
-  is slightly violated in the stopband. The achieved value is $\delta
-  = 0.001053$ ($-59.55$ dB). This is often acceptable in
-  practice. 
+  It turns out that the specification of $\delta_2 = 0.001$ (-$60$ dB)
+  is slightly violated in the stopband. The achieved value is
+  $\delta_2 = 0.001053$ ($-59.55$ dB). This is often acceptable in
+  practice. The specification of $\delta_1 = 0.01$ in the passband is well satisfied
+  due to the more stringent value of $\delta=0.001$ is employed by
+  `kaiserord` to estimate the order $M$. One may also increment $M$ to
+  $150$ (keeping a type-1 filter) to satisfy the specification of
+  $\delta_2 = 0.001$.
   ```{caution}
   Increasing the order $M$ while keeping the value of $\beta$
-  unchanged does not monotonically reduce the ripples in the passband
+  unchanged may not monotonically reduce the ripples in the passband
   and stopband. For example, setting $M=150$ meets the specification
-  of $\delta=0.001$ in the stopband, but fails to meet the same 
-  requirement in the passband by a slight margin!
+  of $\delta_2=0.001$ in the stopband, but slightly increase the
+  maximum ripple value in the passband!
   ```
 
-  One may also use the MATLAB function `fir1` to generate
-  the desired impulse response by a least square optimization (instead of using
+  One may also use the MATLAB function `fir1` to generate the desired
+  impulse response by a least square optimization (instead of using
   the ideal lowpass filter formula) and then apply the Kaiser window:
-  ```matlab
-  >> h1f = fir1(M, wc, ftype, kaiser(M+1, beta));
-  >> fvtool(h1f, 1)
-  ```
-  The filter given by `fir1` is very similar to the one obtained above
-  using the ideal lowpass filter formula to generate the desired impulse
-  response $h_d[n]$, but the specification of $\delta = 0.001$ is now 
-  slightly violated in both the passband and stopband.
+  ```matlab 
+  >> h1f = fir1(M, wc, ftype, kaiser(M+1, beta)); 
+  >> fvtool(h1f, 1) 
+  ``` 
+  The filter given by `fir1` is very similar to the
+  one obtained above using the ideal lowpass filter formula to
+  generate the desired impulse response $h_d[n]$. The
+  specification of $\delta_2 = 0.001$ is again slightly violated in both
+  the stopband. Increasing $M$ to$150$ again meets the specification.
   
 * **MATLAB Example 2**:
  
@@ -176,7 +184,7 @@ filter.
   However, it is more convenient to use the MATLAB function `fir1`
   again to design a highpass generalized linear-phase FIR filter:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.001])
+  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.01, 0.001])
   >> h2 = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h2, 1);
   ```
@@ -187,7 +195,7 @@ filter.
   passband $[0.3\pi, 0.65\pi]$ and stopband $[0,0.25\pi] \cup [0.7\pi,
   \pi]$, we can similarly use `fir1`:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.001, 0.001])
+  >> [M, wc, beta, ftype] = kaiserord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.01, 0.001])
   >> h3 = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h3, 1);
   ```
@@ -391,3 +399,49 @@ filter.
      of $N+2$ frequencies.
   6. Go back to step 2 and repeat the procedure until
      $\{\hat\omega_i\}_{i=0}^{N+1}$ coverges. 
+
+* **MATLAB Example 4**:
+
+  Consider the same design specification as in Example 1 above. That
+  is, we want to design a lowpass type-1 FIR filter with the
+  specification $(0.3\pi, 0.35\pi, 0.01, 0.001)$. We may use the
+  MATLAB function `firpmord` to first estimate the filter order $M$:
+  ```matlab
+  >> [M, we, A, W] = firpmord([0.3, 0.35], [1, 0], [0.01, 0.001])
+
+  M =
+
+     102
+
+  we =
+  
+           0
+      0.3000
+      0.3500
+      1.0000
+
+  A =
+
+       1
+       1
+       0
+       0
+
+  W =
+
+       1
+      10
+  ```
+  Then, we can use the MATLAB function `firpm` to implement the
+  Parks-McClellan algorithm to obtain a target impulse response:
+  ```matlab
+  >> h4 = firpm(M, we, A, W);
+  >> fvtool(h4, 1);
+  ```
+  The resulting specifications of $\delta_1=0.01$ in the passband and
+  $\delta_2=0.001$ in the stopband are both slightly
+  violated. Increasing the order $M$ to $106$ (keeping a type-1 filter)
+  meets both specifications. Note that **the order of the filter
+  obtained using the Parks-McClellan algorithm is significantly
+  smaller than that of the filter obtained by windowing design in
+  Example 1.**
