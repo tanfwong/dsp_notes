@@ -502,8 +502,8 @@ M
 \frac{D-7.95}{2.285 \Delta\hat\omega}
 \end{align}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(D = -20\log_{10} \delta\)</span>. As a result, one may use
-<a class="reference internal" href="#equation-e-kaiserord">(6.10)</a> as a choice for step 1 in the design
-procedure above to avoid going through the iterative design process.</p>
+<a class="reference internal" href="#equation-e-kaiserord">(6.10)</a> as an initial choice for step 1 in the design
+procedure above.</p>
 </li>
 <li><p><strong>MATLAB Example 1</strong>:</p>
 <p>The objective is to design a lowpass generalized linear-phase FIR
@@ -537,29 +537,29 @@ the choices of <span class="math notranslate nohighlight">\(M\)</span> and <span
 has elements of different values, such as in Example 1 above,
 the minimum value is taken as <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
 </div>
-<p>Set the desired frequency response to be that of an ideal
+<p>The estimated order is <span class="math notranslate nohighlight">\(M=146\)</span> (a type-1 filter).
+Set the desired frequency response to be that of an ideal
 lowpass filter, i.e., <span class="math notranslate nohighlight">\(H_d(e^{j\hat\omega}) = \begin{cases}
-1 &amp; \text{if } |\hat\omega| \leq 0.325\pi \\
+e^{-j\hat\omega \frac{M}{2}} &amp; \text{if } |\hat\omega| \leq 0.325\pi \\
 0 &amp; \text{if } 0.325\pi &lt; |\hat\omega| \leq \pi.
 \end{cases}\)</span> Taking inverse DTFT gives <span class="math notranslate nohighlight">\(\displaystyle h_d[n] =
-\frac{\sin(0.325\pi n)}{\pi n}\)</span>.  For <span class="math notranslate nohighlight">\(M=146\)</span>, we need to delay
-<span class="math notranslate nohighlight">\(h_d[n]\)</span> by <span class="math notranslate nohighlight">\(\frac{M}{2}=73\)</span> time instants to get a symmetric
-desired impulse response <span class="math notranslate nohighlight">\(h_d[n-\frac{M}{2}]\)</span> before applying the Kaiser
-window to obtain the target type-1 filter <span class="math notranslate nohighlight">\(h[n]\)</span>:</p>
+\frac{\sin(0.325\pi (n- \frac{M}{2}))}{\pi
+(n-\frac{M}{2})}\)</span>, which is clearly symmetric. Next, we apply the Kaiser
+window to obtain the target type-1 or -2 filter <span class="math notranslate nohighlight">\(h[n]\)</span>:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">M</span><span class="p">];</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">hd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mf">0.325</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">M</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">M</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">pi</span><span class="p">;</span>
-<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">M</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.325</span><span class="p">;</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">hd</span><span class="p">(</span><span class="n">M</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.325</span><span class="p">;</span><span class="w"> </span><span class="c">%Need this only when M is even</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">h1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">kaiser</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">beta</span><span class="p">).</span><span class="o">&#39;</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">hd</span><span class="p">;</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>It turns out that the specification of <span class="math notranslate nohighlight">\(\delta_2 = 0.001\)</span> (-<span class="math notranslate nohighlight">\(60\)</span> dB)
-is slightly violated in the stopband. The achieved value is
+is slightly violated in the stopband for this order. The achieved value is
 <span class="math notranslate nohighlight">\(\delta_2 = 0.001053\)</span> (<span class="math notranslate nohighlight">\(-59.55\)</span> dB). This is often acceptable in
 practice. The specification of <span class="math notranslate nohighlight">\(\delta_1 = 0.01\)</span> in the passband is well satisfied
 due to the more stringent value of <span class="math notranslate nohighlight">\(\delta=0.001\)</span> is employed by
 <code class="docutils literal notranslate"><span class="pre">kaiserord</span></code> to estimate the order <span class="math notranslate nohighlight">\(M\)</span>. One may also increment <span class="math notranslate nohighlight">\(M\)</span> to
-<span class="math notranslate nohighlight">\(150\)</span> (keeping a type-1 filter) to satisfy the specification of
+<span class="math notranslate nohighlight">\(150\)</span> (a type-1 filter) to satisfy the specification of
 <span class="math notranslate nohighlight">\(\delta_2 = 0.001\)</span>.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -849,7 +849,7 @@ Parks-McClellan algorithm to obtain a target impulse response:</p>
 </div>
 <p>The resulting specifications of <span class="math notranslate nohighlight">\(\delta_1=0.01\)</span> in the passband and
 <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span> in the stopband are both slightly
-violated. Increasing the order <span class="math notranslate nohighlight">\(M\)</span> to <span class="math notranslate nohighlight">\(106\)</span> (keeping a type-1 filter)
+violated. Increasing the order <span class="math notranslate nohighlight">\(M\)</span> to <span class="math notranslate nohighlight">\(105\)</span> (a type-2 filter)
 meets both specifications. Note that <strong>the order of the filter
 obtained using the Parks-McClellan algorithm is significantly
 smaller than that of the filter obtained by windowing design in

@@ -92,8 +92,8 @@ filter.
   \end{align}
   ```
   where $D = -20\log_{10} \delta$. As a result, one may use
-  {eq}`e:kaiserord` as a choice for step 1 in the design
-  procedure above to avoid going through the iterative design process. 
+  {eq}`e:kaiserord` as an initial choice for step 1 in the design
+  procedure above. 
   
 * **MATLAB Example 1**:
 
@@ -127,29 +127,29 @@ filter.
   has elements of different values, such as in Example 1 above,
   the minimum value is taken as $\delta$.
   ```
+  The estimated order is $M=146$ (a type-1 filter). 
   Set the desired frequency response to be that of an ideal
   lowpass filter, i.e., $H_d(e^{j\hat\omega}) = \begin{cases}
-  1 & \text{if } |\hat\omega| \leq 0.325\pi \\
+  e^{-j\hat\omega \frac{M}{2}} & \text{if } |\hat\omega| \leq 0.325\pi \\
   0 & \text{if } 0.325\pi < |\hat\omega| \leq \pi.
   \end{cases}$ Taking inverse DTFT gives $\displaystyle h_d[n] =
-  \frac{\sin(0.325\pi n)}{\pi n}$.  For $M=146$, we need to delay
-  $h_d[n]$ by $\frac{M}{2}=73$ time instants to get a symmetric
-  desired impulse response $h_d[n-\frac{M}{2}]$ before applying the Kaiser
-  window to obtain the target type-1 filter $h[n]$:
+  \frac{\sin(0.325\pi (n- \frac{M}{2}))}{\pi
+  (n-\frac{M}{2})}$, which is clearly symmetric. Next, we apply the Kaiser 
+  window to obtain the target type-1 or -2 filter $h[n]$:
   ```matlab
   >> n = [0:M];
   >> hd = sin(0.325*pi*(n-M/2)) ./ (n-M/2) / pi;
-  >> hd(M/2+1) = 0.325;
+  >> hd(M/2+1) = 0.325; %Need this only when M is even
   >> h1 = kaiser(M+1, beta).' .* hd;
   >> fvtool(h1, 1);
   ```
   It turns out that the specification of $\delta_2 = 0.001$ (-$60$ dB)
-  is slightly violated in the stopband. The achieved value is
+  is slightly violated in the stopband for this order. The achieved value is
   $\delta_2 = 0.001053$ ($-59.55$ dB). This is often acceptable in
   practice. The specification of $\delta_1 = 0.01$ in the passband is well satisfied
   due to the more stringent value of $\delta=0.001$ is employed by
   `kaiserord` to estimate the order $M$. One may also increment $M$ to
-  $150$ (keeping a type-1 filter) to satisfy the specification of
+  $150$ (a type-1 filter) to satisfy the specification of
   $\delta_2 = 0.001$.
   ```{caution}
   Increasing the order $M$ while keeping the value of $\beta$
@@ -440,7 +440,7 @@ filter.
   ```
   The resulting specifications of $\delta_1=0.01$ in the passband and
   $\delta_2=0.001$ in the stopband are both slightly
-  violated. Increasing the order $M$ to $106$ (keeping a type-1 filter)
+  violated. Increasing the order $M$ to $105$ (a type-2 filter)
   meets both specifications. Note that **the order of the filter
   obtained using the Parks-McClellan algorithm is significantly
   smaller than that of the filter obtained by windowing design in
