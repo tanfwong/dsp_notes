@@ -734,9 +734,34 @@ hence the filter impulse response <span class="math notranslate nohighlight">\(h
 <span class="math notranslate nohighlight">\(M\)</span> and go back to step 2.</p></li>
 </ol>
 </li>
-<li><p>There is also an empirical formula for estimating the order <span class="math notranslate nohighlight">\(M\)</span>
+<li><p>There are also empirical formulas for estimating the order <span class="math notranslate nohighlight">\(M\)</span>
 required to meet the specification <span class="math notranslate nohighlight">\((\hat\omega_p, \hat\omega_s,
-\delta_1, \delta_2)\)</span>. See <span id="id3">[<a class="reference internal" href="../refs.html#id6" title="John Proakis and Dimitris Manolakis. Digital Signal Processing: Principles, Algorithms, and Applications. Pearson, 5th edition, 2022.">PM22</a>]</span> <span class="math notranslate nohighlight">\(\S\)</span>10.2.7 for details.</p></li>
+\delta_1, \delta_2)\)</span>. The following formula is implemented in the
+MATLAB function <code class="docutils literal notranslate"><span class="pre">firpmord</span></code> (see <span id="id3">[<a class="reference internal" href="../refs.html#id6" title="John Proakis and Dimitris Manolakis. Digital Signal Processing: Principles, Algorithms, and Applications. Pearson, 5th edition, 2022.">PM22</a>]</span> <span class="math notranslate nohighlight">\(\S\)</span>10.2.7 for
+details):</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  M = 
+  \frac{D_1 - D_2 (\Delta f)^2}{\Delta f}
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\displaystyle \Delta f = \frac{\hat\omega_s -
+\hat\omega_p}{2\pi}\)</span>, and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  D_1 
+  &amp;= 
+  \left[ 0.005309 (\log_{10} \delta_1)^2 + 0.07114 \log_{10}
+  \delta_1 - 0.4761 \right] \cdot \log_{10} \delta_2 
+  \\
+  &amp; \hspace{15pt}- \left[ 0.00266
+  (\log_{10} \delta_1)^2 + 0.5941 \log_{10} \delta_1 + 0.4278 \right]
+  \\
+  D_2 
+  &amp;=
+  11.012 + 0.51244 \left( \log_{10} \delta_1 - \log_{10} \delta_2
+  \right).
+  \end{align*}\]</div>
+</li>
 <li><p>Because <span class="math notranslate nohighlight">\(P(e^{j\hat\omega})\)</span> is  a polynomial of degree <span class="math notranslate nohighlight">\(N\)</span> in
 <span class="math notranslate nohighlight">\(\cos\hat\omega\)</span>, we may employ the Chebyshev alternation theorem to
 solve the optimization problem  <a class="reference internal" href="#equation-e-pmopt">(6.12)</a>:</p>

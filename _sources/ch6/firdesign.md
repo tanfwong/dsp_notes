@@ -321,9 +321,31 @@ filter.
      hence the filter impulse response $h[n]$. Otherwise, increment
      $M$ and go back to step 2. 
 
-* There is also an empirical formula for estimating the order $M$
+* There are also empirical formulas for estimating the order $M$
   required to meet the specification $(\hat\omega_p, \hat\omega_s,
-  \delta_1, \delta_2)$. See {cite}`proakis2022` $\S$10.2.7 for details.
+  \delta_1, \delta_2)$. The following formula is implemented in the
+  MATLAB function `firpmord` (see {cite}`proakis2022` $\S$10.2.7 for
+  details):
+  \begin{equation*}
+  M = 
+  \frac{D_1 - D_2 (\Delta f)^2}{\Delta f}
+  \end{equation*}
+  where $\displaystyle \Delta f = \frac{\hat\omega_s -
+  \hat\omega_p}{2\pi}$, and
+  \begin{align*}
+  D_1 
+  &= 
+  \left[ 0.005309 (\log_{10} \delta_1)^2 + 0.07114 \log_{10}
+  \delta_1 - 0.4761 \right] \cdot \log_{10} \delta_2 
+  \\
+  & \hspace{15pt}- \left[ 0.00266
+  (\log_{10} \delta_1)^2 + 0.5941 \log_{10} \delta_1 + 0.4278 \right]
+  \\
+  D_2 
+  &=
+  11.012 + 0.51244 \left( \log_{10} \delta_1 - \log_{10} \delta_2
+  \right).
+  \end{align*}
 
 * Because $P(e^{j\hat\omega})$ is  a polynomial of degree $N$ in
   $\cos\hat\omega$, we may employ the Chebyshev alternation theorem to
