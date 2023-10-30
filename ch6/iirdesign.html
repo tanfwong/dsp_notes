@@ -398,6 +398,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-analog-filters">6.7.1. Prototype Analog Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -454,8 +455,8 @@ H(s) H(-s) =
 <p>The roots of the denominator polynomial on the RHS of
 <a class="reference internal" href="#equation-e-butterworthtf">(6.17)</a> are <span class="math notranslate nohighlight">\(s_k = \omega_c e^{j\frac{2k+1+N}{2N}}\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2N_1\)</span>. That is, they are <span class="math notranslate nohighlight">\(2N\)</span> evenly spaced points on
-the circle of radius <span class="math notranslate nohighlight">\(\omega_c\)</span> centered at the origin. Selecting
-all the roots on the left-half plane, we obtain a stable filter with
+the circle of radius <span class="math notranslate nohighlight">\(\omega_c\)</span> centered at the origin on the <span class="math notranslate nohighlight">\(s\)</span>-plane.
+Selecting all the roots on the left-half plane, we obtain a stable filter with
 transfer function:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -468,6 +469,48 @@ transfer function:</p>
 decreasing in (positive) <span class="math notranslate nohighlight">\(\omega\)</span>. Thus there are no ripples in
 either the passband or stopband for the Butterworth filter. We often
 say that the Butterworth filter has <em>flat</em> passband and stopband.</p></li>
+</ul>
+</section>
+<section id="type-i-chebyshev-filter">
+<h3><span class="section-number">6.7.1.2. </span>Type-I Chebyshev Filter<a class="headerlink" href="#type-i-chebyshev-filter" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>A <strong>type-I Chebyshev filter</strong> of order <span class="math notranslate nohighlight">\(N\)</span> is an all-pole filter
+characterized by:</p>
+<div class="math notranslate nohighlight" id="equation-e-chebyshevi">
+<span class="eqno">(6.18)<a class="headerlink" href="#equation-e-chebyshevi" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+|H(\omega)|^2 
+= 
+\frac{1}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
+\end{equation} \]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  T_N(x) = \begin{cases}
+  \cos \left( N \cos^{-1}(x) \right) &amp; \text{if } |x| \leq 1
+  \\
+  \cosh \left( N \cosh^{-1}(x) \right) &amp; \text{if } |x| &gt; 1
+  \end{cases}
+  \end{equation*}\]</div>
+<p>is the Chebyshev polynomial of degree <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One may also get the Chebyshev polynomials using the following recursion:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+T_0(x) &amp;= 1 \\
+T_1(x) &amp;= x \\
+T_{n+1}(x) &amp;= 2xT_n(x) - T_{n-1}(x)
+&amp; \text{for } n \geq 1.
+\end{align*}\]</div>
+</div>
+</li>
+<li><p>The poles of <span class="math notranslate nohighlight">\(H(s)H(-s)\)</span> of the type-I Chebyshev filter lie on an
+ellipse centered at the origin on the <span class="math notranslate nohighlight">\(s\)</span>-plane with major ans minor
+axis radii <span class="math notranslate nohighlight">\(\displaystyle r_1 = \frac{\omega_p (\beta^2
++1)}{2\beta}\)</span> and <span class="math notranslate nohighlight">\(\displaystyle r_2 = \frac{\omega_p (\beta^2
+-1)}{2\beta}\)</span>, where <span class="math notranslate nohighlight">\(\displaystyle \beta = \left(
+\frac{\sqrt{1+\varepsilon^2} +1}{\varepsilon} \right)^{\frac{1}{N}}\)</span>.</p></li>
+<li><p>The type-I Chebyshev filter is equiripple in the passband and flat in the stopband.</p></li>
 </ul>
 </section>
 </section>
@@ -542,6 +585,7 @@ say that the Butterworth filter has <em>flat</em> passband and stopband.</p></li
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-analog-filters">6.7.1. Prototype Analog Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
 </ul>
 </li>
 </ul>
