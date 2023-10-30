@@ -39,4 +39,16 @@
   The roots of the denominator polynomial on the RHS of
   {eq}`e:butterworthTF` are $s_k = \omega_c e^{j\frac{2k+1+N}{2N}}$ for
   $k=0,1,\ldots, 2N_1$. That is, they are $2N$ evenly spaced points on
-  the circle of radius $\omega_c$ centered at the origin.  
+  the circle of radius $\omega_c$ centered at the origin. Selecting
+  all the roots on the left-half plane, we obtain a stable filter with
+  transfer function:
+  \begin{equation*}
+  H(s) = 
+  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \end{equation*}
+  which gives our lowpass Butterworth filter prototype.
+
+* Note that $|H(\omega)|^2$ in {eq}`e:butterworth` is monotone
+  decreasing in (positive) $\omega$. Thus there are no ripples in
+  either the passband or stopband for the Butterworth filter. We often
+  say that the Butterworth filter has *flat* passband and stopband.

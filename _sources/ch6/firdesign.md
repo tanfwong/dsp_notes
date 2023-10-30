@@ -184,7 +184,7 @@ filter.
   However, it is more convenient to use the MATLAB function `fir1`
   again to design a highpass generalized linear-phase FIR filter:
   ```matlab
-  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.01, 0.001])
+  >> [M, wc, beta, ftype] = kaiserord([0.65, 0.7], [0, 1], [0.001, 0.01])
   >> h2 = fir1(M, wc, ftype, kaiser(M+1, beta));
   >> fvtool(h2, 1);
   ```

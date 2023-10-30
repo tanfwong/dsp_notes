@@ -454,8 +454,20 @@ H(s) H(-s) =
 <p>The roots of the denominator polynomial on the RHS of
 <a class="reference internal" href="#equation-e-butterworthtf">(6.17)</a> are <span class="math notranslate nohighlight">\(s_k = \omega_c e^{j\frac{2k+1+N}{2N}}\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2N_1\)</span>. That is, they are <span class="math notranslate nohighlight">\(2N\)</span> evenly spaced points on
-the circle of radius <span class="math notranslate nohighlight">\(\omega_c\)</span> centered at the origin.</p>
+the circle of radius <span class="math notranslate nohighlight">\(\omega_c\)</span> centered at the origin. Selecting
+all the roots on the left-half plane, we obtain a stable filter with
+transfer function:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(s) = 
+  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \end{equation*}\]</div>
+<p>which gives our lowpass Butterworth filter prototype.</p>
 </li>
+<li><p>Note that <span class="math notranslate nohighlight">\(|H(\omega)|^2\)</span> in <a class="reference internal" href="#equation-e-butterworth">(6.16)</a> is monotone
+decreasing in (positive) <span class="math notranslate nohighlight">\(\omega\)</span>. Thus there are no ripples in
+either the passband or stopband for the Butterworth filter. We often
+say that the Butterworth filter has <em>flat</em> passband and stopband.</p></li>
 </ul>
 </section>
 </section>
