@@ -37,14 +37,14 @@
   Note that $|H(\omega)|^2 = H(s)H(-s) \big|_{s=j\omega}$. 
   ```
   The roots of the denominator polynomial on the RHS of
-  {eq}`e:butterworthTF` are $s_k = \omega_c e^{j\frac{2k+1+N}{2N}}$ for
+  {eq}`e:butterworthTF` are $\tilde s_k = \omega_c e^{j\frac{2k+1+N}{2N}}$ for
   $k=0,1,\ldots, 2N_1$. That is, they are $2N$ evenly spaced points on
   the circle of radius $\omega_c$ centered at the origin on the $s$-plane. 
   Selecting all the roots on the left-half plane, we obtain a stable filter with
   transfer function:
   \begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \frac{1}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
   \end{equation*}
   which gives our lowpass Butterworth filter prototype.
 
@@ -61,7 +61,7 @@
   \begin{equation} 
   |H(\omega)|^2 
   = 
-  \frac{1}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
+  \frac{K}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
   \end{equation} 
   ```
   where
@@ -84,10 +84,46 @@
   ```
 
 * The poles of $H(s)H(-s)$ of the type-I Chebyshev filter lie on an
-  ellipse centered at the origin on the $s$-plane with major ans minor
+  ellipse centered at the origin on the $s$-plane with major and minor
   axis radii $\displaystyle r_1 = \frac{\omega_p (\beta^2
   +1)}{2\beta}$ and $\displaystyle r_2 = \frac{\omega_p (\beta^2
   -1)}{2\beta}$, where $\displaystyle \beta = \left(
-  \frac{\sqrt{1+\varepsilon^2} +1}{\varepsilon} \right)^{\frac{1}{N}}$.  
+  \frac{\sqrt{1+\varepsilon^2} +1}{\varepsilon}
+  \right)^{\frac{1}{N}}$.  Choosing all poles on the left half plane
+  gives a stable
+  \begin{equation*}
+  H(s) = 
+  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \end{equation*}
+  where $s_k = r_2 \cos \phi_k  + j r_1 \sin \phi_k$ and $\phi_k =
+  \frac{2k+1+N}{2N}$ for $k=0,1,\ldots, N-1$.
 
 * The type-I Chebyshev filter is equiripple in the passband and flat in the stopband.
+
+### Type-II Chebyshev Filter
+* A **type-II Chebyshev filter** of order $N$ is a filter with $N$
+  zeros and $N$ poles characterized by:
+  ```{math}
+  :label: e:chebyshevII 
+  \begin{equation} 
+  |H(\omega)|^2 
+  = 
+  \frac{K}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
+  T^2_N\left( \frac{\omega_s}{\omega} \right)} }
+  \end{equation} 
+  ```
+  where $\omega_p$ and $\omega_s$ are the passband and stopband edge
+  frequency, respectively.
+
+* For a stable filter, the transfer function of the type-II Chebyshev
+  filter is given by
+  \begin{equation*}
+  H(s) = 
+  \frac{K \prod_{k=0}^{N-1} (s-z_k)}{\prod_{k=0}^{N-1} (s-p_k)}
+  \end{equation*}
+  where $z_k = \frac{j\omega_s}{\sin \phi_k}$ and $p_k =
+  \frac{\omega_s s_k}{\sqrt{r_2^2 \cos^2 \phi_k  + r_1^2 \sin^2
+  \phi_k}}$ for $k=0,1,\ldots, N-1$.
+
+* The type-II Chebyshev filter is equiripple in the stopband and flat
+  in the passband.

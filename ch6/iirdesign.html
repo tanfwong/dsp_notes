@@ -399,6 +399,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-analog-filters">6.7.1. Prototype Analog Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-ii-chebyshev-filter">6.7.1.3. Type-II Chebyshev Filter</a></li>
 </ul>
 </li>
 </ul>
@@ -453,7 +454,7 @@ H(s) H(-s) =
 <p>Note that <span class="math notranslate nohighlight">\(|H(\omega)|^2 = H(s)H(-s) \big|_{s=j\omega}\)</span>.</p>
 </div>
 <p>The roots of the denominator polynomial on the RHS of
-<a class="reference internal" href="#equation-e-butterworthtf">(6.17)</a> are <span class="math notranslate nohighlight">\(s_k = \omega_c e^{j\frac{2k+1+N}{2N}}\)</span> for
+<a class="reference internal" href="#equation-e-butterworthtf">(6.17)</a> are <span class="math notranslate nohighlight">\(\tilde s_k = \omega_c e^{j\frac{2k+1+N}{2N}}\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, 2N_1\)</span>. That is, they are <span class="math notranslate nohighlight">\(2N\)</span> evenly spaced points on
 the circle of radius <span class="math notranslate nohighlight">\(\omega_c\)</span> centered at the origin on the <span class="math notranslate nohighlight">\(s\)</span>-plane.
 Selecting all the roots on the left-half plane, we obtain a stable filter with
@@ -461,7 +462,7 @@ transfer function:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \frac{1}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
   \end{equation*}\]</div>
 <p>which gives our lowpass Butterworth filter prototype.</p>
 </li>
@@ -480,7 +481,7 @@ characterized by:</p>
 <span class="eqno">(6.18)<a class="headerlink" href="#equation-e-chebyshevi" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 |H(\omega)|^2 
 = 
-\frac{1}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
+\frac{K}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
 \end{equation} \]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
@@ -505,12 +506,52 @@ T_{n+1}(x) &amp;= 2xT_n(x) - T_{n-1}(x)
 </div>
 </li>
 <li><p>The poles of <span class="math notranslate nohighlight">\(H(s)H(-s)\)</span> of the type-I Chebyshev filter lie on an
-ellipse centered at the origin on the <span class="math notranslate nohighlight">\(s\)</span>-plane with major ans minor
+ellipse centered at the origin on the <span class="math notranslate nohighlight">\(s\)</span>-plane with major and minor
 axis radii <span class="math notranslate nohighlight">\(\displaystyle r_1 = \frac{\omega_p (\beta^2
 +1)}{2\beta}\)</span> and <span class="math notranslate nohighlight">\(\displaystyle r_2 = \frac{\omega_p (\beta^2
 -1)}{2\beta}\)</span>, where <span class="math notranslate nohighlight">\(\displaystyle \beta = \left(
-\frac{\sqrt{1+\varepsilon^2} +1}{\varepsilon} \right)^{\frac{1}{N}}\)</span>.</p></li>
+\frac{\sqrt{1+\varepsilon^2} +1}{\varepsilon}
+\right)^{\frac{1}{N}}\)</span>.  Choosing all poles on the left half plane
+gives a stable</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(s) = 
+  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_k = r_2 \cos \phi_k  + j r_1 \sin \phi_k\)</span> and <span class="math notranslate nohighlight">\(\phi_k =
+\frac{2k+1+N}{2N}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots, N-1\)</span>.</p>
+</li>
 <li><p>The type-I Chebyshev filter is equiripple in the passband and flat in the stopband.</p></li>
+</ul>
+</section>
+<section id="type-ii-chebyshev-filter">
+<h3><span class="section-number">6.7.1.3. </span>Type-II Chebyshev Filter<a class="headerlink" href="#type-ii-chebyshev-filter" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>A <strong>type-II Chebyshev filter</strong> of order <span class="math notranslate nohighlight">\(N\)</span> is a filter with <span class="math notranslate nohighlight">\(N\)</span>
+zeros and <span class="math notranslate nohighlight">\(N\)</span> poles characterized by:</p>
+<div class="math notranslate nohighlight" id="equation-e-chebyshevii">
+<span class="eqno">(6.19)<a class="headerlink" href="#equation-e-chebyshevii" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+|H(\omega)|^2 
+= 
+\frac{K}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
+T^2_N\left( \frac{\omega_s}{\omega} \right)} }
+\end{equation} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_p\)</span> and <span class="math notranslate nohighlight">\(\omega_s\)</span> are the passband and stopband edge
+frequency, respectively.</p>
+</li>
+<li><p>For a stable filter, the transfer function of the type-II Chebyshev
+filter is given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  H(s) = 
+  \frac{K \prod_{k=0}^{N-1} (s-z_k)}{\prod_{k=0}^{N-1} (s-p_k)}
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(z_k = \frac{j\omega_s}{\sin \phi_k}\)</span> and <span class="math notranslate nohighlight">\(p_k =
+\frac{\omega_s s_k}{\sqrt{r_2^2 \cos^2 \phi_k  + r_1^2 \sin^2
+\phi_k}}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots, N-1\)</span>.</p>
+</li>
+<li><p>The type-II Chebyshev filter is equiripple in the stopband and flat
+in the passband.</p></li>
 </ul>
 </section>
 </section>
@@ -586,6 +627,7 @@ axis radii <span class="math notranslate nohighlight">\(\displaystyle r_1 = \fra
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototype-analog-filters">6.7.1. Prototype Analog Filters</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-ii-chebyshev-filter">6.7.1.3. Type-II Chebyshev Filter</a></li>
 </ul>
 </li>
 </ul>
