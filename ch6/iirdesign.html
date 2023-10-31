@@ -400,6 +400,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-ii-chebyshev-filter">6.7.1.3. Type-II Chebyshev Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-filter">6.7.1.4. Elliptic Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-filter-design">6.7.1.5. Analog Filter Design</a></li>
 </ul>
 </li>
 </ul>
@@ -439,7 +441,7 @@ characterized by the following square-magnitude response:</p>
 \frac{1}{1 + \left( \frac{\omega}{\omega_c} \right)^{2N}}
 \end{equation} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega_p\)</span> is the passband edge and
-<span class="math notranslate nohighlight">\(\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p\)</span> is the <span class="math notranslate nohighlight">\(3\)</span>dB cutoff
+<span class="math notranslate nohighlight">\(\omega_c = \varepsilon^{-\frac{1}{M}} \omega_p\)</span> is the <span class="math notranslate nohighlight">\(3\)</span>dB cutoff
 frequency.</p>
 </li>
 <li><p>The transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> (the Laplace transform of the impulse
@@ -462,7 +464,7 @@ transfer function:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
+  \frac{K}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
   \end{equation*}\]</div>
 <p>which gives our lowpass Butterworth filter prototype.</p>
 </li>
@@ -481,7 +483,7 @@ characterized by:</p>
 <span class="eqno">(6.18)<a class="headerlink" href="#equation-e-chebyshevi" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 |H(\omega)|^2 
 = 
-\frac{K}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
+\frac{1}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
 \end{equation} \]</div>
 <p>where</p>
 <div class="amsmath math notranslate nohighlight">
@@ -516,7 +518,7 @@ gives a stable</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \frac{K}{\prod_{k=0}^{N-1} (s-s_k)}
   \end{equation*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(s_k = r_2 \cos \phi_k  + j r_1 \sin \phi_k\)</span> and <span class="math notranslate nohighlight">\(\phi_k =
 \frac{2k+1+N}{2N}\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots, N-1\)</span>.</p>
@@ -533,7 +535,7 @@ zeros and <span class="math notranslate nohighlight">\(N\)</span> poles characte
 <span class="eqno">(6.19)<a class="headerlink" href="#equation-e-chebyshevii" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 |H(\omega)|^2 
 = 
-\frac{K}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
+\frac{1}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
 T^2_N\left( \frac{\omega_s}{\omega} \right)} }
 \end{equation} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega_p\)</span> and <span class="math notranslate nohighlight">\(\omega_s\)</span> are the passband and stopband edge
@@ -552,6 +554,83 @@ filter is given by</p>
 </li>
 <li><p>The type-II Chebyshev filter is equiripple in the stopband and flat
 in the passband.</p></li>
+</ul>
+</section>
+<section id="elliptic-filter">
+<h3><span class="section-number">6.7.1.4. </span>Elliptic Filter<a class="headerlink" href="#elliptic-filter" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>An <strong>elliptic filter</strong> of order <span class="math notranslate nohighlight">\(N\)</span> is a filter with <span class="math notranslate nohighlight">\(N\)</span>
+zeros and <span class="math notranslate nohighlight">\(N\)</span> poles characterized by:</p>
+<div class="math notranslate nohighlight" id="equation-e-elliptic">
+<span class="eqno">(6.20)<a class="headerlink" href="#equation-e-elliptic" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+|H(\omega)|^2 
+= 
+\frac{1}{1 + \varepsilon^2 U^2_N\left(\frac{\omega}{\omega_p}\right)}
+\end{equation} \]</div>
+<p>where <span class="math notranslate nohighlight">\(U_N(\cdot)\)</span> is the Jacobian elliptic function of order <span class="math notranslate nohighlight">\(N\)</span>
+(see <span id="id1">[<a class="reference internal" href="../refs.html#id7" title="Sophocles J. Orfanidis. Lecture notes on elliptic filter design. Technical Report, Rutgers University, Nov. 2006. URL: https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.">Orf06</a>]</span> for details).</p>
+</li>
+<li><p>The zeros of the transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of the elliptic filter are
+on the <span class="math notranslate nohighlight">\(j\omega\)</span>-axis.</p></li>
+<li><p>The elliptic filter is equiripple in both the passband and stopband.</p></li>
+<li><p>The elliptic filter has a lower order than the Butterworth and
+Chebyshev filters for the same specification.</p></li>
+</ul>
+</section>
+<section id="analog-filter-design">
+<h3><span class="section-number">6.7.1.5. </span>Analog Filter Design<a class="headerlink" href="#analog-filter-design" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>To design an analog lowpass filter with specification <span class="math notranslate nohighlight">\((\omega_p,
+\omega_s, \delta_1, \delta_2)\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Pick a filter type from above (Butterworth, type-I Chebyshev,
+type-II Chebyshev, or elliptic).</p></li>
+<li><p>Use <a class="reference internal" href="#equation-e-butterworth">(6.16)</a>, <a class="reference internal" href="#equation-e-chebyshevi">(6.18)</a>, <a class="reference internal" href="#equation-e-chebyshevii">(6.19)</a>,
+or <a class="reference internal" href="#equation-e-elliptic">(6.20)</a> to determine the value <span class="math notranslate nohighlight">\(\varepsilon\)</span> from
+<span class="math notranslate nohighlight">\(\delta_1\)</span>.</p></li>
+<li><p>Find the minimum filter order <span class="math notranslate nohighlight">\(N\)</span> such that the specifications of
+<span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> are satisfied at <span class="math notranslate nohighlight">\(\omega_p\)</span> and
+<span class="math notranslate nohighlight">\(\omega_s\)</span>, respectively.</p></li>
+</ol>
+</li>
+<li><p>After obtaining the transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of a lowpass prototype
+design with passband edge frequency <span class="math notranslate nohighlight">\(\omega_p\)</span>, one may use the
+transformations given in the table below to get the transfer
+function <span class="math notranslate nohighlight">\(H'(s)\)</span> of another type of filter:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>New filter type</p></th>
+<th class="head"><p>New band edge(s)</p></th>
+<th class="head"><p>Transformation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lowpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega'_p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(H'(s) = H \left(\frac{\omega_p}{\omega'_p} s\right)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Highpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega'_p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle H'(s) = H \left(\frac{\omega_p\omega'_p}{s} \right)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Bandpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega_l, \omega_u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle H'(s) = H \left(\omega_p \frac{s^2+\omega_u
+\omega_l}{s(\omega_u-\omega_l)} \right)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bandstop</p></td>
+<td><p><span class="math notranslate nohighlight">\(\omega_l, \omega_u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle H'(s) = H \left(\omega_p \frac{s(\omega_u-
+\omega_l)}{s^2+\omega_u \omega_l} \right)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 </section>
 </section>
@@ -628,6 +707,8 @@ in the passband.</p></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#butterworth-filter">6.7.1.1. Butterworth Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-i-chebyshev-filter">6.7.1.2. Type-I Chebyshev Filter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-ii-chebyshev-filter">6.7.1.3. Type-II Chebyshev Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elliptic-filter">6.7.1.4. Elliptic Filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-filter-design">6.7.1.5. Analog Filter Design</a></li>
 </ul>
 </li>
 </ul>

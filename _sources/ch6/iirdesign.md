@@ -21,7 +21,7 @@
   \end{equation} 
   ``` 
   where $\omega_p$ is the passband edge and
-  $\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p$ is the $3$dB cutoff
+  $\omega_c = \varepsilon^{-\frac{1}{M}} \omega_p$ is the $3$dB cutoff
   frequency.
 
 * The transfer function $H(s)$ (the Laplace transform of the impulse
@@ -44,7 +44,7 @@
   transfer function:
   \begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
+  \frac{K}{\prod_{k=0}^{N-1} (s- \tilde s_k)}
   \end{equation*}
   which gives our lowpass Butterworth filter prototype.
 
@@ -61,7 +61,7 @@
   \begin{equation} 
   |H(\omega)|^2 
   = 
-  \frac{K}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
+  \frac{1}{1 + \varepsilon^2 T^2_N\left( \frac{\omega}{\omega_p} \right)} 
   \end{equation} 
   ```
   where
@@ -93,7 +93,7 @@
   gives a stable
   \begin{equation*}
   H(s) = 
-  \frac{1}{\prod_{k=0}^{N-1} (s-s_k)}
+  \frac{K}{\prod_{k=0}^{N-1} (s-s_k)}
   \end{equation*}
   where $s_k = r_2 \cos \phi_k  + j r_1 \sin \phi_k$ and $\phi_k =
   \frac{2k+1+N}{2N}$ for $k=0,1,\ldots, N-1$.
@@ -108,7 +108,7 @@
   \begin{equation} 
   |H(\omega)|^2 
   = 
-  \frac{K}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
+  \frac{1}{1 + \varepsilon^2 \frac{T^2_N\left(\frac{\omega_s}{\omega_p}\right)}{
   T^2_N\left( \frac{\omega_s}{\omega} \right)} }
   \end{equation} 
   ```
@@ -127,3 +127,67 @@
 
 * The type-II Chebyshev filter is equiripple in the stopband and flat
   in the passband.
+
+### Elliptic Filter
+* An **elliptic filter** of order $N$ is a filter with $N$
+  zeros and $N$ poles characterized by:
+  ```{math}
+  :label: e:elliptic 
+  \begin{equation} 
+  |H(\omega)|^2 
+  = 
+  \frac{1}{1 + \varepsilon^2 U^2_N\left(\frac{\omega}{\omega_p}\right)}
+  \end{equation} 
+  ```
+  where $U_N(\cdot)$ is the Jacobian elliptic function of order $N$
+  (see {cite}`orfanidis2006` for details).
+
+* The zeros of the transfer function $H(s)$ of the elliptic filter are
+  on the $j\omega$-axis. 
+
+* The elliptic filter is equiripple in both the passband and stopband.
+
+* The elliptic filter has a lower order than the Butterworth and
+  Chebyshev filters for the same specification.
+
+### Analog Filter Design
+* To design an analog lowpass filter with specification $(\omega_p,
+  \omega_s, \delta_1, \delta_2)$:
+  1. Pick a filter type from above (Butterworth, type-I Chebyshev,
+     type-II Chebyshev, or elliptic).
+  2. Use {eq}`e:butterworth`, {eq}`e:chebyshevI`, {eq}`e:chebyshevII`,
+     or {eq}`e:elliptic` to determine the value $\varepsilon$ from
+     $\delta_1$. 
+  3. Find the minimum filter order $N$ such that the specifications of
+     $\delta_1$ and $\delta_2$ are satisfied at $\omega_p$ and
+     $\omega_s$, respectively.
+
+* After obtaining the transfer function $H(s)$ of a lowpass prototype
+  design with passband edge frequency $\omega_p$, one may use the
+  transformations given in the table below to get the transfer
+  function $H'(s)$ of another type of filter:
+  ```{list-table}
+  :header-rows: 1
+
+  * - New filter type
+    - New band edge(s)
+    - Transformation
+
+  * - Lowpass
+    - $\omega'_p$
+    - $H'(s) = H \left(\frac{\omega_p}{\omega'_p} s\right)$
+
+  * - Highpass
+    - $\omega'_p$
+    - $\displaystyle H'(s) = H \left(\frac{\omega_p\omega'_p}{s} \right)$
+
+  * - Bandpass
+    - $\omega_l, \omega_u$
+    - $\displaystyle H'(s) = H \left(\omega_p \frac{s^2+\omega_u
+      \omega_l}{s(\omega_u-\omega_l)} \right)$
+  
+  * - Bandstop
+    - $\omega_l, \omega_u$
+    - $\displaystyle H'(s) = H \left(\omega_p \frac{s(\omega_u-
+      \omega_l)}{s^2+\omega_u \omega_l} \right)$
+  ```
