@@ -363,8 +363,8 @@ filter.
   E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
   \end{equation}
   ~~~
-  where $\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|$ for
-  all $i$. The property in {eq}`e:alternations` is usually referred to
+  for all $i$,  where $\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|$. 
+  The property in {eq}`e:alternations` is usually referred to
   as **equiripple**.
   ```
 
