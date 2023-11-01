@@ -191,3 +191,25 @@
     - $\displaystyle H'(s) = H \left(\omega_p \frac{s(\omega_u-
       \omega_l)}{s^2+\omega_u \omega_l} \right)$
   ```
+
+## Impulse Invariance Method
+* Sample the impulse response $h(t)$ of a continuous-time lowpass
+   filter prototype at sampling rate $f_s$ to obtain the
+  impulse response $\displaystyle h[n] = \frac{1}{f_s}
+  h\left(\frac{n}{f_s} \right)$ of the target discrete-time lowpass
+   IIR filter.
+
+* If $h(t)$ is bandlimited and we oversample $h(t)$ to get $h[n]$, then
+  the frequency response of $h[n]$ is
+  \begin{align*}
+  H(e^{j\hat\omega}) 
+  &= H(\hat\omega f_s)
+  & \text{  for  }  -\pi \leq \hat\omega < \pi
+  \end{align*}
+  where $H(\omega)$ is the frequency response of $h(t)$.
+  Thus, the design specification $(\hat\omega_p, \hat\omega_s,
+  \delta_1, \delta_2)$ of the discrete-time lowpass IIR filter will be
+  met if we set $\omega_p = \hat\omega_p f_s$, $\omega_s =
+  \hat\omega_s f_s$, and design the continuous-time lowpass filter
+  prototype to satisfy the specification $(\omega_p, \omega_s,
+  \delta_1, \delta_2)$.

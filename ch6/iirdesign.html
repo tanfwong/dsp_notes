@@ -404,6 +404,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-filter-design">6.7.1.5. Analog Filter Design</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
 </ul>
             </nav>
         </div>
@@ -634,6 +635,32 @@ function <span class="math notranslate nohighlight">\(H'(s)\)</span> of another 
 </ul>
 </section>
 </section>
+<section id="impulse-invariance-method">
+<h2><span class="section-number">6.7.2. </span>Impulse Invariance Method<a class="headerlink" href="#impulse-invariance-method" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Sample the impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> of a continuous-time lowpass
+filter prototype at sampling rate <span class="math notranslate nohighlight">\(f_s\)</span> to obtain the
+impulse response <span class="math notranslate nohighlight">\(\displaystyle h[n] = \frac{1}{f_s}
+h\left(\frac{n}{f_s} \right)\)</span> of the target discrete-time lowpass
+IIR filter.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(h(t)\)</span> is bandlimited and we oversample <span class="math notranslate nohighlight">\(h(t)\)</span> to get <span class="math notranslate nohighlight">\(h[n]\)</span>, then
+the frequency response of <span class="math notranslate nohighlight">\(h[n]\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  H(e^{j\hat\omega}) 
+  &amp;= H(\hat\omega f_s)
+  &amp; \text{  for  }  -\pi \leq \hat\omega &lt; \pi
+  \end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(H(\omega)\)</span> is the frequency response of <span class="math notranslate nohighlight">\(h(t)\)</span>.
+Thus, the design specification <span class="math notranslate nohighlight">\((\hat\omega_p, \hat\omega_s,
+\delta_1, \delta_2)\)</span> of the discrete-time lowpass IIR filter will be
+met if we set <span class="math notranslate nohighlight">\(\omega_p = \hat\omega_p f_s\)</span>, <span class="math notranslate nohighlight">\(\omega_s =
+\hat\omega_s f_s\)</span>, and design the continuous-time lowpass filter
+prototype to satisfy the specification <span class="math notranslate nohighlight">\((\omega_p, \omega_s,
+\delta_1, \delta_2)\)</span>.</p>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -711,6 +738,7 @@ function <span class="math notranslate nohighlight">\(H'(s)\)</span> of another 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-filter-design">6.7.1.5. Analog Filter Design</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
 </ul>
   </nav></div>
 
