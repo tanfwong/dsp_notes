@@ -201,9 +201,9 @@ filter.
   ```
 
 ## Equiripple Design - Parks-McClellan Algorithm
-* The Parks-McClellan algorithm is a systematic procedure to generate
-  a generalized linear-phase FIR filter of order $M$ that satisfies
-  the specification $(\hat\omega_p, \hat\omega_s, \delta_1,
+* The Parks-McClellan algorithm is a more systematic procedure to
+  generate a generalized linear-phase FIR filter of order $M$ that
+  satisfies the specification $(\hat\omega_p, \hat\omega_s, \delta_1,
   \delta_2)$.
 
 * To explain the algorithm, first note that the real-valued component
