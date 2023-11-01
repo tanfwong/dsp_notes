@@ -425,7 +425,7 @@ filter.
 * **MATLAB Example 4**:
 
   Consider the same design specification as in Example 1 above. That
-  is, we want to design a lowpass type-1 FIR filter with the
+  is, we want to design a lowpass generalized linear-phase  FIR filter with the
   specification $(0.3\pi, 0.35\pi, 0.01, 0.001)$. We may use the
   MATLAB function `firpmord` to first estimate the filter order $M$:
   ```matlab
@@ -460,6 +460,7 @@ filter.
   >> h4 = firpm(M, we, A, W);
   >> fvtool(h4, 1);
   ```
+  Since $M=102$, the filter given is a type-1 FIR filter. 
   The resulting specifications of $\delta_1=0.01$ in the passband and
   $\delta_2=0.001$ in the stopband are both slightly
   violated. Increasing the order $M$ to $105$ (a type-2 filter)
