@@ -351,7 +351,7 @@ filter.
   $\cos\hat\omega$, we may employ the Chebyshev alternation theorem to
   solve the optimization problem  {eq}`e:pmopt`:
   ```{admonition} Chebyshev Alternation
-  A necessary ans sufficient condition for $\{\alpha_k\}_{k=0}^N$
+  A necessary and sufficient condition for $\{\alpha_k\}_{k=0}^N$
   to be the unique solution of {eq}`e:pmopt` is that
   $E(e^{j\hat\omega})$ exhibits at
   least $N+2$ alternations in $S$, i.e., there are at least $N+2$
