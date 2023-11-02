@@ -638,12 +638,12 @@ function <span class="math notranslate nohighlight">\(H'(s)\)</span> of another 
 <section id="impulse-invariance-method">
 <h2><span class="section-number">6.7.2. </span>Impulse Invariance Method<a class="headerlink" href="#impulse-invariance-method" title="Permalink to this headline">#</a></h2>
 <ul>
-<li><p>Sample the impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> of a continuous-time lowpass
-filter prototype at sampling rate <span class="math notranslate nohighlight">\(f_s\)</span> to obtain the
-impulse response <span class="math notranslate nohighlight">\(\displaystyle h[n] = \frac{1}{f_s}
-h\left(\frac{n}{f_s} \right)\)</span> of the target discrete-time lowpass
-IIR filter.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(h(t)\)</span> is bandlimited and we oversample <span class="math notranslate nohighlight">\(h(t)\)</span> to get <span class="math notranslate nohighlight">\(h[n]\)</span>, then
+<li><p>Sample the impulse response <span class="math notranslate nohighlight">\(h(t)\)</span> of an analog lowpass
+filter prototype at sampling rate <span class="math notranslate nohighlight">\(f_s\)</span> to obtain the impulse
+response <span class="math notranslate nohighlight">\(\displaystyle h[n] = \frac{1}{f_s} h\left(\frac{n}{f_s}
+ \right)\)</span> of the target discrete-time lowpass IIR filter.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(h(t)\)</span> is bandlimited and we oversample <span class="math notranslate nohighlight">\(h(t)\)</span> to get <span class="math notranslate nohighlight">\(h[n]\)</span>,
+then from that the Poisson sum formula <a class="reference internal" href="../ch3/sampthm.html#equation-e-folded-spectrum">(3.6)</a>,
 the frequency response of <span class="math notranslate nohighlight">\(h[n]\)</span> is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -658,6 +658,27 @@ met if we set <span class="math notranslate nohighlight">\(\omega_p = \hat\omega
 \hat\omega_s f_s\)</span>, and design the continuous-time lowpass filter
 prototype to satisfy the specification <span class="math notranslate nohighlight">\((\omega_p, \omega_s,
 \delta_1, \delta_2)\)</span>.</p>
+</li>
+<li><p>Often, we use the Butterworth, Chebyshev, and elliptic filters
+described above as prototypes for the analog filter design.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since the magnitude responses of the Butterworth, Chebyshev, and
+elliptic (see  <a class="reference internal" href="#equation-e-butterworth">(6.16)</a>, <a class="reference internal" href="#equation-e-chebyshevi">(6.18)</a>, <a class="reference internal" href="#equation-e-chebyshevii">(6.19)</a>,
+and <a class="reference internal" href="#equation-e-elliptic">(6.20)</a>) are functions of the ratio
+<span class="math notranslate nohighlight">\(\frac{\omega}{\omega_p}\)</span> or <span class="math notranslate nohighlight">\(\frac{\omega_s}{\omega}\)</span>, we may
+simply set <span class="math notranslate nohighlight">\(f_s = 1\)</span> in the design process without any loss of generality.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>As none of the Butterworth, Chebyshev, and
+elliptic filters are strictly bandlimited, the impulse invariance
+design obtained by sampling the impulse response of the analog
+filter prototype may suffer from aliasing, typically causing larger
+stopband ripples. To overcome this problem, we may need to use a
+tigter value for <span class="math notranslate nohighlight">\(\delta_2\)</span> so that the achieved stopband ripples
+are within the original specification.</p>
+</div>
 </li>
 </ul>
 </section>

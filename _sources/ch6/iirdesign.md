@@ -193,13 +193,13 @@
   ```
 
 ## Impulse Invariance Method
-* Sample the impulse response $h(t)$ of a continuous-time lowpass
-   filter prototype at sampling rate $f_s$ to obtain the
-  impulse response $\displaystyle h[n] = \frac{1}{f_s}
-  h\left(\frac{n}{f_s} \right)$ of the target discrete-time lowpass
-   IIR filter.
+* Sample the impulse response $h(t)$ of an analog lowpass
+   filter prototype at sampling rate $f_s$ to obtain the impulse
+   response $\displaystyle h[n] = \frac{1}{f_s} h\left(\frac{n}{f_s}
+   \right)$ of the target discrete-time lowpass IIR filter.
 
-* If $h(t)$ is bandlimited and we oversample $h(t)$ to get $h[n]$, then
+* If $h(t)$ is bandlimited and we oversample $h(t)$ to get $h[n]$,
+  then from that the Poisson sum formula {eq}`e:folded_spectrum`,
   the frequency response of $h[n]$ is
   \begin{align*}
   H(e^{j\hat\omega}) 
@@ -213,3 +213,22 @@
   \hat\omega_s f_s$, and design the continuous-time lowpass filter
   prototype to satisfy the specification $(\omega_p, \omega_s,
   \delta_1, \delta_2)$.
+
+* Often, we use the Butterworth, Chebyshev, and elliptic filters
+  described above as prototypes for the analog filter design.
+  ```{tip}
+  Since the magnitude responses of the Butterworth, Chebyshev, and
+  elliptic (see  {eq}`e:butterworth`, {eq}`e:chebyshevI`, {eq}`e:chebyshevII`,
+  and {eq}`e:elliptic`) are functions of the ratio
+  $\frac{\omega}{\omega_p}$ or $\frac{\omega_s}{\omega}$, we may
+  simply set $f_s = 1$ in the design process without any loss of generality. 
+  ```
+  ```{caution}
+  As none of the Butterworth, Chebyshev, and
+  elliptic filters are strictly bandlimited, the impulse invariance
+  design obtained by sampling the impulse response of the analog
+  filter prototype may suffer from aliasing, typically causing larger
+  stopband ripples. To overcome this problem, we may need to use a
+  tigter value for $\delta_2$ so that the achieved stopband ripples
+  are within the original specification. 
+  ```
