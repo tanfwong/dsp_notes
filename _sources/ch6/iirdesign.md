@@ -4,6 +4,7 @@
   obtain discrete-time IIR filters by applying appropriate
   transformations. 
 
+(sec:afilter)=
 ## Prototype Analog Filters
 * Let's start by introducing a few common **lowpass** analog filter prototypes.
 
@@ -232,3 +233,28 @@
   tigter value for $\delta_2$ so that the achieved stopband ripples
   are within the original specification. 
   ```
+* Note that the analog filter prototypes described in
+  {numref}`sec:afilter` above all have single-order poles. Hence their
+  continuous-time transfer functions have the following partial
+  fraction expansion:
+  \begin{equation*}
+  H(s) = A_0 + \sum_{k=0}^{N-1} \frac{A_k}{s - p_k}
+  \end{equation*}
+  where $p_0, p_1, \ldots, p_{N-1}$ are the poles. Taking inverse
+  Laplace transform to get the causal impulse response
+  \begin{equation*}
+  h(t) = A_0 \delta(t)+ \sum_{k=0}^{N-1} A_k e^{p_k t} u(t).
+  \end{equation*}
+  Sampling $h(t)$ at $f_s=1$ gives
+  \begin{equation*}
+  h[n] = A_0 \delta[n]+ \sum_{k=0}^{N-1} A_k e^{p_k n} u[n].
+  \end{equation*}
+  Taking $z$-transform on $h[n]$, we get
+  \begin{equation*}
+  H(z) = A_0 + \sum_{k=0}^{N-1} \frac{A_k}{1 - e^{p_k} z^{-1}}
+  \end{equation*}
+  Since $H(s)$ is table by construction, $\text{Re}(p_k) < 0$ for
+  $k=0,1,\ldots, N-1$. Thus the poles $e^{p_k}$ of the transfer
+  function $H(z)$ of the resulting discrete-time IIR filter are all
+  strictly inside the unit circle, i.e., $H(z)$ is also stable.
+ 
