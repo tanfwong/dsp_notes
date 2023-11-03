@@ -485,8 +485,8 @@ filter.
 
 * **MATLAB Example 6**:
   Consider the same design problem of the bandpass generalized
-  linear-phase FIR filter with passband $[0.35\pi, 0,65\pi]$ and stopband
-  $[0,0.65\pi] \cup [0.7\pi, \pi]$ as in Example 3 above:
+  linear-phase FIR filter with passband $[0.3\pi, 0.65\pi]$ and stopband
+  $[0,0.25\pi] \cup [0.7\pi, \pi]$ as in Example 3 above:
   ```matlab
   >> [M, we, A, W] = firpmord([0.25, 0.3, 0.65, 0.7], [0, 1, 0], [0.001, 0.01, 0.001])
   >> h6 = firpm(M, we, A, W);

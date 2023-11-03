@@ -39,7 +39,7 @@
   ```
   The roots of the denominator polynomial on the RHS of
   {eq}`e:butterworthTF` are $\tilde s_k = \omega_c e^{j\frac{2k+1+N}{2N}}$ for
-  $k=0,1,\ldots, 2N_1$. That is, they are $2N$ evenly spaced points on
+  $k=0,1,\ldots, 2N-1$. That is, they are $2N$ evenly spaced points on
   the circle of radius $\omega_c$ centered at the origin on the $s$-plane. 
   Selecting all the roots on the left-half plane, we obtain a stable filter with
   transfer function:
