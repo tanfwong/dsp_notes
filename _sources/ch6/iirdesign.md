@@ -293,6 +293,7 @@
   >> [bc, ac]= cheby1(N, Rp, wp, 's');
   >> freqs(bc, ac, [0:0.0001:pi]);
   ```
+  We can see that the analog filter prototype meets its specifications.
   Finally, we may use the MATLAB function `impinvar` to apply the
   impulse invariance method to obtain the target discrete-time IIR filter:
   ```matlab
@@ -308,3 +309,55 @@
   specification. However, the group
   delay of the IIR filter is not a constant over the passband. 
   ```
+
+* **MATLAB Example 8**:
+
+  Repeat Example 7 using an analog elliptic filter prototype instead:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = ellipord(0.3*pi, 0.35*pi, Rp, Rs, 's')
+  
+  N =
+
+      9
+
+
+  wp =
+
+      0.9425
+
+  >> [bc, ac] = ellip(N, Rp, Rs, wp, 's');
+  >> freqs(bc, ac, [0:0.0001:pi]);
+  ```
+  We can see that this analog filter prototype also meets its specifications.
+  However, applying the impulse invariance method:
+    ```matlab
+  >> [b, a] = impinvar(bc, ac);
+  >> fvtool(b, a);
+  ```
+  We see that the resulting IIR filter violates its specifications
+  in both the passband and stopband. Redoing the design with more
+  stringent values for $\delta_1$ and $\delta_2$:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = ellipord(0.3*pi, 0.35*pi, Rp*0.75, Rs+15, 's')
+  
+  N =
+
+      10
+
+
+  wp =
+
+      0.9425
+
+  
+  >> [bc, ac] = ellip(N, Rp*0.75, Rs+15, wp, 's');
+  >> [b, a] = impinvar(bc, ac);
+  >> fvtool(b, a);
+  ```
+  gives an IIR filter that satisfies the specification of $(0.3\pi, 0.35\pi, 0.01,
+  0.001)$. Note that the order of this IIR filter is $N=10$, smaller
+  than that of the IIR filter obtained from the type-I Chebyshev prototype.

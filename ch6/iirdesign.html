@@ -742,7 +742,8 @@ type-I Chebyshev filter prototype:</p>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.0001</span><span class="p">:</span><span class="nb">pi</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>Finally, we may use the MATLAB function <code class="docutils literal notranslate"><span class="pre">impinvar</span></code> to apply the
+<p>We can see that the analog filter prototype meets its specifications.
+Finally, we may use the MATLAB function <code class="docutils literal notranslate"><span class="pre">impinvar</span></code> to apply the
 impulse invariance method to obtain the target discrete-time IIR filter:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impinvar</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">);</span>
 <span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
@@ -758,6 +759,57 @@ the FIR filters obtained in Examples 1 and 4 with the same
 specification. However, the group
 delay of the IIR filter is not a constant over the passband.</p>
 </div>
+</li>
+<li><p><strong>MATLAB Example 8</strong>:</p>
+<p>Repeat Example 7 using an analog elliptic filter prototype instead:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellipord</span><span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">9</span>
+
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">0.9425</span>
+
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.0001</span><span class="p">:</span><span class="nb">pi</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>We can see that this analog filter prototype also meets its specifications.
+However, applying the impulse invariance method:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impinvar</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We see that the resulting IIR filter violates its specifications
+in both the passband and stopband. Redoing the design with more
+stringent values for <span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellipord</span><span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="o">*</span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">10</span>
+
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">0.9425</span>
+
+
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ellip</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="o">*</span><span class="mf">0.75</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impinvar</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>gives an IIR filter that satisfies the specification of <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01,
+0.001)\)</span>. Note that the order of this IIR filter is <span class="math notranslate nohighlight">\(N=10\)</span>, smaller
+than that of the IIR filter obtained from the type-I Chebyshev prototype.</p>
 </li>
 </ul>
 </section>
