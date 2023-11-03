@@ -405,6 +405,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-transform-design">6.7.3. Bilinear Transform Design</a></li>
 </ul>
             </nav>
         </div>
@@ -813,6 +814,44 @@ than that of the IIR filter obtained from the type-I Chebyshev prototype.</p>
 </li>
 </ul>
 </section>
+<section id="bilinear-transform-design">
+<h2><span class="section-number">6.7.3. </span>Bilinear Transform Design<a class="headerlink" href="#bilinear-transform-design" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Obtain the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of the discrete-time IIR filter
+directly from the transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of an anlog prototype
+filter by the bilinear transformation:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  s = 2f_s \left( \frac{ 1- z^{-1}}{1+z^{-1}} \right)
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_s\)</span> is the sampling rate.</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(s=\sigma + j \omega\)</span>. Inverting the bilinear transform gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  z
+  &amp;=
+  \frac{1 + \frac{s}{2f_s}}{1 - \frac{s}{2f_s}}
+  \\
+  &amp;=
+  \frac{1 + \frac{\sigma}{2f_s} + j\frac{\omega}{2f_s}}{1 -
+  \frac{\sigma}{2f_s} - j\frac{\omega}{2f_s}}.
+  \end{align*}\]</div>
+<p>Thus:</p>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(\sigma&lt;0\)</span>, then <span class="math notranslate nohighlight">\(|z| &lt; 1\)</span>. That is, the left half <span class="math notranslate nohighlight">\(s\)</span>-plane is
+mapped onto the inside of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
+bilinear transform.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>, then <span class="math notranslate nohighlight">\(|z| &gt; 1\)</span>. That is, the right half <span class="math notranslate nohighlight">\(s\)</span>-plane is
+mapped onto the outside of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
+bilinear transform.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\sigma=0\)</span>, then <span class="math notranslate nohighlight">\(|z| = 1\)</span>. That is, the <span class="math notranslate nohighlight">\(j\omega\)</span> axis of
+<span class="math notranslate nohighlight">\(s\)</span>-plane is mapped onto the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
+bilinear transform.</p></li>
+</ol>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -891,6 +930,7 @@ than that of the IIR filter obtained from the type-I Chebyshev prototype.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-transform-design">6.7.3. Bilinear Transform Design</a></li>
 </ul>
   </nav></div>
 

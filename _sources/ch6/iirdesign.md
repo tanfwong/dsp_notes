@@ -361,3 +361,34 @@
   gives an IIR filter that satisfies the specification of $(0.3\pi, 0.35\pi, 0.01,
   0.001)$. Note that the order of this IIR filter is $N=10$, smaller
   than that of the IIR filter obtained from the type-I Chebyshev prototype.
+
+
+## Bilinear Transform Design
+* Obtain the transfer function $H(z)$ of the discrete-time IIR filter
+  directly from the transfer function $H(s)$ of an anlog prototype
+  filter by the bilinear transformation:
+  \begin{equation*}
+  s = 2f_s \left( \frac{ 1- z^{-1}}{1+z^{-1}} \right)
+  \end{equation*}
+  where $f_s$ is the sampling rate.
+
+* Let $s=\sigma + j \omega$. Inverting the bilinear transform gives
+  \begin{align*}
+  z
+  &=
+  \frac{1 + \frac{s}{2f_s}}{1 - \frac{s}{2f_s}}
+  \\
+  &=
+  \frac{1 + \frac{\sigma}{2f_s} + j\frac{\omega}{2f_s}}{1 -
+  \frac{\sigma}{2f_s} - j\frac{\omega}{2f_s}}.
+  \end{align*}
+  Thus:
+  1. If $\sigma<0$, then $|z| < 1$. That is, the left half $s$-plane is
+     mapped onto the inside of the unit circle in the $z$-plane by the
+     bilinear transform.
+  2. If $\sigma>0$, then $|z| > 1$. That is, the right half $s$-plane is
+     mapped onto the outside of the unit circle in the $z$-plane by the
+     bilinear transform.
+  3. If $\sigma=0$, then $|z| = 1$. That is, the $j\omega$ axis of
+     $s$-plane is mapped onto the unit circle in the $z$-plane by the
+     bilinear transform.
