@@ -1,3 +1,4 @@
+(sec:firdesign)=
 # FIR Filter Design
 
 * We discuss two common approaches to design FIR filters that

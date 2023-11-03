@@ -22,7 +22,7 @@
   \end{equation} 
   ``` 
   where $\omega_p$ is the passband edge and
-  $\omega_c = \varepsilon^{-\frac{1}{M}} \omega_p$ is the $3$dB cutoff
+  $\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p$ is the $3$dB cutoff
   frequency.
 
 * The transfer function $H(s)$ (the Laplace transform of the impulse
@@ -258,3 +258,53 @@
   function $H(z)$ of the resulting discrete-time IIR filter are all
   strictly inside the unit circle, i.e., $H(z)$ is also stable.
  
+* **MATLAB Example 7**:
+
+  Consider again the same design specification as in Examples 1 and 4
+  in {numref}`sec:firdesign`, except in this example we want to design
+  a lowpass IIR filter with the specification $(0.3\pi, 0.35\pi, 0.01,
+  0.001)$ based on a analog type-I Chebyshev filter prototype. Using the
+  impulse invariance method with $f_s=1$, the required specifications
+  of the analog Butterworth filter prototype are $\omega_p=0.3\pi$,
+  $\omega_s=0.35\pi$, $\delta_1=0.01$, and $\delta_2=0.001$.
+
+  Next, we employ {eq}`e:chebyshevI` to determine the value
+  of $\varepsilon$ and the filter order $N$ required to meet the
+  specifications. We can be done using the MATLAB function `cheb1ord`:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = cheb1ord(0.3*pi, 0.35*pi, Rp, Rs, 's')
+
+  N =
+
+      17
+
+
+  wp =
+
+      0.9425
+  ```
+  to get that the filter required order is $N=17$. Note that the value
+  of $\varepsilon$ depends only on $\delta_1$ and $\omega_p$. 
+  Then we can use the MATLAB function `cheby1` to obtain the analog 
+  type-I Chebyshev filter prototype:
+  ```matlab
+  >> [bc, ac]= cheby1(N, Rp, wp, 's');
+  >> freqs(bc, ac, [0:0.0001:pi]);
+  ```
+  Finally, we may use the MATLAB function `impinvar` to apply the
+  impulse invariance method to obtain the target discrete-time IIR filter:
+  ```matlab
+  >> [b, a] = impinvar(bc, ac);
+  >> fvtool(b, a);
+  ```
+  We can check that the original specification $(0.3\pi, 0.35\pi, 0.01,
+  0.001)$  is met.
+  ```{tip}
+  Note that the order of the IIR filter obtained from the impulse
+  invariance method is much smaller than those of
+  the FIR filters obtained in Examples 1 and 4 with the same
+  specification. However, the group
+  delay of the IIR filter is not a constant over the passband. 
+  ```

@@ -442,7 +442,7 @@ characterized by the following square-magnitude response:</p>
 \frac{1}{1 + \left( \frac{\omega}{\omega_c} \right)^{2N}}
 \end{equation} \]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega_p\)</span> is the passband edge and
-<span class="math notranslate nohighlight">\(\omega_c = \varepsilon^{-\frac{1}{M}} \omega_p\)</span> is the <span class="math notranslate nohighlight">\(3\)</span>dB cutoff
+<span class="math notranslate nohighlight">\(\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p\)</span> is the <span class="math notranslate nohighlight">\(3\)</span>dB cutoff
 frequency.</p>
 </li>
 <li><p>The transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> (the Laplace transform of the impulse
@@ -708,6 +708,56 @@ Laplace transform to get the causal impulse response</p>
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, N-1\)</span>. Thus the poles <span class="math notranslate nohighlight">\(e^{p_k}\)</span> of the transfer
 function <span class="math notranslate nohighlight">\(H(z)\)</span> of the resulting discrete-time IIR filter are all
 strictly inside the unit circle, i.e., <span class="math notranslate nohighlight">\(H(z)\)</span> is also stable.</p>
+</li>
+<li><p><strong>MATLAB Example 7</strong>:</p>
+<p>Consider again the same design specification as in Examples 1 and 4
+in <a class="reference internal" href="firdesign.html#sec-firdesign"><span class="std std-numref">Section 6.6</span></a>, except in this example we want to design
+a lowpass IIR filter with the specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01,
+0.001)\)</span> based on a analog type-I Chebyshev filter prototype. Using the
+impulse invariance method with <span class="math notranslate nohighlight">\(f_s=1\)</span>, the required specifications
+of the analog Butterworth filter prototype are <span class="math notranslate nohighlight">\(\omega_p=0.3\pi\)</span>,
+<span class="math notranslate nohighlight">\(\omega_s=0.35\pi\)</span>, <span class="math notranslate nohighlight">\(\delta_1=0.01\)</span>, and <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span>.</p>
+<p>Next, we employ <a class="reference internal" href="#equation-e-chebyshevi">(6.18)</a> to determine the value
+of <span class="math notranslate nohighlight">\(\varepsilon\)</span> and the filter order <span class="math notranslate nohighlight">\(N\)</span> required to meet the
+specifications. We can be done using the MATLAB function <code class="docutils literal notranslate"><span class="pre">cheb1ord</span></code>:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1ord</span><span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">17</span>
+
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">0.9425</span>
+</pre></div>
+</div>
+<p>to get that the filter required order is <span class="math notranslate nohighlight">\(N=17\)</span>. Note that the value
+of <span class="math notranslate nohighlight">\(\varepsilon\)</span> depends only on <span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\omega_p\)</span>.
+Then we can use the MATLAB function <code class="docutils literal notranslate"><span class="pre">cheby1</span></code> to obtain the analog
+type-I Chebyshev filter prototype:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">]=</span><span class="w"> </span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.0001</span><span class="p">:</span><span class="nb">pi</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Finally, we may use the MATLAB function <code class="docutils literal notranslate"><span class="pre">impinvar</span></code> to apply the
+impulse invariance method to obtain the target discrete-time IIR filter:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">impinvar</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can check that the original specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01,
+0.001)\)</span>  is met.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that the order of the IIR filter obtained from the impulse
+invariance method is much smaller than those of
+the FIR filters obtained in Examples 1 and 4 with the same
+specification. However, the group
+delay of the IIR filter is not a constant over the passband.</p>
+</div>
 </li>
 </ul>
 </section>
