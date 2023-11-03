@@ -230,8 +230,8 @@
   design obtained by sampling the impulse response of the analog
   filter prototype may suffer from aliasing, typically causing larger
   stopband ripples. To overcome this problem, we may need to use a
-  tigter value for $\delta_2$ so that the achieved stopband ripples
-  are within the original specification. 
+  tigter values for $\delta_1$ and $\delta_2$ so that the achieved
+  ripples in the passband and stopband are within the original specification. 
   ```
 * Note that the analog filter prototypes described in
   {numref}`sec:afilter` above all have single-order poles. Hence their
