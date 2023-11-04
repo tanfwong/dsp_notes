@@ -420,3 +420,28 @@
   result, **the bilinear transform  {eq}`e:bilinear` can be employed to
   turn lowpass, highpass, bandpass, and bandstop analog filter
   prototypes to their respective discrete-time counterparts**. 
+
+* The design steps of the bilinear tranform method are then simply:
+  1. Starting from the specification of the discrete-time IIR filter,
+     use {eq}`e:bilinfreq` to convert the specification to one for the
+     analog filter prototype. For example, the specification
+     $(\hat\omega_p, \hat\omega_s, \delta_1, \delta_2)$ for the case
+     of a lowpass discrete-time filter is converted to the
+     specification $(\omega_p, \omega_s, \delta_1, \delta_2)$ of a
+     lowpass analog filter prototype, where $\omega_p$ and $\omega_s$
+     are obtained from $\hat\omega_p$ and $\hat\omega_s$ using
+     {eq}`e:bilinfreq`, respectively.
+  2. Design an analog filter prototype that satisfies the
+     specification obtained in step 1.
+  3. Use the bilinear transform  {eq}`e:bilinear` to obtain the
+     transfer function $H(z)$ of the target discrete-time IIR filter
+     from the transfer function $H(s)$ of the analog filter prototype
+     in step 2.
+  ```{tip}
+  As in the impulse invariance method, 
+  since the magnitude responses of the Butterworth, Chebyshev, and
+  elliptic (see  {eq}`e:butterworth`, {eq}`e:chebyshevI`, {eq}`e:chebyshevII`,
+  and {eq}`e:elliptic`) are functions of the ratio
+  $\frac{\omega}{\omega_p}$ or $\frac{\omega_s}{\omega}$, we may
+  set $f_s = 1$ in the design process above without any loss of generality. 
+  ```
