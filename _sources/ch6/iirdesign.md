@@ -367,9 +367,12 @@
 * Obtain the transfer function $H(z)$ of the discrete-time IIR filter
   directly from the transfer function $H(s)$ of an anlog prototype
   filter by the bilinear transformation:
-  \begin{equation*}
+  ```{math}
+  :label: e:bilinear
+  \begin{equation}
   s = 2f_s \left( \frac{ 1- z^{-1}}{1+z^{-1}} \right)
-  \end{equation*}
+  \end{equation}
+  ```
   where $f_s$ is the sampling rate.
 
 * Let $s=\sigma + j \omega$. Inverting the bilinear transform gives
@@ -390,5 +393,30 @@
      mapped onto the outside of the unit circle in the $z$-plane by the
      bilinear transform.
   3. If $\sigma=0$, then $|z| = 1$. That is, the $j\omega$ axis of
-     $s$-plane is mapped onto the unit circle in the $z$-plane by the
+     $s$-plane is mapped onto the unit circle of the $z$-plane by the
      bilinear transform.
+
+* From observation 1, the bilinear transform {eq}`e:bilinear` maps
+  causal stable analog filter to a causal stable discrete-time IIR filter.
+
+* Based on observation 3, substituting $s=j\omega$ and
+  $z=e^{j\hat\omega}$ into {eq}`e:bilinear` gives 
+  ```{math} 
+  :label: e:bilinfreq 
+  \begin{align} 
+  \omega 
+  &= \frac{2 f_s}{j} \left( \frac{1 -
+  e^{-j\hat\omega}}{1 + e^{-j\hat\omega}} \right) 
+  \\ 
+  &= 2 f_s \tan \frac{\hat\omega}{2} 
+  \end{align} 
+  ``` 
+  for $-\pi \leq \hat\omega < \pi$, which shows that 
+  the mapping between the $j\omega$ axis
+  of $s$-plane and the unit circle of the $z$-plane, i.e., between the
+  angular frequency $\omega$ of the analog filter and the normalized
+  radian frequency $\hat\omega$ of the discrete-time filter, induced
+  by the bilinear transform {eq}`e:bilinear` is one-to-one. As a
+  result, **the bilinear transform  {eq}`e:bilinear` can be employed to
+  turn lowpass, highpass, bandpass, and bandstop analog filter
+  prototypes to their respective discrete-time counterparts**. 

@@ -820,10 +820,10 @@ than that of the IIR filter obtained from the type-I Chebyshev prototype.</p>
 <li><p>Obtain the transfer function <span class="math notranslate nohighlight">\(H(z)\)</span> of the discrete-time IIR filter
 directly from the transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of an anlog prototype
 filter by the bilinear transformation:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  s = 2f_s \left( \frac{ 1- z^{-1}}{1+z^{-1}} \right)
-  \end{equation*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-bilinear">
+<span class="eqno">(6.21)<a class="headerlink" href="#equation-e-bilinear" title="Permalink to this equation">#</a></span>\[\begin{equation}
+s = 2f_s \left( \frac{ 1- z^{-1}}{1+z^{-1}} \right)
+\end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f_s\)</span> is the sampling rate.</p>
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(s=\sigma + j \omega\)</span>. Inverting the bilinear transform gives</p>
@@ -846,9 +846,31 @@ bilinear transform.</p></li>
 mapped onto the outside of the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
 bilinear transform.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\sigma=0\)</span>, then <span class="math notranslate nohighlight">\(|z| = 1\)</span>. That is, the <span class="math notranslate nohighlight">\(j\omega\)</span> axis of
-<span class="math notranslate nohighlight">\(s\)</span>-plane is mapped onto the unit circle in the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
+<span class="math notranslate nohighlight">\(s\)</span>-plane is mapped onto the unit circle of the <span class="math notranslate nohighlight">\(z\)</span>-plane by the
 bilinear transform.</p></li>
 </ol>
+</li>
+<li><p>From observation 1, the bilinear transform <a class="reference internal" href="#equation-e-bilinear">(6.21)</a> maps
+causal stable analog filter to a causal stable discrete-time IIR filter.</p></li>
+<li><p>Based on observation 3, substituting <span class="math notranslate nohighlight">\(s=j\omega\)</span> and
+<span class="math notranslate nohighlight">\(z=e^{j\hat\omega}\)</span> into <a class="reference internal" href="#equation-e-bilinear">(6.21)</a> gives</p>
+<div class="math notranslate nohighlight" id="equation-e-bilinfreq">
+<span class="eqno">(6.22)<a class="headerlink" href="#equation-e-bilinfreq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align} 
+\omega 
+&amp;= \frac{2 f_s}{j} \left( \frac{1 -
+e^{-j\hat\omega}}{1 + e^{-j\hat\omega}} \right) 
+\\ 
+&amp;= 2 f_s \tan \frac{\hat\omega}{2} 
+\end{align} \end{split}\]</div>
+<p>for <span class="math notranslate nohighlight">\(-\pi \leq \hat\omega &lt; \pi\)</span>, which shows that
+the mapping between the <span class="math notranslate nohighlight">\(j\omega\)</span> axis
+of <span class="math notranslate nohighlight">\(s\)</span>-plane and the unit circle of the <span class="math notranslate nohighlight">\(z\)</span>-plane, i.e., between the
+angular frequency <span class="math notranslate nohighlight">\(\omega\)</span> of the analog filter and the normalized
+radian frequency <span class="math notranslate nohighlight">\(\hat\omega\)</span> of the discrete-time filter, induced
+by the bilinear transform <a class="reference internal" href="#equation-e-bilinear">(6.21)</a> is one-to-one. As a
+result, <strong>the bilinear transform  <a class="reference internal" href="#equation-e-bilinear">(6.21)</a> can be employed to
+turn lowpass, highpass, bandpass, and bandstop analog filter
+prototypes to their respective discrete-time counterparts</strong>.</p>
 </li>
 </ul>
 </section>
