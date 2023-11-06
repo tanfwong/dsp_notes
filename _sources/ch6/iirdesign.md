@@ -542,5 +542,5 @@
   G(z^{-1})$. Since the unti circle is mapped onto itself,
   $|G(z^{-1})| = 1$. That means, we can think of $G(z^{-1})$ as the
   transfer function of an allpass filter of the general form
-  {eq}`e:allpass_gen`.
+  {eq}`e:allpass_gen` with $b_0=\pm 1$.
   
