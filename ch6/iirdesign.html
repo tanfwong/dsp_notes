@@ -716,7 +716,7 @@ in <a class="reference internal" href="firdesign.html#sec-firdesign"><span class
 a lowpass IIR filter with the specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01,
 0.001)\)</span> based on a analog type-I Chebyshev filter prototype. Using the
 impulse invariance method with <span class="math notranslate nohighlight">\(f_s=1\)</span>, the required specifications
-of the analog Butterworth filter prototype are <span class="math notranslate nohighlight">\(\omega_p=0.3\pi\)</span>,
+of the analog type-I Chebyshev filter prototype are <span class="math notranslate nohighlight">\(\omega_p=0.3\pi\)</span>,
 <span class="math notranslate nohighlight">\(\omega_s=0.35\pi\)</span>, <span class="math notranslate nohighlight">\(\delta_1=0.01\)</span>, and <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span>.</p>
 <p>Next, we employ <a class="reference internal" href="#equation-e-chebyshevi">(6.18)</a> to determine the value
 of <span class="math notranslate nohighlight">\(\varepsilon\)</span> and the filter order <span class="math notranslate nohighlight">\(N\)</span> required to meet the
@@ -898,6 +898,56 @@ elliptic (see  <a class="reference internal" href="#equation-e-butterworth">(6.1
 and <a class="reference internal" href="#equation-e-elliptic">(6.20)</a>) are functions of the ratio
 <span class="math notranslate nohighlight">\(\frac{\omega}{\omega_p}\)</span> or <span class="math notranslate nohighlight">\(\frac{\omega_s}{\omega}\)</span>, we may
 set <span class="math notranslate nohighlight">\(f_s = 1\)</span> in the design process above without any loss of generality.</p>
+</div>
+</li>
+<li><p><strong>MATLAB Example 9</strong>:</p>
+<p>Repeat Example 7 above, except using the bilinear transform method
+with <span class="math notranslate nohighlight">\(f_s=1\)</span> to obtain the discrete-time IIR filter from an analog
+type-I Chebyshev filter prototype. First, use <a class="reference internal" href="#equation-e-bilinfreq">(6.22)</a> to
+obtain <span class="math notranslate nohighlight">\(\omega_p\)</span> and <span class="math notranslate nohighlight">\(\omega_s\)</span> from the IIR filter’s specification
+in order to design the analog prototype:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">tan</span><span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">ws</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">tan</span><span class="p">(</span><span class="mf">0.35</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1ord</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="n">ws</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">16</span>
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">1.0191</span>
+
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;s&#39;</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">freqs</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.0001</span><span class="p">:</span><span class="nb">pi</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Then, we can use the MATLAB function <code class="docutils literal notranslate"><span class="pre">bilinear</span></code> to apply the
+bilinear transformation in <a class="reference internal" href="#equation-e-bilinear">(6.21)</a> to get the discrete-time
+IIR filter:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bilinear</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span><span class="w"> </span><span class="n">ac</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>One may more conveniently use the MATLAB function <code class="docutils literal notranslate"><span class="pre">cheby1</span></code> to
+directly perform the steps above:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1ord</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">16</span>
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">0.3000</span>
+
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </li>
 </ul>

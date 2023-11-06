@@ -265,7 +265,7 @@
   a lowpass IIR filter with the specification $(0.3\pi, 0.35\pi, 0.01,
   0.001)$ based on a analog type-I Chebyshev filter prototype. Using the
   impulse invariance method with $f_s=1$, the required specifications
-  of the analog Butterworth filter prototype are $\omega_p=0.3\pi$,
+  of the analog type-I Chebyshev filter prototype are $\omega_p=0.3\pi$,
   $\omega_s=0.35\pi$, $\delta_1=0.01$, and $\delta_2=0.001$.
 
   Next, we employ {eq}`e:chebyshevI` to determine the value
@@ -444,4 +444,54 @@
   and {eq}`e:elliptic`) are functions of the ratio
   $\frac{\omega}{\omega_p}$ or $\frac{\omega_s}{\omega}$, we may
   set $f_s = 1$ in the design process above without any loss of generality. 
+  ```
+* **MATLAB Example 9**:
+
+  Repeat Example 7 above, except using the bilinear transform method
+  with $f_s=1$ to obtain the discrete-time IIR filter from an analog
+  type-I Chebyshev filter prototype. First, use {eq}`e:bilinfreq` to
+  obtain $\omega_p$ and $\omega_s$ from the IIR filter's specification
+  in order to design the analog prototype:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> wp = 2*tan(0.3*pi/2);
+  >> ws = 2*tan(0.35*pi/2);
+  >> [N, wp] = cheb1ord(wp, ws, Rp, Rs, 's')
+  N =
+
+      16
+
+  wp =
+
+      1.0191
+
+  >> [bc, ac] = cheby1(N, Rp, Rs, wp, 's');
+  >> freqs(bc, ac, [0:0.0001:pi]);
+  ```
+  Then, we can use the MATLAB function `bilinear` to apply the
+  bilinear transformation in {eq}`e:bilinear` to get the discrete-time
+  IIR filter:
+  ```matlab
+  >> [b, a] = bilinear(bc, ac, 1);
+  >> fvtool(b, a);
+  ```
+
+  ```{tip}
+  One may more conveniently use the MATLAB function `cheby1` to
+  directly perform the steps above:
+  ~~~matlab
+  >> [N, wp] = cheb1ord(0.3, 0.35, Rp, Rs)
+  
+  N =
+
+      16
+
+  wp =
+  
+      0.3000
+
+  >> [b, a] = cheby1(N, Rp, wp);
+  >> fvtool(b, a);
+  ~~~
   ```
