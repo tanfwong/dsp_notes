@@ -528,3 +528,19 @@
    prototype using the table in {numref}`sec:atrans`, and finally
    apply the bilinear transformation to obtain the desired
    discrete-time highpass IIR filter.
+
+## Frequency Transformation of IIR filters
+* In {numref}`sec:freqtrans`, we discuss how to transform a lowpass
+  FIR filter to a highpass one by frequency shifting. The same
+  frequency-shifting transformation clearly applies to IIR filters
+  also. As a matter of fact, a more general class of transformations
+  that map the unit circle (on the $z$-plane) onto itself can be
+  applied to convert a lowpass IIR filter to another IIR filter fo
+  other types. 
+
+* Write the mapping discussed above as $z^{-1} \mapsto
+  G(z^{-1})$. Since the unti circle is mapped onto itself,
+  $|G(z^{-1})| = 1$. That means, we can think of $G(z^{-1})$ as the
+  transfer function of an allpass filter of the general form
+  {eq}`e:allpass_gen`.
+  

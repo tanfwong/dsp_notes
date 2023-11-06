@@ -406,6 +406,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-transform-method">6.7.3. Bilinear Transform Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-transformation-of-iir-filters">6.7.4. Frequency Transformation of IIR filters</a></li>
 </ul>
             </nav>
         </div>
@@ -982,6 +983,23 @@ discrete-time highpass IIR filter.</p>
 </li>
 </ul>
 </section>
+<section id="frequency-transformation-of-iir-filters">
+<h2><span class="section-number">6.7.4. </span>Frequency Transformation of IIR filters<a class="headerlink" href="#frequency-transformation-of-iir-filters" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>In <a class="reference internal" href="linphase.html#sec-freqtrans"><span class="std std-numref">Section 6.5.4</span></a>, we discuss how to transform a lowpass
+FIR filter to a highpass one by frequency shifting. The same
+frequency-shifting transformation clearly applies to IIR filters
+also. As a matter of fact, a more general class of transformations
+that map the unit circle (on the <span class="math notranslate nohighlight">\(z\)</span>-plane) onto itself can be
+applied to convert a lowpass IIR filter to another IIR filter fo
+other types.</p></li>
+<li><p>Write the mapping discussed above as <span class="math notranslate nohighlight">\(z^{-1} \mapsto
+G(z^{-1})\)</span>. Since the unti circle is mapped onto itself,
+<span class="math notranslate nohighlight">\(|G(z^{-1})| = 1\)</span>. That means, we can think of <span class="math notranslate nohighlight">\(G(z^{-1})\)</span> as the
+transfer function of an allpass filter of the general form
+<a class="reference internal" href="allpass.html#equation-e-allpass-gen">(6.5)</a>.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1061,6 +1079,7 @@ discrete-time highpass IIR filter.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-invariance-method">6.7.2. Impulse Invariance Method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilinear-transform-method">6.7.3. Bilinear Transform Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-transformation-of-iir-filters">6.7.4. Frequency Transformation of IIR filters</a></li>
 </ul>
   </nav></div>
 
