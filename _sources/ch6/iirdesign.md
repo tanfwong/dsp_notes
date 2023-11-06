@@ -364,7 +364,7 @@
   than that of the IIR filter obtained from the type-I Chebyshev prototype.
 
 
-## Bilinear Transform Design
+## Bilinear Transform Method
 * Obtain the transfer function $H(z)$ of the discrete-time IIR filter
   directly from the transfer function $H(s)$ of an anlog prototype
   filter by the bilinear transformation:
