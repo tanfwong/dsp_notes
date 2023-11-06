@@ -151,6 +151,7 @@
 * The elliptic filter has a lower order than the Butterworth and
   Chebyshev filters for the same specification.
 
+(sec:atrans)=
 ### Analog Filter Design
 * To design an analog lowpass filter with specification $(\omega_p,
   \omega_s, \delta_1, \delta_2)$:
@@ -495,3 +496,35 @@
   >> fvtool(b, a);
   ~~~
   ```
+
+* **MATLAB Example 10**:
+  
+  Design a discrete-time highpass IIR filter with passband $[0.7\pi,
+  \pi]$ and ripple tolerance $\delta_1 = 0.01$, and stopband
+  $[0,0.65\pi]$ and ripple tolerance $\delta_2=0.001$ as in Example 5
+  in {numref}`sec:firdesign`. Following Example 9, we use the type-I
+  Chebyshev filter as our prototype analog filter to perform the design.
+
+  The following MATLAB commands:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = cheb1ord(0.7, 0.65, Rp, Rs)
+
+  N =
+
+      16
+
+  wp =
+
+      0.7000
+  
+  >> [b, a] = cheby1(N, Rp, wp, 'high');
+  >> fvtool(b, a);
+  ```
+   design an analog lowpass type-I Chebyshev filter with $\omega_p =
+   1$ radian per second satisfying the $\delta_1$ and $\delta_2$
+   specifications, transform the lowpass prototype to a highpass
+   prototype using the table in {numref}`sec:atrans`, and finally
+   apply the bilinear transformation to obtain the desired
+   discrete-time highpass IIR filter.
