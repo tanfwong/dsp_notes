@@ -542,5 +542,70 @@
   G(z^{-1})$. Since the unti circle is mapped onto itself,
   $|G(z^{-1})| = 1$. That means, we can think of $G(z^{-1})$ as the
   transfer function of an allpass filter of the general form
-  {eq}`e:allpass_gen` with $b_0=\pm 1$.
+  {eq}`e:allpass_gen` with $b_0=\pm 1$, i.e., 
+  \begin{equation*}
+  G(z^{-1}) = \pm \prod_{k=1}^N \frac{-a_k^* + z^{-1}}{1 - a_k z^{-1}}.
+  \end{equation*}
+  For example, the frequency shifting by $\pi$ considered in
+  {numref}`sec:freqtrans` corresponds to the mapping $z^{-1} \mapsto
+  G(z^{-1}) = - z^{-1}$.
+
+* Other useful mappings of this form are summarized in the table
+  below. The listed mappings can be employed to convert a lowpass IIR
+  filter with passband edge frequency $\hat\omega_p$ to another lowpass 
+  filter, a highpass filter, a bandpass filter, and a bandstop filter, respectively.
+  ```{list-table}
+  :header-rows: 1
+
+  * - New filter type
+    - New band edge(s)
+    - Transformation
+    - Parameter(s)
+
+  * - Lowpass
+    - $\hat\omega'_p$
+    - $\displaystyle z^{-1} \mapsto \frac{-a + z^{-1}}{1-az^{-1}}$
+    - $\displaystyle a 
+      = \frac{\sin\frac{\hat\omega_p - \hat\omega'_p}{2}}{
+      \sin\frac{\hat\omega_p + \hat\omega'_p}{2}}$
+
+  * - Highpass
+    - $\hat\omega'_p$
+    - $\displaystyle z^{-1} \mapsto -\frac{-a + z^{-1}}{1-az^{-1}}$
+    - $\displaystyle a 
+      = \frac{\cos\frac{\hat\omega_p + \hat\omega'_p}{2}}{
+      \cos\frac{\hat\omega_p - \hat\omega'_p}{2}}$
+
+  * - Bandpass
+    - $\hat\omega_l, \hat\omega_u$
+    - $\displaystyle z^{-1} \mapsto
+      -\frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}$
+    - $\begin{align*} 
+      a_1 &= \frac{2\alpha K}{K+1}
+      \\
+      a_2 &= \frac{K-1}{K+1}
+      \\
+      \alpha &= \frac{\cos\frac{\hat\omega_u + \hat\omega_l}{2}}{
+      \cos\frac{\hat\omega_u - \hat\omega_l}{2}}
+      \\
+      K &= \cot\frac{\hat\omega_u - \hat\omega_l}{2} \tan
+      \frac{\hat\omega_p}{2}
+      \end{align*}$
   
+  * - Bandstop
+    - $\hat\omega_l, \hat\omega_u$
+    - $\displaystyle z^{-1} \mapsto
+      \frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}$
+    - $\begin{align*} 
+      a_1 &= \frac{2\alpha K}{K+1}
+      \\
+      a_2 &= \frac{1-K}{1+K}
+      \\
+      \alpha &= \frac{\cos\frac{\hat\omega_u + \hat\omega_l}{2}}{
+      \cos\frac{\hat\omega_u - \hat\omega_l}{2}}
+      \\
+      K &= \tan\frac{\hat\omega_u - \hat\omega_l}{2} \tan
+      \frac{\hat\omega_p}{2}
+      \end{align*}$
+  ```
+

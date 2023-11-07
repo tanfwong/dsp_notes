@@ -985,7 +985,7 @@ discrete-time highpass IIR filter.</p>
 </section>
 <section id="frequency-transformation-of-iir-filters">
 <h2><span class="section-number">6.7.4. </span>Frequency Transformation of IIR filters<a class="headerlink" href="#frequency-transformation-of-iir-filters" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>In <a class="reference internal" href="linphase.html#sec-freqtrans"><span class="std std-numref">Section 6.5.4</span></a>, we discuss how to transform a lowpass
 FIR filter to a highpass one by frequency shifting. The same
 frequency-shifting transformation clearly applies to IIR filters
@@ -997,7 +997,83 @@ other types.</p></li>
 G(z^{-1})\)</span>. Since the unti circle is mapped onto itself,
 <span class="math notranslate nohighlight">\(|G(z^{-1})| = 1\)</span>. That means, we can think of <span class="math notranslate nohighlight">\(G(z^{-1})\)</span> as the
 transfer function of an allpass filter of the general form
-<a class="reference internal" href="allpass.html#equation-e-allpass-gen">(6.5)</a> with <span class="math notranslate nohighlight">\(b_0=\pm 1\)</span>.</p></li>
+<a class="reference internal" href="allpass.html#equation-e-allpass-gen">(6.5)</a> with <span class="math notranslate nohighlight">\(b_0=\pm 1\)</span>, i.e.,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  G(z^{-1}) = \pm \prod_{k=1}^N \frac{-a_k^* + z^{-1}}{1 - a_k z^{-1}}.
+  \end{equation*}\]</div>
+<p>For example, the frequency shifting by <span class="math notranslate nohighlight">\(\pi\)</span> considered in
+<a class="reference internal" href="linphase.html#sec-freqtrans"><span class="std std-numref">Section 6.5.4</span></a> corresponds to the mapping <span class="math notranslate nohighlight">\(z^{-1} \mapsto
+G(z^{-1}) = - z^{-1}\)</span>.</p>
+</li>
+<li><p>Other useful mappings of this form are summarized in the table
+below. The listed mappings can be employed to convert a lowpass IIR
+filter with passband edge frequency <span class="math notranslate nohighlight">\(\hat\omega_p\)</span> to another lowpass
+filter, a highpass filter, a bandpass filter, and a bandstop filter, respectively.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>New filter type</p></th>
+<th class="head"><p>New band edge(s)</p></th>
+<th class="head"><p>Transformation</p></th>
+<th class="head"><p>Parameter(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lowpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat\omega'_p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle z^{-1} \mapsto \frac{-a + z^{-1}}{1-az^{-1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle a 
+= \frac{\sin\frac{\hat\omega_p - \hat\omega'_p}{2}}{
+\sin\frac{\hat\omega_p + \hat\omega'_p}{2}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Highpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat\omega'_p\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle z^{-1} \mapsto -\frac{-a + z^{-1}}{1-az^{-1}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle a 
+= \frac{\cos\frac{\hat\omega_p + \hat\omega'_p}{2}}{
+\cos\frac{\hat\omega_p - \hat\omega'_p}{2}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Bandpass</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat\omega_l, \hat\omega_u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle z^{-1} \mapsto
+-\frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{align*} 
+a_1 &amp;= \frac{2\alpha K}{K+1}
+\\
+a_2 &amp;= \frac{K-1}{K+1}
+\\
+\alpha &amp;= \frac{\cos\frac{\hat\omega_u + \hat\omega_l}{2}}{
+\cos\frac{\hat\omega_u - \hat\omega_l}{2}}
+\\
+K &amp;= \cot\frac{\hat\omega_u - \hat\omega_l}{2} \tan
+\frac{\hat\omega_p}{2}
+\end{align*}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Bandstop</p></td>
+<td><p><span class="math notranslate nohighlight">\(\hat\omega_l, \hat\omega_u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\displaystyle z^{-1} \mapsto
+\frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\begin{align*} 
+a_1 &amp;= \frac{2\alpha K}{K+1}
+\\
+a_2 &amp;= \frac{1-K}{1+K}
+\\
+\alpha &amp;= \frac{\cos\frac{\hat\omega_u + \hat\omega_l}{2}}{
+\cos\frac{\hat\omega_u - \hat\omega_l}{2}}
+\\
+K &amp;= \tan\frac{\hat\omega_u - \hat\omega_l}{2} \tan
+\frac{\hat\omega_p}{2}
+\end{align*}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 </section>
 </section>
