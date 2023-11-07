@@ -497,7 +497,7 @@
   ~~~
   ```
 
-* **MATLAB Example 10**:
+* **MATLAB Example 10**: 
   
   Design a discrete-time highpass IIR filter with passband $[0.7\pi,
   \pi]$ and ripple tolerance $\delta_1 = 0.01$, and stopband
@@ -528,6 +528,33 @@
    prototype using the table in {numref}`sec:atrans`, and finally
    apply the bilinear transformation to obtain the desired
    discrete-time highpass IIR filter.
+
+* **MATLAB Example 11**:
+
+  Design a discrete-time bandpass IIR filter with passband $[0.5\pi,
+  0.7\pi]$ and ripple tolerance $\delta_1 = 0.01$, and stopband
+  $[0,0.45\pi] \cup [0.75\pi, \pi]$ and ripple tolerance $\delta_2=0.001$. 
+  Again, we use the type-I Chebyshev filter as our prototype analog filter to 
+  perform the design as in the following MATLAB commands:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = cheb1ord([0.5 0.7], [0.45 0.75], Rp, Rs)
+
+  N =
+
+      10
+
+  wp =
+
+      0.5000    0.7000
+  
+  >> [b, a] = cheby1(N, Rp, wp);
+  >> fvtool(b, a);
+  ```
+   to obtain the desired discrete-time bandpass IIR filter. Note that
+   the order of the filter obtained is $N=20$.
+
 
 ## Frequency Transformation of IIR filters
 * In {numref}`sec:freqtrans`, we discuss how to transform a lowpass
@@ -608,4 +635,31 @@
       \frac{\hat\omega_p}{2}
       \end{align*}$
   ```
+  The MATLAB functions `iirlp2??` implement the frequency transformations
+  in the table above.
 
+* **MATLAB Example 12**:
+  
+  We apply the bandpass transformation to obtain a bandpass IIR filter
+  with passband $[0.5\pi, 0.7\pi]$ from the lowpass IIR filter in Example 9 above:
+  ```matlab
+  >> Rp = -20*log10(1-0.01);
+  >> Rs = -20*log10(0.001);
+  >> [N, wp] = cheb1ord(0.3, 0.35, Rp, Rs);
+  >> [b, a] = cheby1(N, Rp, wp);
+  >> [b11, a11] = iirlp2bp(b, a, 0.3, [0.5 0.7]);
+  >> fvtool(b11, a11);
+  ```
+  ```{caution}
+  Note that since the frequency transformation maps the unit circle
+  onto itself, the specifications of $\delta_1$ and $\delta_2$ are
+  perserved. However, as the transformation may include frequency
+  shifting and scaling, the width of the transition bands may not be
+  the same as that of the original filter. In addition, the order of
+  the transformed filter may also be larger than that of the original
+  filter. 
+  ```
+  In this example, the transformed filter has order $N=32$, which is
+  higher than that of the filter obtained in Example 11. We can also
+  check that the width of transition bands is smaller than that of the
+  filter in Example 11.

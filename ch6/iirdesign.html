@@ -981,6 +981,31 @@ prototype using the table in <a class="reference internal" href="#sec-atrans"><s
 apply the bilinear transformation to obtain the desired
 discrete-time highpass IIR filter.</p>
 </li>
+<li><p><strong>MATLAB Example 11</strong>:</p>
+<p>Design a discrete-time bandpass IIR filter with passband <span class="math notranslate nohighlight">\([0.5\pi,
+0.7\pi]\)</span> and ripple tolerance <span class="math notranslate nohighlight">\(\delta_1 = 0.01\)</span>, and stopband
+<span class="math notranslate nohighlight">\([0,0.45\pi] \cup [0.75\pi, \pi]\)</span> and ripple tolerance <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span>.
+Again, we use the type-I Chebyshev filter as our prototype analog filter to
+perform the design as in the following MATLAB commands:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1ord</span><span class="p">([</span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.7</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.45</span><span class="w"> </span><span class="mf">0.75</span><span class="p">],</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">)</span>
+
+<span class="n">N</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mi">10</span>
+
+<span class="n">wp</span><span class="w"> </span><span class="p">=</span>
+
+<span class="w">    </span><span class="mf">0.5000</span><span class="w">    </span><span class="mf">0.7000</span>
+
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>to obtain the desired discrete-time bandpass IIR filter. Note that
+the order of the filter obtained is <span class="math notranslate nohighlight">\(N=20\)</span>.</p>
+</li>
 </ul>
 </section>
 <section id="frequency-transformation-of-iir-filters">
@@ -1073,6 +1098,34 @@ K &amp;= \tan\frac{\hat\omega_u - \hat\omega_l}{2} \tan
 </tr>
 </tbody>
 </table>
+<p>The MATLAB functions <code class="docutils literal notranslate"><span class="pre">iirlp2??</span></code> implement the frequency transformations
+in the table above.</p>
+</li>
+<li><p><strong>MATLAB Example 12</strong>:</p>
+<p>We apply the bandpass transformation to obtain a bandpass IIR filter
+with passband <span class="math notranslate nohighlight">\([0.5\pi, 0.7\pi]\)</span> from the lowpass IIR filter in Example 9 above:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Rs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">20</span><span class="o">*</span><span class="nb">log10</span><span class="p">(</span><span class="mf">0.001</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheb1ord</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">Rs</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cheby1</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Rp</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">b11</span><span class="p">,</span><span class="w"> </span><span class="n">a11</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">iirlp2bp</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.7</span><span class="p">]);</span>
+<span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fvtool</span><span class="p">(</span><span class="n">b11</span><span class="p">,</span><span class="w"> </span><span class="n">a11</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Note that since the frequency transformation maps the unit circle
+onto itself, the specifications of <span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> are
+perserved. However, as the transformation may include frequency
+shifting and scaling, the width of the transition bands may not be
+the same as that of the original filter. In addition, the order of
+the transformed filter may also be larger than that of the original
+filter.</p>
+</div>
+<p>In this example, the transformed filter has order <span class="math notranslate nohighlight">\(N=32\)</span>, which is
+higher than that of the filter obtained in Example 11. We can also
+check that the width of transition bands is smaller than that of the
+filter in Example 11.</p>
 </li>
 </ul>
 </section>
