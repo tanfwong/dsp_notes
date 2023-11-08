@@ -158,6 +158,7 @@ u[n] ~~
 ~~ \pi \delta(e^{j\hat{\omega}}) + \frac{1}{1-e^{-j\hat{\omega}}}
 \end{equation*}
 
+(sec:imtr)=
 ## Impulse train $\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]$
 Note that $\delta_N[n]$ is periodic with period $N$. Let $\Delta_{N,
 w_{\lambda}}(e^{j\hat{\omega}})$ be the DTFT of $w_{\lambda}[n] \delta_N[n]$. 

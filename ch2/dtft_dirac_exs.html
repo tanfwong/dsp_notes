@@ -202,7 +202,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch6/iirdesign.html">6.7. IIR Filter Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../refs.html">7. References</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch7/multirate.html">7. Multi-rate Processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch7/mfilter.html">7.1. Multi-rate Filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
 </ul>
 
     </div>
@@ -576,7 +580,7 @@ u[n] ~~
 \end{equation*}\]</div>
 </section>
 <section id="impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn">
-<h2><span class="section-number">2.4.3. </span>Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span><a class="headerlink" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn" title="Permalink to this headline">#</a></h2>
+<span id="sec-imtr"></span><h2><span class="section-number">2.4.3. </span>Impulse train <span class="math notranslate nohighlight">\(\delta_N[n] = \sum_{k=-\infty}^{\infty} \delta[n-kN]\)</span><a class="headerlink" href="#impulse-train-delta-n-n-sum-k-infty-infty-delta-n-kn" title="Permalink to this headline">#</a></h2>
 <p>Note that <span class="math notranslate nohighlight">\(\delta_N[n]\)</span> is periodic with period <span class="math notranslate nohighlight">\(N\)</span>. Let <span class="math notranslate nohighlight">\(\Delta_{N,
 w_{\lambda}}(e^{j\hat{\omega}})\)</span> be the DTFT of <span class="math notranslate nohighlight">\(w_{\lambda}[n] \delta_N[n]\)</span>.
 Then</p>
