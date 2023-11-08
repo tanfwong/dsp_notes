@@ -29,6 +29,38 @@
 * Recall, from {numref}`sec:imtr` and {numref}`sec:dfs`, the impulse
   train $\displaystyle \delta_D[n] = \sum_{k=-\infty}^{\infty}
   \delta[n-kD]$ of period $D$ and its DFS expansion $\displaystyle
-  \delta_D[n] = \sum_{k=0}^{D-1} e^{j\frac{2\pi k n}{D}}$. Let
-  $\tilde{x}[n] = x[n] \delta_D[n]$. Then, it is trivial to check
-  that $x_D[n] = \tilde{x}[Dn]$.  
+  \delta_D[n] = \frac{1}{D} \sum_{k=0}^{D-1} e^{j\frac{2\pi k n}{D}}$. Let
+  $\tilde{x}[n] = x[n] \delta_D[n] = \begin{cases}
+  x[n] & \text{if } n \text{ is divisible by } D
+  \\
+  0 & \text{otherwise.}
+  \end{cases}$ 
+  Then, it is trivial to check that $x_D[n] = \tilde{x}[Dn]$.
+
+* Consider the $z$-transform $X_D(z)$ of the downsampled signal $x_D[n]$:
+  \begin{align*}
+  X_D(z)
+  &= 
+  \sum_{n=-\infty}^{\infty} x_D[n] z^{-n}
+  \\
+  &= 
+  \sum_{n=-\infty}^{\infty} \tilde{x}[Dn] z^{-n}
+  \\
+  &= 
+  \sum_{m=-\infty}^{\infty} \tilde{x}[m] z^{-\frac{m}{D}}
+  \\
+  &= 
+  \sum_{m=-\infty}^{\infty} x[m] \delta_D[m] z^{-\frac{m}{D}}
+  \\
+  &=
+  \sum_{m=-\infty}^{\infty} x[m]  \left( \frac{1}{D} 
+  \sum_{k=0}^{D-1} e^{j\frac{2\pi k m}{D}} \right) z^{-\frac{m}{D}}
+  \\
+  &=
+  \frac{1}{D} \sum_{k=0}^{D-1} \sum_{m=-\infty}^{\infty} x[m] \left(
+  e^{-j\frac{2\pi k}{D}} z^{\frac{1}{D}} \right)^{-m}
+  \\
+  &=
+  \frac{1}{D} \sum_{k=0}^{D-1} X\left(  e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right).
+  \end{align*}
