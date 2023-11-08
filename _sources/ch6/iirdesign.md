@@ -161,8 +161,8 @@
      or {eq}`e:elliptic` to determine the value $\varepsilon$ from
      $\delta_1$. 
   3. Find the minimum filter order $N$ such that the specifications of
-     $\delta_1$ and $\delta_2$ are satisfied at $\omega_p$ and
-     $\omega_s$, respectively.
+     $\delta_1$ and $\delta_2$ are satisfied in the passband and
+     stopband, respectively.
 
 * After obtaining the transfer function $H(s)$ of a lowpass prototype
   design with passband edge frequency $\omega_p$, one may use the
@@ -231,7 +231,7 @@
   design obtained by sampling the impulse response of the analog
   filter prototype may suffer from aliasing, typically causing larger
   stopband ripples. To overcome this problem, we may need to use a
-  tigter values for $\delta_1$ and $\delta_2$ so that the achieved
+  tighter values for $\delta_1$ and $\delta_2$ so that the achieved
   ripples in the passband and stopband are within the original specification. 
   ```
 * Note that the analog filter prototypes described in
@@ -624,7 +624,7 @@
     - $\displaystyle z^{-1} \mapsto
       \frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}$
     - $\begin{align*} 
-      a_1 &= \frac{2\alpha K}{K+1}
+      a_1 &= \frac{2\alpha}{K+1}
       \\
       a_2 &= \frac{1-K}{1+K}
       \\

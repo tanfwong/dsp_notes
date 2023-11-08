@@ -592,8 +592,8 @@ type-II Chebyshev, or elliptic).</p></li>
 or <a class="reference internal" href="#equation-e-elliptic">(6.20)</a> to determine the value <span class="math notranslate nohighlight">\(\varepsilon\)</span> from
 <span class="math notranslate nohighlight">\(\delta_1\)</span>.</p></li>
 <li><p>Find the minimum filter order <span class="math notranslate nohighlight">\(N\)</span> such that the specifications of
-<span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> are satisfied at <span class="math notranslate nohighlight">\(\omega_p\)</span> and
-<span class="math notranslate nohighlight">\(\omega_s\)</span>, respectively.</p></li>
+<span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> are satisfied in the passband and
+stopband, respectively.</p></li>
 </ol>
 </li>
 <li><p>After obtaining the transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> of a lowpass prototype
@@ -678,7 +678,7 @@ elliptic filters are strictly bandlimited, the impulse invariance
 design obtained by sampling the impulse response of the analog
 filter prototype may suffer from aliasing, typically causing larger
 stopband ripples. To overcome this problem, we may need to use a
-tigter values for <span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> so that the achieved
+tighter values for <span class="math notranslate nohighlight">\(\delta_1\)</span> and <span class="math notranslate nohighlight">\(\delta_2\)</span> so that the achieved
 ripples in the passband and stopband are within the original specification.</p>
 </div>
 </li>
@@ -1085,7 +1085,7 @@ K &amp;= \cot\frac{\hat\omega_u - \hat\omega_l}{2} \tan
 <td><p><span class="math notranslate nohighlight">\(\displaystyle z^{-1} \mapsto
 \frac{a_2-a_1z^{-1}+z^{-2}}{1-a_1z^{-1}+a_2z^{-2}}\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\begin{align*} 
-a_1 &amp;= \frac{2\alpha K}{K+1}
+a_1 &amp;= \frac{2\alpha}{K+1}
 \\
 a_2 &amp;= \frac{1-K}{1+K}
 \\
