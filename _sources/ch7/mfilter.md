@@ -110,12 +110,12 @@
   sampling rate $\frac{f_s}{D}$.
 
 * Similar to sampling a continuous-time signal, downsampling a
-  discrete-time signal may also suffer from aliasing. Again, we need
+  discrete-time signal may also suffer from *aliasing*. Again, we need
   to consider two cases, depending on the DTFT $X(e^{j\hat\omega})$,
   when examining the effect of the folded spectrum resulted from
   downsampling described by {eq}`e:downspectrum`:
   1. **Oversampling $X(e^{j\hat\omega}) = 0$ for $\frac{\pi}{D}
-  \leq |\hat\omega| \leq \pi$**:
+     \leq |\hat\omega| \leq \pi$**:
 
      The folded spectrum $X_D(e^{j\hat\omega}D) = \frac{1}{D}
      \sum_{k=0}^{D-1} X\left( e^{j (\hat\omega - \frac{2\pi k}{D})}
@@ -138,6 +138,25 @@
      Performing the recovery of $x[n]$ from $x_D[n]$ in the time
      domain is the process of *interpolation*, which will be discussed
      in {numref}`sec:interp` next.
+
+  2. **Undersampling $X(e^{j\hat\omega}) \neq 0$ for $\frac{\pi}{D}
+     \leq |\hat\omega| \leq \pi$**:
+
+     The folded spectrum $X_D(e^{j\hat\omega}D)$ for this case is 
+     illustrated in the figure below:
+     ```{image} ../figs/Dunder.jpg 
+     :alt: Undersampling illustration when downsampling 
+     :width: 800px 
+     :align: center 
+     ``` 
+     From the figure, we see that $X_D(e^{j\hat\omega}) \neq
+     \frac{1}{D} X(e^{j\frac{\hat\omega}{D}})$. That is, we suffer
+     from aliasing. We may want to apply the idea anti-aliasing filter
+     with frequency response $\displaystyle  H(e^{j\hat\omega}) = \begin{cases}
+     1 & \text{for } |\hat\omega| < \frac{\pi}{D} \\
+     0  & \text{for } \frac{\pi}{D} \leq |\hat\omega| \leq \pi
+     \end{cases}$ before downsampling in this case to control the
+     detrimental effects of aliasing.
 
 (sec:interp)=
 ## Interpolation by factor $U$
