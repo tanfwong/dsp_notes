@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.4. Minimum-phase Filter &#8212; Foundations of DSP Notes</title>
+    <title>7.3. Rate Conversion &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch6/minphase';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/rateconv';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.5. Linear-phase Filter" href="linphase.html" />
-    <link rel="prev" title="6.3. Allpass Filter" href="allpass.html" />
+    <link rel="next" title="8. References" href="../refs.html" />
+    <link rel="prev" title="7.2. Interpolation" href="interp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -192,20 +192,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch5/fil_fft.html">5.4. Linear Filtering with FFT</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="fildesign.html">6. Filter Design</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="freqresp.html">6.1. Frequency Response of LTI System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pz.html">6.2. Pole-Zero Placement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allpass.html">6.3. Allpass Filter</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.4. Minimum-phase Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linphase.html">6.5. Linear-phase Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firdesign.html">6.6. FIR Filter Design</a></li>
-<li class="toctree-l2"><a class="reference internal" href="iirdesign.html">6.7. IIR Filter Design</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch6/fildesign.html">6. Filter Design</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/freqresp.html">6.1. Frequency Response of LTI System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/pz.html">6.2. Pole-Zero Placement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/allpass.html">6.3. Allpass Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/minphase.html">6.4. Minimum-phase Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/linphase.html">6.5. Linear-phase Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/firdesign.html">6.6. FIR Filter Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch6/iirdesign.html">6.7. IIR Filter Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch7/multirate.html">7. Multi-rate Processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/down.html">7.1. Downsampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/interp.html">7.2. Interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/rateconv.html">7.3. Rate Conversion</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="down.html">7.1. Downsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Rate Conversion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -280,7 +280,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch6/minphase.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch7/rateconv.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch6/minphase.md" target="_blank"
+      <li><a href="../_sources/ch7/rateconv.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,9 +379,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -392,21 +390,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Minimum-phase Filter</h1>
+    <h1>Rate Conversion</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-phase-fir-filter">6.4.3. Maximum-phase FIR filter</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -416,109 +404,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="minimum-phase-filter">
-<h1><span class="section-number">6.4. </span>Minimum-phase Filter<a class="headerlink" href="#minimum-phase-filter" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>A <strong>minimum-phase filter</strong> is a causal, rational filter with
-transfer function <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span> whose poles and zeros are strictly
-inside the unit circle.</p></li>
-<li><p>It is clear that a minimum-phase filter  <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span> and its
-inverse <span class="math notranslate nohighlight">\(\frac{1}{H_{\min}(z)}\)</span> are both stable.</p></li>
-</ul>
-<section id="minimum-phase-decomposition">
-<h2><span class="section-number">6.4.1. </span>Minimum-phase decomposition<a class="headerlink" href="#minimum-phase-decomposition" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="rate-conversion">
+<h1><span class="section-number">7.3. </span>Rate Conversion<a class="headerlink" href="#rate-conversion" title="Permalink to this headline">#</a></h1>
 <ul>
-<li><p>Let</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-   H(z) 
-  = b_0 \cdot
-  \frac{\prod_{k=1}^M (1-z_k z^{-1})}{\prod_{k=1}^N (1 - p_k z^{-1})}
-  \end{equation*}\]</div>
-<p>be the transfer function of a causal, stable (i.e., <span class="math notranslate nohighlight">\(|p_k| &lt; 1\)</span> for
-all <span class="math notranslate nohighlight">\(k\)</span>), rational filter with no zeros on the unit circle (i.e.,
-<span class="math notranslate nohighlight">\(|z_k| \neq 1\)</span> for all <span class="math notranslate nohighlight">\(k\)</span>). Without loss of generality, let <span class="math notranslate nohighlight">\(1 \leq
-M_0 \leq M\)</span> be such that <span class="math notranslate nohighlight">\(|z_k| &lt; 1\)</span> for <span class="math notranslate nohighlight">\(k=1,2,\ldots, M_0\)</span> and
-<span class="math notranslate nohighlight">\(|z_k| &gt; 1\)</span> for <span class="math notranslate nohighlight">\(k=M_0+1, M_0+2, \ldots, M\)</span>.  Then</p>
-<div class="math notranslate nohighlight" id="equation-e-minphasedecom">
-<span class="eqno">(6.6)<a class="headerlink" href="#equation-e-minphasedecom" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
-H(z) 
-&amp;= \underbrace{b_0
-\frac{\prod_{k=1}^{M_0} (1-z_k z^{-1})}{\prod_{k=1}^N (1 - p_k z^{-1})}
-\cdot \prod_{k=M_0+1}^{M} \left(1- \frac{1}{z^*_k} z^{-1} \right)}_{\text{Minimum-phase}} 
-\cdot
-\underbrace{\frac{\prod_{k=M_0+1}^{M} -z_k \left(-\frac{1}{z_k} +
-z^{-1} \right)}{\prod_{k=M_0+1}^M
-\left(1 - \frac{1}{z_k^*} z^{-1}\right)}}_{\text{Allpass}}
-\\
-&amp;=
-H_{\min} (z) \cdot H_{\text{ap}}(z).
-\end{align}\end{split}\]</div>
-<p>That is, any such filter can be decomposed into a cascade of a
-minimum-phase filter and an allpass filter.</p>
-</li>
-<li><p>Intuitively, the decomposition in <a class="reference internal" href="#equation-e-minphasedecom">(6.6)</a> reflects all
-zeros of <span class="math notranslate nohighlight">\(H(z)\)</span> that are outside of the unit circle to inside in
-order to obtain a minimum-phase filter <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span>.</p></li>
-<li><p>This decomposition implies the following properties:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})| = |H_{\min}(e^{j\hat\omega})|\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\angle H(e^{j\hat\omega}) = \angle H_{\min}(e^{j\hat\omega}) +
-\angle  H_{\text{ap}}(e^{j\hat\omega})\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\displaystyle \tau_g(e^{j\hat\omega}) 
-= -\frac{d \angle H(e^{j\hat\omega})}{d\hat\omega} 
-= -\frac{d \angle 
-H_{\min}(e^{j\hat\omega})}{d\hat\omega} - \frac{d \angle
-H_{\text{ap}}(e^{j\hat\omega})}{d\hat\omega} \geq  - \frac{d  \angle
-H_{\min}(e^{j\hat\omega})}{d\hat\omega}\)</span></p></li>
-</ul>
-<p>The above properties imply that <em>amongst all causal, stable, rational
-filters that have the same magnitude response, the minimum-phase
-filter has the smallest group delay</em>.</p>
+<li><p>Consider interpolating <span class="math notranslate nohighlight">\(x[n]\)</span> by a factor <span class="math notranslate nohighlight">\(U\)</span> and then downsampling
+by a factor <span class="math notranslate nohighlight">\(D\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/rateconv1.jpg"><img alt="interpolate by $U$ and downsample by $D$" class="align-center" src="../_images/rateconv1.jpg" style="width: 800px;" /></a>
+<p>The rate of the output signal <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> if <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>
+times that of the input <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
 </li>
 </ul>
-</section>
-<section id="deconvolution-with-minimum-phase-filter">
-<h2><span class="section-number">6.4.2. </span>Deconvolution with minimum-phase filter<a class="headerlink" href="#deconvolution-with-minimum-phase-filter" title="Permalink to this headline">#</a></h2>
-<ul>
-<li><p>Consider the <em>deconvolution</em> problem in which we try to reverse the
-effects of a rational filter <span class="math notranslate nohighlight">\(H(z)\)</span> on the input signal by
-connecting its output to another rational filter <span class="math notranslate nohighlight">\(H_d{z}\)</span> in cascade:</p>
-<a class="reference internal image-reference" href="../_images/dconv.jpg"><img alt="Deconvolution" class="align-center" src="../_images/dconv.jpg" style="width: 600px;" /></a>
-</li>
-<li><p>By the convolution property of <span class="math notranslate nohighlight">\(z\)</span>-transform, the inverse filter
-that performs deconvolution is <span class="math notranslate nohighlight">\(\displaystyle H_d(z) =
-\frac{1}{H(z)}\)</span>. Clearly, this inverse filter is stable if all zeros
-of <span class="math notranslate nohighlight">\(H(z)\)</span> are strictly inside the unit circle. If <span class="math notranslate nohighlight">\(H(z)\)</span> has a
-filter that is on or outside the unit circle, then <span class="math notranslate nohighlight">\(H_d(z)\)</span> will not
-be stable. In particular, if <span class="math notranslate nohighlight">\(H(z)\)</span> is a minimum-phase filter, then
-the stability of the inverse filter <span class="math notranslate nohighlight">\(H_d(z)\)</span> is guaranteed.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(H(z)\)</span> is not minimum phase, then the inverse filter
-<span class="math notranslate nohighlight">\(\displaystyle \frac{1}{H(z)}\)</span> will be unstable, and hence can not
-be implemented in practice. In such case, a possible tradeoff is to
-employ the minimum-phase decomposition <span class="math notranslate nohighlight">\(H(z) = H_{\min} (z) \cdot
-H_{\text{ap}}(z)\)</span> in <a class="reference internal" href="#equation-e-minphasedecom">(6.6)</a> and select the stable
-inverse <span class="math notranslate nohighlight">\(\displaystyle H_d(z) = \frac{1}{H_{\min}(z)}\)</span> instead. The
-resulting cascade has the transfer function <span class="math notranslate nohighlight">\(H(z)H_d(z) =
-H_{\text{ap}}(z)\)</span>, which is allpass, i.e.,
-<span class="math notranslate nohighlight">\(|H(e^{j\hat\omega})H_d(e^{j\hat\omega})| = 1\)</span>. That is, we may at
-least reverse the magnitude distortion on the input signal caused by
-<span class="math notranslate nohighlight">\(H(z)\)</span>.</p></li>
-</ul>
-</section>
-<section id="maximum-phase-fir-filter">
-<h2><span class="section-number">6.4.3. </span>Maximum-phase FIR filter<a class="headerlink" href="#maximum-phase-fir-filter" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Let <span class="math notranslate nohighlight">\(H_{\min}(z)\)</span> be the transfer function of a minimum-phase,
-causal FIR filter of order <span class="math notranslate nohighlight">\(M\)</span>. Let <span class="math notranslate nohighlight">\(H_{\max}(z) = z^{-M}
-H_{\min}(z^{-1})\)</span>. Then, <span class="math notranslate nohighlight">\(H_{\max}(z)\)</span> is a causal FIR filter whose
-zeros are located strictly outside the unit circle. We call
-<span class="math notranslate nohighlight">\(H_{\max}(z)\)</span> a <strong>maximum-phase filter</strong>.</p></li>
-<li><p>Using a decomposition similar to <a class="reference internal" href="#equation-e-minphasedecom">(6.6)</a>, one can show
-that the maximum-phase filter has the largest group delay among all
-causal FIR filters that have the same magnitude response.</p></li>
-</ul>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -534,7 +429,7 @@ causal FIR filters that have the same magnitude response.</p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch6"
+            path: "./ch7"
         },
         predefinedOutput: true
     }
@@ -553,20 +448,20 @@ causal FIR filters that have the same magnitude response.</p></li>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="allpass.html"
+       href="interp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.3. </span>Allpass Filter</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Interpolation</p>
       </div>
     </a>
     <a class="right-next"
-       href="linphase.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.5. </span>Linear-phase Filter</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -579,22 +474,6 @@ causal FIR filters that have the same magnitude response.</p></li>
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-phase-decomposition">6.4.1. Minimum-phase decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deconvolution-with-minimum-phase-filter">6.4.2. Deconvolution with minimum-phase filter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-phase-fir-filter">6.4.3. Maximum-phase FIR filter</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
