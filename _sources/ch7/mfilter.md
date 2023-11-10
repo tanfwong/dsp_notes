@@ -161,3 +161,41 @@
 (sec:interp)=
 ## Interpolation by factor $U$
  
+* Given $x[n] \stackrel{z}{\longleftrightarrow} X(z)$. Consider the
+  *upsampled* signal $x^U[n] = \begin{cases}
+  x[ \frac{n}{U}] & \text{if } n \text{ is divisible by } U
+  \\
+  0 & \text{otherwise} 
+  \end{cases}$
+  where $U$ is a positive integer. That is, $x^U[n]$ is obtained from
+  $x[n]$ by inserting $U-1$ zero-valued samples between each pair of
+  adjacent samples in $x[n]$. The rate of $x^U[n]$ is $U$ times that
+  of $x[n]$, i.e., every sample of $x[n]$ produces $U$ samples of
+  $x^U[n]$.
+
+* The $z$-transform of $x^U[n]$ is
+  \begin{align*}
+  X^U(z) 
+  &=
+  \sum_{n=-\infty}^{\infty} x^U[n] z^{-n}
+  \\
+  &=
+  \sum_{m=-\infty}^{\infty} x[m] z^{-mU}
+  \\
+  &=
+  X(z^U).
+  \end{align*}
+  ```{tip}
+  If $x[n]$ is causal and the ROC of $X(z)$ is $\{|z| > r\}$, then the
+  ROC of $X_D(z)$ is $X(z)$ is $\{|z| > r^{\frac{1}{U}}\}$.
+  ```
+
+* Suppose the ROC of $X(z)$ contains the unit circle. Then the ROC of
+  $X^U(z)$ also does, and hence the DTFT of the upsampled signal
+  $x^U[n]$ is given by
+  ```{math}
+  :label: e:upspectrum
+  \begin{equation}
+  X^U(e^{j\hat\omega}) = X(e^{j\hat\omega U})
+  \end{equation}
+  ```

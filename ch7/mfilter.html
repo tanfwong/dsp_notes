@@ -567,6 +567,46 @@ detrimental effects of aliasing.</p>
 </section>
 <section id="interpolation-by-factor-u">
 <span id="sec-interp"></span><h2><span class="section-number">7.1.2. </span>Interpolation by factor <span class="math notranslate nohighlight">\(U\)</span><a class="headerlink" href="#interpolation-by-factor-u" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Given <span class="math notranslate nohighlight">\(x[n] \stackrel{z}{\longleftrightarrow} X(z)\)</span>. Consider the
+<em>upsampled</em> signal <span class="math notranslate nohighlight">\(x^U[n] = \begin{cases}
+x[ \frac{n}{U}] &amp; \text{if } n \text{ is divisible by } U
+\\
+0 &amp; \text{otherwise} 
+\end{cases}\)</span>
+where <span class="math notranslate nohighlight">\(U\)</span> is a positive integer. That is, <span class="math notranslate nohighlight">\(x^U[n]\)</span> is obtained from
+<span class="math notranslate nohighlight">\(x[n]\)</span> by inserting <span class="math notranslate nohighlight">\(U-1\)</span> zero-valued samples between each pair of
+adjacent samples in <span class="math notranslate nohighlight">\(x[n]\)</span>. The rate of <span class="math notranslate nohighlight">\(x^U[n]\)</span> is <span class="math notranslate nohighlight">\(U\)</span> times that
+of <span class="math notranslate nohighlight">\(x[n]\)</span>, i.e., every sample of <span class="math notranslate nohighlight">\(x[n]\)</span> produces <span class="math notranslate nohighlight">\(U\)</span> samples of
+<span class="math notranslate nohighlight">\(x^U[n]\)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x^U[n]\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  X^U(z) 
+  &amp;=
+  \sum_{n=-\infty}^{\infty} x^U[n] z^{-n}
+  \\
+  &amp;=
+  \sum_{m=-\infty}^{\infty} x[m] z^{-mU}
+  \\
+  &amp;=
+  X(z^U).
+  \end{align*}\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If <span class="math notranslate nohighlight">\(x[n]\)</span> is causal and the ROC of <span class="math notranslate nohighlight">\(X(z)\)</span> is <span class="math notranslate nohighlight">\(\{|z| &gt; r\}\)</span>, then the
+ROC of <span class="math notranslate nohighlight">\(X_D(z)\)</span> is <span class="math notranslate nohighlight">\(X(z)\)</span> is <span class="math notranslate nohighlight">\(\{|z| &gt; r^{\frac{1}{U}}\}\)</span>.</p>
+</div>
+</li>
+<li><p>Suppose the ROC of <span class="math notranslate nohighlight">\(X(z)\)</span> contains the unit circle. Then the ROC of
+<span class="math notranslate nohighlight">\(X^U(z)\)</span> also does, and hence the DTFT of the upsampled signal
+<span class="math notranslate nohighlight">\(x^U[n]\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-e-upspectrum">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-e-upspectrum" title="Permalink to this equation">#</a></span>\[\begin{equation}
+X^U(e^{j\hat\omega}) = X(e^{j\hat\omega U})
+\end{equation}\]</div>
+</li>
+</ul>
 </section>
 </section>
 
