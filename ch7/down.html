@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.2. Interpolation by factor \(U\)" href="interp.html" />
+    <link rel="next" title="7.2. Interpolation" href="interp.html" />
     <link rel="prev" title="7. Multi-rate Processing" href="multirate.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -204,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1. Downsampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation by factor <span class="math notranslate nohighlight">\(U\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -481,7 +481,7 @@ sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, then <s
 <span class="math notranslate nohighlight">\(x(t)\)</span> at sampling rate <span class="math notranslate nohighlight">\(\frac{f_s}{D}\)</span>. In terms of the folded
 spectrum, <span class="math notranslate nohighlight">\(\displaystyle X(e^{\hat\omega}) = f_s
 \sum_{l=-\infty}^{\infty} X(\hat\omega f_s + 2\pi l f_s)\)</span>. Hence,
-by <a class="reference internal" href="mfilter.html#equation-e-downspectrum">()</a> we have</p>
+by <a class="reference internal" href="#equation-e-downspectrum">(7.1)</a> we have</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   X_D(e^{j\hat\omega}) 
@@ -501,7 +501,7 @@ sampling rate <span class="math notranslate nohighlight">\(\frac{f_s}{D}\)</span
 discrete-time signal may also suffer from <em>aliasing</em>. Again, we need
 to consider two cases, depending on the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>,
 when examining the effect of the folded spectrum resulted from
-downsampling described by <a class="reference internal" href="mfilter.html#equation-e-downspectrum">()</a>:</p>
+downsampling described by <a class="reference internal" href="#equation-e-downspectrum">(7.1)</a>:</p>
 <ol class="arabic">
 <li><p><strong>Oversampling <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D}
 \leq |\hat\omega| \leq \pi\)</span></strong>:</p>
@@ -520,7 +520,7 @@ D X_D(e^{j\hat\omega}D) &amp; \text{for } |\hat\omega| &lt;
 \end{cases}\)</span></p>
 <p>Performing the recovery of <span class="math notranslate nohighlight">\(x[n]\)</span> from <span class="math notranslate nohighlight">\(x_D[n]\)</span> in the time
 domain is the process of <em>interpolation</em>, which will be discussed
-in <code class="xref std std-numref docutils literal notranslate"><span class="pre">sec:interp</span></code> next.</p>
+in <a class="reference internal" href="interp.html#sec-interp"><span class="std std-numref">Section 7.2</span></a> next.</p>
 </li>
 <li><p><strong>Undersampling <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \neq 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D}
 \leq |\hat\omega| \leq \pi\)</span></strong>:</p>
@@ -586,7 +586,7 @@ detrimental effects of aliasing.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Interpolation by factor <span class="math notranslate nohighlight">\(U\)</span></p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Interpolation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

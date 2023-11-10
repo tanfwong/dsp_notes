@@ -44,11 +44,17 @@
      U & \text{for } |\hat\omega| < \frac{\pi}{U} \\
      0  & \text{for } \frac{\pi}{U} \leq |\hat\omega| \leq \pi
      \end{cases}$ and impulse response $h_U[n] = \frac{\sin
-  (\frac{\pi}{U} n)}{\frac{\pi}{U} n}$ gives the **interpolated signal** 
-  $\tilde{x}^U[n]$ whose DTFT $\tilde{X}(e^{j\hat\omega}) = X^U(e^{j\hat\omega})
-  H_U(e^{j\hat\omega})$. 
+  (\frac{\pi}{U} n)}{\frac{\pi}{U} n}$ 
   ```{image} ../figs/Uinterp.jpg 
   :alt: Interpolation
+  :width: 800px 
+  :align: center 
+  ``` 
+  gives the **interpolated signal** 
+  $\tilde{x}^U[n]$ whose DTFT $\tilde{X}(e^{j\hat\omega}) = X^U(e^{j\hat\omega})
+  H_U(e^{j\hat\omega})$:
+  ```{image} ../figs/Uspectrum.jpg 
+  :alt: Frequency-domain interpretation of interpolation 
   :width: 800px 
   :align: center 
   ``` 
