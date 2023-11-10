@@ -86,7 +86,7 @@
   \end{equation*}
   Thus, sampling $x(t)$ at sampling rate $Uf_s$ gives
   \begin{align*}
-  x(\frac{n}{Uf_s}) 
+  x \left(\frac{n}{Uf_s} \right) 
   &= 
   \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
   \left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}

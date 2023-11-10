@@ -409,9 +409,20 @@ document.write(`
 <ul>
 <li><p>Consider interpolating <span class="math notranslate nohighlight">\(x[n]\)</span> by a factor <span class="math notranslate nohighlight">\(U\)</span> and then downsampling
 by a factor <span class="math notranslate nohighlight">\(D\)</span>:</p>
-<a class="reference internal image-reference" href="../_images/rateconv1.jpg"><img alt="interpolate by $U$ and downsample by $D$" class="align-center" src="../_images/rateconv1.jpg" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/rateconv1.jpg"><img alt="Interpolate by $U$ and downsample by $D$" class="align-center" src="../_images/rateconv1.jpg" style="width: 800px;" /></a>
 <p>The rate of the output signal <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> if <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>
 times that of the input <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
+</li>
+<li><p>From <a class="reference internal" href="interp.html#equation-e-uiterp">(7.3)</a>, we get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  \tilde{x}^U_D[n] &amp;= \tilde{x}^U[Dn]
+  \\
+  &amp;= 
+  \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\frac{\pi}{U/D} (n-k\frac{U}{D}) \right)}{\frac{\pi}{U/D}
+  (n-k\frac{U}{D})}.
+  \end{align*}\]</div>
 </li>
 <li><p>Working backward from <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span>, we can recover
 <span class="math notranslate nohighlight">\(\tilde{x}^U[n]\)</span> (and hence <span class="math notranslate nohighlight">\(x[n]\)</span>) if the downsampling process
@@ -426,8 +437,13 @@ satisfied since <span class="math notranslate nohighlight">\(H_U(e^{j\hat\omega}
 if <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
  |\hat\omega| \leq \pi\)</span>, which in turn implies the requirement of
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi U}{D} \leq
- |\hat\omega| \leq \pi\)</span> from <a class="reference internal" href="interp.html#equation-e-upspectrum">(7.2)</a>.</p></li>
+ |\hat\omega| \leq \pi\)</span> because of  <a class="reference internal" href="interp.html#equation-e-upspectrum">(7.2)</a>.</p></li>
 </ol>
+</li>
+<li><p>For case 2, we may replace the ideal lowpass filter between the
+upsampler and downsampler with an antialiasing ideal lowpass filter
+with cutoff frequency <span class="math notranslate nohighlight">\(\frac{\pi}{\max(U,D)}\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/rateconv2.jpg"><img alt="Rate conversion with antialiasing filter" class="align-center" src="../_images/rateconv2.jpg" style="width: 800px;" /></a>
 </li>
 </ul>
 </section>
