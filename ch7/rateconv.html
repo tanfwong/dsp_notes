@@ -413,6 +413,22 @@ by a factor <span class="math notranslate nohighlight">\(D\)</span>:</p>
 <p>The rate of the output signal <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> if <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>
 times that of the input <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
 </li>
+<li><p>Working backward from <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span>, we can recover
+<span class="math notranslate nohighlight">\(\tilde{x}^U[n]\)</span> (and hence <span class="math notranslate nohighlight">\(x[n]\)</span>) if the downsampling process
+doesn’s suffer from aliasing, i.e., its DTFT
+<span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for<span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
+|\hat\omega| \leq \pi\)</span>:</p>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(U \geq D\)</span>, this oversampling requirement is automatically
+satisfied since <span class="math notranslate nohighlight">\(H_U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
+|\hat\omega| \leq \pi\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(U &lt; D\)</span>, the oversampling requirement is satisfied only
+if <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
+ |\hat\omega| \leq \pi\)</span>, which in turn implies the requirement of
+<span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi U}{D} \leq
+ |\hat\omega| \leq \pi\)</span> from <a class="reference internal" href="interp.html#equation-e-upspectrum">(7.2)</a>.</p></li>
+</ol>
+</li>
 </ul>
 </section>
 
