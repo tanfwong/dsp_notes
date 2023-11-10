@@ -67,8 +67,8 @@
   x^U[n] * h_U[n]
   \\
   &=
-  \sum_{k=-\infty}^{\infty} x[k] \frac{\sin
-  \left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}
+  \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}.
   \end{align*}
   ```
   ```{tip}
@@ -76,3 +76,42 @@
   x[n]$. Thus, {eq}`e:Uiterp` indeed represents an interpolation
   operation in discrete time using the kernel $h_U[n]$. 
   ```
+
+* If $x[n]$ is originally obtained from *oversampling* a continuous-time
+  signal $x(t)$ at sampling rate $f_s$, the sampling theorem
+  {eq}`e:sampthm` tells us that
+  \begin{equation*}
+  x(t) = \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin \left( \pi f_s
+  (t-\frac{k}{f_s}) \right)}{\pi f_s (t-\frac{k}{f_s})}.
+  \end{equation*}
+  Thus, sampling $x(t)$ at sampling rate $Uf_s$ gives
+  \begin{align*}
+  x(\frac{n}{Uf_s}) 
+  &= 
+  \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}
+  \\
+  &= \tilde{x}^U[n].
+  \end{align*}
+  That is, the interpolated signal $\tilde{x}^U[n]$ is exactly the
+  sampled version of $x(t)$ obtained at sampling rate $Uf_s$.
+
+* Starting from $x[n]$ and downsampling it by a factor $D$ to get
+  $x_D[n]$. If we interpolate $x_D[n]$ by the factor $D$, then the
+  frequency-domain steps of interpolation depicted in the figure above
+  are exactly the reverse of the downsampling steps that give $x_D[n]$
+  from $x[n]$ *in the case of oversampling*. Hence, we will obtain
+  $x[n]$ back by interpolating the downsampled signal $x_D[n]$ with
+  the same factor $D$. In terms of {eq}`e:Uiterp`, that is to say
+  ```{math}
+  :label: e:Dsampthm
+  \begin{equation}
+  x[n] = \tilde{x}^D_D[n]
+  = \sum_{k=-\infty}^{\infty} x_D[k] \, \frac{\sin
+  \left(\frac{\pi}{D} (n-kD) \right)}{\frac{\pi}{D} (n-kD)} 
+  \end{equation}
+  ```
+  as long as $X(e^{j\hat\omega}) = 0$ for $\frac{\pi}{D} \leq
+  |\hat\omega| \leq \pi$. Equation {eq}`e:Dsampthm` is the
+  discrete-time version of the *sampling theorem* for downsampling the
+  bandlimited $x[n]$ by the factor $D$.

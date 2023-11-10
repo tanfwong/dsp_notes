@@ -463,8 +463,8 @@ H_U(e^{j\hat\omega})\)</span>:</p>
 x^U[n] * h_U[n]
 \\
 &amp;=
-\sum_{k=-\infty}^{\infty} x[k] \frac{\sin
-\left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}
+\sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+\left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}.
 \end{align*}\end{split}\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -472,6 +472,45 @@ x^U[n] * h_U[n]
 x[n]\)</span>. Thus, <a class="reference internal" href="#equation-e-uiterp">(7.3)</a> indeed represents an interpolation
 operation in discrete time using the kernel <span class="math notranslate nohighlight">\(h_U[n]\)</span>.</p>
 </div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(x[n]\)</span> is originally obtained from <em>oversampling</em> a continuous-time
+signal <span class="math notranslate nohighlight">\(x(t)\)</span> at sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, the sampling theorem
+<a class="reference internal" href="../ch3/sampthm.html#equation-e-sampthm">(3.9)</a> tells us that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  x(t) = \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin \left( \pi f_s
+  (t-\frac{k}{f_s}) \right)}{\pi f_s (t-\frac{k}{f_s})}.
+  \end{equation*}\]</div>
+<p>Thus, sampling <span class="math notranslate nohighlight">\(x(t)\)</span> at sampling rate <span class="math notranslate nohighlight">\(Uf_s\)</span> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x(\frac{n}{Uf_s}) 
+  &amp;= 
+  \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin
+  \left(\frac{\pi}{U} (n-kU) \right)}{\frac{\pi}{U} (n-kU)}
+  \\
+  &amp;= \tilde{x}^U[n].
+  \end{align*}\]</div>
+<p>That is, the interpolated signal <span class="math notranslate nohighlight">\(\tilde{x}^U[n]\)</span> is exactly the
+sampled version of <span class="math notranslate nohighlight">\(x(t)\)</span> obtained at sampling rate <span class="math notranslate nohighlight">\(Uf_s\)</span>.</p>
+</li>
+<li><p>Starting from <span class="math notranslate nohighlight">\(x[n]\)</span> and downsampling it by a factor <span class="math notranslate nohighlight">\(D\)</span> to get
+<span class="math notranslate nohighlight">\(x_D[n]\)</span>. If we interpolate <span class="math notranslate nohighlight">\(x_D[n]\)</span> by the factor <span class="math notranslate nohighlight">\(D\)</span>, then the
+frequency-domain steps of interpolation depicted in the figure above
+are exactly the reverse of the downsampling steps that give <span class="math notranslate nohighlight">\(x_D[n]\)</span>
+from <span class="math notranslate nohighlight">\(x[n]\)</span> <em>in the case of oversampling</em>. Hence, we will obtain
+<span class="math notranslate nohighlight">\(x[n]\)</span> back by interpolating the downsampled signal <span class="math notranslate nohighlight">\(x_D[n]\)</span> with
+the same factor <span class="math notranslate nohighlight">\(D\)</span>. In terms of <a class="reference internal" href="#equation-e-uiterp">(7.3)</a>, that is to say</p>
+<div class="math notranslate nohighlight" id="equation-e-dsampthm">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-e-dsampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
+x[n] = \tilde{x}^D_D[n]
+= \sum_{k=-\infty}^{\infty} x_D[k] \, \frac{\sin
+\left(\frac{\pi}{D} (n-kD) \right)}{\frac{\pi}{D} (n-kD)} 
+\end{equation}\]</div>
+<p>as long as <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
+|\hat\omega| \leq \pi\)</span>. Equation <a class="reference internal" href="#equation-e-dsampthm">(7.4)</a> is the
+discrete-time version of the <em>sampling theorem</em> for downsampling the
+bandlimited <span class="math notranslate nohighlight">\(x[n]\)</span> by the factor <span class="math notranslate nohighlight">\(D\)</span>.</p>
 </li>
 </ul>
 </section>
