@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7.3. Rate Conversion &#8212; Foundations of DSP Notes</title>
+    <title>7.3. Rational Rate Conversion &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -205,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="down.html">7.1. Downsampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Rate Conversion</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Rational Rate Conversion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -390,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Rate Conversion</h1>
+    <h1>Rational Rate Conversion</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -404,8 +404,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="rate-conversion">
-<h1><span class="section-number">7.3. </span>Rate Conversion<a class="headerlink" href="#rate-conversion" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="rational-rate-conversion">
+<h1><span class="section-number">7.3. </span>Rational Rate Conversion<a class="headerlink" href="#rational-rate-conversion" title="Permalink to this headline">#</a></h1>
 <ul>
 <li><p>Consider interpolating <span class="math notranslate nohighlight">\(x[n]\)</span> by a factor <span class="math notranslate nohighlight">\(U\)</span> and then downsampling
 by a factor <span class="math notranslate nohighlight">\(D\)</span>:</p>
@@ -424,15 +424,37 @@ times that of the input <span class="math notranslate nohighlight">\(x[n]\)</spa
   (n-k\frac{U}{D})}.
   \end{align*}\]</div>
 </li>
-<li><p>Working backward from <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span>, we can recover
-<span class="math notranslate nohighlight">\(\tilde{x}^U[n]\)</span> (and hence <span class="math notranslate nohighlight">\(x[n]\)</span>) if the downsampling process
-doesn’s suffer from aliasing, i.e., its DTFT
-<span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for<span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
-|\hat\omega| \leq \pi\)</span>:</p>
+<li><p>If <span class="math notranslate nohighlight">\(x[n]\)</span> is obtained from oversampling a continuous-time signal
+<span class="math notranslate nohighlight">\(x(t)\)</span> at sampling rate <span class="math notranslate nohighlight">\(f_s\)</span>, then based on the sampling theorem
+<a class="reference internal" href="../ch3/sampthm.html#equation-e-sampthm">(3.9)</a> sampling <span class="math notranslate nohighlight">\(x(t)\)</span> at rate <span class="math notranslate nohighlight">\(f_s
+\frac{U}{D}\)</span> gives</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x \left(\frac{n}{U f_s/D} \right) 
+  &amp;= 
+  \sum_{k=-\infty}^{\infty} x[k] \, \frac{\sin \pi
+  f_s \left(\frac{n}{U f_s/D} -\frac{k}{f_s} \right)}{\pi f_s \left(\frac{n}{U f_s/D} -\frac{k}{f_s} \right)}
+  \\
+  &amp;= \tilde{x}^U_D[n].
+  \end{align*}\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> is thee sampled version of <span class="math notranslate nohighlight">\(x(t)\)</span>
+obtained at sampling frequency <span class="math notranslate nohighlight">\(f_s \frac{U}{D}\)</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Even though <span class="math notranslate nohighlight">\(x[n]\)</span> is obtained from oversampling <span class="math notranslate nohighlight">\(x(t)\)</span>,
+<span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> may still suffer from aliasing due to the rate
+conversion process from <span class="math notranslate nohighlight">\(x[n]\)</span>. See the discussion below for details.</p>
+</div>
+</li>
+<li><p>Working backward from <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> in the figure of the rate
+conversion system above, we can recover <span class="math notranslate nohighlight">\(\tilde{x}^U[n]\)</span> (and hence
+<span class="math notranslate nohighlight">\(x[n]\)</span>) if the downsampling process doesn’t suffer from aliasing,
+i.e., its DTFT <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for<span class="math notranslate nohighlight">\(\frac{\pi}{D}
+\leq |\hat\omega| \leq \pi\)</span>:</p>
 <ol class="arabic simple">
 <li><p>If <span class="math notranslate nohighlight">\(U \geq D\)</span>, this oversampling requirement is automatically
 satisfied since <span class="math notranslate nohighlight">\(H_U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
-|\hat\omega| \leq \pi\)</span>.</p></li>
+|\hat\omega| \leq \pi\)</span> in this case.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(U &lt; D\)</span>, the oversampling requirement is satisfied only
 if <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
  |\hat\omega| \leq \pi\)</span>, which in turn implies the requirement of
@@ -441,9 +463,17 @@ if <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0
 </ol>
 </li>
 <li><p>For case 2, we may replace the ideal lowpass filter between the
-upsampler and downsampler with an antialiasing ideal lowpass filter
-with cutoff frequency <span class="math notranslate nohighlight">\(\frac{\pi}{\max(U,D)}\)</span>:</p>
+upsampler and downsampler with a combined antialiasing and
+initerpolation ideal lowpass filter
+with frequency response <span class="math notranslate nohighlight">\(\displaystyle  H_{\max(U.D)}(e^{j\hat\omega}) 
+= \begin{cases}
+   U &amp; \text{for } |\hat\omega| &lt; \frac{\pi}{\max(U,D)} \\
+   0  &amp; \text{for } \frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi
+   \end{cases}\)</span></p>
 <a class="reference internal image-reference" href="../_images/rateconv2.jpg"><img alt="Rate conversion with antialiasing filter" class="align-center" src="../_images/rateconv2.jpg" style="width: 800px;" /></a>
+<p>In practice, we have to approximate the ideal filter with a lowpass
+FIR or IIR filter with cutoff at <span class="math notranslate nohighlight">\(\frac{\pi}{\max(U,D)}\)</span>. Note that
+this filter operates at the interpolated rate.</p>
 </li>
 </ul>
 </section>
