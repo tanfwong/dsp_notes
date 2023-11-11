@@ -1,3 +1,4 @@
+(sec:rateconv)=
 # Rational Rate Conversion
 * Consider interpolating $x[n]$ by a factor $U$ and then downsampling
   by a factor $D$:

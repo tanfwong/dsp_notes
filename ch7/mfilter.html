@@ -60,6 +60,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/mfilter';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -405,8 +407,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="multi-rate-filtering">
 <h1><span class="section-number">7.4. </span>Multi-rate Filtering<a class="headerlink" href="#multi-rate-filtering" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>A <strong>multi-rate filter</strong> is one whose output and output rates
+<ul>
+<li><p>A <strong>multi-rate filter</strong> is one whose input and output rates
 differ.  That is, the filter outputs more/fewer than one sample per
 each input sample.</p></li>
 <li><p>In practice, a fixed-rate ADC (and/or DAC)  is often used. We may
@@ -414,6 +416,30 @@ want to process the sampled signal at a rate different from the
 sampling rate of the ADC. In such cases, performing <em>rate
 conversion</em> in discrete time using a multi-rate filter would be
 convenient.</p></li>
+<li><p>A general <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate filter can be obtained by replacing the
+ideal lowpass filter in the rate conversion system in
+<a class="reference internal" href="rateconv.html#sec-rateconv"><span class="std std-numref">Section 7.3</span></a> with a general lowpass filter <span class="math notranslate nohighlight">\(h[n]\)</span>
+operating at the interpolated rate <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<a class="reference internal image-reference" href="../_images/mfilter.jpg"><img alt="$\frac{U}{D}$-rate filter" class="align-center" src="../_images/mfilter.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Clearly, if <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \neq 0\)</span> for <span class="math notranslate nohighlight">\(\frac{U\pi}{D} \leq
+   |\hat\omega| \leq \pi\)</span>, we must have <span class="math notranslate nohighlight">\(H(e^{j\hat\omega}) = 0\)</span> for
+<span class="math notranslate nohighlight">\(\frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi\)</span> for
+interpolation and anti-aliasing.</p></li>
+<li><p>Direct implementation of the multi-rate filter above may not be
+desirable in practice because the filter <span class="math notranslate nohighlight">\(h[n]\)</span> needs to be
+implemented at <span class="math notranslate nohighlight">\(U\)</span> times the input rate.</p></li>
+<li><p>For the case that <span class="math notranslate nohighlight">\(h[n]\)</span> is an FIR filter of length <span class="math notranslate nohighlight">\(L\)</span>, a direct
+time-domain implementation (convolution) of the <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate
+filter requires <span class="math notranslate nohighlight">\(\displaystyle \left\lfloor \frac{NU+L-1}{D}
+\right\rfloor L\)</span> multiplications when the length of the input signal
+is <span class="math notranslate nohighlight">\(N\)</span>. Assuming <span class="math notranslate nohighlight">\(NU \gg L \gg UD\)</span>, the number of multiplications
+needed to implement the <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate is thus
+<span class="math notranslate nohighlight">\(\mathcal{O}(\frac{UL}{D})\)</span> per input sample.</p></li>
+<li><p>One may reduce the computational complexity of implementing the
+<span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate filter by performing frequency-domain filter
+using FFT based on the overlap-save or overlap-add algorithm
+discussed in <a class="reference internal" href="../ch5/fil_fft.html#sec-filfft"><span class="std std-numref">Section 5.4</span></a>.</p></li>
 </ul>
 </section>
 
