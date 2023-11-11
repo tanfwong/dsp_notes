@@ -31,7 +31,7 @@
   \\
   &= \tilde{x}^U_D[n].
   \end{align*}
-  That is, $\tilde{x}^U_D[n]$ is thee sampled version of $x(t)$
+  That is, $\tilde{x}^U_D[n]$ is the sampled version of $x(t)$
   obtained at sampling frequency $f_s \frac{U}{D}$.
   ```{caution}
   Even though $x[n]$ is obtained from oversampling $x(t)$,
