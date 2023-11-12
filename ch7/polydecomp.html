@@ -406,6 +406,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 </ul>
             </nav>
         </div>
@@ -420,7 +421,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="polyphase-decomposition-related-identities">
 <span id="sec-polydecomp"></span><h1><span class="section-number">7.5. </span>Polyphase Decomposition &amp; Related Identities<a class="headerlink" href="#polyphase-decomposition-related-identities" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>We want to develop an efficient approach of implementing multi-rate
+<li><p>We want to develop an efficient way to implement multi-rate
 filters. To that end, we start by introducing a number of simple
 algebraic results that help such a development.</p></li>
 </ul>
@@ -431,7 +432,7 @@ algebraic results that help such a development.</p></li>
 response and transfer function of an LTI filter.
 Fix a positive integer <span class="math notranslate nohighlight">\(M\)</span>. Define</p>
 <div class="math notranslate nohighlight" id="equation-e-ek">
-<span class="eqno">(7.6)<a class="headerlink" href="#equation-e-ek" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-e-ek" title="Permalink to this equation">#</a></span>\[\begin{equation}
 e_k [n] = h[nM+k]
 \end{equation}\]</div>
 <p>for <span class="math notranslate nohighlight">\(k=0,1,\ldots,M-1\)</span>. We may interpret that <span class="math notranslate nohighlight">\(e_k[n]\)</span> is obtained
@@ -440,7 +441,7 @@ from downsampling <span class="math notranslate nohighlight">\(h[n+k]\)</span>, 
 </li>
 <li><p>Let <span class="math notranslate nohighlight">\(e_k[n] \stackrel{z}{\longleftrightarrow} E_k(z)\)</span>. Then</p>
 <div class="math notranslate nohighlight" id="equation-e-polydecomp">
-<span class="eqno">(7.7)<a class="headerlink" href="#equation-e-polydecomp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-e-polydecomp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
 H(z) 
 &amp;=
 \sum_{n=-\infty}^{\infty} h[n] z^{-n} 
@@ -472,9 +473,9 @@ It implies the following structures for implementing <span class="math notransla
 <h2><span class="section-number">7.5.2. </span>Downsampling Identity<a class="headerlink" href="#downsampling-identity" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p>The following two systems are equivalent:</p>
-<a class="reference internal image-reference" href="../_images/downid.jpg"><img alt="Direct polyphase form" class="align-center" src="../_images/downid.jpg" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/downid.jpg"><img alt="Downsampling identity" class="align-center" src="../_images/downid.jpg" style="width: 800px;" /></a>
 </li>
-<li><p>We call the equivalence above the <strong>downssampling identity</strong>. It can
+<li><p>We call the equivalence above the <strong>downsampling identity</strong>. It can
 be shown by first recalling from <a class="reference internal" href="down.html#equation-e-downz">(7.1)</a> that</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -504,6 +505,29 @@ figure above. From the first system, we have</p>
   \end{align*}\]</div>
 <p>That is to say <span class="math notranslate nohighlight">\(y[n]\)</span> is the downsampled version of <span class="math notranslate nohighlight">\(\tilde{y}[n]\)</span>
 by factor <span class="math notranslate nohighlight">\(D\)</span>; thus establishing the equivalence of the two systems.</p>
+</li>
+</ul>
+</section>
+<section id="upsampling-identity">
+<h2><span class="section-number">7.5.3. </span>Upsampling Identity<a class="headerlink" href="#upsampling-identity" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>The following two systems are equivalent:</p>
+<a class="reference internal image-reference" href="../_images/upid.jpg"><img alt="Upsampling identity" class="align-center" src="../_images/upid.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>We call the equivalence above the <strong>upsampling identity</strong>. To show
+this identity, recall from <a class="reference internal" href="interp.html#equation-e-upz">(7.3)</a> that <span class="math notranslate nohighlight">\(X^U(z) = X(z^U)\)</span> in the
+second system. Similarly, considering the first system, we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  Y(z) 
+  &amp;= \tilde{Y}(z^U)
+  \\
+  &amp;= H(z^U) X(z^U)
+  \\
+  &amp; = H(z^U) X^U(z)
+  \end{align*}\]</div>
+<p>which is exactly the output of the second system; thus establishing
+the identity.</p>
 </li>
 </ul>
 </section>
@@ -578,6 +602,7 @@ by factor <span class="math notranslate nohighlight">\(D\)</span>; thus establis
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 </ul>
   </nav></div>
 

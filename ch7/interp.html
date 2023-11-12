@@ -421,18 +421,18 @@ adjacent samples in <span class="math notranslate nohighlight">\(x[n]\)</span>. 
 of <span class="math notranslate nohighlight">\(x[n]\)</span>, i.e., every sample of <span class="math notranslate nohighlight">\(x[n]\)</span> produces <span class="math notranslate nohighlight">\(U\)</span> samples of
 <span class="math notranslate nohighlight">\(x^U[n]\)</span>.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(z\)</span>-transform of <span class="math notranslate nohighlight">\(x^U[n]\)</span> is</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-  X^U(z) 
-  &amp;=
-  \sum_{n=-\infty}^{\infty} x^U[n] z^{-n}
-  \\
-  &amp;=
-  \sum_{m=-\infty}^{\infty} x[m] z^{-mU}
-  \\
-  &amp;=
-  X(z^U).
-  \end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-e-upz">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-e-upz" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+X^U(z) 
+&amp;=
+\sum_{n=-\infty}^{\infty} x^U[n] z^{-n}
+\\
+&amp;=
+\sum_{m=-\infty}^{\infty} x[m] z^{-mU}
+\\
+&amp;=
+X(z^U).
+\end{align}\end{split}\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If <span class="math notranslate nohighlight">\(x[n]\)</span> is causal and the ROC of <span class="math notranslate nohighlight">\(X(z)\)</span> is <span class="math notranslate nohighlight">\(\{|z| &gt; r\}\)</span>, then the
@@ -443,7 +443,7 @@ ROC of <span class="math notranslate nohighlight">\(X_D(z)\)</span> is <span cla
 <span class="math notranslate nohighlight">\(X^U(z)\)</span> also does, and hence the DTFT of the upsampled signal
 <span class="math notranslate nohighlight">\(x^U[n]\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-e-upspectrum">
-<span class="eqno">(7.3)<a class="headerlink" href="#equation-e-upspectrum" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-e-upspectrum" title="Permalink to this equation">#</a></span>\[\begin{equation}
 X^U(e^{j\hat\omega}) = X(e^{j\hat\omega U})
 \end{equation}\]</div>
 </li>
@@ -460,7 +460,7 @@ H_U(e^{j\hat\omega})\)</span>:</p>
 <a class="reference internal image-reference" href="../_images/Uspectrum.jpg"><img alt="Frequency-domain interpretation of interpolation" class="align-center" src="../_images/Uspectrum.jpg" style="width: 800px;" /></a>
 <p>In the time domain,</p>
 <div class="math notranslate nohighlight" id="equation-e-uiterp">
-<span class="eqno">(7.4)<a class="headerlink" href="#equation-e-uiterp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-e-uiterp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \tilde{x}^U[n]
 &amp;=
 x^U[n] * h_U[n]
@@ -471,8 +471,8 @@ x^U[n] * h_U[n]
 \end{align*}\end{split}\]</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is not hard to check from <a class="reference internal" href="#equation-e-uiterp">(7.4)</a> that <span class="math notranslate nohighlight">\(\tilde{x}^U[nU] =
-x[n]\)</span>. Thus, <a class="reference internal" href="#equation-e-uiterp">(7.4)</a> indeed represents an interpolation
+<p>It is not hard to check from <a class="reference internal" href="#equation-e-uiterp">(7.5)</a> that <span class="math notranslate nohighlight">\(\tilde{x}^U[nU] =
+x[n]\)</span>. Thus, <a class="reference internal" href="#equation-e-uiterp">(7.5)</a> indeed represents an interpolation
 operation in discrete time using the kernel <span class="math notranslate nohighlight">\(h_U[n]\)</span>.</p>
 </div>
 </li>
@@ -503,15 +503,15 @@ frequency-domain steps of interpolation depicted in the figure above
 are exactly the reverse of the downsampling steps that give <span class="math notranslate nohighlight">\(x_D[n]\)</span>
 from <span class="math notranslate nohighlight">\(x[n]\)</span> <em>in the case of oversampling</em>. Hence, we will obtain
 <span class="math notranslate nohighlight">\(x[n]\)</span> back by interpolating the downsampled signal <span class="math notranslate nohighlight">\(x_D[n]\)</span> with
-the same factor <span class="math notranslate nohighlight">\(D\)</span>. In terms of <a class="reference internal" href="#equation-e-uiterp">(7.4)</a>, that is to say</p>
+the same factor <span class="math notranslate nohighlight">\(D\)</span>. In terms of <a class="reference internal" href="#equation-e-uiterp">(7.5)</a>, that is to say</p>
 <div class="math notranslate nohighlight" id="equation-e-dsampthm">
-<span class="eqno">(7.5)<a class="headerlink" href="#equation-e-dsampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-e-dsampthm" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x[n] = \tilde{x}^D_D[n]
 = \sum_{k=-\infty}^{\infty} x_D[k] \, \frac{\sin
 \left(\frac{\pi}{D} (n-kD) \right)}{\frac{\pi}{D} (n-kD)} 
 \end{equation}\]</div>
 <p>as long as <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
-|\hat\omega| \leq \pi\)</span>. Equation <a class="reference internal" href="#equation-e-dsampthm">(7.5)</a> is the
+|\hat\omega| \leq \pi\)</span>. Equation <a class="reference internal" href="#equation-e-dsampthm">(7.6)</a> is the
 discrete-time version of the <em>sampling theorem</em> for downsampling the
 bandlimited <span class="math notranslate nohighlight">\(x[n]\)</span> by the factor <span class="math notranslate nohighlight">\(D\)</span>.</p>
 </li>

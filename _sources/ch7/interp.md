@@ -14,7 +14,9 @@
   $x^U[n]$.
 
 * The $z$-transform of $x^U[n]$ is
-  \begin{align*}
+  ```{math}
+  :label: e:upz
+  \begin{align}
   X^U(z) 
   &=
   \sum_{n=-\infty}^{\infty} x^U[n] z^{-n}
@@ -24,7 +26,8 @@
   \\
   &=
   X(z^U).
-  \end{align*}
+  \end{align}
+  ```
   ```{tip}
   If $x[n]$ is causal and the ROC of $X(z)$ is $\{|z| > r\}$, then the
   ROC of $X_D(z)$ is $X(z)$ is $\{|z| > r^{\frac{1}{U}}\}$.

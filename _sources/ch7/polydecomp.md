@@ -1,7 +1,7 @@
 (sec:polydecomp)=
 # Polyphase Decomposition & Related Identities
 
-* We want to develop an efficient approach of implementing multi-rate
+* We want to develop an efficient way to implement multi-rate
   filters. To that end, we start by introducing a number of simple
   algebraic results that help such a development.
 
@@ -56,11 +56,11 @@
 ## Downsampling Identity
 * The following two systems are equivalent:
   ```{image} ../figs/downid.jpg 
-  :alt: Direct polyphase form
+  :alt: Downsampling identity
   :width: 800px 
   :align: center 
   ``` 
-* We call the equivalence above the **downssampling identity**. It can
+* We call the equivalence above the **downsampling identity**. It can
   be shown by first recalling from {eq}`e:downz` that 
   \begin{equation*}
   X_D(z) = \frac{1}{D} \sum_{k=0}^{D-1} X\left(  e^{-j\frac{2\pi k}{D}}
@@ -88,3 +88,25 @@
   \end{align*}
   That is to say $y[n]$ is the downsampled version of $\tilde{y}[n]$
   by factor $D$; thus establishing the equivalence of the two systems.
+
+## Upsampling Identity
+* The following two systems are equivalent:
+  ```{image} ../figs/upid.jpg 
+  :alt: Upsampling identity
+  :width: 800px 
+  :align: center 
+  ``` 
+* We call the equivalence above the **upsampling identity**. To show
+  this identity, recall from {eq}`e:upz` that $X^U(z) = X(z^U)$ in the
+  second system. Similarly, considering the first system, we have
+  \begin{align*}
+  Y(z) 
+  &= \tilde{Y}(z^U)
+  \\
+  &= H(z^U) X(z^U)
+  \\
+  & = H(z^U) X^U(z)
+  \end{align*}
+  which is exactly the output of the second system; thus establishing
+  the identity.
+  
