@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4.2. Short-time DTFT &#8212; Foundations of DSP Notes</title>
+    <title>7.5. Polyphase Decomposition &amp; Related Identities &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -62,12 +62,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch4/stft';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/polydecomp';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. Computation of Fourier Analysis" href="../ch5/comp.html" />
-    <link rel="prev" title="4.1. Uncertainty Principle" href="uncertainty.html" />
+    <link rel="next" title="8. References" href="../refs.html" />
+    <link rel="prev" title="7.4. Multi-rate Filtering" href="mfilter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -180,9 +180,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch3/sampthm.html">3.2. Sampling Theorem</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="tdft.html">4. Time-dependent Fourier Analysis</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="uncertainty.html">4.1. Uncertainty Principle</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Short-time DTFT</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/tdft.html">4. Time-dependent Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/uncertainty.html">4.1. Uncertainty Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch4/stft.html">4.2. Short-time DTFT</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch5/comp.html">5. Computation of Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -202,12 +202,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch6/iirdesign.html">6.7. IIR Filter Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch7/multirate.html">7. Multi-rate Processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/down.html">7.1. Downsampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/interp.html">7.2. Interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/rateconv.html">7.3. Rational Rate Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/mfilter.html">7.4. Multi-rate Filtering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/polydecomp.html">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="down.html">7.1. Downsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rateconv.html">7.3. Rational Rate Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfilter.html">7.4. Multi-rate Filtering</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -282,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch4/stft.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch7/polydecomp.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -312,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch4/stft.md" target="_blank"
+      <li><a href="../_sources/ch7/polydecomp.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +381,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -392,11 +394,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Short-time DTFT</h1>
+    <h1>Polyphase Decomposition & Related Identities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -406,127 +416,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="short-time-dtft">
-<span id="sec-stft"></span><h1><span class="section-number">4.2. </span>Short-time DTFT<a class="headerlink" href="#short-time-dtft" title="Permalink to this headline">#</a></h1>
-<ul>
-<li><p>Many practical signals, such as musical signals, have time-varying
-spectrums. That is, their frequency contents (i.e., FT or DTFT)
-change over time.</p></li>
-<li><p>For example, consider a discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> that is obtained
-by oversampling a piece of music. The DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> of
-the whole <span class="math notranslate nohighlight">\(x[n]\)</span> contains all the frequency contents (i.e., all the
-notes played) over the whole piece of music.  In particular, we
-can’t tell from <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> which note is played at which
-time. This means that the time resolution of <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is
-poor. The uncertainty principle thus implies that we may be able to
-obtain a fine frequency resolution.</p></li>
-<li><p>We may employ the windowing approach to improve time
-resolution:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="polyphase-decomposition-related-identities">
+<h1><span class="section-number">7.5. </span>Polyphase Decomposition &amp; Related Identities<a class="headerlink" href="#polyphase-decomposition-related-identities" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>Consider a discrete-time window signal <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> whose energy
-is concentrated around <span class="math notranslate nohighlight">\(n=0\)</span> and have a small <span class="math notranslate nohighlight">\(\sigma_t\)</span> (in the
-interpretation for discrete-time signals given in
-<a class="reference internal" href="uncertainty.html#sec-uncertainty"><span class="std std-numref">Section 4.1</span></a>).</p></li>
-<li><p>Apply windowing to the time of interest, say <span class="math notranslate nohighlight">\(n=m\)</span>, by multiplying
-<span class="math notranslate nohighlight">\(x[n]\)</span> with <span class="math notranslate nohighlight">\(\tilde{w}[n-m]\)</span>.</p></li>
-<li><p>Take DTFT of the windowed signal <span class="math notranslate nohighlight">\(x[n] \tilde{w}[n-m]\)</span>.</p></li>
+<li><p>We want to develop an efficient approach of implementing multi-rate
+filters. To that end, we start by introducing a number of simple
+algebraic results that help such a development.</p></li>
 </ul>
-<p>Intuitively, windowing <span class="math notranslate nohighlight">\(x[n]\)</span> by <span class="math notranslate nohighlight">\(\tilde{w}[n-m]\)</span> focuses our
-attention to the parts of <span class="math notranslate nohighlight">\(x[n]\)</span> around the time <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<section id="polyphase-decomposition">
+<h2><span class="section-number">7.5.1. </span>Polyphase Decomposition<a class="headerlink" href="#polyphase-decomposition" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>Let <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow} H(z)\)</span> be the impulse
+response and transfer function of an LTI filter.
+Fix a positive integer <span class="math notranslate nohighlight">\(M\)</span>. Define</p>
+<div class="math notranslate nohighlight" id="equation-e-ek">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-e-ek" title="Permalink to this equation">#</a></span>\[\begin{equation}
+e_k [n] = h[nM+k]
+\end{equation}\]</div>
+<p>for <span class="math notranslate nohighlight">\(k=0,1,\ldots,M-1\)</span>. We may interpret that <span class="math notranslate nohighlight">\(e_k[n]\)</span> is obtained
+from downsampling <span class="math notranslate nohighlight">\(h[n+k]\)</span>, which is referred to as a <strong>phase</strong> of
+<span class="math notranslate nohighlight">\(h[n]\)</span>, by factor <span class="math notranslate nohighlight">\(M\)</span>.</p>
 </li>
-<li><p>Note that different DTFTs may be obtained at different times of
-interest. The collection of all such DTFTs over the range of <span class="math notranslate nohighlight">\(m\)</span> is
-called the <strong>short-time DTFT</strong> <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> of <span class="math notranslate nohighlight">\(x[n]\)</span>:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  X(e^{j\hat\omega}; m) = \sum_{n=-\infty}^{\infty} x[n]
-  \tilde{w}[n-m] e^{-j\hat\omega n}.
-  \end{equation*}\]</div>
+<li><p>Let <span class="math notranslate nohighlight">\(e_k[n] \stackrel{z}{\longleftrightarrow} E_k(z)\)</span>. Then</p>
+<div class="math notranslate nohighlight" id="equation-e-polydecomp">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-e-polydecomp" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+H(z) 
+&amp;=
+\sum_{n=-\infty}^{\infty} h[n] z^{-n} 
+\\
+&amp;=
+\sum_{k=0}^{M-1} \sum_{m=-\infty}^{\infty} h[mM+k] z^{-(mM+k)}
+\\
+&amp;=
+\sum_{k=0}^{M-1} \left( \sum_{m=-\infty}^{\infty} e_k[m] z^{-mM}
+\right) z^{-k}
+\\
+&amp;=
+\sum_{k=0}^{M-1}  z^{-k} E_k(z^M)
+\end{align}\end{split}\]</div>
+<p>which is called the <strong>polyphase decomposition</strong> of the filter <span class="math notranslate nohighlight">\(H(z)\)</span>.
+It implies the following structures for implementing <span class="math notranslate nohighlight">\(H(z)\)</span>:</p>
+<ul>
+<li><p><strong>Direct polyphase form</strong>:</p>
+<a class="reference internal image-reference" href="../_images/polyd.jpg"><img alt="Direct polyphase form" class="align-center" src="../_images/polyd.jpg" style="width: 800px;" /></a>
 </li>
-<li><p>From the uncertainty principle, we know that for each fixed <span class="math notranslate nohighlight">\(m\)</span>, we
-will suffer from a poorer frequency resolution by using
-<span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> instead of <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> because the
-time resolution of the windowed signal <span class="math notranslate nohighlight">\(x[n] \tilde{w}[n-m]\)</span> is
-finer than that of the whole signal <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
-<li><p>To further see this tradeoff,  let <span class="math notranslate nohighlight">\(\tilde{w}[n]
-\stackrel{\text{DTFT}}{\longleftrightarrow}
-\tilde{W}(e^{j\hat\omega})\)</span>. Since <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span>
-is the DTFT of  <span class="math notranslate nohighlight">\(x[n] \tilde{w}[n-m]\)</span>, the time-shifting and
-multiplication properties of DTFT gives</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-  X(e^{j\hat\omega}; m)
-  =
-  \frac{1}{2\pi} \int_{-\pi}^{\pi} X(e^{j\theta})
-  \tilde{W}(e^{j(\hat\omega -\theta)}) e^{j(\hat\omega -\theta)m}
-  \,d\theta.
-  \end{equation*}\]</div>
-<p>That is, <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> is the circular convolution between
-<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> and <span class="math notranslate nohighlight">\(\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega
-m}\)</span> in the frequency domain. Pictorially, it means that the plot of
-<span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span> is “blurred” or “smoothed out” by
-<span class="math notranslate nohighlight">\(\tilde{W}(e^{j\hat\omega}) e^{-j\hat\omega m}\)</span>.</p>
+<li><p><strong>Transposed polyphase form</strong>:</p>
+<a class="reference internal image-reference" href="../_images/polyt.jpg"><img alt="Transposed polyphase form" class="align-center" src="../_images/polyt.jpg" style="width: 800px;" /></a>
 </li>
-<li><p>In practice, we don’t usually calculate <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}; m)\)</span> for
-every <span class="math notranslate nohighlight">\(m\)</span>. Instead, we only need to at most step through the range
-of <span class="math notranslate nohighlight">\(m\)</span> of interest with a step size comparable to the lower bound on
-<span class="math notranslate nohighlight">\(\sigma_t\)</span> of <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> because the lower bound gives the
-finest possible time resolution using the window <span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span>.</p></li>
-<li><p>The table below gives some commonly used window signals. Note that
-the expression of each window signal <span class="math notranslate nohighlight">\(w[n]\)</span> given doesn’t centered
-at <span class="math notranslate nohighlight">\(n=0\)</span> (<span class="math notranslate nohighlight">\(w[n]\)</span> is the form usually given in textbooks). For the
-purpose of windowing in short-time DTFT, we use only odd-length
-windows. That is, we may obtain the <span class="math notranslate nohighlight">\(0\)</span>-centered window
-<span class="math notranslate nohighlight">\(\tilde{w}[n]\)</span> from the window <span class="math notranslate nohighlight">\(w[n]\)</span> provided by letting
-<span class="math notranslate nohighlight">\(\tilde{w}[n] = w\left[ n + \frac{L-1}{2} \right]\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the
-odd window length of <span class="math notranslate nohighlight">\(w[n]\)</span>.</p>
-<table class="table" id="tab-windows">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Window name</strong></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(\boldsymbol{w[n]}~~\)</span> <strong>for</strong> <span class="math notranslate nohighlight">\(\boldsymbol{0 \leq n \leq L-1}\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Rectangular</p></td>
-<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Bartlett (triangular)</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 1 - \frac{2\left| n - \frac{L-1}{2}
-\right|}{L-1}\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Blackman</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 0.42 - 0.5\cos \left(\frac{2\pi n}{L-1}\right) +
-0.08 \cos \left(\frac{4\pi n}{L-1}\right)\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Hamming</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle 0.54 - 0.46 \cos \left(\frac{2\pi n}{L-1}\right)\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p>Hanning</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2} \left[ 1 - \cos \left(\frac{2\pi
-n}{L-1}\right) \right]\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p>Kaiser</p></td>
-<td><p><span class="math notranslate nohighlight">\(\displaystyle \frac{I_0\left(\beta
-\sqrt{1-\left(\frac{2n}{L-1} - 1\right)^2}\right)}{I_0(\beta)}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>For the Kaiser window, <span class="math notranslate nohighlight">\(I_0(\cdot)\)</span> is the zeroth-order modified
-Bessel function of the first kind and <span class="math notranslate nohighlight">\(\beta \geq 0\)</span> is a
-parameter to control the shape of the window and the prominence
-of the sidelobes in the window’s DTFT. When <span class="math notranslate nohighlight">\(\beta=0\)</span>, the Kaiser
-window reduces to the rectangular window.</p>
-</li>
-<li><p>The length <span class="math notranslate nohighlight">\(L\)</span> of the window signal determines the time
-resolution. A larger <span class="math notranslate nohighlight">\(L\)</span> gives poorer time but finer frequency
-resolution. The choice of the window signal is often based on a
-tradeoff between a smaller <span class="math notranslate nohighlight">\(\sigma_{\omega}\)</span> and the prominence of
-the sidelobes in the window’s DTFT for a chosen value of <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
 </ul>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -542,7 +482,7 @@ the sidelobes in the window’s DTFT for a chosen value of <span class="math not
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch4"
+            path: "./ch7"
         },
         predefinedOutput: true
     }
@@ -561,20 +501,20 @@ the sidelobes in the window’s DTFT for a chosen value of <span class="math not
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="uncertainty.html"
+       href="mfilter.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>Uncertainty Principle</p>
+        <p class="prev-next-title"><span class="section-number">7.4. </span>Multi-rate Filtering</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ch5/comp.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Computation of Fourier Analysis</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -587,6 +527,20 @@ the sidelobes in the window’s DTFT for a chosen value of <span class="math not
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
