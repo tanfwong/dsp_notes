@@ -1,3 +1,4 @@
+(sec:polydecomp)=
 # Polyphase Decomposition & Related Identities
 
 * We want to develop an efficient approach of implementing multi-rate
@@ -52,4 +53,38 @@
     :align: center 
     ``` 
   
-  
+## Downsampling Identity
+* The following two systems are equivalent:
+  ```{image} ../figs/downid.jpg 
+  :alt: Direct polyphase form
+  :width: 800px 
+  :align: center 
+  ``` 
+* We call the equivalence above the **downssampling identity**. It can
+  be shown by first recalling from {eq}`e:downz` that 
+  \begin{equation*}
+  X_D(z) = \frac{1}{D} \sum_{k=0}^{D-1} X\left(  e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right).
+  \end{equation*}
+  Moreover, $\tilde{Y}(z) = H(z^D) X(z)$ from the second system in the
+  figure above. From the first system, we have 
+  \begin{align*}
+  Y(z) 
+  &=
+  H(z) X_D(z)
+  \\
+  &=
+  \frac{1}{D} \sum_{k=0}^{D-1} H(z) X\left(  e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right)
+  \\
+  &=
+  \frac{1}{D} \sum_{k=0}^{D-1} H\left( \left(e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right)^D \right) X\left(  e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right)
+  \\
+  &=
+  \frac{1}{D} \sum_{k=0}^{D-1} \tilde{Y}\left(  e^{-j\frac{2\pi k}{D}}
+  z^{\frac{1}{D}} \right).
+  \end{align*}
+  That is to say $y[n]$ is the downsampled version of $\tilde{y}[n]$
+  by factor $D$; thus establishing the equivalence of the two systems.

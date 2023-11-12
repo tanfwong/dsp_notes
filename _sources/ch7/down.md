@@ -24,7 +24,9 @@
   Then, it is trivial to check that $x_D[n] = \tilde{x}[Dn]$.
 
 * Consider the $z$-transform $X_D(z)$ of the downsampled signal $x_D[n]$:
-  \begin{align*}
+  ```{math}
+  :label: e:downz
+  \begin{align}
   X_D(z)
   &= 
   \sum_{n=-\infty}^{\infty} x_D[n] z^{-n}
@@ -49,7 +51,8 @@
   &=
   \frac{1}{D} \sum_{k=0}^{D-1} X\left(  e^{-j\frac{2\pi k}{D}}
   z^{\frac{1}{D}} \right).
-  \end{align*}
+  \end{align}
+  ```
   ```{tip}
   If $x[n]$ is causal and the ROC of $X(z)$ is $\{|z| > r\}$, then the
   ROC of $X_D(z)$ is $X(z)$ is $\{|z| > r^D\}$.
