@@ -120,6 +120,32 @@
   :align: center 
   ```
 
-* This identity follows trivially by observing the system on the left
+* The identity follows trivially by observing the system on the left
   that for $k=0,1,\ldots, D-1$, $x_k[n] = x_D[n-k] = x[nD-k]$, which
   is clearly the outputs of the demultiplexer on the right. 
+
+## Upsample-Mux Identity
+
+* The following two systems are equivalent:
+  ```{image} ../figs/UMid.jpg 
+  :alt: Upsample-Mux identity
+  :width: 800px 
+  :align: center 
+  ```
+* The identity follows by observing the system on the left
+  that 
+  \begin{equation*}
+  x[n] = \sum_{l=0}^{U-1} x^U_l[n-l]
+  \end{equation*}
+  where $x^U_l[n]$ is the upsampled signal by factor $U$ from
+  $x[n]_l$, for $l=0,1,\ldots, U-1$. Thus, for $k=0,1,\ldots, U-1$,
+  \begin{align*}
+  x[nU+k] 
+  &=
+  \sum_{l=0}^{U-1}  x^U_l[nU+k-l]
+  \\
+  &= x_k[n]
+  \end{align*}
+  because $x^U_l[nU+k-l] = 0$ for $k \neq l$. The fact that the signals
+  $x[nU+k]$, for $k=0,1,\ldots, U-1$, are exactly the inputs to the
+  multiplexer in the system on the right gives the identity. 

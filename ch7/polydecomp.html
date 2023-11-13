@@ -408,6 +408,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a></li>
 </ul>
             </nav>
         </div>
@@ -538,9 +539,37 @@ the identity.</p>
 <li><p>The following two systems are equivalent:</p>
 <a class="reference internal image-reference" href="../_images/DDid.jpg"><img alt="Downsample-DeMux identity" class="align-center" src="../_images/DDid.jpg" style="width: 800px;" /></a>
 </li>
-<li><p>This identity follows trivially by observing the system on the left
+<li><p>The identity follows trivially by observing the system on the left
 that for <span class="math notranslate nohighlight">\(k=0,1,\ldots, D-1\)</span>, <span class="math notranslate nohighlight">\(x_k[n] = x_D[n-k] = x[nD-k]\)</span>, which
 is clearly the outputs of the demultiplexer on the right.</p></li>
+</ul>
+</section>
+<section id="upsample-mux-identity">
+<h2><span class="section-number">7.5.5. </span>Upsample-Mux Identity<a class="headerlink" href="#upsample-mux-identity" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>The following two systems are equivalent:</p>
+<a class="reference internal image-reference" href="../_images/UMid.jpg"><img alt="Upsample-Mux identity" class="align-center" src="../_images/UMid.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>The identity follows by observing the system on the left
+that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  x[n] = \sum_{l=0}^{U-1} x^U_l[n-l]
+  \end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x^U_l[n]\)</span> is the upsampled signal by factor <span class="math notranslate nohighlight">\(U\)</span> from
+<span class="math notranslate nohighlight">\(x[n]_l\)</span>, for <span class="math notranslate nohighlight">\(l=0,1,\ldots, U-1\)</span>. Thus, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+  x[nU+k] 
+  &amp;=
+  \sum_{l=0}^{U-1}  x^U_l[nU+k-l]
+  \\
+  &amp;= x_k[n]
+  \end{align*}\]</div>
+<p>because <span class="math notranslate nohighlight">\(x^U_l[nU+k-l] = 0\)</span> for <span class="math notranslate nohighlight">\(k \neq l\)</span>. The fact that the signals
+<span class="math notranslate nohighlight">\(x[nU+k]\)</span>, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>, are exactly the inputs to the
+multiplexer in the system on the right gives the identity.</p>
+</li>
 </ul>
 </section>
 </section>
@@ -616,6 +645,7 @@ is clearly the outputs of the demultiplexer on the right.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a></li>
 </ul>
   </nav></div>
 
