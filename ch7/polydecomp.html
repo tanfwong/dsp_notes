@@ -407,6 +407,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
 </ul>
             </nav>
         </div>
@@ -531,6 +532,17 @@ the identity.</p>
 </li>
 </ul>
 </section>
+<section id="downsample-demux-identity">
+<h2><span class="section-number">7.5.4. </span>Downsample-DeMux Identity<a class="headerlink" href="#downsample-demux-identity" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>The following two systems are equivalent:</p>
+<a class="reference internal image-reference" href="../_images/DDid.jpg"><img alt="Downsample-DeMux identity" class="align-center" src="../_images/DDid.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>This identity follows trivially by observing the system on the left
+that for <span class="math notranslate nohighlight">\(k=0,1,\ldots, D-1\)</span>, <span class="math notranslate nohighlight">\(x_k[n] = x_D[n-k] = x[nD-k]\)</span>, which
+is clearly the outputs of the demultiplexer on the right.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -603,6 +615,7 @@ the identity.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polyphase-decomposition">7.5.1. Polyphase Decomposition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
 </ul>
   </nav></div>
 

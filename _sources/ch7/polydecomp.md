@@ -110,3 +110,16 @@
   which is exactly the output of the second system; thus establishing
   the identity.
   
+
+## Downsample-DeMux Identity
+
+* The following two systems are equivalent:
+  ```{image} ../figs/DDid.jpg 
+  :alt: Downsample-DeMux identity
+  :width: 800px 
+  :align: center 
+  ```
+
+* This identity follows trivially by observing the system on the left
+  that for $k=0,1,\ldots, D-1$, $x_k[n] = x_D[n-k] = x[nD-k]$, which
+  is clearly the outputs of the demultiplexer on the right. 
