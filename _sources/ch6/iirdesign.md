@@ -467,7 +467,7 @@
 
       1.0191
 
-  >> [bc, ac] = cheby1(N, Rp, Rs, wp, 's');
+  >> [bc, ac] = cheby1(N, Rp, wp, 's');
   >> freqs(bc, ac, [0:0.0001:pi]);
   ```
   Then, we can use the MATLAB function `bilinear` to apply the
