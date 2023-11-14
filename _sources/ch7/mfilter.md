@@ -40,7 +40,7 @@
   using FFT based on the overlap-save or overlap-add algorithm
   discussed in {numref}`sec:filfft`.
 
-* **MATLAB Example 1**:
+* **MATLAB Example**:
 
   In this example, we design and implement a $\frac{3}{2}$-rate FIR
   filter to convert a *chirp* signal that is sampled at $500$ samples per
