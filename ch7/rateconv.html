@@ -415,7 +415,7 @@ by a factor <span class="math notranslate nohighlight">\(D\)</span>:</p>
 <p>The rate of the output signal <span class="math notranslate nohighlight">\(\tilde{x}^U_D[n]\)</span> if <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>
 times that of the input <span class="math notranslate nohighlight">\(x[n]\)</span>.</p>
 </li>
-<li><p>From <a class="reference internal" href="interp.html#equation-e-uiterp">(7.3)</a>, we get</p>
+<li><p>From <a class="reference internal" href="interp.html#equation-e-uiterp">(7.5)</a>, we get</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
   \tilde{x}^U_D[n] &amp;= \tilde{x}^U[Dn]
@@ -461,21 +461,24 @@ satisfied since <span class="math notranslate nohighlight">\(H_U(e^{j\hat\omega}
 if <span class="math notranslate nohighlight">\(\tilde{X}^U(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D} \leq
  |\hat\omega| \leq \pi\)</span>, which in turn implies the requirement of
 <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) = 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi U}{D} \leq
- |\hat\omega| \leq \pi\)</span> because of  <a class="reference internal" href="interp.html#equation-e-upspectrum">(7.2)</a>.</p></li>
+ |\hat\omega| \leq \pi\)</span> because of  <a class="reference internal" href="interp.html#equation-e-upspectrum">(7.4)</a>.</p></li>
 </ol>
 </li>
 <li><p>For case 2, we may replace the ideal lowpass filter between the
-upsampler and downsampler with a combined antialiasing and
-initerpolation ideal lowpass filter with frequency response
-<span class="math notranslate nohighlight">\(\displaystyle H_{\max(U.D)}(e^{j\hat\omega}) = \begin{cases} U &amp;
-\text{for } |\hat\omega| &lt; \frac{\pi}{\max(U,D)} \\ 0 &amp; \text{for }
-\frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi \end{cases}\)</span></p>
-<a class="reference internal image-reference" href="../_images/rateconv2.jpg"><img alt="Rate conversion with antialiasing filter" class="align-center" src="../_images/rateconv2.jpg" style="width: 800px;" /></a>
+upsampler and downsampler with a combined interpolation and
+antialiasing ideal lowpass filter with frequency response
+<span class="math notranslate nohighlight">\(\displaystyle H_{\max(U.D)}(e^{j\hat\omega}) = 
+\begin{cases} 
+U &amp; \text{for } |\hat\omega| &lt; \frac{\pi}{\max(U,D)} 
+\\ 
+0 &amp; \text{for } \frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi 
+\end{cases}\)</span></p>
+<a class="reference internal image-reference" href="../_images/rateconv2.jpg"><img alt="Rate conversion with interpolation-antialiasing filter" class="align-center" src="../_images/rateconv2.jpg" style="width: 800px;" /></a>
 <p>In practice, we have to approximate the ideal filter with a lowpass
 FIR or IIR filter with cutoff at <span class="math notranslate nohighlight">\(\frac{\pi}{\max(U,D)}\)</span>. Note that
 this filter operates at the interpolated rate. The filter design
 techniques discussed in <a class="reference internal" href="../ch6/fildesign.html#sec-fildesign"><span class="std std-numref">Section 6</span></a> can be employed to
-design this pratical antialiasing-interpolation filter.</p>
+design this pratical interpolation-antialiasing filter.</p>
 </li>
 </ul>
 </section>

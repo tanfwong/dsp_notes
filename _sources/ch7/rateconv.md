@@ -55,13 +55,16 @@
       |\hat\omega| \leq \pi$ because of  {eq}`e:upspectrum`.
 
 * For case 2, we may replace the ideal lowpass filter between the
-  upsampler and downsampler with a combined antialiasing and
-  initerpolation ideal lowpass filter with frequency response
-  $\displaystyle H_{\max(U.D)}(e^{j\hat\omega}) = \begin{cases} U &
-  \text{for } |\hat\omega| < \frac{\pi}{\max(U,D)} \\ 0 & \text{for }
-  \frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi \end{cases}$
+  upsampler and downsampler with a combined interpolation and
+  antialiasing ideal lowpass filter with frequency response
+  $\displaystyle H_{\max(U.D)}(e^{j\hat\omega}) = 
+  \begin{cases} 
+  U & \text{for } |\hat\omega| < \frac{\pi}{\max(U,D)} 
+  \\ 
+  0 & \text{for } \frac{\pi}{\max(U,D)} \leq |\hat\omega| \leq \pi 
+  \end{cases}$
   ```{image} ../figs/rateconv2.jpg 
-  :alt: Rate conversion with antialiasing filter 
+  :alt: Rate conversion with interpolation-antialiasing filter 
   :width: 800px 
   :align: center 
   ``` 
@@ -69,4 +72,4 @@
   FIR or IIR filter with cutoff at $\frac{\pi}{\max(U,D)}$. Note that
   this filter operates at the interpolated rate. The filter design
   techniques discussed in {numref}`sec:fildesign` can be employed to
-  design this pratical antialiasing-interpolation filter.
+  design this pratical interpolation-antialiasing filter.
