@@ -408,7 +408,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-u-d-mux-identity">7.5.5.1. <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-Mux Identity</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -571,6 +574,45 @@ that</p>
 multiplexer in the system on the right gives the identity.</p>
 </li>
 </ul>
+<section id="frac-u-d-mux-identity">
+<h3><span class="section-number">7.5.5.1. </span><span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-Mux Identity<a class="headerlink" href="#frac-u-d-mux-identity" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>The following two systems are equivalent:</p>
+<a class="reference internal image-reference" href="../_images/UDid.jpg"><img alt="U/D-Mux identity" class="align-center" src="../_images/UDid.jpg" style="width: 800px;" /></a>
+<p>where <span class="math notranslate nohighlight">\(kD\%U = kD \bmod U\)</span>, i.e., the remainder of <span class="math notranslate nohighlight">\(kD\)</span> divided by <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</li>
+<li><p>The identity follows by observing the system on the top that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+  x[n] = \sum_{l=0}^{U-1} x^U_l[n-l].
+  \end{equation*}\]</div>
+<p>Thus, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-e-udm">
+<span class="eqno">(7.9)<a class="headerlink" href="#equation-e-udm" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+x_D[n] &amp;= x[(nU+k)D] 
+\\
+&amp;=
+\sum_{l=0}^{U-1}  x^U_l[nUD+kD-l]
+\\
+&amp;= x^U_{kD\%U}[nUD+kD- (kD\%U)]
+\\
+&amp;= x^U_{kD\%U} \left[ \left(nD+\left\lfloor \frac{kD}{U} \right\rfloor
+\right)U \right]
+\\
+&amp;= x_{kD\%U} \left[ nD+\left\lfloor \frac{kD}{U} \right\rfloor
+\right]
+\end{align}\end{split}\]</div>
+<p>where the third equality is due to the fact that <span class="math notranslate nohighlight">\(x^U_l[nUD+kD-l] =
+0\)</span> for <span class="math notranslate nohighlight">\(l \neq kD\%U\)</span>, and the fourth equality is due to that fact
+that <span class="math notranslate nohighlight">\(kD - (kD\%U) = \left\lfloor \frac{kD}{U} \right\rfloor U\)</span>. Note
+that signal <span class="math notranslate nohighlight">\(x_{kD\%U} \left[ nD+\left\lfloor \frac{kD}{U} \right\rfloor
+\right]\)</span> is simply the downsampled by <span class="math notranslate nohighlight">\(D\)</span> version of <span class="math notranslate nohighlight">\(x_{kD\%U}
+\left[n + \left\lfloor \frac{kD}{U} \right\rfloor \right]\)</span>. Hence,
+<a class="reference internal" href="#equation-e-udm">(7.9)</a> simply describes the operation of the system on the
+bottom of the figure above.</p>
+</li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -645,7 +687,10 @@ multiplexer in the system on the right gives the identity.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsampling-identity">7.5.2. Downsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsampling-identity">7.5.3. Upsampling Identity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downsample-demux-identity">7.5.4. Downsample-DeMux Identity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upsample-mux-identity">7.5.5. Upsample-Mux Identity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frac-u-d-mux-identity">7.5.5.1. <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-Mux Identity</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

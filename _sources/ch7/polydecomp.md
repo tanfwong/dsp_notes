@@ -149,3 +149,43 @@
   because $x^U_l[nU+k-l] = 0$ for $k \neq l$. The fact that the signals
   $x[nU+k]$, for $k=0,1,\ldots, U-1$, are exactly the inputs to the
   multiplexer in the system on the right gives the identity. 
+
+### $\frac{U}{D}$-Mux Identity
+* The following two systems are equivalent:
+  ```{image} ../figs/UDid.jpg 
+  :alt: U/D-Mux identity
+  :width: 800px 
+  :align: center 
+  ```
+  where $kD\%U = kD \bmod U$, i.e., the remainder of $kD$ divided by $U$.
+
+* The identity follows by observing the system on the top that 
+  \begin{equation*}
+  x[n] = \sum_{l=0}^{U-1} x^U_l[n-l].
+  \end{equation*}
+  Thus, for $k=0,1,\ldots, U-1$,
+  ```{math}
+  :label: e:UDM
+  \begin{align}
+  x_D[n] &= x[(nU+k)D] 
+  \\
+  &=
+  \sum_{l=0}^{U-1}  x^U_l[nUD+kD-l]
+  \\
+  &= x^U_{kD\%U}[nUD+kD- (kD\%U)]
+  \\
+  &= x^U_{kD\%U} \left[ \left(nD+\left\lfloor \frac{kD}{U} \right\rfloor
+  \right)U \right]
+  \\
+  &= x_{kD\%U} \left[ nD+\left\lfloor \frac{kD}{U} \right\rfloor
+  \right]
+  \end{align}
+  ```
+  where the third equality is due to the fact that $x^U_l[nUD+kD-l] =
+  0$ for $l \neq kD\%U$, and the fourth equality is due to that fact
+  that $kD - (kD\%U) = \left\lfloor \frac{kD}{U} \right\rfloor U$. Note
+  that signal $x_{kD\%U} \left[ nD+\left\lfloor \frac{kD}{U} \right\rfloor
+  \right]$ is simply the downsampled by $D$ version of $x_{kD\%U}
+  \left[n + \left\lfloor \frac{kD}{U} \right\rfloor \right]$. Hence,
+  {eq}`e:UDM` simply describes the operation of the system on the
+  bottom of the figure above.
