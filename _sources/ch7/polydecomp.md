@@ -150,7 +150,7 @@
   $x[nU+k]$, for $k=0,1,\ldots, U-1$, are exactly the inputs to the
   multiplexer in the system on the right gives the identity. 
 
-### $\frac{U}{D}$-Mux Identity
+## $\frac{U}{D}$-Mux Identity
 * The following two systems are equivalent:
   ```{image} ../figs/UDid.jpg 
   :alt: U/D-Mux identity
