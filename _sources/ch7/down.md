@@ -80,7 +80,7 @@
   signal $x(t) \stackrel{\text{FT}}{\longleftrightarrow} X(\omega)$ at
   sampling rate $f_s$, then $x_D[n]$ is clearly the sampled version of
   $x(t)$ at sampling rate $\frac{f_s}{D}$. In terms of the folded
-  spectrum, $\displaystyle X(e^{\hat\omega}) = f_s
+  spectrum, $\displaystyle X(e^{j\hat\omega}) = f_s
   \sum_{l=-\infty}^{\infty} X(\hat\omega f_s + 2\pi l f_s)$. Hence,
   by {eq}`e:downspectrum` we have
   \begin{align*}
