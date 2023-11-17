@@ -105,7 +105,7 @@
   1. **Oversampling $X(e^{j\hat\omega}) = 0$ for $\frac{\pi}{D}
      \leq |\hat\omega| \leq \pi$**:
 
-     The folded spectrum $X_D(e^{j\hat\omega}D) = \frac{1}{D}
+     The folded spectrum $X_D(e^{j\hat\omega D}) = \frac{1}{D}
      \sum_{k=0}^{D-1} X\left( e^{j (\hat\omega - \frac{2\pi k}{D})}
      \right)$ for this case is illustrated in the figure below:
      ```{image} ../figs/Dover.jpg 
