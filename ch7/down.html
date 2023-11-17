@@ -517,7 +517,7 @@ downsampling described by <a class="reference internal" href="#equation-e-downsp
 <span class="math notranslate nohighlight">\(x[n]\)</span> back from the downsampled signal <span class="math notranslate nohighlight">\(x_D[n]\)</span> by reversing the
 sequence of frequency-domain operations as shown in the figure
 above. That is, <span class="math notranslate nohighlight">\(\displaystyle  X(e^{j\hat\omega}) = \begin{cases}
-D X_D(e^{j\hat\omega}D) &amp; \text{for } |\hat\omega| &lt;
+D X_D(e^{j\hat\omega D}) &amp; \text{for } |\hat\omega| &lt;
 \frac{\pi}{D} \\
 0  &amp; \text{for } \frac{\pi}{D} \leq |\hat\omega| \leq \pi.
 \end{cases}\)</span></p>
@@ -527,7 +527,7 @@ in <a class="reference internal" href="interp.html#sec-interp"><span class="std 
 </li>
 <li><p><strong>Undersampling <span class="math notranslate nohighlight">\(X(e^{j\hat\omega}) \neq 0\)</span> for <span class="math notranslate nohighlight">\(\frac{\pi}{D}
 \leq |\hat\omega| \leq \pi\)</span></strong>:</p>
-<p>The folded spectrum <span class="math notranslate nohighlight">\(X_D(e^{j\hat\omega}D)\)</span> for this case is
+<p>The folded spectrum <span class="math notranslate nohighlight">\(X_D(e^{j\hat\omega D})\)</span> for this case is
 illustrated in the figure below:</p>
 <a class="reference internal image-reference" href="../_images/Dunder.jpg"><img alt="Undersampling illustration when downsampling" class="align-center" src="../_images/Dunder.jpg" style="width: 800px;" /></a>
 <p>From the figure, we see that <span class="math notranslate nohighlight">\(X_D(e^{j\hat\omega}) \neq

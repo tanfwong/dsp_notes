@@ -118,7 +118,7 @@
      $x[n]$ back from the downsampled signal $x_D[n]$ by reversing the
      sequence of frequency-domain operations as shown in the figure
      above. That is, $\displaystyle  X(e^{j\hat\omega}) = \begin{cases}
-     D X_D(e^{j\hat\omega}D) & \text{for } |\hat\omega| <
+     D X_D(e^{j\hat\omega D}) & \text{for } |\hat\omega| <
      \frac{\pi}{D} \\
      0  & \text{for } \frac{\pi}{D} \leq |\hat\omega| \leq \pi.
      \end{cases}$
@@ -130,7 +130,7 @@
   2. **Undersampling $X(e^{j\hat\omega}) \neq 0$ for $\frac{\pi}{D}
      \leq |\hat\omega| \leq \pi$**:
 
-     The folded spectrum $X_D(e^{j\hat\omega}D)$ for this case is 
+     The folded spectrum $X_D(e^{j\hat\omega D})$ for this case is 
      illustrated in the figure below:
      ```{image} ../figs/Dunder.jpg 
      :alt: Undersampling illustration when downsampling 
