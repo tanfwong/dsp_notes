@@ -5,7 +5,8 @@
   filters. To that end, we start by introducing a number of simple
   algebraic results that help such a development.
 
-## Polyphase Decomposition
+(sec:polyid)=
+## Polyphase Decomposition Identity
 * Let $h[n] \stackrel{z}{\longleftrightarrow} H(z)$ be the impulse
   response and transfer function of an LTI filter.
   Fix a positive integer $M$. Define
@@ -52,7 +53,7 @@
     :width: 800px 
     :align: center 
     ``` 
-  
+(sec:downid)= 
 ## Downsampling Identity
 * The following two systems are equivalent:
   ```{image} ../figs/downid.jpg 
@@ -110,7 +111,7 @@
   which is exactly the output of the second system; thus establishing
   the identity.
   
-
+(sec:DDid)=
 ## Downsample-DeMux Identity
 
 * The following two systems are equivalent:

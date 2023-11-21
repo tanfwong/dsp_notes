@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Multi-rate Processing &#8212; Foundations of DSP Notes</title>
+    <title>7.6. Polyphase Implementation of Downsampling &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -60,12 +60,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/multirate';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/polyD';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7.1. Downsampling" href="down.html" />
-    <link rel="prev" title="6.7. IIR Filter Design" href="../ch6/iirdesign.html" />
+    <link rel="next" title="8. References" href="../refs.html" />
+    <link rel="prev" title="7.5. Polyphase Decomposition &amp; Related Identities" href="polydecomp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -200,13 +202,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch6/iirdesign.html">6.7. IIR Filter Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="down.html">7.1. Downsampling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rateconv.html">7.3. Rational Rate Conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mfilter.html">7.4. Multi-rate Filtering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="polydecomp.html">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="polyD.html">7.6. Polyphase Implementation of Downsampling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.6. Polyphase Implementation of Downsampling</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -281,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch7/multirate.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch7/polyD.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -311,7 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch7/multirate.md" target="_blank"
+      <li><a href="../_sources/ch7/polyD.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Multi-rate Processing</h1>
+    <h1>Polyphase Implementation of Downsampling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,10 +407,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="multi-rate-processing">
-<h1><span class="section-number">7. </span>Multi-rate Processing<a class="headerlink" href="#multi-rate-processing" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="polyphase-implementation-of-downsampling">
+<h1><span class="section-number">7.6. </span>Polyphase Implementation of Downsampling<a class="headerlink" href="#polyphase-implementation-of-downsampling" title="Permalink to this headline">#</a></h1>
+<ul>
+<li><p>Consider the downsampler as shown below with an anti-aliasing filter</p>
+<a class="reference internal image-reference" href="../_images/polyD1.jpg"><img alt="Downsampling anti-aliasing filter" class="align-center" src="../_images/polyD1.jpg" style="width: 800px;" /></a>
+<p>whose impulse response is <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow}
+H(z)\)</span>.</p>
+</li>
+<li><p>Applying the <a class="reference internal" href="polydecomp.html#sec-polyid"><span class="std std-ref">polyphase decomposition identity</span></a> to
+<span class="math notranslate nohighlight">\(H(z)\)</span> with <span class="math notranslate nohighlight">\(e_k[n] = h[nD+k]\)</span> for <span class="math notranslate nohighlight">\(k=0,1,\ldots, D-1\)</span> gives</p>
+<a class="reference internal image-reference" href="../_images/polyD2.jpg"><img alt="Polyphase decomposition step 1" class="align-center" src="../_images/polyD2.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Next, applying the <a class="reference internal" href="polydecomp.html#sec-downid"><span class="std std-ref">downsampling identity</span></a> to each
+branch above gives</p>
+<a class="reference internal image-reference" href="../_images/polyD3.jpg"><img alt="Polyphase decomposition step 2" class="align-center" src="../_images/polyD3.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Finally, applying the <a class="reference internal" href="polydecomp.html#sec-ddid"><span class="std std-ref">downsample-demux identity</span></a> to the bank
+of downsamplers gives the following polyphase implementation of the downsampler:</p>
+<a class="reference internal image-reference" href="../_images/polyD4.jpg"><img alt="Polyphase decomposition step 3" class="align-center" src="../_images/polyD4.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Note that all the polyphase filters <span class="math notranslate nohighlight">\(E_k(z)\)</span>, <span class="math notranslate nohighlight">\(k=0,1,\ldots, D-1\)</span>,
+operate at <span class="math notranslate nohighlight">\(\frac{1}{D}\)</span> times of the input rate. If <span class="math notranslate nohighlight">\(H(z)\)</span> is an
+FIR filter of length <span class="math notranslate nohighlight">\(L\)</span>, then the length of each of the polyphase
+(FIR) filters is about <span class="math notranslate nohighlight">\(\frac{L}{D}\)</span>.</p></li>
+<li><p>Clearly, the polyphase
+structure allows simple parallel implementation of the polyphase
+filters. Nevertheless, the computational complexity (number of
+multiplications) of the polyphase implementation remains
+<span class="math notranslate nohighlight">\(\mathcal{O}(\frac{L}{D})\)</span> per input sample.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,20 +471,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ch6/iirdesign.html"
+       href="polydecomp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6.7. </span>IIR Filter Design</p>
+        <p class="prev-next-title"><span class="section-number">7.5. </span>Polyphase Decomposition &amp; Related Identities</p>
       </div>
     </a>
     <a class="right-next"
-       href="down.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.1. </span>Downsampling</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
