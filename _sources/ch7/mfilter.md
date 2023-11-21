@@ -1,3 +1,4 @@
+(sec:mfilter)=
 # Multi-rate Filtering
  * A **multi-rate filter** is one whose input and output rates
   differ.  That is, the filter outputs more/fewer than one sample per
@@ -60,6 +61,7 @@
   algorithm to obtain a generalized linear-phase FIR filter:
   ```matlab
   >> [M, we, A, W] = firpmord([1/3, 0.35], [3, 0], [0.01, 0.01])
+
 
   M =
 

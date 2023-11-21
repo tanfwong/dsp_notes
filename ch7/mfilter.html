@@ -410,7 +410,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="multi-rate-filtering">
-<h1><span class="section-number">7.4. </span>Multi-rate Filtering<a class="headerlink" href="#multi-rate-filtering" title="Permalink to this headline">#</a></h1>
+<span id="sec-mfilter"></span><h1><span class="section-number">7.4. </span>Multi-rate Filtering<a class="headerlink" href="#multi-rate-filtering" title="Permalink to this headline">#</a></h1>
 <ul>
 <li><p>A <strong>multi-rate filter</strong> is one whose input and output rates
 differ.  That is, the filter outputs more/fewer than one sample per
@@ -462,6 +462,7 @@ interpolation filter. Here, we pick the specification
 <span class="math notranslate nohighlight">\((\frac{\pi}{3}, 0.35\pi, 0.01, 0.01)\)</span> and use the Parks-McClellan
 algorithm to obtain a generalized linear-phase FIR filter:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">[</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">W</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">firpmord</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">])</span>
+
 
 <span class="n">M</span><span class="w"> </span><span class="p">=</span>
 

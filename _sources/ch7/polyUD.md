@@ -83,3 +83,7 @@ H(z)$:
   polyphase implementation is $\mathcal{O}(\frac{L}{D})$ per input
   sample, instead of $\mathcal{O}(\frac{UL}{D})$ per input sample for
   the direct implementation.
+
+* The MATLAB function`upfirdn` considered in the MATLAB example in
+  {numref}`sec:mfilter` implements the polyphase structure in step 4
+  above.
