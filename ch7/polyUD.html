@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Sampling and Reconstruction &#8212; Foundations of DSP Notes</title>
+    <title>7.8. Polyphase Implementation of \(\frac{U}{D}\)-rate Filter &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -60,12 +60,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ch3/samp';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch7/polyUD';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Poisson Sum Formula" href="poisson.html" />
-    <link rel="prev" title="2.7. Dirac delta and FTs of infinite-energy signals" href="../ch2/dirac.html" />
+    <link rel="next" title="8. References" href="../refs.html" />
+    <link rel="prev" title="7.7. Polyphase Implementation of Interpolation" href="polyU.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -173,9 +175,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch2/dirac.html">2.7. Dirac delta and FTs of infinite-energy signals</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3. Sampling and Reconstruction</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="poisson.html">3.1. Poisson Sum Formula</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sampthm.html">3.2. Sampling Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ch3/samp.html">3. Sampling and Reconstruction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ch3/poisson.html">3.1. Poisson Sum Formula</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ch3/sampthm.html">3.2. Sampling Theorem</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ch4/tdft.html">4. Time-dependent Fourier Analysis</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -200,15 +202,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../ch6/iirdesign.html">6.7. IIR Filter Design</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ch7/multirate.html">7. Multi-rate Processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/down.html">7.1. Downsampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/interp.html">7.2. Interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/rateconv.html">7.3. Rational Rate Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/mfilter.html">7.4. Multi-rate Filtering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/polydecomp.html">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/polyD.html">7.6. Polyphase Implementation of Downsampling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/polyU.html">7.7. Polyphase Implementation of Interpolation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ch7/polyUD.html">7.8. Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="multirate.html">7. Multi-rate Processing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="down.html">7.1. Downsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interp.html">7.2. Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rateconv.html">7.3. Rational Rate Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfilter.html">7.4. Multi-rate Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polydecomp.html">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyD.html">7.6. Polyphase Implementation of Downsampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyU.html">7.7. Polyphase Implementation of Interpolation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.8. Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -283,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch3/samp.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Fch7/polyUD.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/ch3/samp.md" target="_blank"
+      <li><a href="../_sources/ch7/polyUD.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,7 +395,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Sampling and Reconstruction</h1>
+    <h1>Polyphase Implementation of \frac{U}{D}-rate Filter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -407,10 +409,75 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="sampling-and-reconstruction">
-<h1><span class="section-number">3. </span>Sampling and Reconstruction<a class="headerlink" href="#sampling-and-reconstruction" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="polyphase-implementation-of-frac-u-d-rate-filter">
+<h1><span class="section-number">7.8. </span>Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter<a class="headerlink" href="#polyphase-implementation-of-frac-u-d-rate-filter" title="Permalink to this headline">#</a></h1>
+<p>Consider the general <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate system as shown below with
+an LTI filter</p>
+<a class="reference internal image-reference" href="../_images/polyUD1.jpg"><img alt="General $\frac{U}{D}$-rate filter" class="align-center" src="../_images/polyUD1.jpg" style="width: 800px;" /></a>
+<p>whose impulse response is <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow}
+H(z)\)</span>:</p>
+<ol class="arabic simple">
+<li><p>As in <a class="reference internal" href="polyU.html#sec-polyinterp"><span class="std std-numref">Section 7.7</span></a>, applying the transposed form of the
+<a class="reference internal" href="polydecomp.html#sec-polyid"><span class="std std-ref">polyphase decomposition identity</span></a> to <span class="math notranslate nohighlight">\(H(z)\)</span> with
+<span class="math notranslate nohighlight">\(e_k[n] = h[nU+k]\)</span>, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>, and then the
+<a class="reference internal" href="polydecomp.html#sec-upid"><span class="std std-ref">upsampling identity</span></a> to each branch gives</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/polyUD2.jpg"><img alt="Polyphase decomposition step 1" class="align-center" src="../_images/polyUD2.jpg" style="width: 800px;" /></a>
+<ol class="arabic" start="2">
+<li><p>Next, applying the <a class="reference internal" href="polydecomp.html#sec-udid"><span class="std std-ref">upsample-downsample-mux identity</span></a> to the bank
+of upsamplers and the downsampler in step 1 gives</p>
+<a class="reference internal image-reference" href="../_images/polyUD3.jpg"><img alt="Polyphase decomposition step 2" class="align-center" src="../_images/polyUD3.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Then, for each <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>, , as in <a class="reference internal" href="polyD.html#sec-polydown"><span class="std std-numref">Section 7.6</span></a>,
+applying the direct form of the
+<a class="reference internal" href="polydecomp.html#sec-polyid"><span class="std std-ref">polyphase decomposition identity</span></a>,
+<a class="reference internal" href="polydecomp.html#sec-downid"><span class="std std-ref">downsampling identity</span></a>, and
+<a class="reference internal" href="polydecomp.html#sec-ddid"><span class="std std-ref">downsample-demux identity</span></a> to the <span class="math notranslate nohighlight">\(k\)</span>th branch
+in step 2 gives</p>
+<a class="reference internal image-reference" href="../_images/polyUD4.jpg"><img alt="Polyphase decomposition step 3" class="align-center" src="../_images/polyUD4.jpg" style="width: 800px;" /></a>
+<p>where the impulse response of the polyphase filter component
+<span class="math notranslate nohighlight">\(F_{k,l}\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+   f_{k,l}[n] 
+   &amp;= 
+   e_{kD\%U} \left[nD +
+   \left\lfloor \frac{kD}{U} \right\rfloor + l \right]
+   \\
+   &amp;=
+   h \left[ \left(nD + \left\lfloor \frac{kD}{U} \right\rfloor + l
+   \right) U + kD\%U \right]
+   \\
+   &amp;=
+   h[nUD + kD + lU]
+   \end{align*}\]</div>
+<p>for <span class="math notranslate nohighlight">\(l=0,1,\ldots, D-1\)</span>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Note that some of the polyphase filter components <span class="math notranslate nohighlight">\(f_{l,k}[n]\)</span> may
+be non-causal even if <span class="math notranslate nohighlight">\(h[n]\)</span> is causal.</p>
 </div>
+</li>
+<li><p>Finally, putting the polyphase implementation of the <span class="math notranslate nohighlight">\(k\)</span>th branch
+in step 3 back to the structure in step 2 gives the following overall
+polyphase implementation of the <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate filter:</p>
+<a class="reference internal image-reference" href="../_images/polyUD5.jpg"><img alt="Polyphase decomposition step 4" class="align-center" src="../_images/polyUD5.jpg" style="width: 800px;" /></a>
+</li>
+</ol>
+<ul class="simple">
+<li><p>Note that all the polyphase component filters <span class="math notranslate nohighlight">\(F_{k,l}(z)\)</span>,
+<span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span> and <span class="math notranslate nohighlight">\(l=0,1,\ldots, D-1\)</span>, operate at
+<span class="math notranslate nohighlight">\(\frac{1}{D}\)</span> times of the input rate. If <span class="math notranslate nohighlight">\(H(z)\)</span> is an FIR filter of
+length <span class="math notranslate nohighlight">\(L\)</span>, then the length of <span class="math notranslate nohighlight">\(f_{k,l}[n]\)</span> is at most <span class="math notranslate nohighlight">\(\lceil
+\frac{L}{UD} \rceil + 1\)</span>.</p></li>
+<li><p>Clearly, the polyphase structure allows simple parallel
+implementation of the polyphase componet filters. Assuming <span class="math notranslate nohighlight">\(NU \gg L
+\gg UD\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the length of the input signal, the
+computational complexity (number of multiplications) of the
+polyphase implementation is <span class="math notranslate nohighlight">\(\mathcal{O}(\frac{L}{D})\)</span> per input
+sample, instead of <span class="math notranslate nohighlight">\(\mathcal{O}(\frac{UL}{D})\)</span> per input sample for
+the direct implementation.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -426,7 +493,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./ch3"
+            path: "./ch7"
         },
         predefinedOutput: true
     }
@@ -445,20 +512,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ch2/dirac.html"
+       href="polyU.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.7. </span>Dirac delta and FTs of infinite-energy signals</p>
+        <p class="prev-next-title"><span class="section-number">7.7. </span>Polyphase Implementation of Interpolation</p>
       </div>
     </a>
     <a class="right-next"
-       href="poisson.html"
+       href="../refs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.1. </span>Poisson Sum Formula</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>References</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

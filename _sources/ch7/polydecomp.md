@@ -154,7 +154,7 @@
   multiplexer in the system on the right gives the identity. 
 
 (sec:UDid)=
-## $\frac{U}{D}$-Mux Identity
+## Upsample-Downsample-Mux Identity
 * The following two systems are equivalent:
   ```{image} ../figs/UDid.jpg 
   :alt: U/D-Mux identity

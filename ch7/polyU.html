@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. References" href="../refs.html" />
+    <link rel="next" title="7.8. Polyphase Implementation of \(\frac{U}{D}\)-rate Filter" href="polyUD.html" />
     <link rel="prev" title="7.6. Polyphase Implementation of Downsampling" href="polyD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -210,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="polydecomp.html">7.5. Polyphase Decomposition &amp; Related Identities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="polyD.html">7.6. Polyphase Implementation of Downsampling</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">7.7. Polyphase Implementation of Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="polyUD.html">7.8. Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">8. References</a></li>
@@ -409,26 +410,27 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="polyphase-implementation-of-interpolation">
-<h1><span class="section-number">7.7. </span>Polyphase Implementation of Interpolation<a class="headerlink" href="#polyphase-implementation-of-interpolation" title="Permalink to this headline">#</a></h1>
-<ul>
-<li><p>Consider the interpolation system as shown below with an interpolation filter</p>
+<span id="sec-polyinterp"></span><h1><span class="section-number">7.7. </span>Polyphase Implementation of Interpolation<a class="headerlink" href="#polyphase-implementation-of-interpolation" title="Permalink to this headline">#</a></h1>
+<p>Consider the interpolation system as shown below with an interpolation filter</p>
 <a class="reference internal image-reference" href="../_images/polyU1.jpg"><img alt="Interpolation system" class="align-center" src="../_images/polyU1.jpg" style="width: 800px;" /></a>
 <p>whose impulse response is <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow}
-H(z)\)</span>.</p>
-</li>
+H(z)\)</span>:</p>
+<ol class="arabic">
 <li><p>Applying the transposed form of the <a class="reference internal" href="polydecomp.html#sec-polyid"><span class="std std-ref">polyphase decomposition identity</span></a> to
 <span class="math notranslate nohighlight">\(H(z)\)</span> with <span class="math notranslate nohighlight">\(e_k[n] = h[nU+k]\)</span>, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>, gives</p>
 <a class="reference internal image-reference" href="../_images/polyU2.jpg"><img alt="Polyphase decomposition step 1" class="align-center" src="../_images/polyU2.jpg" style="width: 800px;" /></a>
 </li>
 <li><p>Next, applying the <a class="reference internal" href="polydecomp.html#sec-upid"><span class="std std-ref">upsampling identity</span></a> to each
-branch above gives</p>
+branch in step 1 gives</p>
 <a class="reference internal image-reference" href="../_images/polyU3.jpg"><img alt="Polyphase decomposition step 2" class="align-center" src="../_images/polyU3.jpg" style="width: 800px;" /></a>
 </li>
 <li><p>Finally, applying the <a class="reference internal" href="polydecomp.html#sec-umid"><span class="std std-ref">upsample-mux identity</span></a> to the bank
-of upsamplers gives the following polyphase implementation of the
+of upsamplers in step 2 gives the following polyphase implementation of the
 interpolation system:</p>
 <a class="reference internal image-reference" href="../_images/polyU4.jpg"><img alt="Polyphase decomposition step 3" class="align-center" src="../_images/polyU4.jpg" style="width: 800px;" /></a>
 </li>
+</ol>
+<ul class="simple">
 <li><p>Note that all the polyphase filters <span class="math notranslate nohighlight">\(E_k(z)\)</span>, <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>,
 operate at the input rate. If <span class="math notranslate nohighlight">\(H(z)\)</span> is an FIR filter of length <span class="math notranslate nohighlight">\(L\)</span>,
 then the length of each of the polyphase (FIR) filters is about
@@ -483,11 +485,11 @@ input sample for the direct implementation.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../refs.html"
+       href="polyUD.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>References</p>
+        <p class="prev-next-title"><span class="section-number">7.8. </span>Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -1,39 +1,38 @@
+(sec:polyinterp)=
 # Polyphase Implementation of Interpolation
-* Consider the interpolation system as shown below with an interpolation filter
+Consider the interpolation system as shown below with an interpolation filter
+```{image} ../figs/polyU1.jpg 
+:alt: Interpolation system
+:width: 800px 
+:align: center 
+```
+whose impulse response is $h[n] \stackrel{z}{\longleftrightarrow}
+H(z)$:
 
-  ```{image} ../figs/polyU1.jpg 
-  :alt: Interpolation system
-  :width: 800px 
-  :align: center 
-  ```
-  whose impulse response is $h[n] \stackrel{z}{\longleftrightarrow}
-  H(z)$.
-  
+1. Applying the transposed form of the {ref}`polyphase decomposition identity <sec:polyid>` to
+   $H(z)$ with $e_k[n] = h[nU+k]$, for $k=0,1,\ldots, U-1$, gives
+   ```{image} ../figs/polyU2.jpg 
+   :alt: Polyphase decomposition step 1
+   :width: 800px 
+   :align: center 
+   ```
 
-* Applying the transposed form of the {ref}`polyphase decomposition identity <sec:polyid>` to
-  $H(z)$ with $e_k[n] = h[nU+k]$, for $k=0,1,\ldots, U-1$, gives
-  ```{image} ../figs/polyU2.jpg 
-  :alt: Polyphase decomposition step 1
-  :width: 800px 
-  :align: center 
-  ```
+2. Next, applying the {ref}`upsampling identity <sec:upid>` to each
+   branch in step 1 gives
+   ```{image} ../figs/polyU3.jpg 
+   :alt: Polyphase decomposition step 2
+   :width: 800px 
+   :align: center 
+   ```
 
-* Next, applying the {ref}`upsampling identity <sec:upid>` to each
-  branch above gives
-  ```{image} ../figs/polyU3.jpg 
-  :alt: Polyphase decomposition step 2
-  :width: 800px 
-  :align: center 
-  ```
-
-* Finally, applying the {ref}`upsample-mux identity <sec:UMid>` to the bank
-  of upsamplers gives the following polyphase implementation of the
-  interpolation system:
-  ```{image} ../figs/polyU4.jpg 
-  :alt: Polyphase decomposition step 3
-  :width: 800px 
-  :align: center 
-  ```
+3. Finally, applying the {ref}`upsample-mux identity <sec:UMid>` to the bank
+   of upsamplers in step 2 gives the following polyphase implementation of the
+   interpolation system:
+   ```{image} ../figs/polyU4.jpg 
+   :alt: Polyphase decomposition step 3
+   :width: 800px 
+   :align: center 
+   ```
 
 * Note that all the polyphase filters $E_k(z)$, $k=0,1,\ldots, U-1$,
   operate at the input rate. If $H(z)$ is an FIR filter of length $L$,

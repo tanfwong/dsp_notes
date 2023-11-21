@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8. References &#8212; Foundations of DSP Notes</title>
+    <title>Polyphase Implementation of Interpolation &#8212; Foundations of DSP Notes</title>
   
   
   
@@ -60,11 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'refs';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'polyUD';</script>
     <link rel="shortcut icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="7.8. Polyphase Implementation of \(\frac{U}{D}\)-rate Filter" href="ch7/polyUD.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -155,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="ch1/review.html">1. Review of discrete-time signals and systems</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="ch1/signals.html">1.1. Discrete-time signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ch1/systems.html">1.2. Discrete-time systems</a></li>
@@ -210,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="ch7/polyUD.html">7.8. Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">8. References</a></li>
 </ul>
 
     </div>
@@ -282,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2Frefs.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tanfwong/dsp_notes/issues/new?title=Issue%20on%20page%20%2FpolyUD.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -312,7 +313,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/refs.md" target="_blank"
+      <li><a href="_sources/polyUD.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -392,7 +393,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>References</h1>
+    <h1>Polyphase Implementation of Interpolation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,30 +407,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1><span class="section-number">8. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h1>
-<div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id3"><span class="brackets">BC14</span></dt>
-<dd><p>James Ward Brown and Ruel V Churchill. <em>Complex variables and applications</em>. McGraw-Hill, 9th edition, 2014.</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets">OS10</span></dt>
-<dd><p>Alan Oppenheim and Ronald Schafer. <em>Discrete-Time Signal Processing</em>. Prentice Hall, 3rd edition, 2010.</p>
-</dd>
-<dt class="label" id="id7"><span class="brackets">Orf06</span></dt>
-<dd><p>Sophocles J. Orfanidis. Lecture notes on elliptic filter design. Technical Report, Rutgers University, Nov. 2006. URL: <a class="reference external" href="https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf">https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf</a>.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">PM22</span></dt>
-<dd><p>John Proakis and Dimitris Manolakis. <em>Digital Signal Processing: Principles, Algorithms, and Applications</em>. Pearson, 5th edition, 2022.</p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">Rud76</span></dt>
-<dd><p>Walter Rudin. <em>Principles of mathematical analysis</em>. McGraw-Hill, 3rd edition, 1976.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">Rud87</span></dt>
-<dd><p>Walter Rudin. <em>Real and complex analysis</em>. McGraw-Hill, 3rd edition, 1987.</p>
-</dd>
-</dl>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="polyphase-implementation-of-interpolation">
+<h1>Polyphase Implementation of Interpolation<a class="headerlink" href="#polyphase-implementation-of-interpolation" title="Permalink to this headline">#</a></h1>
+<ul>
+<li><p>Consider the interpolation system as shown below with an interpolation filter</p>
+<a class="reference internal image-reference" href="../figs/polyU1.jpg"><img alt="Interpolation system" class="align-center" src="../figs/polyU1.jpg" style="width: 800px;" /></a>
+<p>whose impulse response is <span class="math notranslate nohighlight">\(h[n] \stackrel{z}{\longleftrightarrow}
+H(z)\)</span>.</p>
+</li>
+<li><p>Applying the transposed form of the <a class="reference internal" href="ch7/polydecomp.html#sec-polyid"><span class="std std-ref">polyphase decomposition identity</span></a> to
+<span class="math notranslate nohighlight">\(H(z)\)</span> with <span class="math notranslate nohighlight">\(e_k[n] = h[nU+k]\)</span>, for <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>, gives</p>
+<a class="reference internal image-reference" href="../figs/polyU2.jpg"><img alt="Polyphase decomposition step 1" class="align-center" src="../figs/polyU2.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Next, applying the <a class="reference internal" href="ch7/polydecomp.html#sec-upid"><span class="std std-ref">upsampling identity</span></a> to each
+branch above gives</p>
+<a class="reference internal image-reference" href="../figs/polyU3.jpg"><img alt="Polyphase decomposition step 2" class="align-center" src="../figs/polyU3.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Finally, applying the <a class="reference internal" href="ch7/polydecomp.html#sec-umid"><span class="std std-ref">upsample-mux identity</span></a> to the bank
+of upsamplers gives the following polyphase implementation of the
+interpolation system:</p>
+<a class="reference internal image-reference" href="../figs/polyU4.jpg"><img alt="Polyphase decomposition step 3" class="align-center" src="../figs/polyU4.jpg" style="width: 800px;" /></a>
+</li>
+<li><p>Note that all the polyphase filters <span class="math notranslate nohighlight">\(E_k(z)\)</span>, <span class="math notranslate nohighlight">\(k=0,1,\ldots, U-1\)</span>,
+operate at the input rate. If <span class="math notranslate nohighlight">\(H(z)\)</span> is an FIR filter of length <span class="math notranslate nohighlight">\(L\)</span>,
+then the length of each of the polyphase (FIR) filters is about
+<span class="math notranslate nohighlight">\(\frac{L}{U}\)</span>.</p></li>
+<li><p>Clearly, the polyphase structure allows simple parallel
+implementation of the polyphase filters. Assuming <span class="math notranslate nohighlight">\(NU \gg L\)</span> where
+<span class="math notranslate nohighlight">\(N\)</span> is the length of the input signal, the computational complexity
+(number of multiplications) of the polyphase implementation is
+<span class="math notranslate nohighlight">\(\mathcal{O}(L)\)</span> per input sample, instead of <span class="math notranslate nohighlight">\(\mathcal{O}(UL)\)</span> per
+input sample for the direct implementation.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -463,15 +472,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="ch7/polyUD.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.8. </span>Polyphase Implementation of <span class="math notranslate nohighlight">\(\frac{U}{D}\)</span>-rate Filter</p>
-      </div>
-    </a>
 </div></div>
   
 </div>
