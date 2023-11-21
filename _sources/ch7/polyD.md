@@ -1,8 +1,8 @@
 # Polyphase Implementation of Downsampling 
-* Consider the downsampler as shown below with an anti-aliasing filter
+* Consider the downsampling system as shown below with an anti-aliasing filter
 
   ```{image} ../figs/polyD1.jpg 
-  :alt: Downsampling anti-aliasing filter
+  :alt: Downsampling with anti-aliasing filter
   :width: 800px 
   :align: center 
   ```
@@ -10,8 +10,8 @@
   H(z)$.
   
 
-* Applying the {ref}`polyphase decomposition identity <sec:polyid>` to
-  $H(z)$ with $e_k[n] = h[nD+k]$ for $k=0,1,\ldots, D-1$ gives
+* Applying the direct form of the {ref}`polyphase decomposition identity <sec:polyid>` to
+  $H(z)$ with $e_k[n] = h[nD+k]$, for $k=0,1,\ldots, D-1$, gives
   ```{image} ../figs/polyD2.jpg 
   :alt: Polyphase decomposition step 1
   :width: 800px 
@@ -27,7 +27,8 @@
   ```
 
 * Finally, applying the {ref}`downsample-demux identity <sec:DDid>` to the bank
-  of downsamplers gives the following polyphase implementation of the downsampler:
+  of downsamplers gives the following polyphase implementation of the
+  downsampling system:
   ```{image} ../figs/polyD4.jpg 
   :alt: Polyphase decomposition step 3
   :width: 800px 
@@ -39,8 +40,8 @@
   FIR filter of length $L$, then the length of each of the polyphase
   (FIR) filters is about $\frac{L}{D}$. 
 
-* Clearly, the polyphase
-  structure allows simple parallel implementation of the polyphase
-  filters. Nevertheless, the computational complexity (number of
-  multiplications) of the polyphase implementation remains
-  $\mathcal{O}(\frac{L}{D})$ per input sample.
+* Clearly, the polyphase structure allows simple parallel
+  implementation of the polyphase filters. Nevertheless, the
+  computational complexity (number of multiplications) of the
+  polyphase implementation remains $\mathcal{O}(\frac{L}{D})$ per
+  input sample.

@@ -90,6 +90,7 @@
   That is to say $y[n]$ is the downsampled version of $\tilde{y}[n]$
   by factor $D$; thus establishing the equivalence of the two systems.
 
+(sec:upid)=
 ## Upsampling Identity
 * The following two systems are equivalent:
   ```{image} ../figs/upid.jpg 
@@ -125,6 +126,7 @@
   that for $k=0,1,\ldots, D-1$, $x_k[n] = x_D[n-k] = x[nD-k]$, which
   is clearly the outputs of the demultiplexer on the right. 
 
+(sec:UMid)=
 ## Upsample-Mux Identity
 
 * The following two systems are equivalent:
@@ -151,6 +153,7 @@
   $x[nU+k]$, for $k=0,1,\ldots, U-1$, are exactly the inputs to the
   multiplexer in the system on the right gives the identity. 
 
+(sec:UDid)=
 ## $\frac{U}{D}$-Mux Identity
 * The following two systems are equivalent:
   ```{image} ../figs/UDid.jpg 
