@@ -141,7 +141,7 @@
   x[n] = \sum_{l=0}^{U-1} x^U_l[n-l]
   \end{equation*}
   where $x^U_l[n]$ is the upsampled signal by factor $U$ from
-  $x[n]_l$, for $l=0,1,\ldots, U-1$. Thus, for $k=0,1,\ldots, U-1$,
+  $x_l[n]$, for $l=0,1,\ldots, U-1$. Thus, for $k=0,1,\ldots, U-1$,
   \begin{align*}
   x[nU+k] 
   &=
