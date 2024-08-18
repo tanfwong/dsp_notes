@@ -494,8 +494,9 @@ w_{\lambda}[n] x[n] ~~\stackrel{\text{DTFT}}{\longleftrightarrow} ~~
 W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)}) \, d\theta.
 \end{equation}\]</div>
 <p>Taking limit on the LHS of <a class="reference internal" href="#equation-e-wx-intwx">(2.5)</a>, <span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}
-w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> from 1.
-above. On the RHS, we have <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
+w_{\lambda}[n] x[n] = x[n]\)</span> for each <span class="math notranslate nohighlight">\(n \in \mathbb{Z}\)</span> because
+<span class="math notranslate nohighlight">\(\lim_{\lambda \rightarrow 1}  w_{\lambda}[n] = 1\)</span> as discussed above.
+On the RHS, we have <span class="math notranslate nohighlight">\(\displaystyle \lim_{\lambda \rightarrow 1} 
 \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
 \, d\theta = X(e^{j\hat{\omega}})\)</span> for each <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> from 3.
 above. Thus in this sense, we can say that the DTFT mapping in
@@ -574,7 +575,7 @@ terms of <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})\
 in <span class="math notranslate nohighlight">\(\hat{\omega}\)</span> by property 1. because its value is infinite when
 <span class="math notranslate nohighlight">\(\hat\omega = 0 \bmod 2\pi\)</span>. This infinite value implies
 that <span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})\)</span> for
-any <span class="math notranslate nohighlight">\(a\neq 0\)</span>, which in turn implies <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})
+any <span class="math notranslate nohighlight">\(a &gt; 0\)</span>, which in turn implies <span class="math notranslate nohighlight">\(\delta(e^{j\hat{\omega}})
 \equiv 0\)</span> contradicting 1. above.</p></li>
 <li><p>In fact, it is more appropiate to associate the scaled Dirac delta
 <span class="math notranslate nohighlight">\(a\delta(e^{j\hat{\omega}})\)</span> with property 2. such that

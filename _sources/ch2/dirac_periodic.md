@@ -70,8 +70,9 @@ also satisfies the following properties:
   \end{equation}
   ```
   Taking limit on the LHS of {eq}`e:wx-intWX`, $\lim_{\lambda \rightarrow 1}
-  w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ from 1.
-  above. On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
+  w_{\lambda}[n] x[n] = x[n]$ for each $n \in \mathbb{Z}$ because
+  $\lim_{\lambda \rightarrow 1}  w_{\lambda}[n] = 1$ as discussed above.
+  On the RHS, we have $\displaystyle \lim_{\lambda \rightarrow 1} 
   \frac{1}{2\pi} \int_{-\pi}^{\pi} W_{\lambda}(e^{j\theta}) X(e^{j(\hat{\omega}-\theta)})
   \, d\theta = X(e^{j\hat{\omega}})$ for each $\hat{\omega}$ from 3.
   above. Thus in this sense, we can say that the DTFT mapping in
@@ -138,7 +139,7 @@ terms of $\delta(e^{j\hat{\omega}})$:
     in $\hat{\omega}$ by property 1. because its value is infinite when
     $\hat\omega = 0 \bmod 2\pi$. This infinite value implies
     that $a\delta(e^{j\hat{\omega}}) = \delta(e^{j\hat{\omega}})$ for
-    any $a\neq 0$, which in turn implies $\delta(e^{j\hat{\omega}})
+    any $a > 0$, which in turn implies $\delta(e^{j\hat{\omega}})
     \equiv 0$ contradicting 1. above. 
   * In fact, it is more appropiate to associate the scaled Dirac delta
     $a\delta(e^{j\hat{\omega}})$ with property 2. such that 
