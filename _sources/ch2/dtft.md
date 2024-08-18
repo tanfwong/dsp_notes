@@ -1,5 +1,5 @@
 # Discrete-Time Fourier Transform (DTFT)
-For a discrete-time signal $x{n]$:
+For a discrete-time signal $x[n]$:
 * **<u>Forward DTFT</u>**:
   ```{math}
   :label: e:dtft
