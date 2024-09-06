@@ -135,7 +135,7 @@ Y(e^{j\hat\omega})$:
 ## Use-of-tables example
 
 Consider the *window* signal $w_{\lambda}[n] = \lambda^{|n|}$, where
-$\lambda \in (0,1)$. Clearly, $w[n] \in \ell^1$ and hence its DTFT
+$\lambda \in (0,1)$. Clearly, $w_{\lambda}[n] \in \ell^1$ and hence its DTFT
 $W_{\lambda}(e^{j\hat\omega})$ exists.
 
 To use the tables above to find $W_{\lambda}(e^{j\hat\omega})$, let
