@@ -94,9 +94,9 @@ also satisfies the following properties:
   mimic the above limiting process in the case of absolutely summable signals to
   define a "DTFT" for the infinite-energy sinusoid $x[n]$. That is, we want to
   call $\lim_{\lambda \rightarrow 1}
-  X_{w_{\lambda}}(e^{j\hat{\omega}})$ (if the limit can be interpreted
-  similar to that of $W_{\lambda}(e^{j\theta})}$) the DTFT of $x[n]$,
-  even if such a "limit" may not be exactly a mathematically
+  X_{w_{\lambda}}(e^{j\hat{\omega}})$ the DTFT of $x[n]$, if the limit can be interpreted
+  similar to that of $W_{\lambda}(e^{j\hat\omega})$, even 
+  such interpretation may not exactly result in a mathematically
   meaningful function in $\hat{\omega}$.
   ```{tip}
   In order to avoid using more math machinery, we will interpret this
