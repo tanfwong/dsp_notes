@@ -120,7 +120,7 @@ For a discrete-time signal $x[n]$:
    \left| X(e^{j\hat\omega}) - \sum_{n=-N}^{N} x[n] e^{-j\hat\omega n}
    \right|^2 d\hat\omega = 0.
    \end{equation*}
-   In additition, this mapping between $x[n]$ and $X(e^{j\hat\omega})$
+   In addition, this mapping between $x[n]$ and $X(e^{j\hat\omega})$
    is an *isomorphism* between the (Hilbert) space $\ell^2$ of finite-energy
    signals and the (Hilbert) space $L^2[-\pi,\pi]$ of
    square-integrable DTFTs satisfying the *Parseval theorem*:
