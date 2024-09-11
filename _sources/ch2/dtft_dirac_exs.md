@@ -80,7 +80,7 @@ U_{w_{\lambda}}(e^{j\hat{\omega}})
 * Note that we can't directly take limit of
   $U_{w_{\lambda}}(e^{j\hat{\omega}})$ as $\lambda \rightarrow 1$ to
   obtain the DTFT $U(e^{j\hat{\omega}})$ of the unit step $u[n]$
-  because the limit doesn't exist (see Example 3. in {numref}`sec:z_exs`)!
+  because the limit doesn't exist at $\hat\omega = 0 \bmod 2\pi$.
 * To overcome this difficulty, we will express
   $U_{w_{\lambda}}(e^{j\hat{\omega}})$ in terms of
   $W_{\lambda}(e^{j\hat{\omega}})$ before taking
