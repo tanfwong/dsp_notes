@@ -177,7 +177,7 @@ Then
 & = W_{\lambda^{N}}(e^{jN\hat{\omega}}).
 \end{align*}
 It is easy to see that $W_{\lambda^{N}}(e^{jN\hat{\omega}})$ behaves
-similar to $W_{\lambda}(e^{\hat{\omega}})$:
+similar to $W_{\lambda}(e^{j\hat{\omega}})$:
 * $W_{\lambda^{N}}(e^{jN\hat{\omega}})$ is periodic in $\hat\omega$ with
   period $\frac{2\pi}{N}$,
 * $\displaystyle \lim_{\lambda \rightarrow 1} 
