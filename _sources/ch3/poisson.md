@@ -147,7 +147,7 @@ formula:
        \end{equation*}
 
 ## Frequency-domain Poisson sum formula
-Let us re-develop the Poisson sum fromula from a frequency-domain perspective:
+Let us re-develop the Poisson sum formula from a frequency-domain perspective:
 
 * Consider $X(\omega) \in L^1 \cap L^2$. Fix $f_s>0$ and let
   $\hat\omega = \frac{\omega}{fs}$. Then
