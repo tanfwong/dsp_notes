@@ -448,7 +448,7 @@ hold.</p>
 <p>to measure the spreads of signal energy about the centers in the time and
 frequency domains, respectively.</p>
 <p><strong>Example</strong>:
-For <span class="math notranslate nohighlight">\(\displaystyle \tilde{w}_{\mu} = \frac{\mu}{\pi (\mu^2+t^2)}
+For <span class="math notranslate nohighlight">\(\displaystyle \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2+t^2)}
 \stackrel{\text{FT}}{\longleftrightarrow} \tilde{W}_{\mu}(\omega) =
 e^{-\mu |\omega|}\)</span>, <span class="math notranslate nohighlight">\(\sigma_t = \sqrt{\pi} \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\omega} =
 \frac{1}{\sqrt{2} \mu}\)</span>.</p>
@@ -520,7 +520,7 @@ t|x(t)|^2 \Big|_{-\infty}^{\infty}  - \int_{-\infty}^{\infty} t
 time-bandwidth product of a practical continuous-time signal can not be
 arbitrarily small. That is, if the signal’s energy is concentrated
 in time, its energy must be spread out in frequency, and <em>vice versa</em>.</p>
-<p><strong>Example</strong>: Recall for <span class="math notranslate nohighlight">\(\tilde{w}_{\mu}
+<p><strong>Example</strong>: Recall for <span class="math notranslate nohighlight">\(\tilde{w}_{\mu} (t)
 \stackrel{\text{FT}}{\longleftrightarrow}  \tilde{W}_{\mu}(\omega)\)</span>,
 <span class="math notranslate nohighlight">\(\sigma_t = \sqrt{\pi} \mu\)</span> and <span class="math notranslate nohighlight">\(\sigma_{\omega} =
 \frac{1}{\sqrt{2} \mu}\)</span>. As <span class="math notranslate nohighlight">\(\mu \rightarrow 0\)</span>, <span class="math notranslate nohighlight">\(\sigma_t
@@ -536,24 +536,24 @@ problematic because for <span class="math notranslate nohighlight">\(x[n]=\delta
 time-bandwidth product can be obtained.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Nonethless, we may still obtain a meaningful lower bound on the
-spread (resolution) <span class="math notranslate nohighlight">\(\sigma_t\)</span> in the time domain by treating
+<p>Nonetheless, we may still obtain a meaningful lower bound on the
+spread (resolution) <span class="math notranslate nohighlight">\(\sigma_t\)</span> in the time domain by treating that
 <span class="math notranslate nohighlight">\(\delta[n]\)</span> is obtained from oversampling some continuous-time signal
 <span class="math notranslate nohighlight">\(x(t)\)</span> whose FT is <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Since
 <span class="math notranslate nohighlight">\(\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1\)</span>,
 we have <span class="math notranslate nohighlight">\(X(\omega) =
 \begin{cases} 
-\frac{1}{f_s}, &amp; \text{if} -\pi f_s \leq \omega \leq \pi f_s \\
+\frac{1}{f_s}, &amp; \text{if} -\pi f_s \leq \omega &lt; \pi f_s \\
 0, &amp; \text{otherwise}
 \end{cases}\)</span> from <a class="reference internal" href="../ch3/sampthm.html#equation-e-cutfold">(3.7)</a>. Simple calculation then
 shows that <span class="math notranslate nohighlight">\(\displaystyle \sigma_{\omega} = \frac{\pi
 f_s}{\sqrt{3}}\)</span> for this <span class="math notranslate nohighlight">\(X(\omega)\)</span>. Applying the uncertainty
 principle inequality, we get <span class="math notranslate nohighlight">\(\displaystyle \sigma_t \geq
 \frac{1}{2\sigma_{\omega}} = \frac{\sqrt{3}}{2\pi f_s}\)</span>. We may now
-treat the lovwr bound <span class="math notranslate nohighlight">\(\displaystyle \frac{\sqrt{3}}{2\pi f_s}\)</span> as
+treat the lower bound <span class="math notranslate nohighlight">\(\displaystyle \frac{\sqrt{3}}{2\pi f_s}\)</span> as
 the finest possible time resolution that we can obtain from the
 sampled signal <span class="math notranslate nohighlight">\(\delta[n]\)</span>. The finest possible time resolution for
-any generate discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> can be obtained in a
+a general discrete-time signal <span class="math notranslate nohighlight">\(x[n]\)</span> can be obtained in a
 similar manner.</p>
 </div>
 </li>

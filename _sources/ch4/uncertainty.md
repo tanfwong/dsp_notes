@@ -37,7 +37,7 @@
   frequency domains, respectively. 
 
   **Example**: 
-  For $\displaystyle \tilde{w}_{\mu} = \frac{\mu}{\pi (\mu^2+t^2)}
+  For $\displaystyle \tilde{w}_{\mu} (t) = \frac{\mu}{\pi (\mu^2+t^2)}
   \stackrel{\text{FT}}{\longleftrightarrow} \tilde{W}_{\mu}(\omega) =
   e^{-\mu |\omega|}$, $\sigma_t = \sqrt{\pi} \mu$ and $\sigma_{\omega} =
   \frac{1}{\sqrt{2} \mu}$.
@@ -110,7 +110,7 @@
   arbitrarily small. That is, if the signal's energy is concentrated
   in time, its energy must be spread out in frequency, and *vice versa*.
 
-  **Example**: Recall for $\tilde{w}_{\mu}
+  **Example**: Recall for $\tilde{w}_{\mu} (t)
   \stackrel{\text{FT}}{\longleftrightarrow}  \tilde{W}_{\mu}(\omega)$, 
   $\sigma_t = \sqrt{\pi} \mu$ and $\sigma_{\omega} =
   \frac{1}{\sqrt{2} \mu}$. As $\mu \rightarrow 0$, $\sigma_t
@@ -125,24 +125,24 @@
   $\sigma_t$ is $0$. Thus, no meaningful lower bound on the
   time-bandwidth product can be obtained.
   ```{tip}
-  Nonethless, we may still obtain a meaningful lower bound on the
-  spread (resolution) $\sigma_t$ in the time domain by treating
+  Nonetheless, we may still obtain a meaningful lower bound on the
+  spread (resolution) $\sigma_t$ in the time domain by treating that
   $\delta[n]$ is obtained from oversampling some continuous-time signal
   $x(t)$ whose FT is $X(\omega)$. Since 
   $\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1$,
   we have $X(\omega) =
   \begin{cases} 
-  \frac{1}{f_s}, & \text{if} -\pi f_s \leq \omega \leq \pi f_s \\
+  \frac{1}{f_s}, & \text{if} -\pi f_s \leq \omega < \pi f_s \\
   0, & \text{otherwise}
   \end{cases}$ from {eq}`e:cutfold`. Simple calculation then
   shows that $\displaystyle \sigma_{\omega} = \frac{\pi
   f_s}{\sqrt{3}}$ for this $X(\omega)$. Applying the uncertainty
   principle inequality, we get $\displaystyle \sigma_t \geq
   \frac{1}{2\sigma_{\omega}} = \frac{\sqrt{3}}{2\pi f_s}$. We may now
-  treat the lovwr bound $\displaystyle \frac{\sqrt{3}}{2\pi f_s}$ as
+  treat the lower bound $\displaystyle \frac{\sqrt{3}}{2\pi f_s}$ as
   the finest possible time resolution that we can obtain from the
   sampled signal $\delta[n]$. The finest possible time resolution for
-  any generate discrete-time signal $x[n]$ can be obtained in a
+  a general discrete-time signal $x[n]$ can be obtained in a
   similar manner.
   ```
 
