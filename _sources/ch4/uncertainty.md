@@ -126,8 +126,8 @@
   time-bandwidth product can be obtained.
   ```{tip}
   Nonetheless, we may still obtain a meaningful lower bound on the
-  spread (resolution) $\sigma_t$ in the time domain by treating that
-  $\delta[n]$ is obtained from oversampling some continuous-time signal
+  spread (resolution) $\sigma_t$ in the time domain by treating 
+  $\delta[n]$ as obtained from oversampling some continuous-time signal
   $x(t)$ whose FT is $X(\omega)$. Since 
   $\delta[n]\stackrel{\text{DTFT}}{\longleftrightarrow} 1$,
   we have $X(\omega) =
