@@ -23,7 +23,7 @@
   period $2\pi$. In particular, $\displaystyle
   X(e^{j\hat\omega})\Big|_{\hat\omega = \frac{2\pi k}{M}} =
   X(e^{j\hat\omega})\Big|_{\hat\omega = \frac{2\pi
-  (M-k)}{M}}$. Thus there is no difference between taking samples over
+  (M+k)}{M}}$. Thus there is no difference between taking samples over
   the periods $[0,2\pi)$ and $[-\pi,\pi)$. The former is usually
   considered in the context of frequency-domain sampling.
   ```
