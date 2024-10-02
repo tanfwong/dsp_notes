@@ -2,7 +2,7 @@
 
 * The sampling theorem (see {numref}`sec:sampthm`) tells us that we
   can reconstruct a bandlimited continuous-time signal $x(t)$ with
-  bandwidht $B$ Hz from its samples $x[n]=x\left(\frac{n}{f_s}\right)$
+  bandwidth $B$ Hz from its samples $x[n]=x\left(\frac{n}{f_s}\right)$
   as long as we oversample, i.e., choose the sampling frequency $f_s >
   2B$.
 
