@@ -35,9 +35,10 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   of the DTFT $X(e^{j\hat\omega})$, the properties of DTFT (see
   {numref}`sec:dtft_table`) carry over to DFT with the caveat that we
   have to consider the periodic extension $x_M[n]$ instead of $x[n]$
+  when applying the properties, particularly 
   when the operation involved makes the resulting signal violate the
   condition that its value must be zero except for $n=0,1,2,\ldots,M-1$.
-  We consider two examples below.
+  To illustrate such situations, we consider two examples below.
 
 * **Circular Time Shifting**:
   
@@ -111,12 +112,12 @@ length $M$ and its set of $M$-point DFT coefficients $\{X_k\}_{k=0}^{M-1}$.
   \end{equation*}
 
   It is easy to check circular convolution has the following
-  properties similar to standard convolution:
+  properties similar to standard (linear) convolution:
   - **Commutativity**:  $x[n] \circledast_M y[n] = y[n] \circledast_M
     x[n]$
   - **Associativity**: $(x[n] \circledast_M y[n]) \circledast_M z[n] =
     x[n] \circledast_M (y[n] \circledast_M z[n])$
-  - **Distributivity**:  $x[n] \circledast_M (\alpha y[n] + \beta z[n]
+  - **Distributivity**:  $x[n] \circledast_M (\alpha y[n] + \beta z[n] )
     = \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]$
   - **Identity**: $x[n] \circledast_M \delta[n-k] = x[(n-k)_M]$ for
     $k=0,1,\ldots, M-1$
@@ -186,7 +187,8 @@ Y(e^{j\hat\omega})$:
      obtain $x[n] \circledast_M y[n] = x[n]*y[n]$.
 
 * Note that direct implementation of the step above, using the DFT and
-  IDFT formulas {eq}`e:dft` and {eq}`e:idft`, is actually higher than
+  IDFT formulas {eq}`e:dft` and {eq}`e:idft`, requires more
+  computational steps than
   doing convolution directly. Luckily, the FFT algorithms can
   significantly speed up the calculations of DFT and IDFT; thus making
   the frequency-domain analysis above much more computationally

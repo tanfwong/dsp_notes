@@ -453,9 +453,10 @@ length <span class="math notranslate nohighlight">\(M\)</span> and its set of <s
 of the DTFT <span class="math notranslate nohighlight">\(X(e^{j\hat\omega})\)</span>, the properties of DTFT (see
 <a class="reference internal" href="../ch2/dtft_tables.html#sec-dtft-table"><span class="std std-numref">Section 2.2.2</span></a>) carry over to DFT with the caveat that we
 have to consider the periodic extension <span class="math notranslate nohighlight">\(x_M[n]\)</span> instead of <span class="math notranslate nohighlight">\(x[n]\)</span>
+when applying the properties, particularly
 when the operation involved makes the resulting signal violate the
 condition that its value must be zero except for <span class="math notranslate nohighlight">\(n=0,1,2,\ldots,M-1\)</span>.
-We consider two examples below.</p></li>
+To illustrate such situations, we consider two examples below.</p></li>
 <li><p><strong>Circular Time Shifting</strong>:</p>
 <p>Let <span class="math notranslate nohighlight">\(x[n] \stackrel{\text{DTFT}}{\longleftrightarrow}
 X(e^{j\hat\omega})\)</span>. Then from the time shifting property of DTFT,
@@ -526,13 +527,13 @@ y[(n-k)_M]\)</span> denotes the <strong>circular convolution</strong> between tw
    ~~ X_k Y_k
   \end{equation*}\]</div>
 <p>It is easy to check circular convolution has the following
-properties similar to standard convolution:</p>
+properties similar to standard (linear) convolution:</p>
 <ul class="simple">
 <li><p><strong>Commutativity</strong>:  <span class="math notranslate nohighlight">\(x[n] \circledast_M y[n] = y[n] \circledast_M
 x[n]\)</span></p></li>
 <li><p><strong>Associativity</strong>: <span class="math notranslate nohighlight">\((x[n] \circledast_M y[n]) \circledast_M z[n] =
 x[n] \circledast_M (y[n] \circledast_M z[n])\)</span></p></li>
-<li><p><strong>Distributivity</strong>:  <span class="math notranslate nohighlight">\(x[n] \circledast_M (\alpha y[n] + \beta z[n]
+<li><p><strong>Distributivity</strong>:  <span class="math notranslate nohighlight">\(x[n] \circledast_M (\alpha y[n] + \beta z[n] )
 = \alpha x[n] \circledast_M y[n] + \beta  x[n] \circledast_M z[n]\)</span></p></li>
 <li><p><strong>Identity</strong>: <span class="math notranslate nohighlight">\(x[n] \circledast_M \delta[n-k] = x[(n-k)_M]\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, M-1\)</span></p></li>
@@ -614,7 +615,8 @@ obtain <span class="math notranslate nohighlight">\(x[n] \circledast_M y[n] = x[
 </ol>
 </li>
 <li><p>Note that direct implementation of the step above, using the DFT and
-IDFT formulas <a class="reference internal" href="#equation-e-dft">(5.2)</a> and <a class="reference internal" href="#equation-e-idft">(5.3)</a>, is actually higher than
+IDFT formulas <a class="reference internal" href="#equation-e-dft">(5.2)</a> and <a class="reference internal" href="#equation-e-idft">(5.3)</a>, requires more
+computational steps than
 doing convolution directly. Luckily, the FFT algorithms can
 significantly speed up the calculations of DFT and IDFT; thus making
 the frequency-domain analysis above much more computationally
