@@ -423,7 +423,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="fast-fourier-transform">
 <h1><span class="section-number">5.3. </span>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permalink to this headline">#</a></h1>
 <ul>
-<li><p>We use <strong>Fast Fourier Transform (FFT)</strong> to describe a general class
+<li><p>The term <strong>Fast Fourier Transform (FFT)</strong> describes a general class
 of computationally efficient algorithms to calculate DFT and IDFT of
 any size.</p></li>
 <li><p>The main idea behind any FFT algorithm is to look for repetitive
@@ -438,8 +438,8 @@ divide-and-conquer approach:</p>
 <span class="math notranslate nohighlight">\(M\)</span>. Note that the factors in this deposition need not be
 distinct. Repetitive patterns can then be established by rearranging
 the (1-D) signal <span class="math notranslate nohighlight">\(x[n]\)</span> into a <span class="math notranslate nohighlight">\(\nu\)</span>-D array with sizes <span class="math notranslate nohighlight">\(p_1, p_2,
-\ldots, p_\nu\)</span>. For simplicity, we will consider only the case of
-<em>radix-2</em> (<span class="math notranslate nohighlight">\(M=2^\nu\)</span>) here.</p>
+\ldots, p_\nu\)</span>. For simplicity, we will consider only
+<em>radix-2</em> (<span class="math notranslate nohighlight">\(M=2^\nu\)</span>) cases here.</p>
 </li>
 <li><p>Write <span class="math notranslate nohighlight">\(\displaystyle w^k_M = e^{-j\frac{2\pi k}{M}}\)</span>. It is not hard
 to verify that the reduction rule for any product of terms in the

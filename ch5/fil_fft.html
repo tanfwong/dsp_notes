@@ -426,7 +426,7 @@ document.write(`
 <li><p>Consider passing a signal <span class="math notranslate nohighlight">\(x[n]\)</span> of length <span class="math notranslate nohighlight">\(N\)</span> to an FIR Filter with
 impulse response <span class="math notranslate nohighlight">\(h[n]\)</span> of length <span class="math notranslate nohighlight">\(L\)</span>. In practice, we often have <span class="math notranslate nohighlight">\(N
 \gg L \gg 1\)</span>. We will adopt this assumption in the discussion below.</p></li>
-<li><p>Direct implementation of the the convolution <span class="math notranslate nohighlight">\(y[n] = h[n]*x[n]\)</span>
+<li><p>Direct implementation of the convolution <span class="math notranslate nohighlight">\(y[n] = h[n]*x[n]\)</span>
 requires <span class="math notranslate nohighlight">\(\mathcal{O}(NL)\)</span> complex multiplications (and
 additions). While performing the filtering operation in the
 frequency domain using FFT algorithms to calculate DFT and IDFT as
@@ -457,7 +457,7 @@ processing is required.</p></li>
 <li><p>break the long <span class="math notranslate nohighlight">\(x[n]\)</span> into consecutive <em>smaller blocks</em> of length
 <span class="math notranslate nohighlight">\(\tilde{N}\)</span>,</p></li>
 <li><p>perform frequency-domain filtering on each smaller block of
-length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with an FFT of a smaller size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
+length <span class="math notranslate nohighlight">\(\tilde{N}\)</span> with an FFT of a smaller (<span class="math notranslate nohighlight">\(&lt; N\)</span>) size <span class="math notranslate nohighlight">\(\tilde{M}\)</span>, and</p></li>
 <li><p>combine the filter output blocks to obtain the output to the
 whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
 </ol>
@@ -466,7 +466,7 @@ whole <span class="math notranslate nohighlight">\(x[n]\)</span>.</p></li>
 FFT size <span class="math notranslate nohighlight">\(\tilde{M}\)</span> satisfying <span class="math notranslate nohighlight">\(\tilde{M} \geq \tilde{N} + L -1\)</span> so
 that the output block contains the valid convolution result of
 length <span class="math notranslate nohighlight">\(\tilde{N} + L -1\)</span>. The filtered output to the whole <span class="math notranslate nohighlight">\(x[n]\)</span>
-can then be superimposing overlapped blocks of output corresponding
+can then be obtained by superimposing overlapped blocks of output corresponding
 to consecutive blocks of input as shown in the diagram below:</p>
 <a class="reference internal image-reference" href="../_images/ola.jpg"><img alt="Overlap-add algorithm" class="align-center" src="../_images/ola.jpg" style="width: 800px;" /></a>
 <p>This approach to perform frequency-domain

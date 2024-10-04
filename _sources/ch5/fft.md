@@ -1,6 +1,6 @@
 # Fast Fourier Transform
 
-* We use **Fast Fourier Transform (FFT)** to describe a general class
+* The term **Fast Fourier Transform (FFT)** describes a general class
   of computationally efficient algorithms to calculate DFT and IDFT of
   any size.
 
@@ -18,8 +18,8 @@
   $M$. Note that the factors in this deposition need not be
   distinct. Repetitive patterns can then be established by rearranging
   the (1-D) signal $x[n]$ into a $\nu$-D array with sizes $p_1, p_2,
-  \ldots, p_\nu$. For simplicity, we will consider only the case of
-  *radix-2* ($M=2^\nu$) here.
+  \ldots, p_\nu$. For simplicity, we will consider only
+  *radix-2* ($M=2^\nu$) cases here.
 
 * Write $\displaystyle w^k_M = e^{-j\frac{2\pi k}{M}}$. It is not hard
   to verify that the reduction rule for any product of terms in the

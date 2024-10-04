@@ -5,7 +5,7 @@
   impulse response $h[n]$ of length $L$. In practice, we often have $N
   \gg L \gg 1$. We will adopt this assumption in the discussion below.
 
-* Direct implementation of the the convolution $y[n] = h[n]*x[n]$
+* Direct implementation of the convolution $y[n] = h[n]*x[n]$
   requires $\mathcal{O}(NL)$ complex multiplications (and
   additions). While performing the filtering operation in the
   frequency domain using FFT algorithms to calculate DFT and IDFT as
@@ -35,7 +35,7 @@
   1. break the long $x[n]$ into consecutive *smaller blocks* of length
      $\tilde{N}$,
   2. perform frequency-domain filtering on each smaller block of
-     length $\tilde{N}$ with an FFT of a smaller size $\tilde{M}$, and
+     length $\tilde{N}$ with an FFT of a smaller ($< N$) size $\tilde{M}$, and
   3. combine the filter output blocks to obtain the output to the
      whole $x[n]$.
      
@@ -43,7 +43,7 @@
   FFT size $\tilde{M}$ satisfying $\tilde{M} \geq \tilde{N} + L -1$ so
   that the output block contains the valid convolution result of
   length $\tilde{N} + L -1$. The filtered output to the whole $x[n]$
-  can then be superimposing overlapped blocks of output corresponding
+  can then be obtained by superimposing overlapped blocks of output corresponding
   to consecutive blocks of input as shown in the diagram below:
   ```{image} ../figs/ola.jpg 
   :alt: Overlap-add algorithm 
