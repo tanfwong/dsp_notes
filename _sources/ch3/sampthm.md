@@ -85,7 +85,7 @@
      =
      \begin{cases}
      \frac{1}{f_s} X\left( e^{j\frac{\omega}{f_s}} \right), 
-     & \text{if } -\pi f_s \leq \omega < \pi f_s
+     & \text{if } -\pi f_s < \omega < \pi f_s
      \\
      0, & \text{otherwise.}
      \end{cases}
