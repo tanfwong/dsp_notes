@@ -33,7 +33,7 @@
   ```{math}
   :label: e:dftw
   \begin{equation}
-  X_k = \sum_{k=0}^{M-1} x[n] w^{kn}_{M}.
+  X_k = \sum_{n=0}^{M-1} x[n] w^{kn}_{M}.
   \end{equation}
   ```
 
