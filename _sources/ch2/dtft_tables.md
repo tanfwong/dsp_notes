@@ -50,7 +50,7 @@
   -
 
 * - $\displaystyle e^{j \hat{\omega}_0 n}$ 
-  - $\displaystyle 2 \pi \delta(e^{\hat{\omega}  - \hat{\omega}_0})$
+  - $\displaystyle 2 \pi \delta(e^{j(\hat{\omega}  - \hat{\omega}_0)})$
   -
 
 * - $\displaystyle \cos(\hat{\omega}_0 n)$ 

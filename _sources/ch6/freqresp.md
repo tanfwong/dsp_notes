@@ -20,7 +20,7 @@
 
 * For the special case $x[n] = Ae^{j\phi} e^{j\hat\omega_0 n}$, the
   DTFT of the output signal of the LTI system is $Y(e^{j\hat\omega}) =
-  H(e^{j\hat\omega}) 2\pi Ae^{j\phi} \delta((e^{j(\hat\omega -
+  H(e^{j\hat\omega}) 2\pi Ae^{j\phi} \delta(e^{j(\hat\omega -
   \hat\omega_0)}) = H(e^{j\hat\omega_0}) 2\pi Ae^{j\phi}
   \delta(e^{j(\hat\omega - \hat\omega_0)}) $, and hence the output
   signal is $y[n] = H(e^{j\hat\omega_0}) Ae^{j\phi} e^{j\hat\omega_0
