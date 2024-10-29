@@ -69,7 +69,7 @@
   that performs deconvolution is $\displaystyle H_d(z) =
   \frac{1}{H(z)}$. Clearly, this inverse filter is stable if all zeros
   of $H(z)$ are strictly inside the unit circle. If $H(z)$ has a
-  filter that is on or outside the unit circle, then $H_d(z)$ will not
+ zero that is on or outside the unit circle, then $H_d(z)$ will not
   be stable. In particular, if $H(z)$ is a minimum-phase filter, then
   the stability of the inverse filter $H_d(z)$ is guaranteed.
   
