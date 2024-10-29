@@ -414,14 +414,14 @@ document.write(`
 <ul>
 <li><p>Consider the cascade of the (causal) first-order FIR filter with transfer
 function <span class="math notranslate nohighlight">\(-a^*+z^{-1}\)</span> and the (causal) first-order IIR filter with transfer
-function <span class="math notranslate nohighlight">\(\frac{1}{1-az^{-1}}\)</span>, where <span class="math notranslate nohighlight">\(a=re^{j\phi}\)</span> and <span class="math notranslate nohighlight">\(0&lt;r&lt;1\)</span>.
+function <span class="math notranslate nohighlight">\(\frac{1}{1-az^{-1}}\)</span>, where <span class="math notranslate nohighlight">\(a=re^{j\phi}\)</span> and <span class="math notranslate nohighlight">\(0 &lt; r&lt;1\)</span>.
 The transfer function of the cascade is</p>
 <div class="math notranslate nohighlight" id="equation-e-allpass">
 <span class="eqno">(6.3)<a class="headerlink" href="#equation-e-allpass" title="Permalink to this equation">#</a></span>\[\begin{equation}
 H(z) = \frac{-a^* + z^{-1}}{1-az^{-1}}.
 \end{equation}\]</div>
 <p>Clearly, this cascaded filter has a pole at <span class="math notranslate nohighlight">\(z=a\)</span> and a zero at <span class="math notranslate nohighlight">\(z=
-\frac{1}{a^*}\)</span>. it is causal and stable.</p>
+\frac{1}{a^*}\)</span>. It is causal and stable.</p>
 </li>
 <li><p>The frequency response of the filter with transfer function in
 <a class="reference internal" href="#equation-e-allpass">(6.3)</a> is thus</p>
@@ -454,7 +454,7 @@ H(z) = \frac{-a^* + z^{-1}}{1-az^{-1}}.
   = -\frac{d \angle H(e^{j\hat\omega})}{d\hat\omega} =
   \frac{1-r^2}{|1-re^{-j(\hat\omega - \phi)}|^2} \geq 0
   \end{equation*}\]</div>
-<p>since <span class="math notranslate nohighlight">\(0&lt; r &lt; 1\)</span>.</p>
+<p>since <span class="math notranslate nohighlight">\(0 &lt;  r &lt; 1\)</span>.</p>
 </li>
 <li><p>From the magnitude response in <a class="reference internal" href="#equation-e-allpass-mag">(6.4)</a>, we know that
 this filter is an <strong>allpass</strong> filter. In fact, it is the simplest,

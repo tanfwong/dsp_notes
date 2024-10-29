@@ -1,7 +1,7 @@
 # Allpass Filter
 * Consider the cascade of the (causal) first-order FIR filter with transfer
   function $-a^*+z^{-1}$ and the (causal) first-order IIR filter with transfer
-  function $\frac{1}{1-az^{-1}}$, where $a=re^{j\phi}$ and $0<r<1$. 
+  function $\frac{1}{1-az^{-1}}$, where $a=re^{j\phi}$ and $0 < r<1$. 
   The transfer function of the cascade is
   ```{math}
   :label: e:allpass
@@ -10,7 +10,7 @@
   \end{equation}
   ```
   Clearly, this cascaded filter has a pole at $z=a$ and a zero at $z=
-  \frac{1}{a^*}$. it is causal and stable.
+  \frac{1}{a^*}$. It is causal and stable.
 
 * The frequency response of the filter with transfer function in
   {eq}`e:allpass` is thus
@@ -42,7 +42,7 @@
   = -\frac{d \angle H(e^{j\hat\omega})}{d\hat\omega} =
   \frac{1-r^2}{|1-re^{-j(\hat\omega - \phi)}|^2} \geq 0
   \end{equation*}
-  since $0< r < 1$.
+  since $0 <  r < 1$.
 
 * From the magnitude response in {eq}`e:allpass_mag`, we know that
   this filter is an **allpass** filter. In fact, it is the simplest,
