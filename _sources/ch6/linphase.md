@@ -2,8 +2,9 @@
 * A **linear-phase filter** is an LTI system that has frequency response 
   of the form:
   \begin{equation*}
-  H(e^{j\hat\omega}) = |H(e^{j\hat\omega})| e^{-j\hat\omega \alpha}.
+  H(e^{j\hat\omega}) = |H(e^{j\hat\omega})| e^{-j\hat\omega \alpha},
   \end{equation*}
+  for $-\pi \leq \hat\omega < \pi$.
   That is, its phase response  $\angle  H(e^{j\hat\omega}) = -
   \hat\omega \alpha$ is linear in $\hat\omega$ with slope $-\alpha$.
 
@@ -103,9 +104,10 @@
   following form: 
   \begin{equation*} 
   H(e^{j\hat\omega}) =
-  A(e^{j\hat\omega}) e^{-j(\hat\omega \alpha + \beta)} 
+  A(e^{j\hat\omega}) e^{-j(\hat\omega \alpha + \beta)} ,
   \end{equation*}
-  where $A(e^{j\hat\omega})$ is a real-valued (periodic) function of
+  for $-\pi \leq \hat\omega < \pi$, 
+  where $A(e^{j\hat\omega})$ is a real-valued function of
   $\hat\omega$.
 
 * The magnitude response of the generalized linear-phase filter is $|H(e^{j\hat\omega})| =
