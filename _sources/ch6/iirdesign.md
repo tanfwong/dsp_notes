@@ -25,8 +25,8 @@
   $\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p$ is the $3$dB cutoff
   frequency.
 
-* The transfer function $H(s)$ (the Laplace transform of the impulse
-  response $h(t)$ of the Butterworth filter satisfies:
+* The transfer function $H(s)$, i.e. the Laplace transform of the impulse
+  response $h(t)$, of the Butterworth filter satisfies:
   ```{math}
   :label: e:butterworthTF
   \begin{equation}
@@ -254,7 +254,7 @@
   \begin{equation*}
   H(z) = A_0 + \sum_{k=0}^{N-1} \frac{A_k}{1 - e^{p_k} z^{-1}}
   \end{equation*}
-  Since $H(s)$ is table by construction, $\text{Re}(p_k) < 0$ for
+  Since $H(s)$ is stable by construction, $\text{Re}(p_k) < 0$ for
   $k=0,1,\ldots, N-1$. Thus the poles $e^{p_k}$ of the transfer
   function $H(z)$ of the resulting discrete-time IIR filter are all
   strictly inside the unit circle, i.e., $H(z)$ is also stable.
@@ -264,7 +264,7 @@
   Consider again the same design specification as in Examples 1 and 4
   in {numref}`sec:firdesign`, except in this example we want to design
   a lowpass IIR filter with the specification $(0.3\pi, 0.35\pi, 0.01,
-  0.001)$ based on a analog type-I Chebyshev filter prototype. Using the
+  0.001)$ based on an analog type-I Chebyshev filter prototype. Using the
   impulse invariance method with $f_s=1$, the required specifications
   of the analog type-I Chebyshev filter prototype are $\omega_p=0.3\pi$,
   $\omega_s=0.35\pi$, $\delta_1=0.01$, and $\delta_2=0.001$.
@@ -566,7 +566,7 @@
   other types. 
 
 * Write the mapping discussed above as $z^{-1} \mapsto
-  G(z^{-1})$. Since the unti circle is mapped onto itself,
+  G(z^{-1})$. Since the unit circle is mapped onto itself,
   $|G(z^{-1})| = 1$. That means, we can think of $G(z^{-1})$ as the
   transfer function of an allpass filter of the general form
   {eq}`e:allpass_gen` with $b_0=\pm 1$, i.e., 

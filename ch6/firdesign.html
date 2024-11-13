@@ -787,9 +787,10 @@ least <span class="math notranslate nohighlight">\(N+2\)</span> alternations in 
 \hat\omega_{N+1}\)</span> in <span class="math notranslate nohighlight">\(S\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-e-alternations">
 <span class="eqno">(6.13)<a class="headerlink" href="#equation-e-alternations" title="Permalink to this equation">#</a></span>\[\begin{equation}
-E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
+E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = 
+\pm \max_{\hat\omega \in S} |E(e^{j\hat\omega})| 
 \end{equation}\]</div>
-<p>for all <span class="math notranslate nohighlight">\(i\)</span>,  where <span class="math notranslate nohighlight">\(\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|\)</span>.
+<p>for all <span class="math notranslate nohighlight">\(i\)</span>.
 The property in <a class="reference internal" href="#equation-e-alternations">(6.13)</a> is usually referred to
 as <strong>equiripple</strong>.</p>
 </div>
@@ -834,7 +835,7 @@ order <span class="math notranslate nohighlight">\(N\)</span> to obtain <span cl
 (see <span id="id4">[<a class="reference internal" href="../refs.html#id5" title="Alan Oppenheim and Ronald Schafer. Discrete-Time Signal Processing. Prentice Hall, 3rd edition, 2010.">OS10</a>]</span> Chapter 7 for details).</p></li>
 <li><p>Calculate <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span> on a dense grid of frequencies in
 <span class="math notranslate nohighlight">\(S\)</span>. Find the local maxima and minima of <span class="math notranslate nohighlight">\(E(e^{j\hat\omega})\)</span>
-satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega})| \geq \delta\)</span>. Note that there
+satisfying <span class="math notranslate nohighlight">\(|E(e^{j\hat\omega})| \geq |\delta|\)</span>. Note that there
 can be at most <span class="math notranslate nohighlight">\(N-1\)</span> such frequencies in the interior of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
 <li><p>Add the passband and stopband edge frequencies, i.e., <span class="math notranslate nohighlight">\(0\)</span>,
 <span class="math notranslate nohighlight">\(\hat\omega_s\)</span>, <span class="math notranslate nohighlight">\(\hat\omega_p\)</span>, and <span class="math notranslate nohighlight">\(\pi\)</span>, to the set of

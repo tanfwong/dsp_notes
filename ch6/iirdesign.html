@@ -458,8 +458,8 @@ characterized by the following square-magnitude response:</p>
 <span class="math notranslate nohighlight">\(\omega_c = \varepsilon^{-\frac{1}{N}} \omega_p\)</span> is the <span class="math notranslate nohighlight">\(3\)</span>dB cutoff
 frequency.</p>
 </li>
-<li><p>The transfer function <span class="math notranslate nohighlight">\(H(s)\)</span> (the Laplace transform of the impulse
-response <span class="math notranslate nohighlight">\(h(t)\)</span> of the Butterworth filter satisfies:</p>
+<li><p>The transfer function <span class="math notranslate nohighlight">\(H(s)\)</span>, i.e. the Laplace transform of the impulse
+response <span class="math notranslate nohighlight">\(h(t)\)</span>, of the Butterworth filter satisfies:</p>
 <div class="math notranslate nohighlight" id="equation-e-butterworthtf">
 <span class="eqno">(6.17)<a class="headerlink" href="#equation-e-butterworthtf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 H(s) H(-s) = 
@@ -717,7 +717,7 @@ Laplace transform to get the causal impulse response</p>
 \[\begin{equation*}
   H(z) = A_0 + \sum_{k=0}^{N-1} \frac{A_k}{1 - e^{p_k} z^{-1}}
   \end{equation*}\]</div>
-<p>Since <span class="math notranslate nohighlight">\(H(s)\)</span> is table by construction, <span class="math notranslate nohighlight">\(\text{Re}(p_k) &lt; 0\)</span> for
+<p>Since <span class="math notranslate nohighlight">\(H(s)\)</span> is stable by construction, <span class="math notranslate nohighlight">\(\text{Re}(p_k) &lt; 0\)</span> for
 <span class="math notranslate nohighlight">\(k=0,1,\ldots, N-1\)</span>. Thus the poles <span class="math notranslate nohighlight">\(e^{p_k}\)</span> of the transfer
 function <span class="math notranslate nohighlight">\(H(z)\)</span> of the resulting discrete-time IIR filter are all
 strictly inside the unit circle, i.e., <span class="math notranslate nohighlight">\(H(z)\)</span> is also stable.</p>
@@ -726,7 +726,7 @@ strictly inside the unit circle, i.e., <span class="math notranslate nohighlight
 <p>Consider again the same design specification as in Examples 1 and 4
 in <a class="reference internal" href="firdesign.html#sec-firdesign"><span class="std std-numref">Section 6.6</span></a>, except in this example we want to design
 a lowpass IIR filter with the specification <span class="math notranslate nohighlight">\((0.3\pi, 0.35\pi, 0.01,
-0.001)\)</span> based on a analog type-I Chebyshev filter prototype. Using the
+0.001)\)</span> based on an analog type-I Chebyshev filter prototype. Using the
 impulse invariance method with <span class="math notranslate nohighlight">\(f_s=1\)</span>, the required specifications
 of the analog type-I Chebyshev filter prototype are <span class="math notranslate nohighlight">\(\omega_p=0.3\pi\)</span>,
 <span class="math notranslate nohighlight">\(\omega_s=0.35\pi\)</span>, <span class="math notranslate nohighlight">\(\delta_1=0.01\)</span>, and <span class="math notranslate nohighlight">\(\delta_2=0.001\)</span>.</p>
@@ -1030,7 +1030,7 @@ that map the unit circle (on the <span class="math notranslate nohighlight">\(z\
 applied to convert a lowpass IIR filter to another IIR filter fo
 other types.</p></li>
 <li><p>Write the mapping discussed above as <span class="math notranslate nohighlight">\(z^{-1} \mapsto
-G(z^{-1})\)</span>. Since the unti circle is mapped onto itself,
+G(z^{-1})\)</span>. Since the unit circle is mapped onto itself,
 <span class="math notranslate nohighlight">\(|G(z^{-1})| = 1\)</span>. That means, we can think of <span class="math notranslate nohighlight">\(G(z^{-1})\)</span> as the
 transfer function of an allpass filter of the general form
 <a class="reference internal" href="allpass.html#equation-e-allpass-gen">(6.5)</a> with <span class="math notranslate nohighlight">\(b_0=\pm 1\)</span>, i.e.,</p>

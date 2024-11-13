@@ -361,10 +361,11 @@ filter.
   ~~~{math}
   :label: e:alternations
   \begin{equation}
-  E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = \pm \delta
+  E(e^{j\hat\omega_i}) = -E(e^{j\hat\omega_{i+1}}) = 
+  \pm \max_{\hat\omega \in S} |E(e^{j\hat\omega})| 
   \end{equation}
   ~~~
-  for all $i$,  where $\delta = \max_{\hat\omega \in S} |E(e^{j\hat\omega})|$. 
+  for all $i$. 
   The property in {eq}`e:alternations` is usually referred to
   as **equiripple**.
   ```
@@ -411,7 +412,7 @@ filter.
      (see {cite}`oppenheim2010` Chapter 7 for details).
   3. Calculate $E(e^{j\hat\omega})$ on a dense grid of frequencies in
      $S$. Find the local maxima and minima of $E(e^{j\hat\omega})$
-     satisfying $|E(e^{j\hat\omega})| \geq \delta$. Note that there
+     satisfying $|E(e^{j\hat\omega})| \geq |\delta|$. Note that there
      can be at most $N-1$ such frequencies in the interior of $S$.
   4. Add the passband and stopband edge frequencies, i.e., $0$,
      $\hat\omega_s$, $\hat\omega_p$, and $\pi$, to the set of
